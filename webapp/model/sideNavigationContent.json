@@ -1,0 +1,101 @@
+{
+	"navigation": [
+		{
+			"title": "{i18n>sideNavItemWorklist}",
+			"icon": "sap-icon://home",
+			"expanded": false,
+			"key": "home",
+			"items": []
+		},
+		{
+			"title": "{i18n>sideNavItemArchitecture}",
+			"icon": "sap-icon://crm-service-manager",
+			"expanded": false,
+			"key": "noroute",
+			"items": [
+				{
+					"title": "{i18n>sideNavSubItemBasicDetails}",
+					"key": "basicDetails"
+				},
+				{
+					"title": "{i18n>sideNavSubItemBUDetails}",
+					"key": "buDetails"
+				},
+				{
+					"title": "{i18n>sideNavSubItemPropOtherDetails}",
+					"key": "propOtherDetails"
+				},
+				{
+					"title": "{i18n>sideNavSubItemMarkDetails}",
+					"key": "markDetails"
+				},
+				{
+					"title": "{i18n>sideNavSubItemPropStructure}",
+					"key": "propStructure"
+				},
+				{
+					"title": "{i18n>sideNavSubItemPropSuppDetails}",
+					"key": "propSubDeatils"
+				},
+				{
+					"title": "{i18n>sideNavSubItemTaxDetails}",
+					"key": "taxDetails"
+				},
+				{
+					"title": "{i18n>sideNavSubItemInsDetails}",
+					"key": "insDetails"
+				},
+				{
+					"title": "{i18n>sideNavSubItemPropDates}",
+					"key": "propDetails"
+				},
+				{
+					"title": "{i18n>sideNavSubItemWorkHours}",
+					"key": "workingHours"
+				},
+				{
+					"title": "{i18n>sideNavSubItemGateDetails}",
+					"key": "gateDetails"
+				},
+				{
+					"title": "{i18n>sideNavSubItemWebDetails}",
+					"key": "webDetails"
+				},
+				{
+					"title": "{i18n>sideNavSubItemBuildingDetails}",
+					"key": "buildDetails"
+				},
+				{
+					"title": "{i18n>sideNavSubItemFeesDetails}",
+					"key": "feeDetails"
+				}
+			]
+		}
+	],
+	"fixedNavigation": [
+		{
+			"title": "Legal",
+			"icon": "sap-icon://compare",
+			"key": "noroute",
+			"expanded": false,
+			"items": [
+				{
+					"title": "{i18n>privacy}",
+					"key": "noroute"
+				},
+				{
+					"title": "{i18n>terms}",
+					"key": "noroute"
+				},
+				{
+					"title": "{i18n>legalDisclosure}",
+					"key": "noroute"
+				},
+				{
+					"title": "{i18n>copyrights}",
+					"key": "noroute"
+				}
+			]
+		}
+	]
+}

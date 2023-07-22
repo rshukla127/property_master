@@ -1,0 +1,176 @@
+<mvc:View controllerName="com.public.storage.pao.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.f"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:core="sap.ui.core">
+    <!-- <Page id="Main" title="{i18n>title}">
+        <content>
+       
+        </content>
+    </Page> -->
+
+    <f:DynamicPage id="app">
+        <!-- <f:title>
+            <f:DynamicPageTitle>
+                <f:breadcrumbs>
+                    <Breadcrumbs currentLocationText="PAO">
+                        <Link text="Home" press="onBreadCrumpHomeNavPress"/>
+                    </Breadcrumbs>
+                </f:breadcrumbs>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <f:content>
+                    <core:Fragment fragmentName="com.public.storage.pao.fragments.Header" type="XML" />
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header> -->
+        <f:content>
+            <l:BlockLayout>
+                <l:BlockLayoutRow id="row1" class="content">
+                    <l:BlockLayoutCell class="sapUiNoContentPadding content">
+                        <HBox>
+                            <VBox height="250px">
+                                <IllustratedMessage illustrationSize="Scene" illustrationType="tnt-Company" />
+                            </VBox>
+                            <VBox class="sapUiSmallMarginBegin sapUiLargeMarginTop slideInLeft" wrap="Wrap">
+                                <HBox>
+                                    <Title text="Hello Admin" level="H2" titleStyle="H2" wrapping="true" />
+                                    <Title id="userWelcome" level="H2" titleStyle="H2" wrapping="true" class="sapUiTinyMarginBegin boldTitle" />
+                                </HBox>
+                                <Title text="{i18n>welcomeTextTitle}" level="H2" titleStyle="H2" wrapping="true" class="sapUiTinyMarginTop" />
+                                <Title text="{i18n>addPropTitle}" level="H3" titleStyle="H3" class="slideInLeft" wrapping="true" />
+                            </VBox>
+                        </HBox>
+
+
+
+
+
+                        <!-- <Title text="Select Plant/Property" titleStyle="H3" class="boldTitle sapUiMediumMarginTop" /> -->
+                        <f:GridList width="100%" class="sapUiTinyMarginTop">
+                            <f:customLayout>
+                                <grid:ResponsiveColumnLayout />
+                            </f:customLayout>
+                            <f:GridListItem class="round">
+                                <f:layoutData>
+                                    <grid:ResponsiveColumnItemLayoutData columns="19" rows="7" />
+                                </f:layoutData>
+                                <HBox width="100%">
+                                    <IllustratedMessage illustrationSize="Dot" illustrationType="tnt-Radar" />
+                                    <Title text="{i18n>propTitle}" class="sapUiTinyMargin" />
+
+                                </HBox>
+                                <HBox alignContent="Inherit" class="sapUiSmallMargin" alignItems="Center" justifyContent="Start">
+
+                                    <Label text="Plant:" required="true" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>
+                                    <Input id="plantInput" textFormatMode="KeyValue" placeholder="Enter plant" showSuggestion="true" showValueHelp="true" valueHelpRequest="_onValueHelpPlant" 
+                                    suggestionItems="{plantModel>/ProductCollection}" suggestionItemSelected="onSuggestionItemSelected">
+                                        <suggestionItems>
+                                            <core:ListItem key="{plantModel>ProductId}" text="{plantModel>Name}" additionalText="{plantModel>ProductId}" />
+                                        </suggestionItems>
+                                    </Input>
+                                    <Label text="Property:" required="true" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>
+                                    <Input id="propertyInput" textFormatMode="KeyValue" placeholder="Enter property" showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestProperty" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                        <suggestionItems>
+                                            <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
+                                        </suggestionItems>
+                                    </Input>
+                                    <Label design="Bold" text="WestMinister Public Storage - 616161, 7484 Garden Glove Bivd, Westminister, CA 98765" class="sapUiSmallMarginEnd sapUiLargeMarginBegin"/>
+                                </HBox>
+                            </f:GridListItem>
+
+                            <f:GridListItem class="round" visible="{oVisModel>/visibilityForPTypeBlock}">
+                                <f:layoutData>
+                                    <grid:ResponsiveColumnItemLayoutData columns="19" rows="7" />
+                                </f:layoutData>
+
+                                <HBox width="100%">
+                                    <IllustratedMessage illustrationSize="Dot" illustrationType="tnt-NoUsers" />
+                                    <Title text="{i18n>selPropTitle}" class="sapUiSmallMargin" />
+                                </HBox>
+                                <HBox alignContent="Inherit" alignItems="Center" class="sapUiSmallMargin" justifyContent="Start">
+
+                                    <Label text="Property Type:" required="true" class="sapUiMediumMarginEnd sapUiSmallMarginBegin"/>
+                                    <RadioButtonGroup id="rbg1" columns="3" width="100%" class="">
+                                        <RadioButton id="rb1" text="Owner" select="onSelectOwner" class="sapUiMediumMarginEnd"/>
+                                        <RadioButton id="rb2" text="Third Party" select="onSelectTP"/>
+                                    </RadioButtonGroup>
+                                </HBox>
+
+                                <HBox alignContent="Inherit" id="owner" alignItems="Center" visible="{oVisModel>/visibliltyForOwner}" class="sapUiSmallMargin" justifyContent="Start">
+                                    <Label text="{i18n>retailPC}" required="true" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>
+                                    <Input id="retailPc" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                        <suggestionItems>
+                                            <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
+                                        </suggestionItems>
+                                    </Input>
+
+                                    <Label text="{i18n>storagePC}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>
+                                    <Input id="storagePc" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                        <suggestionItems>
+                                            <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
+                                        </suggestionItems>
+                                    </Input>
+
+                                    <Label text="{i18n>tennetPC}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>
+                                    <Input id="tenPc" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                        <suggestionItems>
+                                            <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
+                                        </suggestionItems>
+                                    </Input>
+
+                                    <Label text="{i18n>commPC}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>
+                                    <Input id="commPc" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                        <suggestionItems>
+                                            <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
+                                        </suggestionItems>
+                                    </Input>
+                                </HBox>
+
+                                <HBox alignContent="Inherit" id="thirdParty" visible="{oVisModel>/visibliltyForThirdParty}" alignItems="Center" class="sapUiSmallMargin" justifyContent="Start">
+                                    <Label text="{i18n>retailPC}" required="true" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>
+                                    <Input id="retailPcTP" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                        <suggestionItems>
+                                            <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
+                                        </suggestionItems>
+                                    </Input>
+
+                                    <Label text="{i18n>storagePC}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>
+                                    <Input id="storagePcTP" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                        <suggestionItems>
+                                            <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
+                                        </suggestionItems>
+                                    </Input>
+
+                                    <Label text="{i18n>tennetPC}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>
+                                    <Input id="tenPcTP" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                        <suggestionItems>
+                                            <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
+                                        </suggestionItems>
+                                    </Input>
+
+                                    <Label text="{i18n>mgmtPC}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>
+                                    <Input id="mgmtPcTP" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                        <suggestionItems>
+                                            <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
+                                        </suggestionItems>
+                                    </Input>
+                                </HBox>
+                            </f:GridListItem>
+                        </f:GridList>
+
+
+                    </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+                <!-- <core:Fragment fragmentName="sap.crun.dms.app.fragments.footer" type="XML" /> -->
+            </l:BlockLayout>
+        </f:content>
+
+
+
+    </f:DynamicPage>
+</mvc:View>

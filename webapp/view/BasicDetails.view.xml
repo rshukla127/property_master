@@ -1,0 +1,103 @@
+<mvc:View controllerName="com.public.storage.pao.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+   	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ScrollContainer
+		height="100%"
+		width="100%"
+		vertical="true"
+		focusable="true">
+		
+	
+
+<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="basicDetails"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="{i18n>propBasDetails}"
+			labelSpanXL="4"
+			labelSpanL="4"
+			labelSpanM="12"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="2"
+			columnsM="2"
+			singleContainerFullSize="false" >
+			<f:content>
+				<core:Title text="" visible="false"/>
+				<Label text="{i18n>direPhoneNo}" />
+				<Input value="{SupplierName}" />
+				<Label text="{i18n>faxNumber}" />
+				<Input value="{Street}"/>
+				
+				
+					
+				
+				<Label text="{i18n>tollfreeNo}" />
+				<Input value="{ZIPCode}"/>
+					
+				
+				
+				<Label text="{i18n>netIpAddress}" />
+                <Input value="{ZIPCode}"/>
+					
+				
+                <Label text="{i18n>kioskProp}" />
+				<Select id="kiskProp" selectedKey="{Country}">
+					<items>
+						<core:Item text="Yes" key="Y"/>
+						<core:Item text="No" key="N"/>
+						
+					</items>
+				</Select>
+				
+				<Label text="{i18n>budPropNumber}" />
+				<Input value="{Url}" valueHelpOnly="true"/>
+				<Label text="{i18n>retailSqFootage}" />
+				<Input value="{Twitter}" />
+
+                <Label text="{i18n>historicalProp}" />
+				<Input value="{Url}" type="Url" />
+				<Label text="{i18n>psaProp}" />
+				<Input value="{Twitter}" />
+                <Label text="{i18n>transForm}" />
+				<Input value="{Twitter}" />
+
+                <core:Title text="" />
+
+                <Label text="{i18n>publishedPhoneNo}" />
+				<Input value="{Url}" type="Url" />
+				<Label text="{i18n>propEmailAdd}" />
+				<Input value="{Twitter}" />
+
+                <Label text="{i18n>localPhoneNo}" />
+				<Input value="{Url}" type="Url" />
+				<Label text="{i18n>network2Ip}" />
+				<Input value="{Twitter}" />
+
+                <Label text="{i18n>kisokActivDate}" />
+				<DatePicker value="{Twitter}" />
+                <Label text="{i18n>offSqFoootage}" />
+				<Input value="{Twitter}" />
+                <Label text="{i18n>retailSqSize}" />
+				<Input value="{Twitter}" />
+                <Label text="{i18n>histOwner}" />
+				<Input value="{Twitter}" />
+                <Label text="{i18n>psaOwner}" />
+				<Input value="{Twitter}" />
+                <Label text="{i18n>geoCode}" />
+				<Input value="{Twitter}" />
+
+
+			</f:content>
+		</f:SimpleForm>
+        </VBox>
+        </ScrollContainer>
+</mvc:View>
