@@ -31,6 +31,7 @@ sap.ui.define([
                 this.setModel(models.createDeviceModel(), "device");
                 const oModel = this.getModel("mainModel");
                 sap.ui.getCore().setModel(oModel, "mainModel");
+                
                
             },
 
