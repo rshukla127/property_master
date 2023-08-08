@@ -121,6 +121,31 @@
           "target": ["basicDetails"]
         },
         {
+          "name": "buDetails",
+          "pattern": "buDetails",
+          "target": ["buDetails"]
+        },
+        {
+          "name": "propOtherDetails",
+          "pattern": "propOtherDetails",
+          "target": ["propOtherDetails"]
+        },
+        {
+          "name": "marketingDetails",
+          "pattern": "marketingDetails",
+          "target": ["marketingDetails"]
+        },
+        {
+          "name": "propStructure",
+          "pattern": "propStructure",
+          "target": ["propStructure"]
+        },
+        {
+          "name": "propSuppDeatils",
+          "pattern": "propSuppDeatils",
+          "target": ["propSuppDeatils"]
+        },
+        {
           "name": "workingHours",
           "pattern": "workingHours",
           "target": ["workingHours"]
@@ -137,6 +162,32 @@
           "viewId": "basicDetails",
           "viewName": "BasicDetails"
         },
+        "buDetails": {
+          "viewType": "XML",
+          "viewId": "buDetails",
+          "viewName": "BUDetails"
+        },
+        "propOtherDetails": {
+          "viewType": "XML",
+          "viewId": "propOtherDetails",
+          "viewName": "OtherDetails"
+        },
+        "marketingDetails": {
+          "viewType": "XML",
+          "viewId": "marketingDetails",
+          "viewName": "MarketingDetails"
+        },
+        "propStructure": {
+          "viewType": "XML",
+          "viewId": "propStructure",
+          "viewName": "PropertyStructure"
+        },
+        "propSuppDeatils": {
+          "viewType": "XML",
+          "viewId": "propSuppDeatils",
+          "viewName": "SupplementalDetails"
+        },
+
         "workingHours": {
           "viewType": "XML",
           "viewId": "workingHours",

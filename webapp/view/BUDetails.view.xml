@@ -1,0 +1,94 @@
+<mvc:View controllerName="com.public.storage.pao.controller.BUDetails"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+
+
+
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>propBUDetail} (Plant - {plantBasicDetailsModel>/Plant} and Property {plantBasicDetailsModel>/LegacyPropertyNumber})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                <f:content>
+                    <core:Title text="" visible="false"/>
+                    <Label required="true" text="{i18n>active}" />
+                    <Input id="active" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label required="true" text="{i18n>businessUnitType}" />
+                    <Input id="bType" showValueHelp="true" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label required="true" text="{i18n>customerCode}" />
+                    <Input id="cCode" showValueHelp="true" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <Label required="true" text="{i18n>entityType}" />
+                    <Input id="entityType" showValueHelp="true" value="{plantBasicDetailsModel>/EntityType}" />
+
+                    <Label required="true" text="{i18n>combinedServNumber}" />
+                    <Input id="combinedServ" showValueHelp="true" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
+
+                    <Label text="{i18n>Note1}" />
+                    <Input id="note1" maxLength="30" value="{plantBasicDetailsModel>/Note1}" />
+
+                    <Label text="{i18n>Note2}" />
+                    <Input id="note2" maxLength="30" value="{plantBasicDetailsModel>/Note2}" />
+
+                    <Label  text="{i18n>Note3}" />
+                    <Input id="note3" maxLength="30" value="{plantBasicDetailsModel>/Note3}" />
+
+                    <Label text="{i18n>atypeProp}" />
+                    <Input id="atypeProp" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
+                    
+                    <core:Title text="" />
+                    <Label  text="{i18n>billboard}" />
+                    <Select id="bill" selectedKey="{plantBasicDetailsModel>/BillBoard}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+
+                        </items>
+                    </Select>
+
+                    <Label  text="{i18n>commercial}" />
+                    <Select id="comm" selectedKey="{plantBasicDetailsModel>/Comercial}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+
+                        </items>
+                    </Select>
+
+                    <Label  text="{i18n>celltower}" />
+                    <Select id="cell" selectedKey="{plantBasicDetailsModel>/CellTower}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+
+                        </items>
+                    </Select>
+                    <Label text="{i18n>solar}" />
+                    <Select id="solar" selectedKey="{plantBasicDetailsModel>/Solar}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+
+                        </items>
+                    </Select>
+
+                    <Label  text="{i18n>aquiredFrom}" />
+                    <Input id="aquiredFrom" maxLength="50" value="{plantBasicDetailsModel>/AcquiredFrom}" />
+
+                    <Label text="{i18n>aquiredevlop}" />
+                    <Input id="aquiredFromTP" showValueHelp="true" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
+                    <Label  text="{i18n>psd}" />
+                    <Input id="psd" maxLength="12" value="{plantBasicDetailsModel>/Psd}" />
+
+                </f:content>
+            </f:SimpleForm>
+            <VBox alignContent="End" alignItems="End">
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></Button>
+            </VBox>
+        </VBox>
+
+
+    </ScrollContainer>
+</mvc:View>

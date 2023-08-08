@@ -1,14 +1,15 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="com.public.storage.pao.controller.Main" >
-	<SelectDialog
-		id="propertyFragment"
-		title="Property"
+	<SelectDialog class="sapUiSizeCompact"
+		id="plantFragment"
+		title="Plants"
 		items="{plantsModel>/}"
-		search="onValueHelpDialogSearchProperty"
-		confirm="onValueHelpDialogCloseProperty"
-		cancel="onValueHelpDialogCloseProperty">
+		search="onValueHelpDialogSearchPlant"
+		confirm="onValueHelpDialogClosePlant"
+		cancel="onValueHelpDialogClosePlant">
 		<StandardListItem
+			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{plantsModel>Name2}"/>
+			title="{plantsModel>Werks}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

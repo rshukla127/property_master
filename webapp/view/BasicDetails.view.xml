@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.public.storage.pao.controller.Main"
+<mvc:View controllerName="com.public.storage.pao.controller.BasicDetails"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
    	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"
@@ -16,7 +16,7 @@
 		<f:SimpleForm id="basicDetails"
 			editable="true"
 			layout="ResponsiveGridLayout"
-			title="{i18n>propBasDetails}"
+			title="{i18n>propBasDetails} (Plant - {plantBasicDetailsModel>/Plant} and Property {plantBasicDetailsModel>/LegacyPropertyNumber})"
 			labelSpanXL="4"
 			labelSpanL="4"
 			labelSpanM="12"
@@ -32,25 +32,19 @@
 			singleContainerFullSize="false" >
 			<f:content>
 				<core:Title text="" visible="false"/>
-				<Label text="{i18n>direPhoneNo}" />
-				<Input value="{SupplierName}" />
-				<Label text="{i18n>faxNumber}" />
-				<Input value="{Street}"/>
+				<Label required="true" text="{i18n>direPhoneNo}" />
+				<Input maxLength="30" id="dirPhoneNo" value="{plantBasicDetailsModel>/DirectPhoneNo}" enabled="false" />
+				<Label required="true" text="{i18n>faxNumber}" />
+				<Input maxLength="30" id="faxNo" enabled="false" value="{plantBasicDetailsModel>/FaxNumber}" />
 				
+				<Label required="true" text="{i18n>tollfreeNo}" />
+				<Input maxLength="30" id="tollFree" value="{plantBasicDetailsModel>/TollFreeNumber}"/>
 				
-					
+				<Label required="true" text="{i18n>netIpAddress}" />
+                <Input maxLength="30" id="network1" value="{plantBasicDetailsModel>/Network1IpAddress}"/>
 				
-				<Label text="{i18n>tollfreeNo}" />
-				<Input value="{ZIPCode}"/>
-					
-				
-				
-				<Label text="{i18n>netIpAddress}" />
-                <Input value="{ZIPCode}"/>
-					
-				
-                <Label text="{i18n>kioskProp}" />
-				<Select id="kiskProp" selectedKey="{Country}">
+                <Label required="true" text="{i18n>kioskProp}" />
+				<Select id="kiskProp" selectedKey="{plantBasicDetailsModel>/KioskProperty}">
 					<items>
 						<core:Item text="Yes" key="Y"/>
 						<core:Item text="No" key="N"/>
@@ -58,46 +52,51 @@
 					</items>
 				</Select>
 				
-				<Label text="{i18n>budPropNumber}" />
-				<Input value="{Url}" valueHelpOnly="true"/>
+				<Label  text="{i18n>budPropNumber}" />
+				<Input maxLength="5" id="budProp" value="{plantBasicDetailsModel>/BuddyPropertyNumber}" valueHelpOnly="true"/>
 				<Label text="{i18n>retailSqFootage}" />
-				<Input value="{Twitter}" />
+				<Input maxLength="5" id="retailStoreSq" value="{plantBasicDetailsModel>/RetailStoreSquareFootage}" />
 
-                <Label text="{i18n>historicalProp}" />
-				<Input value="{Url}" type="Url" />
+                <Label  text="{i18n>historicalProp}" />
+				<Input maxLength="10" id="histProp" value="{plantBasicDetailsModel>/HistoricalProperty}" type="Url" />
 				<Label text="{i18n>psaProp}" />
-				<Input value="{Twitter}" />
+				<Input maxLength="10" id="psaProp" value="{plantBasicDetailsModel>/PsaProperty}" />
                 <Label text="{i18n>transForm}" />
-				<Input value="{Twitter}" />
+				<Input maxLength="10" id="transF" value="{plantBasicDetailsModel>/TransferFrom}" />
 
                 <core:Title text="" />
 
-                <Label text="{i18n>publishedPhoneNo}" />
-				<Input value="{Url}" type="Url" />
-				<Label text="{i18n>propEmailAdd}" />
-				<Input value="{Twitter}" />
+                <Label required="true" text="{i18n>publishedPhoneNo}" />
+				<Input maxLength="30" id="pubPhone" value="{plantBasicDetailsModel>/PublishedPhoneNo}" />
+				<Label required="true" text="{i18n>propEmailAdd}" />
+				<Input id="email" enabled="false" value="{plantBasicDetailsModel>/PropertyEmailAddress}" />
 
                 <Label text="{i18n>localPhoneNo}" />
-				<Input value="{Url}" type="Url" />
-				<Label text="{i18n>network2Ip}" />
-				<Input value="{Twitter}" />
+				<Input maxLength="30" required="true" id="localPh" value="{plantBasicDetailsModel>/LocalPhoneNumber}" type="Url" />
+				<Label required="true" text="{i18n>network2Ip}" />
+				<Input id="network2" value="{plantBasicDetailsModel>/Network2IpAddress}" />
 
                 <Label text="{i18n>kisokActivDate}" />
-				<DatePicker value="{Twitter}" />
+				<DatePicker id="kisok" value="{plantBasicDetailsModel>/KioskActiveDate}" />
                 <Label text="{i18n>offSqFoootage}" />
-				<Input value="{Twitter}" />
+				<Input id="offSq" value="{plantBasicDetailsModel>/RetailStorageSize}" />
                 <Label text="{i18n>retailSqSize}" />
-				<Input value="{Twitter}" />
+				<Input id="retailST" value="{plantBasicDetailsModel>/RetailStorageSize}" />
                 <Label text="{i18n>histOwner}" />
-				<Input value="{Twitter}" />
+				<Input maxLength="10" id="histOwner" value="{plantBasicDetailsModel>/HistoricalOwner}" />
                 <Label text="{i18n>psaOwner}" />
-				<Input value="{Twitter}" />
-                <Label text="{i18n>geoCode}" />
-				<Input value="{Twitter}" />
+				<Input maxLength="10" id="PsaOwner" value="{plantBasicDetailsModel>/PsaOwner}" />
+                <Label required="true" text="{i18n>geoCode}" />
+				<Input maxLength="10" id="geo" value="{plantBasicDetailsModel>/GeoCode}" />
 
 
 			</f:content>
 		</f:SimpleForm>
+		<VBox alignContent="End" alignItems="End">
+			<Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></Button>
+		</VBox>
         </VBox>
+
+		
         </ScrollContainer>
 </mvc:View>

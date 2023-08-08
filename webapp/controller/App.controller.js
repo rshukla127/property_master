@@ -10,7 +10,8 @@ sap.ui.define(["com/public/storage/pao/utils/reusecontroller",
     'sap/m/library',
     "sap/tnt/NavigationListItem",
     "sap/ui/core/Fragment",
-    "sap/m/IllustrationPool"], function (BaseController, JSONModel, ActionSheet,
+    "sap/m/IllustrationPool",
+    "sap/m/MessageBox"], function (BaseController, JSONModel, ActionSheet,
         Button,
         MessageToast,
         Device,
@@ -18,7 +19,8 @@ sap.ui.define(["com/public/storage/pao/utils/reusecontroller",
         mobileLibrary,
         NavigationListItem,
         Fragment,
-        IllustrationPool) {
+        IllustrationPool,
+        MessageBox) {
     "use strict";
 
     var _oController;
@@ -116,9 +118,7 @@ sap.ui.define(["com/public/storage/pao/utils/reusecontroller",
                         return new NavigationListItem({
                             text: oNavItemContext.getProperty("title"),
                             key: oNavItemContext.getProperty("key"),
-                            visible: oNavItemContext.getProperty("visible") ?
-                                oNavItemContext.getProperty("visible")
-                                : true
+                            visible: true
                         });
                     }
                 }
@@ -146,9 +146,20 @@ sap.ui.define(["com/public/storage/pao/utils/reusecontroller",
                 if (Device.system.phone) {
                     this.onToggleSideNavPress();
                 }
+                if (this.getOwnerComponent().plant === "" || this.getOwnerComponent().LegacyPropertyNumber === ""){
+                    return MessageBox.error("Enter the Plant/Property Details to proceed further!!",
+                        {
+                            title: "Error",
+                            actions: [MessageBox.Action.OK],
+                            onClose: function (oAction) {
+                            }
+                        }
+                    );
+                } else {
                 this.getRouter().navTo(sKey);
                 oEvent.getSource().getItem().getItems().filter(item => item.setExpanded(false));
                 oEvent.getParameter('item').getParent().setExpanded(true);
+                }
             }
             else {
                 // Menu item with submenu items change expanded state

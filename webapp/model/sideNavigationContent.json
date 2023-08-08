@@ -15,59 +15,73 @@
 			"items": [
 				{
 					"title": "{i18n>sideNavSubItemBasicDetails}",
-					"key": "basicDetails"
+					"key": "basicDetails",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemBUDetails}",
-					"key": "buDetails"
+					"key": "buDetails",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemPropOtherDetails}",
-					"key": "propOtherDetails"
+					"key": "propOtherDetails",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemMarkDetails}",
-					"key": "markDetails"
+					"key": "marketingDetails",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemPropStructure}",
-					"key": "propStructure"
+					"key": "propStructure",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemPropSuppDetails}",
-					"key": "propSubDeatils"
+					"key": "propSuppDeatils",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemTaxDetails}",
-					"key": "taxDetails"
+					"key": "taxDetails",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemInsDetails}",
-					"key": "insDetails"
+					"key": "insDetails",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemPropDates}",
-					"key": "propDetails"
+					"key": "propDetails",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemWorkHours}",
-					"key": "workingHours"
+					"key": "workingHours",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemGateDetails}",
-					"key": "gateDetails"
+					"key": "gateDetails",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemWebDetails}",
-					"key": "webDetails"
+					"key": "webDetails",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemBuildingDetails}",
-					"key": "buildDetails"
+					"key": "buildDetails",
+					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemFeesDetails}",
-					"key": "feeDetails"
+					"key": "feeDetails",
+					"visible": false
 				}
 			]
 		}

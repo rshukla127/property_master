@@ -87,6 +87,10 @@
 
                 </f:content>
             </f:SimpleForm>
+
+            <VBox alignContent="End" alignItems="End">
+               <Button text="Save and Continue" enabled="false" type="Emphasized" press="onPressSaveBasicDetails"></Button>
+           </VBox>
         </VBox>
     </ScrollContainer>
 </mvc:View>
