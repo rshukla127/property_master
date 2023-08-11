@@ -1,0 +1,77 @@
+<mvc:View controllerName="com.public.storage.pao.controller.InsuranceDetails"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+
+
+
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>insDetails}" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                <f:content>
+                    <core:Title text="" visible="false"/>
+                    <Label text="{i18n>finrepnum1}" />
+                    <Input id="finrep1" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>finrepnum2}" />
+                    <Input id="finrep2" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label  text="{i18n>insPrem2}" />
+                    <Input id="insprem2" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <Label  text="{i18n>insPrem3}" />
+                    <Input id="insprem3" value="{plantBasicDetailsModel>/EntityType}" />
+
+                    <Label  text="{i18n>insPrem4}" />
+                    <Input id="insprem4" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
+
+                    <Label text="{i18n>insPrem5}" />
+                    <Input id="insprem5" value="{plantBasicDetailsModel>/Note1}" />
+
+                    <Label text="{i18n>finrepnum7}" />
+                    <Input id="insprem7" value="{plantBasicDetailsModel>/Note2}" />
+
+                    <Label text="{i18n>finrepnum8}" />
+                    <Input id="insprem8" value="{plantBasicDetailsModel>/Note3}" />
+
+                    <Label text="{i18n>finrepnum9}" />
+                    <Input id="finrep9" value="{plantBasicDetailsModel>/ATypeProperty}" />
+                    <Label text="{i18n>eRentalMax}" />
+                    <Input id="eRental" value="{plantBasicDetailsModel>/ATypeProperty}" />
+
+                    <core:Title text="" />
+
+                    <Label text="{i18n>cddStartDate}" />
+                    <Input id="startdate" ValueHelp="trushowe" value="{plantBasicDetailsModel>/KioskActiveDate}" />
+
+                    <Label text="{i18n>finrepD3}" />
+                    <Input id="finrepD3" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
+
+                    <Label text="{i18n>finrepD4}" />
+                    <Input id="finrepD4" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
+                    <Label text="{i18n>finrepD5}" />
+                    <Input id="finrepD5" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
+
+                    <Label text="{i18n>finrepD6}" />
+                    <Input id="finrepD6" showValueHelp="true" value="{plantBasicDetailsModel>/AcquiredFrom}" />
+
+                    <Label text="{i18n>finrepD7}" />
+                    <Input id="finrepD7" showValueHelp="true" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
+                    <Label text="{i18n>finrepD8}" />
+                    <Input id="finrepD8" showValueHelp="true" value="{plantBasicDetailsModel>/Psd}" />
+                    <Label text="{i18n>finrepD9}" />
+                    <Input id="finrepD9" showValueHelp="true" value="{plantBasicDetailsModel>/Psd}" />
+                    <Label text="{i18n>finrepD10}" />
+                    <Input id="finrepD10" showValueHelp="true"  value="{plantBasicDetailsModel>/Psd}" />
+
+                </f:content>
+            </f:SimpleForm>
+            <VBox alignContent="End" alignItems="End">
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></Button>
+            </VBox>
+        </VBox>
+
+
+    </ScrollContainer>
+</mvc:View>

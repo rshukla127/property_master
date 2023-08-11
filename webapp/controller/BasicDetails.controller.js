@@ -37,13 +37,16 @@ sap.ui.define([
         onPressSaveBasicDetails: function(){
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
+            const kisokACtivDate = this.getView().byId("kisok").getValue();
+            const fromattedDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(kisokACtivDate));
+            const formatDateValue = fromattedDate + "" + "T00:00:00";
             const payload = {
-                DirectPhoneNo: "90909090",
+                DirectPhoneNo: this.getView().byId("dirPhoneNo").getValue(),
                 FaxNumber: this.getView().byId("faxNo").getValue(),
                 TollFreeNumber: this.getView().byId("tollFree").getValue(),
                 Network1IpAddress: this.getView().byId("network1").getValue(),
-                // KioskActiveDate: this.getView().byId("kisok").getValue(),
-                KioskProperty: "Y",
+                KioskActiveDate: formatDateValue,
+                KioskProperty: this.getView().byId("kiskProp").getSelectedKey(),
                 BuddyPropertyNumber: this.getView().byId("budProp").getValue(),
                 RetailStoreSquareFootage: this.getView().byId("retailStoreSq").getValue(),
                 HistoricalProperty: this.getView().byId("histProp").getValue(),
@@ -60,7 +63,6 @@ sap.ui.define([
                 PsaOwner: this.getView().byId("PsaOwner").getValue(),
                 GeoCode: this.getView().byId("geo").getValue()
             }
-           // (`/GrantMasterSet('${sGrant}')`
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
 
             this._oModel.update(uri, payload, {

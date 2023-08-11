@@ -16,7 +16,7 @@
 		<f:SimpleForm id="basicDetails"
 			editable="true"
 			layout="ResponsiveGridLayout"
-			title="{i18n>propBasDetails}"
+			title="{i18n>marketingDetails}"
 			labelSpanXL="4"
 			labelSpanL="4"
 			labelSpanM="12"
@@ -33,20 +33,20 @@
 			<f:content>
 				<core:Title text="" visible="false"/>
 				<Label required="true" text="{i18n>marketKey}" />
-				<Input showValueHelp="true" value="{basicDetailsModel>/0/DirectPhoneNo}" />
+				<Input id="markKey" showValueHelp="true" valueHelpRequest="_onValueHelpMarketKey" valueHelpOnly="true" value="{basicDetailsModel>/0/DirectPhoneNo}" />
 				<Label required="true" text="{i18n>metroStatisticalArea}" />
-				<Input showValueHelp="true" value="{basicDetailsModel>/0/FaxNumber}" />
+				<Input id="metroStats" showValueHelp="true" valueHelpRequest="_onValueHelpMetroStats" valueHelpOnly="true" value="{basicDetailsModel>/0/FaxNumber}" />
 				
 				<Label required="true" text="{i18n>neighbourhood}" />
-				<Input showValueHelp="true" value="{basicDetailsModel>/0/TollFreeNumber}" />
+				<Input id="neighbourwood" showValueHelp="true" valueHelpRequest="_onValueHelpNeigbour" valueHelpOnly="true" value="{basicDetailsModel>/0/TollFreeNumber}" />
 				
 				<Label required="true" text="{i18n>psConsolidatedPropGroup}" />
-                <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                <Input id="psCons" showValueHelp="true" valueHelpRequest="_onValueHelpConslidated" valueHelpOnly="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
 				
 			</f:content>
 		</f:SimpleForm>
 		<VBox alignContent="End" alignItems="End">
-			<Button text="Save and Continue" enabled="false" type="Emphasized" press="onPressSaveBasicDetails"></Button>
+			<Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveMarketingDetails"></Button>
 		</VBox>
         </VBox>
 

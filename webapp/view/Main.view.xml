@@ -104,28 +104,28 @@
 
                                 <HBox alignContent="Inherit" id="owner" alignItems="Center" visible="{oVisModel>/visibliltyForOwner}" class="sapUiSmallMargin" justifyContent="Start">
                                     <Label text="{i18n>retailPC}" required="true" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" />
-                                    <Input id="retailPc" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                    <Input id="retailPc" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestReatilPC" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
                                         <suggestionItems>
                                             <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
                                         </suggestionItems>
                                     </Input>
 
                                     <Label text="{i18n>storagePC}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" />
-                                    <Input id="storagePc" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                    <Input id="storagePc" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestStoragePC" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
                                         <suggestionItems>
                                             <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
                                         </suggestionItems>
                                     </Input>
 
                                     <Label text="{i18n>tennetPC}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" />
-                                    <Input id="tenPc" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                    <Input id="tenPc" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestTennentPC" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
                                         <suggestionItems>
                                             <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
                                         </suggestionItems>
                                     </Input>
 
                                     <Label text="{i18n>commPC}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" />
-                                    <Input id="commPc" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                    <Input id="commPc" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestCommPC" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
                                         <suggestionItems>
                                             <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
                                         </suggestionItems>
@@ -134,28 +134,28 @@
 
                                 <HBox alignContent="Inherit" id="thirdParty" visible="{oVisModel>/visibliltyForThirdParty}" alignItems="Center" class="sapUiSmallMargin" justifyContent="Start">
                                     <Label text="{i18n>retailPC}" required="true" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" />
-                                    <Input id="retailPcTP" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                    <Input id="retailPcTP" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestReatilPC" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
                                         <suggestionItems>
                                             <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
                                         </suggestionItems>
                                     </Input>
 
                                     <Label text="{i18n>storagePC}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" />
-                                    <Input id="storagePcTP" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                    <Input id="storagePcTP" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestStoragePC" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
                                         <suggestionItems>
                                             <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
                                         </suggestionItems>
                                     </Input>
 
                                     <Label text="{i18n>tennetPC}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" />
-                                    <Input id="tenPcTP" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
+                                    <Input id="tenPcTP" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestTennentPC" suggestionItems="{/ProductCollection}" suggestionItemSelected=".onSuggestionItemSelected">
                                         <suggestionItems>
                                             <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
                                         </suggestionItems>
                                     </Input>
 
                                     <Label text="{i18n>mgmtPC}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" />
-                                    <Input id="mgmtPcTP" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" suggestionItems="{/ProductCollection}" suggestionItemSelected="onSuggestionItemSelected">
+                                    <Input id="mgmtPcTP" textFormatMode="KeyValue" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestMgmtPC" suggestionItems="{/ProductCollection}" suggestionItemSelected="onSuggestionItemSelected">
                                         <suggestionItems>
                                             <core:ListItem key="{ProductId}" text="{Name}" additionalText="{ProductId}" />
                                         </suggestionItems>

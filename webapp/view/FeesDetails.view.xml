@@ -1,0 +1,107 @@
+<mvc:View controllerName="com.public.storage.pao.controller.FeesDetails"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+
+
+
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>feesDetails}" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                <f:content>
+                    <core:Title text="" visible="false"/>
+                    <Label text="{i18n>feeType1}" />
+                    <Input id="ftype1" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>feeDes1}" />
+                    <Input id="fDes1" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>amount1}" />
+                    <Input id="am1" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <Label text="{i18n>feeType2}" />
+                    <Input id="type2" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>feeDes2}" />
+                    <Input id="fDes2" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>amount2}" />
+                    <Input id="am2" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <Label text="{i18n>feeType3}" />
+                    <Input id="ftpe3" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>feeDes3}" />
+                    <Input id="fDesc3" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>noOfStories3}" />
+                    <Input id="stories3" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+
+                    <Label text="{i18n>feeType4}" />
+                    <Input id="ftype4" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>feeDes4}" />
+                    <Input id="fDesc4" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>amount4}" />
+                    <Input id="am4" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <Label text="{i18n>feeType5}" />
+                    <Input id="ftype5" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>feeDes5}" />
+                    <Input id="fDesc5" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>amount5}" />
+                    <Input id="am5" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <core:Title text="" />
+                    <Label text="{i18n>feeType6}" />
+                    <Input id="ftype6" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>feeDes5}" />
+                    <Input id="fDesc6" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>amount6}" />
+                    <Input id="am6" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <Label text="{i18n>feeType7}" />
+                    <Input id="ftype7" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>feeDes7}" />
+                    <Input id="fDesc7" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>amount7}" />
+                    <Input id="am7" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <Label text="{i18n>feeType8}" />
+                    <Input id="ftype8" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>feeDes8}" />
+                    <Input id="fDesc8" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>amount8}" />
+                    <Input id="am8" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <Label text="{i18n>feeType9}" />
+                    <Input id="ftype9" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>feeDes9}" />
+                    <Input id="fDesc9" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>amount9}" />
+                    <Input id="am9" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Label text="{i18n>feeType10}" />
+                    <Input id="ftyp10" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>feeDes10}" />
+                    <Input id="fDesc10" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>amount10}" />
+                    <Input id="am10" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+
+
+                </f:content>
+            </f:SimpleForm>
+            <VBox alignContent="End" alignItems="End">
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></Button>
+            </VBox>
+        </VBox>
+
+
+    </ScrollContainer>
+</mvc:View>

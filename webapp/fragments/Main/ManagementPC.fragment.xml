@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="com.public.storage.pao.controller.Main" >
+	<SelectDialog
+		id="mgmtPC"
+		title="Management PC"
+		items="{mgmtModel>/}"
+		search="onValueHelpDialogSearchProperty"
+		confirm="onValueHelpDialogCloseProperty"
+		cancel="onValueHelpDialogCloseProperty">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{mgmtModel>Name2}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,100 @@
+<mvc:View controllerName="com.public.storage.pao.controller.WebDetails"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+
+
+
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>webDetails}" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                <f:content>
+                    <core:Title text="" visible="false"/>
+                    <Label required="true" text="{i18n>propLat}" />
+                    <Input id="propLat" value="{plantBasicDetailsModel>/Active}" />
+                    <Label required="true" text="{i18n>propLong}" />
+                    <Input id="propLong" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label required="true" text="{i18n>propAdminFee}" />
+                    <Input id="propAdmin" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <Label required="true" text="{i18n>adminFeeEff}" />
+                    <DatePicker id="effDate" value="{plantBasicDetailsModel>/EntityType}" />
+
+                    <Label text="{i18n>propChurn}" />
+                    <Input id="propChurn" showValueHelp="true" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
+
+                    <Label text="{i18n>climateControl}" />
+                    <Select id="climControl" selectedKey="{plantBasicDetailsModel>/BillBoard}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+
+                        </items>
+                    </Select>
+
+                    <Label required="true" text="{i18n>propWebReservation}" />
+                    <Select id="propWeb" selectedKey="{plantBasicDetailsModel>/BillBoard}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+
+                        </items>
+                    </Select>
+
+                    <Label required="true" text="{i18n>webEnabledDate}" />
+                    <DatePicker id="note3" value="{plantBasicDetailsModel>/Note3}" />
+
+                    <Label required="true" text="{i18n>propCallCenter}" />
+                    <Select id="propCall" selectedKey="{plantBasicDetailsModel>/BillBoard}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+
+                        </items>
+                    </Select>
+
+                    <core:Title text="" />
+                    <Label required="true" text="{i18n>callCenterEnabled}" />
+                    <DatePicker id="callCenter" selectedKey="{plantBasicDetailsModel>/BillBoard}"/>
+
+                    <Label required="true" text="{i18n>propNFSFee}" />
+                    <Input id="propNFS" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
+
+                    <Label required="true" text="{i18n>maxResDays}" />
+                    <Input id="maxRes" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
+                    <Label text="{i18n>nsfFeeEff}" />
+                    <Input id="nsfFeeEff" showValueHelp="true" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
+
+                    <Label required="true" text="{i18n>propNFS}" />
+                    <Input id="propNFSACH" value="{plantBasicDetailsModel>/AcquiredFrom}" />
+
+                    <Label text="{i18n>nfsachfeeEffective}" />
+                    <DatePicker id="aquiredFromTP" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
+                    <Label required="true" text="{i18n>propInsuranceFrozen}" />
+                    <Select id="propFrozen" selectedKey="{plantBasicDetailsModel>/BillBoard}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+
+                        </items>
+                    </Select>
+
+                    <Label required="true" text="{i18n>propInsCancel}" />
+                    <Input id="propIns" value="{plantBasicDetailsModel>/AcquiredFrom}" />
+
+                    <Label required="true" text="{i18n>preResDay}" />
+                    <Input id="propResDay" value="{plantBasicDetailsModel>/AcquiredFrom}" />
+
+                </f:content>
+            </f:SimpleForm>
+            <VBox alignContent="End" alignItems="End">
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></Button>
+            </VBox>
+        </VBox>
+
+
+    </ScrollContainer>
+</mvc:View>

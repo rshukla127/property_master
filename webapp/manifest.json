@@ -149,6 +149,41 @@
           "name": "workingHours",
           "pattern": "workingHours",
           "target": ["workingHours"]
+        },
+        {
+          "name": "taxDetails",
+          "pattern": "taxDetails",
+          "target": ["taxDetails"]
+        },
+        {
+          "name": "insDetails",
+          "pattern": "insDetails",
+          "target": ["insDetails"]
+        },
+        {
+          "name": "propDetails",
+          "pattern": "propDetails",
+          "target": ["propDetails"]
+        },
+        {
+          "name": "gateDetails",
+          "pattern": "gateDetails",
+          "target": ["gateDetails"]
+        },
+        {
+          "name": "webDetails",
+          "pattern": "webDetails",
+          "target": ["webDetails"]
+        },
+        {
+          "name": "buildDetails",
+          "pattern": "buildDetails",
+          "target": ["buildDetails"]
+        },
+        {
+          "name": "feesDetails",
+          "pattern": "feesDetails",
+          "target": ["feesDetails"]
         }
       ],
       "targets": {
@@ -182,17 +217,52 @@
           "viewId": "propStructure",
           "viewName": "PropertyStructure"
         },
+        "taxDetails": {
+          "viewType": "XML",
+          "viewId": "taxDetails",
+          "viewName": "TaxDetails"
+        },
         "propSuppDeatils": {
           "viewType": "XML",
           "viewId": "propSuppDeatils",
           "viewName": "SupplementalDetails"
         },
-
+        "insDetails": {
+          "viewType": "XML",
+          "viewId": "insDetails",
+          "viewName": "InsuranceDetails"
+        },
+        "propDetails": {
+          "viewType": "XML",
+          "viewId": "propDetails",
+          "viewName": "PropDates"
+        },
         "workingHours": {
           "viewType": "XML",
           "viewId": "workingHours",
           "viewName": "WorkingHours"
+        },
+        "gateDetails": {
+          "viewType": "XML",
+          "viewId": "gateDetails",
+          "viewName": "GateDetails"
+        },
+        "webDetails": {
+          "viewType": "XML",
+          "viewId": "webDetails",
+          "viewName": "WebDetails"
+        },
+        "buildDetails": {
+          "viewType": "XML",
+          "viewId": "buildDetails",
+          "viewName": "BuildingDetails"
+        },
+        "feesDetails": {
+          "viewType": "XML",
+          "viewId": "feesDetails",
+          "viewName": "FeesDetails"
         }
+        
       }
     },
     "rootView": {

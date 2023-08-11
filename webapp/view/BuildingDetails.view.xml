@@ -1,0 +1,94 @@
+<mvc:View controllerName="com.public.storage.pao.controller.WebDetails"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+
+
+
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>buildingDetails}" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                <f:content>
+                    <core:Title text="" visible="false"/>
+                    <Label text="{i18n>buildNum1}" />
+                    <Input id="num1" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>buildName1}" />
+                    <Input id="name1" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>noOfStories1}" />
+                    <Input id="stories1" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <Label text="{i18n>buildNum2}" />
+                    <Input id="num2" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>buildName2}" />
+                    <Input id="name2" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>noOfStories2}" />
+                    <Input id="stories2" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <Label text="{i18n>buildNum3}" />
+                    <Input id="num3" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>buildName3}" />
+                    <Input id="name3" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>noOfStories3}" />
+                    <Input id="stories3" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+
+                    <Label text="{i18n>buildNum4}" />
+                    <Input id="num4" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>buildName4}" />
+                    <Input id="name4" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>noOfStories4}" />
+                    <Input id="stories4" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <core:Title text="" />
+                    <Label text="{i18n>buildNum5}" />
+                    <Input id="num5" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Label text="{i18n>buildName5}" />
+                    <Input id="name5" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+
+                    <Label text="{i18n>noOfStories5}" />
+                    <Input id="stories5" value="{plantBasicDetailsModel>/CustomerCode}" />
+
+                    <Label text="{i18n>apartMentNo1}" />
+                    <Input id="nsfFeeEff" showValueHelp="true" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
+
+                    <Label text="{i18n>apartName1}" />
+                    <Input id="propNFSACH" value="{plantBasicDetailsModel>/AcquiredFrom}" />
+
+                    <Label text="{i18n>noOfAprtStories1}" />
+                    <Input id="apartstories1" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
+                    <Label text="{i18n>noOfBedRoom1}" />
+                    <Input id="bedroom1" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
+                    <Label text="{i18n>nofOfBathRoom1}" />
+                    <Input id="bathroom1" value="{plantBasicDetailsModel>/AcquiredFrom}" />
+
+                    <Label text="{i18n>apartMentNo2}" />
+                    <Input id="apart2" showValueHelp="true" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
+
+                    <Label text="{i18n>apartName2}" />
+                    <Input id="apartName2" value="{plantBasicDetailsModel>/AcquiredFrom}" />
+
+                    <Label text="{i18n>noOfAprtStories2}" />
+                    <Input id="noOfStories2" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
+                    <Label text="{i18n>noOfBedRoom2}" />
+                    <Input id="bedroom2" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
+                    <Label text="{i18n>nofOfBathRoom2}" />
+                    <Input id="bathroom2" value="{plantBasicDetailsModel>/AcquiredFrom}" />
+
+
+
+                </f:content>
+            </f:SimpleForm>
+            <VBox alignContent="End" alignItems="End">
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></Button>
+            </VBox>
+        </VBox>
+
+
+    </ScrollContainer>
+</mvc:View>

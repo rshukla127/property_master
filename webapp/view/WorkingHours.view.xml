@@ -12,41 +12,41 @@
             <f:SimpleForm id="workingHours" editable="true" layout="ResponsiveGridLayout" title="{i18n>propBasDetails}" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
                 <f:content>
                     <core:Title text="" visible="false"/>
-                    <Label text="{i18n>officeSundayOpenHr}" />
+                    <Label required="true" text="{i18n>officeSundayOpenHr}" />
                     <TimePicker value="{
 				path: '/time',
 				type: 'sap.ui.model.type.Time'}" />
-                    <Label text="{i18n>officeMondayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-
-
-
-                    <Label text="{i18n>officeTuesdayOpenHr}" />
+                    <Label required="true" text="{i18n>officeMondayOpenHr}" />
                     <TimePicker value="{
 				path: '/time',
 				type: 'sap.ui.model.type.Time'}" />
 
 
 
-                    <Label text="{i18n>officeWednesdayOpenHr}" />
+
+                    <Label required="true" text="{i18n>officeTuesdayOpenHr}" />
                     <TimePicker value="{
 				path: '/time',
 				type: 'sap.ui.model.type.Time'}" />
 
 
-                    <Label text="{i18n>officeThursdayOpenHr}" />
+
+                    <Label required="true" text="{i18n>officeWednesdayOpenHr}" />
                     <TimePicker value="{
 				path: '/time',
 				type: 'sap.ui.model.type.Time'}" />
 
-                    <Label text="{i18n>officeFriadayOpenHr}" />
+
+                    <Label required="true" text="{i18n>officeThursdayOpenHr}" />
                     <TimePicker value="{
 				path: '/time',
 				type: 'sap.ui.model.type.Time'}" />
-                    <Label text="{i18n>officeSaturdayOpenHr}" />
+
+                    <Label required="true" text="{i18n>officeFriadayOpenHr}" />
+                    <TimePicker value="{
+				path: '/time',
+				type: 'sap.ui.model.type.Time'}" />
+                    <Label required="true" text="{i18n>officeSaturdayOpenHr}" />
                     <TimePicker value="{
 				path: '/time',
 				type: 'sap.ui.model.type.Time'}" />
@@ -54,33 +54,33 @@
 
                     <core:Title text="" />
 
-                    <Label text="{i18n>officeSundayClosedHr}" />
+                    <Label required="true" text="{i18n>officeSundayClosedHr}" />
                     <TimePicker value="{
 				path: '/time',
 				type: 'sap.ui.model.type.Time'}" />
-                    <Label text="{i18n>officeMondayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-                    <Label text="{i18n>officeTuesdayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label text="{i18n>officeWednesdayClosedHr}" />
+                    <Label required="true" text="{i18n>officeMondayClosedHr}" />
                     <TimePicker value="{
 				path: '/time',
 				type: 'sap.ui.model.type.Time'}" />
 
-                    <Label text="{i18n>officeThursdayClosedHr}" />
+                    <Label required="true" text="{i18n>officeTuesdayClosedHr}" />
                     <TimePicker value="{
 				path: '/time',
 				type: 'sap.ui.model.type.Time'}" />
-                    <Label text="{i18n>officeFriadayClosedHr}" />
+                    <Label required="true" text="{i18n>officeWednesdayClosedHr}" />
                     <TimePicker value="{
 				path: '/time',
 				type: 'sap.ui.model.type.Time'}" />
-                    <Label text="{i18n>officeSaturdayClosedHr}" />
+
+                    <Label required="true" text="{i18n>officeThursdayClosedHr}" />
+                    <TimePicker value="{
+				path: '/time',
+				type: 'sap.ui.model.type.Time'}" />
+                    <Label required="true" text="{i18n>officeFriadayClosedHr}" />
+                    <TimePicker value="{
+				path: '/time',
+				type: 'sap.ui.model.type.Time'}" />
+                    <Label required="true" text="{i18n>officeSaturdayClosedHr}" />
                     <TimePicker value="{
 				path: '/time',
 				type: 'sap.ui.model.type.Time'}" />

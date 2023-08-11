@@ -13,18 +13,18 @@
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label required="true" text="{i18n>active}" />
-                    <Input id="active" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="active" valueHelpRequest="_onValueHelpActive" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
                     <Label required="true" text="{i18n>businessUnitType}" />
-                    <Input id="bType" showValueHelp="true" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="bType" valueHelpRequest="_onValueHelpBUnit" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/BusinessUnitType}" />
 
                     <Label required="true" text="{i18n>customerCode}" />
-                    <Input id="cCode" showValueHelp="true" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Input id="cCode" valueHelpRequest="_onValueHelpCustCode" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/CustomerCode}" />
 
                     <Label required="true" text="{i18n>entityType}" />
-                    <Input id="entityType" showValueHelp="true" value="{plantBasicDetailsModel>/EntityType}" />
+                    <Input id="entityType" valueHelpRequest="_onValueHelpEntityType" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/EntityType}" />
 
                     <Label required="true" text="{i18n>combinedServNumber}" />
-                    <Input id="combinedServ" showValueHelp="true" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
+                    <Input id="combinedServ" valueHelpRequest="_onValueHelpComSurvNumber" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
 
                     <Label text="{i18n>Note1}" />
                     <Input id="note1" maxLength="30" value="{plantBasicDetailsModel>/Note1}" />
@@ -36,7 +36,7 @@
                     <Input id="note3" maxLength="30" value="{plantBasicDetailsModel>/Note3}" />
 
                     <Label text="{i18n>atypeProp}" />
-                    <Input id="atypeProp" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
+                    <Input id="atypeProp" valueHelpRequest="_onValueHelpComATypeProp" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
                     
                     <core:Title text="" />
                     <Label  text="{i18n>billboard}" />
@@ -78,7 +78,7 @@
                     <Input id="aquiredFrom" maxLength="50" value="{plantBasicDetailsModel>/AcquiredFrom}" />
 
                     <Label text="{i18n>aquiredevlop}" />
-                    <Input id="aquiredFromTP" showValueHelp="true" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
+                    <Input id="aquiredFromTP" valueHelpRequest="_onValueHelpComThirdParty" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
                     <Label  text="{i18n>psd}" />
                     <Input id="psd" maxLength="12" value="{plantBasicDetailsModel>/Psd}" />
 

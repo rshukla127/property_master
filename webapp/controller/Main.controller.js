@@ -37,13 +37,17 @@ sap.ui.define([
                 this.BusyDialog = new BusyDialog();
                 this.readPropertyMasterData();
                 this.getLoggedInUser();
+                this.readRetailPC();
+                this.readStoragePC();
+                this.readTennentPC();
+                this.readManagementPC();
+                this.readCommPC();
                 
 
             },
 
             readPropertyMasterData: function () {
                 const that = this;
-                this._oModel.getSecurityToken();
                 this._oModel.setHeaders({
                     "X-Requested-With": "XMLHttpRequest",
                     "Content-Type": "application/atom+xml",
@@ -83,7 +87,7 @@ sap.ui.define([
                 if (!this._pValueHelpDialog) {
                     this._pValueHelpDialog = Fragment.load({
                         id: oView.getId(),
-                        name: "com.public.storage.pao.fragments.Plant",
+                        name: "com.public.storage.pao.fragments.Main.Plant",
                         controller: this
                     }).then(function (oDialog) {
                         oView.addDependent(oDialog);
@@ -102,7 +106,7 @@ sap.ui.define([
                 });
             },
 
-            _onValueHelpRequestProperty: function (oEvent) {
+            _onValueHelpMarketClass: function (oEvent) {
                 const that =this;
                 var sInputValue = oEvent.getSource().getValue(),
                     oView = this.getView();
@@ -110,7 +114,7 @@ sap.ui.define([
                 if (!this._pValueHelpDialogPropery) {
                     this._pValueHelpDialogPropery = Fragment.load({
                         id: oView.getId(),
-                        name: "com.public.storage.pao.fragments.Property",
+                        name: "com.public.storage.pao.fragments.Main.Property",
                         controller: this
                     }).then(function (oDialog) {
                         oView.addDependent(oDialog);
@@ -127,6 +131,137 @@ sap.ui.define([
                     oDialog.open(sInputValue);
                 });
             },
+
+            onValueHelpRequestReatilPC: function (oEvent) {
+                const that =this;
+                var sInputValue = oEvent.getSource().getValue(),
+                    oView = this.getView();
+
+                if (!this._pValueHelpDialogPropery) {
+                    this._pValueHelpDialogPropery = Fragment.load({
+                        id: oView.getId(),
+                        name: "com.public.storage.pao.fragments.Main.RetailPC",
+                        controller: this
+                    }).then(function (oDialog) {
+                        oView.addDependent(oDialog);
+                        return oDialog;
+                    });
+                }
+                this.BusyDialog.open()
+                this._pValueHelpDialogPropery.then(function (oDialog) {
+                    //that.readPropertyMasterData();
+                    that.BusyDialog.close();
+                    // Create a filter for the binding
+                    oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
+                    // Open ValueHelpDialog filtered by the input's value
+                    oDialog.open(sInputValue);
+                });
+            },
+
+            onValueHelpRequestStoragePC: function (oEvent) {
+                const that =this;
+                var sInputValue = oEvent.getSource().getValue(),
+                    oView = this.getView();
+
+                if (!this._pValueHelpStoragePC) {
+                    this._pValueHelpStoragePC = Fragment.load({
+                        id: oView.getId(),
+                        name: "com.public.storage.pao.fragments.Main.StoragePC",
+                        controller: this
+                    }).then(function (oDialog) {
+                        oView.addDependent(oDialog);
+                        return oDialog;
+                    });
+                }
+                this.BusyDialog.open()
+                this._pValueHelpStoragePC.then(function (oDialog) {
+                    //that.readPropertyMasterData();
+                    that.BusyDialog.close();
+                    // Create a filter for the binding
+                    oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
+                    // Open ValueHelpDialog filtered by the input's value
+                    oDialog.open(sInputValue);
+                });
+            },
+
+            onValueHelpRequestTennentPC: function (oEvent) {
+                const that =this;
+                var sInputValue = oEvent.getSource().getValue(),
+                    oView = this.getView();
+
+                if (!this._pValueHelpTennentPC) {
+                    this._pValueHelpTennentPC = Fragment.load({
+                        id: oView.getId(),
+                        name: "com.public.storage.pao.fragments.Main.TennantPC",
+                        controller: this
+                    }).then(function (oDialog) {
+                        oView.addDependent(oDialog);
+                        return oDialog;
+                    });
+                }
+                this.BusyDialog.open()
+                this._pValueHelpTennentPC.then(function (oDialog) {
+                    //that.readPropertyMasterData();
+                    that.BusyDialog.close();
+                    // Create a filter for the binding
+                    oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
+                    // Open ValueHelpDialog filtered by the input's value
+                    oDialog.open(sInputValue);
+                });
+            },
+
+            onValueHelpRequestCommPC: function (oEvent) {
+                const that =this;
+                var sInputValue = oEvent.getSource().getValue(),
+                    oView = this.getView();
+
+                if (!this._pValueHelpCommPC) {
+                    this._pValueHelpCommPC = Fragment.load({
+                        id: oView.getId(),
+                        name: "com.public.storage.pao.fragments.Main.CommercialPC",
+                        controller: this
+                    }).then(function (oDialog) {
+                        oView.addDependent(oDialog);
+                        return oDialog;
+                    });
+                }
+                this.BusyDialog.open()
+                this._pValueHelpCommPC.then(function (oDialog) {
+                    //that.readPropertyMasterData();
+                    that.BusyDialog.close();
+                    // Create a filter for the binding
+                    oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
+                    // Open ValueHelpDialog filtered by the input's value
+                    oDialog.open(sInputValue);
+                });
+            },
+
+            onValueHelpRequestMgmtPC: function (oEvent) {
+                const that =this;
+                var sInputValue = oEvent.getSource().getValue(),
+                    oView = this.getView();
+
+                if (!this._pValueHelpMgmtPC) {
+                    this._pValueHelpMgmtPC = Fragment.load({
+                        id: oView.getId(),
+                        name: "com.public.storage.pao.fragments.Main.ManagementPC",
+                        controller: this
+                    }).then(function (oDialog) {
+                        oView.addDependent(oDialog);
+                        return oDialog;
+                    });
+                }
+                this.BusyDialog.open()
+                this._pValueHelpMgmtPC.then(function (oDialog) {
+                    //that.readPropertyMasterData();
+                    that.BusyDialog.close();
+                    // Create a filter for the binding
+                    oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
+                    // Open ValueHelpDialog filtered by the input's value
+                    oDialog.open(sInputValue);
+                });
+            },
+
 
 
             // onSubmitPlant: function (oEvent) {
@@ -329,6 +464,9 @@ sap.ui.define([
             onResetField: function(){
                 this.getView().getModel("oVisModel").setProperty("/enabledForPlant", true);
                 this.getView().getModel("oVisModel").setProperty("/enabledForProperty", true);
+                this.getView().getModel("oVisModel").setProperty("/visibilityForPTypeBlock", false);
+                this.getView().byId("plantInput").setValue("");
+                this.getView().byId("propertyInput").setValue("");
             },
 
             createNewProperty: function(){

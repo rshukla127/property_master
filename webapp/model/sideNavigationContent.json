@@ -80,7 +80,7 @@
 				},
 				{
 					"title": "{i18n>sideNavSubItemFeesDetails}",
-					"key": "feeDetails",
+					"key": "feesDetails",
 					"visible": false
 				}
 			]

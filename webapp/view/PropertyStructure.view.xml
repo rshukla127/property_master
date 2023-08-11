@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.public.storage.pao.controller.BUDetails"
+<mvc:View controllerName="com.public.storage.pao.controller.PropertyStructure"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
@@ -13,57 +13,57 @@
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label required="true" text="{i18n>fieldSupervisorName}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/DirectPhoneNo}" />
+                    <Input id="fSuperName" valueHelpRequest="_onValueHelpFieldSupName" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/DirectPhoneNo}" />
                     <Label required="true" text="{i18n>filedSupOfficeName}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/FaxNumber}" />
+                    <Input id="fSupOffice" valueHelpRequest="_onValueHelpFieldSupOffice" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/FaxNumber}" />
 
                     <Label required="true" text="{i18n>fieldSupMobile}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/TollFreeNumber}" />
+                    <Input id="fSupMobile" valueHelpRequest="_onValueHelpSupMobile" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/TollFreeNumber}" />
 
                     <Label required="true" text="{i18n>fieldSupFax}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="fSupMax" valueHelpRequest="_onValueHelpFieldSubFax" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
 
                     <Label required="true" text="{i18n>fieldSupEmail}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/TollFreeNumber}" />
+                    <Input id="fSupervisorEmail" valueHelpRequest="_onValueHelpFieldSubEmail" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/TollFreeNumber}" />
 
                     <Label text="{i18n>evpZone}" />
-                    <Input value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="evpZone" value="{basicDetailsModel>/0/Network1IpAddress}" />
 
                     <Label text="{i18n>division}" />
-                    <Input value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="div" value="{basicDetailsModel>/0/Network1IpAddress}" />
 
                     <Label text="{i18n>seniorRegion}" />
-                    <Input value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="seniorReg" value="{basicDetailsModel>/0/Network1IpAddress}" />
 
                     <Label text="{i18n>region}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="region" valueHelpRequest="_onValueHelpRegion" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
 
                     <Label text="{i18n>seniorDistrict}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="senDist" valueHelpRequest="_onValueHelpSeniorReg" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
                     <core:Title text="" />
                     <Label text="{i18n>district}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="district" valueHelpRequest="_onValueHelpDist" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
                     <Label text="{i18n>deliTennent}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="dtSpec" valueHelpRequest="_onValueHelpDeTeSpecialist" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
                     <Label text="{i18n>pmwage}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="pmwage" valueHelpRequest="_onValueHelpPmwageZone" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
                     <Label text="{i18n>fieldOffice}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="fOffOverhead" valueHelpRequest="_onValueHelpFieldOffOverhead" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
                     <Label text="{i18n>vpFacilities}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="vpFacilities" valueHelpRequest="_onValueHelpVpFacilities" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
                     <Label text="{i18n>seniorReegion}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="seniorRegFacility" valueHelpRequest="_onValueHelpSenRegionFac" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
                     <Label text="{i18n>regionFacility}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-                    <Label text="{i18n>seniorFacility}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="regionFacDir" valueHelpRequest="_onValueHelpRegFac" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Label  text="{i18n>seniorFacility}" />
+                    <Input id="seniorFacMgr" valueHelpRequest="_onValueHelpSeniorFac" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
                     <Label text="{i18n>facility}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="facilityMgr" valueHelpRequest="_onValueHelpFacilityMgr" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
 
                 </f:content>
             </f:SimpleForm>
             <VBox alignContent="End" alignItems="End">
-                <Button text="Save and Continue" enabled="false" type="Emphasized" press="onPressSaveBasicDetails"></Button>
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></Button>
             </VBox>
         </VBox>
 

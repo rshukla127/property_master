@@ -16,7 +16,7 @@
 		<f:SimpleForm id="basicDetails"
 			editable="true"
 			layout="ResponsiveGridLayout"
-			title="{i18n>propBasDetails} (Plant - {plantBasicDetailsModel>/Plant} and Property {plantBasicDetailsModel>/LegacyPropertyNumber})"
+			title="{i18n>propBasDetails} (Plant - {plantBasicDetailsModel>/Plant} and Property - {plantBasicDetailsModel>/LegacyPropertyNumber})"
 			labelSpanXL="4"
 			labelSpanL="4"
 			labelSpanM="12"
@@ -32,9 +32,9 @@
 			singleContainerFullSize="false" >
 			<f:content>
 				<core:Title text="" visible="false"/>
-				<Label required="true" text="{i18n>direPhoneNo}" />
+				<Label text="{i18n>direPhoneNo}" />
 				<Input maxLength="30" id="dirPhoneNo" value="{plantBasicDetailsModel>/DirectPhoneNo}" enabled="false" />
-				<Label required="true" text="{i18n>faxNumber}" />
+				<Label text="{i18n>faxNumber}" />
 				<Input maxLength="30" id="faxNo" enabled="false" value="{plantBasicDetailsModel>/FaxNumber}" />
 				
 				<Label required="true" text="{i18n>tollfreeNo}" />
@@ -68,7 +68,7 @@
 
                 <Label required="true" text="{i18n>publishedPhoneNo}" />
 				<Input maxLength="30" id="pubPhone" value="{plantBasicDetailsModel>/PublishedPhoneNo}" />
-				<Label required="true" text="{i18n>propEmailAdd}" />
+				<Label text="{i18n>propEmailAdd}" />
 				<Input id="email" enabled="false" value="{plantBasicDetailsModel>/PropertyEmailAddress}" />
 
                 <Label text="{i18n>localPhoneNo}" />
@@ -76,8 +76,11 @@
 				<Label required="true" text="{i18n>network2Ip}" />
 				<Input id="network2" value="{plantBasicDetailsModel>/Network2IpAddress}" />
 
-                <Label text="{i18n>kisokActivDate}" />
-				<DatePicker id="kisok" value="{plantBasicDetailsModel>/KioskActiveDate}" />
+                <Label text="{i18n>kisokActivDate}" labelFor="kisok" />
+				<DatePicker id="kisok" value="{ 
+					path: 'plantBasicDetailsModel>/KioskActiveDate',
+					type: 'sap.ui.model.type.Date'  
+				  }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
                 <Label text="{i18n>offSqFoootage}" />
 				<Input id="offSq" value="{plantBasicDetailsModel>/RetailStorageSize}" />
                 <Label text="{i18n>retailSqSize}" />

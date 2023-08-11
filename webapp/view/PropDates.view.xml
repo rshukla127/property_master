@@ -1,0 +1,24 @@
+<mvc:View controllerName="com.public.storage.pao.controller.PropDates"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>propDates}" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                <f:content>
+                    <core:Title text="" visible="false"/>
+                    <Label text="{i18n>buCreate}" />
+                    <DatePicker id="finrep1" value="{plantBasicDetailsModel>/Active}" />
+                </f:content>
+            </f:SimpleForm>
+            <VBox alignContent="End" alignItems="End">
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></Button>
+            </VBox>
+        </VBox>
+
+
+    </ScrollContainer>
+</mvc:View>

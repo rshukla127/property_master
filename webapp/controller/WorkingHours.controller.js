@@ -1,7 +1,11 @@
 sap.ui.define([
-	"com/public/storage/pao/utils/reusecontroller"
+	"com/public/storage/pao/utils/reusecontroller",
+    "sap/m/BusyDialog",
+    "sap/m/MessageToast"
 ], function(
-	BaseController
+	BaseController,
+    BusyDialog,
+    MessageToast
 ) {
 	"use strict";
     var _oController;
