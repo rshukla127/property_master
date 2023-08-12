@@ -232,40 +232,46 @@ sap.ui.define([
 
             if (sTitle === "Business Unit"){
                 this.byId("bType").setValue(sDescription);
+                this._bType = sCode
             } else if(sTitle === "Customer Code"){
                 this.byId("cCode").setValue(sDescription);
+                this._custCode = sCode
             } else if(sTitle === "Entity Type"){
                 this.byId("entityType").setValue(sDescription);
+                this._entityType = sCode
             } else if(sTitle === "Property Type Model"){
                 this.byId("atypeProp").setValue(sDescription);
-            } else if(sTitle === "Property Type Model"){
-                this.byId("atypeProp").setValue(sDescription);
+                this._aTypeProp = sCode
+            } else if(sTitle === "Combined Surviving Number"){
+                this.byId("combinedServ").setValue(sDescription);
+                this._comSurvNumer = sCode
             } else if(sTitle === "Aquired Third Party"){
                 this.byId("aquiredFromTP").setValue(sDescription);
+                this._aquiredTP = sCode
             }
 
             
 		},
 
-        onPressSaveBasicDetails: function(){
+        onPressSaveBUDetails: function(){
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             const payload = {
                 Active: this.getView().byId("active").getValue(),
-                BusinessUnitType: this.getView().byId("bType").getValue(),
-                CustomerCode: this.getView().byId("cCode").getValue(),
-                EntityType: this.getView().byId("entityType").getValue(),
-                CombinedSurvivingNumber: this.getView().byId("combinedServ").getValue(),
+                BusinessUnitType: this._bType,
+                CustomerCode: this._custCode,
+                EntityType: this._entityType,
+                CombinedSurvivingNumber: this._aTypeProp,
                 Note1: this.getView().byId("note1").getValue(),
                 Note2: this.getView().byId("note2").getValue(),
                 Note3: this.getView().byId("note3").getValue(),
-                ATypeProperty: this.getView().byId("atypeProp").getValue(),
+                ATypeProperty: this._aTypeProp, 
                 BillBoard: this.getView().byId("bill").getSelectedKey(),
                 Comercial: this.getView().byId("comm").getSelectedKey(),
                 CellTower: this.getView().byId("cell").getSelectedKey(),
                 Solar: this.getView().byId("solar").getSelectedKey(),
                 AcquiredFrom: this.getView().byId("aquiredFrom").getValue(),
-                AcquiredDevelopedThirdP:this.getView().byId("aquiredFromTP").getValue(),
+                AcquiredDevelopedThirdP:this._aquiredTP, 
                 Psd:this.getView().byId("psd").getValue()
             }
            // (`/GrantMasterSet('${sGrant}')`

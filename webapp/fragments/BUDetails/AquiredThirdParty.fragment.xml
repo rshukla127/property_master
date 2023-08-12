@@ -5,7 +5,7 @@
 		items="{availableDistModel>/}"
 		search="onValueHelpDialogSearchPlant"
 		confirm="onValueHelpDialogClose"
-		cancel="onValueHelpDialogClosePlant">
+		cancel="onValueHelpDialogClose">
 		<StandardListItem
 			class="sapUiSizeCompact"
 			iconDensityAware="false"

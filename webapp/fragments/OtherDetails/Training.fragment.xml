@@ -2,14 +2,15 @@
 	<SelectDialog class="sapUiSizeCompact"
 		id="training"
 		title="Training Proffesionals"
-		items="{plantsModel>/}"
+		items="{keyTrainingModel>/}"
 		search="onValueHelpDialogSearchPlant"
-		confirm="onValueHelpDialogClosePlant"
-		cancel="onValueHelpDialogClosePlant">
+		confirm="onValueHelpDialogClose"
+		cancel="onValueHelpDialogClose">
 		<StandardListItem
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{plantsModel>Werks}"/>
+			title="{keyTrainingModel>Code}"
+			description="{keyTrainingModel>Description}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

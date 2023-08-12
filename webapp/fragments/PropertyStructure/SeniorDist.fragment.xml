@@ -2,7 +2,7 @@
 	<SelectDialog class="sapUiSizeCompact"
 		id="seniorDis"
 		title="Field Supervisor FAX"
-		items="{plantsModel>/}"
+		items="{SrDistrictSetModel>/}"
 		search="onValueHelpDialogSearchPlant"
 		confirm="onValueHelpDialogClosePlant"
 		cancel="onValueHelpDialogClosePlant">
@@ -10,6 +10,7 @@
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{plantsModel>Werks}"/>
+			title="{SrDistrictSetModel>Code}"
+			description="{SrDistrictSetModel>Description}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

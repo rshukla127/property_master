@@ -13,14 +13,14 @@
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label required="true" text="{i18n>keyTraining}" />
-                    <Input id="keyTrain" showValueHelp="true" valueHelpRequest="_onValueHelpKeyTraining" valueHelpOnly="true" value="{basicDetailsModel>/0/DirectPhoneNo}" />
+                    <Input id="keyTrain" showValueHelp="true" valueHelpRequest="_onValueHelpKeyTraining" valueHelpOnly="true" value="{plantBasicDetailsModel>/KeyTraniningProfessional}" />
                     <Label required="true" text="{i18n>marketClass}" />
-                    <Input id="mClass" showValueHelp="true" valueHelpRequest="_onValueHelpMarketClass" valueHelpOnly="true" value="{basicDetailsModel>/0/FaxNumber}" />
+                    <Input id="mClass" showValueHelp="true" valueHelpRequest="_onValueHelpMarketClass" valueHelpOnly="true" value="{plantBasicDetailsModel>/MarketKey}" />
 
                 </f:content>
             </f:SimpleForm>
             <VBox alignContent="End" alignItems="End">
-                <Button text="Save and Continue" enabled="false" type="Emphasized" press="onPressSaveOtherDetails"></Button>
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveOtherDetails"></Button>
             </VBox>
         </VBox>
 

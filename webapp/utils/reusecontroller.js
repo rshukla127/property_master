@@ -222,6 +222,142 @@ sap.ui.define([
                         MessageToast.show("Something went wrong with Service")
                     }
                 });
+        },
+
+        readMarket: function(){
+            const that = this;
+            
+            that._oModel.read(`/MarketSet`, {
+                    success: function (oData) {
+                       
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "marketSetModel")
+                        sap.ui.getCore().setModel(oModel, "marketSetModel");
+                    },
+                    error: function (oData) {
+                       
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+        },
+
+        KeyTrainingProfessional: function(){
+            const that = this;
+            
+            that._oModel.read(`/KeyTrainingProfessionalSet`, {
+                    success: function (oData) {
+                       
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "keyTrainingModel")
+                        sap.ui.getCore().setModel(oModel, "keyTrainingModel");
+                    },
+                    error: function (oData) {
+                       
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+        },
+
+        readMetroStatArea: function(){
+            const that = this;
+            
+            that._oModel.read(`/MetroStatAreaSet`, {
+                    success: function (oData) {
+                       
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "metroStatModel")
+                        sap.ui.getCore().setModel(oModel, "metroStatModel");
+                    },
+                    error: function (oData) {
+                       
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+        },
+
+        readNeighborhood: function(){
+            const that = this;
+            
+            that._oModel.read(`/NeighborhoodSet`, {
+                    success: function (oData) {
+                       
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "NeighborhoodModel")
+                        sap.ui.getCore().setModel(oModel, "NeighborhoodModel");
+                    },
+                    error: function (oData) {
+                       
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+        },
+
+        readPSConsolidatedPropGroup: function(){
+            const that = this;
+            
+            that._oModel.read(`/PSConsolidatedPropGroupSet`, {
+                    success: function (oData) {
+                       
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "psConsildatePropGroupModel")
+                        sap.ui.getCore().setModel(oModel, "psConsildatePropGroupModel");
+                    },
+                    error: function (oData) {
+                       
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+        },
+
+        readFacMgr: function(){
+            const that = this;
+            
+            that._oModel.read(`/readFacMgrSet`, {
+                    success: function (oData) {
+                       
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "FacilitiesMgrModel")
+                        sap.ui.getCore().setModel(oModel, "FacilitiesMgrModel");
+                    },
+                    error: function (oData) {
+                       
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+        },
+
+        readRegion: function(){
+            const that = this;
+            
+            that._oModel.read(`/RegionSet`, {
+                    success: function (oData) {
+                       
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "RegionSetModel")
+                        sap.ui.getCore().setModel(oModel, "RegionSetModel");
+                    },
+                    error: function (oData) {
+                       
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+        },
+
+        readSeniorDistrict: function(){
+            const that = this;
+            
+            that._oModel.read(`/SrDistrictSet`, {
+                    success: function (oData) {
+                       
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "SrDistrictSetModel")
+                        sap.ui.getCore().setModel(oModel, "SrDistrictSetModel");
+                    },
+                    error: function (oData) {
+                       
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
         }
 	});
 });

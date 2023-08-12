@@ -161,9 +161,9 @@
           "target": ["insDetails"]
         },
         {
-          "name": "propDetails",
-          "pattern": "propDetails",
-          "target": ["propDetails"]
+          "name": "propDates",
+          "pattern": "propDates",
+          "target": ["propDates"]
         },
         {
           "name": "gateDetails",
@@ -232,9 +232,9 @@
           "viewId": "insDetails",
           "viewName": "InsuranceDetails"
         },
-        "propDetails": {
+        "propDates": {
           "viewType": "XML",
-          "viewId": "propDetails",
+          "viewId": "propDates",
           "viewName": "PropDates"
         },
         "workingHours": {

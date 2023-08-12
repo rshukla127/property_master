@@ -2,7 +2,7 @@
 	<SelectDialog class="sapUiSizeCompact"
 		id="regionNew"
 		title="Region"
-		items="{plantsModel>/}"
+		items="{RegionSetModel>/}"
 		search="onValueHelpDialogSearchPlant"
 		confirm="onValueHelpDialogClosePlant"
 		cancel="onValueHelpDialogClosePlant">
@@ -10,6 +10,7 @@
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{plantsModel>Werks}"/>
+			title="{RegionSetModel>Code}"
+			description="{RegionSetModel>Description}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

@@ -18,7 +18,7 @@ sap.ui.define([
         onInit: function () {
             _oController = this;
             const oRouter = this.getRouter();
-            oRouter.getRoute("propOtherDetails").attachMatched(this._onRouteMatched, this);
+            oRouter.getRoute("marketingDetails").attachMatched(this._onRouteMatched, this);
             this._oBusyDialog = new BusyDialog();
 			this.getView().addDependent(this._oBusyDialog);
 
@@ -28,7 +28,11 @@ sap.ui.define([
             const Plant = this.getOwnerComponent().plant;
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
-            this.readPropertyData(Plant, LegacyPropertyNumber)
+            this.readPropertyData(Plant, LegacyPropertyNumber);
+            this.readMarket();
+            this.readMetroStatArea();
+            this.readNeighborhood();
+            this.readPSConsolidatedPropGroup();
 
         },
 
@@ -51,9 +55,6 @@ sap.ui.define([
             this._pValueHelpMarketKey.then(function (oDialog) {
                 //that.readPropertyMasterData();
                 that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
                 oDialog.open();
             });
 
@@ -140,14 +141,40 @@ sap.ui.define([
 
         },
 
+        onValueHelpDialogClose: function (oEvent) {
+			let	oSelectedItem = oEvent.getParameter("selectedItem");
+            let sTitle = oEvent.getSource().getTitle();
+            oEvent.getSource().getBinding("items").filter([]);
+            if (!oSelectedItem) {
+				return;
+			}
+            let sDescription = oSelectedItem.getDescription();
+            let sCode =  oSelectedItem.getTitle();
+
+            if (sTitle === "Market Key"){
+                this.byId("markKey").setValue(sDescription);
+                this.marketKey = sCode
+            } else if(sTitle === "Metro Statistical Area"){
+                this.byId("metroStats").setValue(sDescription);
+                this._MetroStats = sCode
+            } else if(sTitle === "Neighbourhood"){
+                this.byId("neighbourwood").setValue(sDescription);
+                this._neighbour = sCode
+            } else if(sTitle === "Consolidated Property Group"){
+                this.byId("psCons").setValue(sDescription);
+                this._consolidatedPGroup = sCode
+            }
+            
+		},
+
         onPressSaveMarketingDetails: function(){
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             const payload = {
-                MarketKey: this.getView().byId("markKey").getValue(),
-                MetroStatisicalArea: this.getView().byId("metroStats").getValue(),
-                Neighborwood: this.getView().byId("neighbourwood").getValue(),
-                PsConsolidatedPropertygroup: this.getView().byId("psCons").getValue()
+                MarketKey: this.marketKey,
+                MetroStatisicalArea: this._MetroStats,
+                Neighborwood: this._neighbour,
+                PsConsolidatedPropertygroup: this._consolidatedPGroup
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
             this._oModel.update(uri, payload, {

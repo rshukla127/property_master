@@ -2,7 +2,7 @@
 	<SelectDialog class="sapUiSizeCompact"
 		id="faciMgr"
 		title="Facility Mgr"
-		items="{plantsModel>/}"
+		items="{FacilitiesMgrModel>/}"
 		search="onValueHelpDialogSearchPlant"
 		confirm="onValueHelpDialogClosePlant"
 		cancel="onValueHelpDialogClosePlant">
@@ -10,6 +10,7 @@
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{plantsModel>Werks}"/>
+			title="{FacilitiesMgrModel>Code}"
+			description="{FacilitiesMgrModel>Description}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

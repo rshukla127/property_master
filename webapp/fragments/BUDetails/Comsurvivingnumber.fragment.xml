@@ -4,8 +4,8 @@
 		title="Combined Surviving Number"
 		items="{plantsModel>/}"
 		search="onValueHelpDialogSearchPlant"
-		confirm="onValueHelpDialogClosePlant"
-		cancel="onValueHelpDialogClosePlant">
+		confirm="onValueHelpDialogClose"
+		cancel="onValueHelpDialogClose">
 		<StandardListItem
 			class="sapUiSizeCompact"
 			iconDensityAware="false"

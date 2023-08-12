@@ -29,7 +29,9 @@ sap.ui.define([
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this._oBusyDialog = new BusyDialog();
-            this.readPropertyData(Plant, LegacyPropertyNumber)
+            this.readPropertyData(Plant, LegacyPropertyNumber);
+            this.readMarket();
+            this.KeyTrainingProfessional();
 
         },
 
@@ -52,9 +54,6 @@ sap.ui.define([
             this._pValueHelpDialogTraining.then(function (oDialog) {
                 //that.readPropertyMasterData();
                 that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
                 oDialog.open();
             });
 
@@ -87,21 +86,36 @@ sap.ui.define([
 
         },
 
+        onValueHelpDialogClose: function (oEvent) {
+			let	oSelectedItem = oEvent.getParameter("selectedItem");
+            let sTitle = oEvent.getSource().getTitle();
+            oEvent.getSource().getBinding("items").filter([]);
+            if (!oSelectedItem) {
+				return;
+			}
+            let sDescription = oSelectedItem.getDescription();
+            let sCode =  oSelectedItem.getTitle();
+
+            if (sTitle === "Market Class"){
+                this.byId("mClass").setValue(sDescription);
+                this._mClass = sCode
+            } else if(sTitle === "Training Proffesionals"){
+                this.byId("keyTrain").setValue(sDescription);
+                this._trainingProff = sCode
+            }
+		},
+
 
         onPressSaveOtherDetails: function(){
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             const payload = {
-                Active: this.getView().byId("keyTrain").getValue(),
-                BusinessUnitType: this.getView().byId("mClass").getValue()
+                MarketKey: this._mClass,
+                KeyTraniningProfessional: this._trainingProff
             }
-           // (`/GrantMasterSet('${sGrant}')`
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
 
             this._oModel.update(uri, payload, {
-                // urlParameters: {
-                //     "$filter": this._Plant
-                // },
                 success: function (oData) {
                    MessageToast.show("Saved Successfully");
                 },

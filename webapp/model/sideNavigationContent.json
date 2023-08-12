@@ -55,7 +55,7 @@
 				},
 				{
 					"title": "{i18n>sideNavSubItemPropDates}",
-					"key": "propDetails",
+					"key": "propDates",
 					"visible": false
 				},
 				{

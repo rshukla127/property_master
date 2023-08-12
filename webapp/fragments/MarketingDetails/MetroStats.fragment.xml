@@ -2,14 +2,15 @@
 	<SelectDialog class="sapUiSizeCompact"
 		id="mstatsArea"
 		title="Metro Statistical Area"
-		items="{plantsModel>/}"
+		items="{metroStatModel>/}"
 		search="onValueHelpDialogSearchPlant"
-		confirm="onValueHelpDialogClosePlant"
-		cancel="onValueHelpDialogClosePlant">
+		confirm="onValueHelpDialogClose"
+		cancel="onValueHelpDialogClose">
 		<StandardListItem
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{plantsModel>Werks}"/>
+			title="{metroStatModel>Code}"
+			description="{metroStatModel>Description}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

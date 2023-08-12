@@ -29,6 +29,22 @@ sap.ui.define([
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber)
+            this.readFieldSupName();
+            this.readFieldSuppOfficeName();
+            this.readFiledSupMobile();
+            this.readSupFax();
+            this.readSupEmailAddress();
+            this.readRegion();
+            this.readSeniorDistrict();
+            this.readDistrict();
+            this.readDelinquentTennentSpecialist();
+            this.readpmWageZone();
+            this.readFieldOfficeOverhead();
+            this.readVPFacilities();
+            this.readSeniorRegionFacDir();
+            this.readRegionFacDir();
+            this.readSeniorFacMgr();
+            this.readFacMgr();
 
         },
 

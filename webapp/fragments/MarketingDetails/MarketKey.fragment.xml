@@ -2,14 +2,15 @@
 	<SelectDialog class="sapUiSizeCompact"
 		id="mkey"
 		title="Market Key"
-		items="{plantsModel>/}"
+		items="{marketSetModel>/}"
 		search="onValueHelpDialogSearchPlant"
-		confirm="onValueHelpDialogClosePlant"
-		cancel="onValueHelpDialogClosePlant">
+		confirm="onValueHelpDialogClose"
+		cancel="onValueHelpDialogClose">
 		<StandardListItem
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{plantsModel>Werks}"/>
+			title="{marketSetModel>Code}"
+			description="{marketSetModel>Description}"/>
 	</SelectDialog>
 </core:FragmentDefinition>
