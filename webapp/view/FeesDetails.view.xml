@@ -9,96 +9,96 @@
 
 
         <VBox class="sapUiSmallMargin">
-            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>feesDetails}" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>feesDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label text="{i18n>feeType1}" />
-                    <Input id="ftype1" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="ftype1" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType1}" />
                     <Label text="{i18n>feeDes1}" />
-                    <Input id="fDes1" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="fDes1" value="{plantBasicDetailsModel>/FeesDescription1}" />
 
                     <Label text="{i18n>amount1}" />
-                    <Input id="am1" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Input id="am1" value="{plantBasicDetailsModel>/Amount1}" />
 
                     <Label text="{i18n>feeType2}" />
-                    <Input id="type2" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="type2" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType2}" />
                     <Label text="{i18n>feeDes2}" />
-                    <Input id="fDes2" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="fDes2" value="{plantBasicDetailsModel>/FeesDescription2}" />
 
                     <Label text="{i18n>amount2}" />
-                    <Input id="am2" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Input id="am2" value="{plantBasicDetailsModel>/Amount2}" />
 
                     <Label text="{i18n>feeType3}" />
-                    <Input id="ftpe3" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="ftype3" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType3}" />
                     <Label text="{i18n>feeDes3}" />
-                    <Input id="fDesc3" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="fDes3" value="{plantBasicDetailsModel>/FeesDescription3}" />
 
-                    <Label text="{i18n>noOfStories3}" />
-                    <Input id="stories3" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Label text="{i18n>amount3}" />
+                    <Input id="am3" value="{plantBasicDetailsModel>/Amount3}" />
 
 
                     <Label text="{i18n>feeType4}" />
-                    <Input id="ftype4" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="ftype4" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType3}" />
                     <Label text="{i18n>feeDes4}" />
-                    <Input id="fDesc4" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="fDes4" value="{plantBasicDetailsModel>/FeesDescription3}" />
 
                     <Label text="{i18n>amount4}" />
-                    <Input id="am4" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Input id="am4" value="{plantBasicDetailsModel>/Amount4}" />
 
                     <Label text="{i18n>feeType5}" />
-                    <Input id="ftype5" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="ftype5" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType5}" />
                     <Label text="{i18n>feeDes5}" />
-                    <Input id="fDesc5" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="fDes5" value="{plantBasicDetailsModel>/FeesDescription5}" />
 
                     <Label text="{i18n>amount5}" />
-                    <Input id="am5" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Input id="am5" value="{plantBasicDetailsModel>/Amount5}" />
 
                     <core:Title text="" />
                     <Label text="{i18n>feeType6}" />
-                    <Input id="ftype6" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="ftype6" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType6}" />
                     <Label text="{i18n>feeDes5}" />
-                    <Input id="fDesc6" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="fDes6" value="{plantBasicDetailsModel>/FeesDescription6}" />
 
                     <Label text="{i18n>amount6}" />
-                    <Input id="am6" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Input id="am6" value="{plantBasicDetailsModel>/Amount6}" />
 
                     <Label text="{i18n>feeType7}" />
-                    <Input id="ftype7" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="ftype7" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType7}" />
                     <Label text="{i18n>feeDes7}" />
-                    <Input id="fDesc7" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="fDes7" value="{plantBasicDetailsModel>/FeesDescription7}" />
 
                     <Label text="{i18n>amount7}" />
-                    <Input id="am7" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Input id="am7" value="{plantBasicDetailsModel>/Amount7}" />
 
                     <Label text="{i18n>feeType8}" />
-                    <Input id="ftype8" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="ftype8" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType8}" />
                     <Label text="{i18n>feeDes8}" />
-                    <Input id="fDesc8" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="fDes8" value="{plantBasicDetailsModel>/FeesDescription8}" />
 
                     <Label text="{i18n>amount8}" />
-                    <Input id="am8" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Input id="am8" value="{plantBasicDetailsModel>/Amount8}" />
 
                     <Label text="{i18n>feeType9}" />
-                    <Input id="ftype9" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="ftype9" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType9}" />
                     <Label text="{i18n>feeDes9}" />
-                    <Input id="fDesc9" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="fDes9" value="{plantBasicDetailsModel>/FeesDescription9}" />
 
                     <Label text="{i18n>amount9}" />
-                    <Input id="am9" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Input id="am9" value="{plantBasicDetailsModel>/Amount9}" />
                     <Label text="{i18n>feeType10}" />
-                    <Input id="ftyp10" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="ftype10" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType10}" />
                     <Label text="{i18n>feeDes10}" />
-                    <Input id="fDesc10" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="fDes10" value="{plantBasicDetailsModel>/FeesDescription10}" />
 
                     <Label text="{i18n>amount10}" />
-                    <Input id="am10" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Input id="am10" value="{plantBasicDetailsModel>/Amount10}" />
 
 
 
                 </f:content>
             </f:SimpleForm>
             <VBox alignContent="End" alignItems="End">
-                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></Button>
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveFeeDetails"></Button>
             </VBox>
         </VBox>
 

@@ -3,12 +3,12 @@
 		id="tennentPC"
 		title="Tennent PC"
 		items="{tennentModel>/}"
-		search="onValueHelpDialogSearchProperty"
-		confirm="onValueHelpDialogCloseProperty"
+		search="onValueHelpDialogSearchPC"
+		confirm="onValueHelpDialogClosePC"
 		cancel="onValueHelpDialogCloseProperty">
 		<StandardListItem
 			iconDensityAware="false"
 			iconInset="false"
-			title="{tennentModel>Name2}"/>
+			title="{tennentModel>Prctr}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

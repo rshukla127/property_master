@@ -2,19 +2,21 @@ sap.ui.define([
 	"com/public/storage/pao/utils/reusecontroller",
     "sap/m/BusyDialog",
     "sap/m/MessageToast",
-    "sap/ui/core/Fragment"
+    "sap/ui/core/Fragment",
+    "com/public/storage/pao/utils/formatter"
 ], function(
 	BaseController,
     BusyDialog,
     MessageToast,
-    Fragment
+    Fragment,
+    formatter
 ) {
 	"use strict";
     var _oController;
 
 	return 	BaseController
     .extend("com.public.storage.pao.controller.PropertyStructure", {
-
+        formatter: formatter,
         onInit: function () {
             _oController = this;
             const oRouter = this.getRouter();

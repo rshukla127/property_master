@@ -3,12 +3,12 @@
 		id="retailPC"
 		title="Retail PC"
 		items="{retailpcModel>/}"
-		search="onValueHelpDialogSearchProperty"
-		confirm="onValueHelpDialogCloseProperty"
+		search="onValueHelpDialogSearchPC"
+		confirm="onValueHelpDialogClosePC"
 		cancel="onValueHelpDialogCloseProperty">
 		<StandardListItem
 			iconDensityAware="false"
 			iconInset="false"
-			title="{retailpcModel>Name2}"/>
+			title="{retailpcModel>Prctr}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

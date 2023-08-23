@@ -3,27 +3,38 @@ sap.ui.define([
     "sap/m/BusyDialog",
     "sap/m/MessageToast",
     "sap/ui/core/Fragment",
-    "sap/ui/model/json/JSONModel"
+    "sap/ui/model/json/JSONModel",
+    "com/public/storage/pao/utils/formatter"
 ], function(
 	BaseController,
     BusyDialog,
     MessageToast,
     Fragment,
-    JSONModel
+    JSONModel,
+    formatter
 ) {
 	"use strict";
     var _oController;
 
 	return 	BaseController
     .extend("com.public.storage.pao.controller.BUDetails", {
-
+        formatter: formatter,
         onInit: function () {
             _oController = this;
             const oRouter = this.getRouter();
             oRouter.getRoute("buDetails").attachMatched(this._onRouteMatched, this);
             this._oBusyDialog = new BusyDialog();
 			this.getView().addDependent(this._oBusyDialog);
-
+            this.model = new JSONModel();
+			this.model.setData({
+				Active: "None",
+				BusinessUnitType: "None",
+                CustomerCode: "None",
+                EntityType: "None",
+                CombinedSurvivingNumber: "None",
+                ATypeProperty: "None"
+			});
+            this.getView().setModel(this.model);
         },
 
         _onRouteMatched: function(oEvent){
@@ -254,14 +265,59 @@ sap.ui.define([
 		},
 
         onPressSaveBUDetails: function(){
+            let bValidation = true;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
+            let sActive = this.getView().byId("active").getValue();
+            if (sActive === "") {
+                this.model.setProperty("/Active", "Error");
+               
+            } else {
+                this.model.setProperty("/Active", "None");
+            }
+
+            if (this._bType === "" || this._bType === undefined) {
+                this.model.setProperty("/BusinessUnitType", "Error");
+            } else {
+                this.model.setProperty("/BusinessUnitType", "None");
+            }
+
+            if (this._custCode === "" || this._custCode === undefined) {
+                this.model.setProperty("/CustomerCode", "Error");
+            } else {
+                this.model.setProperty("/CustomerCode", "None");
+            }
+
+            if (this._entityType === "" || this._entityType === undefined) {
+                this.model.setProperty("/EntityType", "Error");
+            } else {
+                this.model.setProperty("/EntityType", "None");
+            }
+
+            if (this._comSurvNumer === "" || this._comSurvNumer === undefined) {
+                this.model.setProperty("/CombinedSurvivingNumber", "Error");
+            } else {
+                this.model.setProperty("/CombinedSurvivingNumber", "None");
+            }
+
+            if (this._aTypeProp === "" || this._aTypeProp === undefined) {
+                this.model.setProperty("/ATypeProperty", "Error");
+            } else {
+                this.model.setProperty("/ATypeProperty", "None");
+            }
+            if (sActive === "" || this._bType === "" || this._custCode === "" || this._entityType === "" || this._aTypeProp === ""){
+                bValidation = true;
+            } else {
+                bValidation = false;
+            }
+
+            if(bValidation === false){
             const payload = {
                 Active: this.getView().byId("active").getValue(),
                 BusinessUnitType: this._bType,
                 CustomerCode: this._custCode,
                 EntityType: this._entityType,
-                CombinedSurvivingNumber: this._aTypeProp,
+                CombinedSurvivingNumber: this._comSurvNumer,
                 Note1: this.getView().byId("note1").getValue(),
                 Note2: this.getView().byId("note2").getValue(),
                 Note3: this.getView().byId("note3").getValue(),
@@ -274,13 +330,9 @@ sap.ui.define([
                 AcquiredDevelopedThirdP:this._aquiredTP, 
                 Psd:this.getView().byId("psd").getValue()
             }
-           // (`/GrantMasterSet('${sGrant}')`
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
 
             this._oModel.update(uri, payload, {
-                // urlParameters: {
-                //     "$filter": this._Plant
-                // },
                 success: function (oData) {
                    MessageToast.show("Saved Successfully");
                 },
@@ -288,6 +340,9 @@ sap.ui.define([
                     MessageToast.show("Something went wrong with Service")
                 }
             })
-        }
+        } else {
+        MessageToast.show("Fill in all mandatory fields")
+    }
+    }
 	});
 });

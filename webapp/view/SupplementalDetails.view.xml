@@ -9,165 +9,185 @@
 
 
         <VBox class="sapUiSmallMargin">
-            <f:SimpleForm id="suppDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>propBUDetail}" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+            <f:SimpleForm id="suppDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>propBUDetail} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label required="true" text="{i18n>propDeatures}" />
-                    <Input value="{basicDetailsModel>/0/DirectPhoneNo}" />
+                    <Input valueStateText="Value cannot be blank" valueState="{/PropertyFeatures}" id="propFeature" value="{plantBasicDetailsModel>/PropertyFeatures}" />
                     <Label required="true" text="{i18n>drivingDirection}" />
-                    <Input value="{basicDetailsModel>/0/FaxNumber}" />
+                    <Input valueStateText="Value cannot be blank" valueState="{/DrivingDirections}" id="driDirection" value="{plantBasicDetailsModel>/DrivingDirections}" />
 
                     <Label required="true" text="{i18n>specialNotes}" />
-                    <Input value="{basicDetailsModel>/0/TollFreeNumber}" />
+                    <Input valueStateText="Value cannot be blank" valueState="{/SpecialNotes}" id="spNotes" value="{plantBasicDetailsModel>/SpecialNotes}" />
 
                     <Label text="{i18n>lockers}" />
-                    <Select id="lock" selectedKey="{basicDetailsModel>/0/KioskProperty}">
+                    <Select id="lock" selectedKey="{parts: ['plantBasicDetailsModel>/Lockers'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
+                            <core:Item text="" key="B"/>
 
                         </items>
                     </Select>
 
                     <Label text="{i18n>largeTruckAccess}" />
-                    <Select id="truck" selectedKey="{basicDetailsModel>/0/KioskProperty}">
+                    <Select id="truck" selectedKey="{parts: ['plantBasicDetailsModel>/LargeTruckAccess'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
+                            <core:Item text="" key="B"/>
 
                         </items>
                     </Select>
 
                     <Label text="{i18n>furnitureDollies}" />
-                    <Select id="furniture" selectedKey="{basicDetailsModel>/0/KioskProperty}">
+                    <Select id="furniture" selectedKey="{parts: ['plantBasicDetailsModel>/FurnitureDollies'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
+                            <core:Item text="" key="B"/>
 
                         </items>
                     </Select>
                     <Label text="{i18n>basement}" />
-                    <Select id="base" selectedKey="{basicDetailsModel>/0/KioskProperty}">
+                    <Select id="base" selectedKey="{parts: ['plantBasicDetailsModel>/Basement'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
+                            <core:Item text="" key="B"/>
 
                         </items>
                     </Select>
 
                     <Label text="{i18n>handtrucks}" />
-                    <Select id="hand" selectedKey="{basicDetailsModel>/0/KioskProperty}">
+                    <Select id="hand" selectedKey="{parts: ['plantBasicDetailsModel>/HandTrucks'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
+                            <core:Item text="" key="B"/>
 
                         </items>
                     </Select>
 
                     <Label text="{i18n>carts}" />
-                    <Select id="cart" selectedKey="{basicDetailsModel>/0/KioskProperty}">
+                    <Select id="cart" selectedKey="{parts: ['plantBasicDetailsModel>/Carts'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
+                            <core:Item text="" key="B"/>
 
                         </items>
                     </Select>
                     <Label text="{i18n>yearBuild}" />
-                    <Select id="year" selectedKey="{basicDetailsModel>/0/KioskProperty}">
+                    <Select id="year" selectedKey="{plantBasicDetailsModel>/YearBuilt}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
+                            <core:Item text="" key="B"/>
 
                         </items>
                     </Select>
 
                     <Label required="true" text="{i18n>capIndexRisk}" />
-                    <Input value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="capIndex" value="{plantBasicDetailsModel>/CapIndexRisk}" />
 
                     <Label text="{i18n>numberofBuilding}" />
-                    <Input value="{basicDetailsModel>/0/TollFreeNumber}" />
+                    <Input id="noOfBuild" value="{plantBasicDetailsModel>/NumberOfBuildings}" />
 
                     <Label text="{i18n>constructionCode}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="constCode" showValueHelp="true" value="{plantBasicDetailsModel>/ConstructionCode}" />
 
                     <Label text="{i18n>noOfStories}" />
-                    <Input value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="noOfStories" value="{plantBasicDetailsModel>/NumberOfStories}" />
 
                     <Label text="{i18n>constructionCode2}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-                        <core:Title text="" visible="false"/>
+                    <Input id="constCode2" showValueHelp="true" value="{plantBasicDetailsModel>/ConstructionCode2}" />
+                    <core:Title text="" visible="false"/>
                     <Label text="{i18n>lotSize}" />
-                    <Input  value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="lotSize" value="{plantBasicDetailsModel>/LotSize}" />
 
                     <Label text="{i18n>buildingClassification}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-                    
+                    <Input id="buildClass" showValueHelp="true" value="{plantBasicDetailsModel>/BuildingClassification}" />
+
                     <Label text="{i18n>grossSquareFootage}" />
-                    <Input value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="grossSQFoot" value="{plantBasicDetailsModel>/GrossSquareFootage}" />
                     <Label text="{i18n>floodZone}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="floodzone" showValueHelp="true" value="{plantBasicDetailsModel>/FloodZone}" />
                     <Label text="{i18n>tfmilesCoastWater}" />
-                    <Input value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="tfmilesCoastWater" value="{plantBasicDetailsModel>/MilesOfCostalWater25}" />
                     <Label text="{i18n>sprinkler}" />
-                        <Select id="sprink" selectedKey="{basicDetailsModel>/0/KioskProperty}">
+                    <Select id="sprink" selectedKey="{plantBasicDetailsModel>/Sprinkler}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+                        </items>
+                    </Select>
+                    <Label text="{i18n>sprinklerRemark}" />
+                    <Input id="sprinkRem" value="{plantBasicDetailsModel>/SprinklerRemark}" />
+                    <Label text="{i18n>fireAlarm}" />
+                        <Select id="fireAlarm" selectedKey="{plantBasicDetailsModel>/FireAlarm}">
                             <items>
                                 <core:Item text="Yes" key="Y"/>
                                 <core:Item text="No" key="N"/>
     
                             </items>
                         </Select>
-                    <Label text="{i18n>sprinklerRemark}" />
-                    <Input value="{basicDetailsModel>/0/Network1IpAddress}" />
-                    <Label text="{i18n>fireAlarm}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                   
                     <Label text="{i18n>fireAlarmRemark}" />
-                    <Input value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="fireAlarmRemark" showValueHelp="true" value="{plantBasicDetailsModel>/FireAlarmRemarks}" />
+                        
                     <Label text="{i18n>bugerAlarm}" />
-                    <Input showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
+                        <Select id="bugalarm" selectedKey="{plantBasicDetailsModel>/BuglerAlarm}">
+                            <items>
+                                <core:Item text="Yes" key="Y"/>
+                                <core:Item text="No" key="N"/>
+    
+                            </items>
+                        </Select>
                     <Label text="{i18n>bugerAlarmRemark}" />
-                    <Input value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Input id="bugAlarmRemark" value="{plantBasicDetailsModel>/Network1IpBuglerAlarmRemarksAddress}" />
 
-                        <Label text="{i18n>parkingSpaces}" />
-                            <Select id="park" selectedKey="{basicDetailsModel>/0/KioskProperty}">
-                                <items>
-                                    <core:Item text="Yes" key="Y"/>
-                                    <core:Item text="No" key="N"/>
-        
-                                </items>
-                            </Select>
-        
-                            <Label text="{i18n>elevator}" />
-                            <Select id="elevat" selectedKey="{basicDetailsModel>/0/KioskProperty}">
-                                <items>
-                                    <core:Item text="Yes" key="Y"/>
-                                    <core:Item text="No" key="N"/>
-        
-                                </items>
-                            </Select>
-        
-                            <Label required="true" text="{i18n>apartment}" />
-                            <Select id="apart" selectedKey="{basicDetailsModel>/0/KioskProperty}">
-                                <items>
-                                    <core:Item text="Yes" key="Y"/>
-                                    <core:Item text="No" key="N"/>
-        
-                                </items>
-                            </Select>
-                            <Label text="{i18n>survillenceCamera}" />
-                            <Select id="camera" selectedKey="{basicDetailsModel>/0/KioskProperty}">
-                                <items>
-                                    <core:Item text="Yes" key="Y"/>
-                                    <core:Item text="No" key="N"/>
-        
-                                </items>
-                            </Select>
-                            <Label text="{i18n>survillanceCamRemarks}" />
-                            <Input value="{basicDetailsModel>/0/Network1IpAddress}" />
+                    <Label text="{i18n>parkingSpaces}" />
+                    <Select id="park" selectedKey="{plantBasicDetailsModel>/ParkingSpaces}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+
+                        </items>
+                    </Select>
+
+                    <Label text="{i18n>elevator}" />
+                    <Select id="elevater" selectedKey="{plantBasicDetailsModel>/Elevators}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+
+                        </items>
+                    </Select>
+
+                    <Label required="true" text="{i18n>apartment}" />
+                    <Select id="apart" valueStateText="Value cannot be blank" valueState="{/Apartments}" selectedKey="{plantBasicDetailsModel>/Apartments}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+
+                        </items>
+                    </Select>
+                    <Label text="{i18n>survillenceCamera}" />
+                    <Select id="camera" selectedKey="{plantBasicDetailsModel>/SurvellianceCamera}">
+                        <items>
+                            <core:Item text="Yes" key="Y"/>
+                            <core:Item text="No" key="N"/>
+
+                        </items>
+                    </Select>
+                    <Label text="{i18n>survillanceCamRemarks}" />
+                    <Input id="surCamRemarks" value="{plantBasicDetailsModel>/SurvellianceCameraRemarks}" />
 
                 </f:content>
             </f:SimpleForm>
             <VBox alignContent="End" alignItems="End">
-                <Button text="Save and Continue" type="Emphasized" enabled="true" press="onPressSaveBasicDetails"></Button>
+                <Button text="Save and Continue" type="Emphasized" enabled="true" press="onPressSaveSuppDetails"></Button>
             </VBox>
         </VBox>
 

@@ -3,12 +3,12 @@
 		id="commPC"
 		title="Commercial PC"
 		items="{commPcModel>/}"
-		search="onValueHelpDialogSearchProperty"
-		confirm="onValueHelpDialogCloseProperty"
+		search="onValueHelpDialogSearchPC"
+		confirm="onValueHelpDialogClosePC"
 		cancel="onValueHelpDialogCloseProperty">
 		<StandardListItem
 			iconDensityAware="false"
 			iconInset="false"
-			title="{commPcModel>Code}"/>
+			title="{commPcModel>Prctr}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

@@ -1,130 +1,105 @@
-<mvc:View controllerName="com.public.storage.pao.controller.WorkingHours"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns:l="sap.ui.layout"
-    xmlns:f="sap.ui.layout.form"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+<mvc:View controllerName="com.public.storage.pao.controller.GateDetails"
+     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+     xmlns:l="sap.ui.layout"
+     xmlns:f="sap.ui.layout.form"
+     xmlns="sap.m"
+     xmlns:core="sap.ui.core">
+     <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
 
 
 
-        <VBox class="sapUiSmallMargin">
-            <f:SimpleForm id="workingHours" editable="true" layout="ResponsiveGridLayout" title="{i18n>gateDetails}" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
-                <f:content>
-                    <core:Title text="" visible="false"/>
-                    <Label required="true" text="{i18n>gateSundayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label required="true" text="{i18n>gateMondayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
+          <VBox class="sapUiSmallMargin">
+               <f:SimpleForm id="workingHours" editable="true" layout="ResponsiveGridLayout" title="{i18n>gateDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} &amp; Address - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                    <f:content>
+                         <core:Title text="" visible="false"/>
+                         <Label required="true" text="{i18n>gateSundayOpenHr}" />
+                         <TimePicker id="gateSunOpen" value="{plantBasicDetailsModel>/GateSundayOpenHr}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>gateMondayOpenHr}" />
+                         <TimePicker id="gateMonOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateMondayOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>gateTuesdayOpenHr}" />
+                         <TimePicker id="gateTueOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateTuesdayOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+
+                         <Label required="true" text="{i18n>gateWednesdayOpenHr}" />
+                         <TimePicker id="gateWedOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateWednessdayOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
 
-                    <Label required="true" text="{i18n>gateTuesdayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
+                         <Label required="true" text="{i18n>gateThursdayOpenHr}" />
+                         <TimePicker id="gateThuOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateThursdayOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+
+                         <Label required="true" text="{i18n>gateFriadayOpenHr}" />
+                         <TimePicker id="gateFriOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateFridayOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>gateSaturdayOpenHr}" />
+                         <TimePicker id="gateSatOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateSaturdayOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>gateThanksGivingOpenHr}" />
+                         <TimePicker id="gateThanksOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateThanksgivingOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+
+                         <Label required="true" text="{i18n>gateChristmasOpenHr}" />
+                         <TimePicker id="gateChrisOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateChristmasOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+
+                         <Label required="true" text="{i18n>gateNewYearOpenHr}" />
+                         <TimePicker id="gateNewYearOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateNewyearOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+
+                         <Label required="true" text="{i18n>gateAccessZone1}" />
+                         <Input id="gateac1" value="{plantBasicDetailsModel>/GateAccessZone01}" />
+
+                         <Label required="true" text="{i18n>gateAccessZone2}" />
+                         <Input id="gateac2" value="{plantBasicDetailsModel>/GateAccessZone02}" />
+                         <Label required="true" text="{i18n>gateAccessZone3}" />
+                         <Input id="gateac3" value="{plantBasicDetailsModel>/GateAccessZone03}" />
+                         <Label required="true" text="{i18n>gateAccessZone4}" />
+                         <Input id="gateac4" value="{plantBasicDetailsModel>/GateAccessZone04}" />
+                         <Label required="true" text="{i18n>gateAccessZone5}" />
+                         <Input id="gateac5" value="{plantBasicDetailsModel>/GateAccessZone05}" />
+
+                         <core:Title text="" />
+
+                         <Label required="true" text="{i18n>gateSundayClosedHr}" />
+                         <TimePicker id="gateSunClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateSundayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>gateMondayClosedHr}" />
+                         <TimePicker id="gateMonClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateMondayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+
+                         <Label required="true" text="{i18n>gateTuesdayClosedHr}" />
+                         <TimePicker id="gateTueClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateTuesdayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>gateWednesdayClosedHr}" />
+                         <TimePicker id="gateWedClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateWednessdayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>gateThursdayClosedHr}" />
+                         <TimePicker id="gateThuClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateSundayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>gateFriadayClosedHr}" />
+                         <TimePicker id="gateFriClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateThursdayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>gateSaturdayClosedHr}" />
+                         <TimePicker id="gateSatClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateFridayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+
+                         <Label required="true" text="{i18n>gateThanksGivingClosedHr}" />
+                         <TimePicker id="gateThanksClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateSaturdayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
 
+                         <Label required="true" text="{i18n>gateChristmasClosedHr}" />
+                         <TimePicker id="gateChrisClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateThanksgivingCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
-                    <Label required="true" text="{i18n>gateWednesdayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
+                         <Label required="true" text="{i18n>gateNewYearClosedHr}" />
+                         <TimePicker id="gateNewYearClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateNewyearCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
+                         <Label required="true" text="{i18n>gateAccessZone6}" />
+                         <Input id="gateac6" value="{plantBasicDetailsModel>/GateAccessZone06}" />
 
-                    <Label required="true" text="{i18n>gateThursdayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
+                         <Label required="true" text="{i18n>gateAccessZone7}" />
+                         <Input id="gateac7" value="{plantBasicDetailsModel>/GateAccessZone07}" />
 
-                    <Label required="true" text="{i18n>gateFriadayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label required="true" text="{i18n>gateSaturdayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
+                         <Label required="true" text="{i18n>gateAccessZone8}" />
+                         <Input id="gateac8" value="{plantBasicDetailsModel>/GateAccessZone08}" />
 
-                <Label required="true" text="{i18n>gateThanksGivingOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
+                         <Label required="true" text="{i18n>gateAccessZone9}" />
+                         <Input id="gateac9" value="{plantBasicDetailsModel>/GateAccessZone09}" />
 
-                <Label required="true" text="{i18n>gateChristmasOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
+                         <Label required="true" text="{i18n>gateAccessZone10}" />
+                         <Input id="gateac10" value="{plantBasicDetailsModel>/GateAccessZone10}" />
 
-                <Label required="true" text="{i18n>gateNewYearOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
+                    </f:content>
+               </f:SimpleForm>
 
-
-                    <core:Title text="" />
-
-                    <Label required="true" text="{i18n>gateSundayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label required="true" text="{i18n>gateMondayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-                    <Label required="true" text="{i18n>gateTuesdayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label required="true" text="{i18n>gateWednesdayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-                    <Label required="true" text="{i18n>gateThursdayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label required="true" text="{i18n>gateFriadayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label required="true" text="{i18n>gateSaturdayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-                <Label required="true" text="{i18n>gateThanksGivingClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-               
-                <Label required="true" text="{i18n>gateChristmasClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-                <Label required="true" text="{i18n>gateNewYearClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-                <Label required="true" text="{i18n>gateAccessZone}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-                </f:content>
-            </f:SimpleForm>
-
-            <VBox alignContent="End" alignItems="End">
-               <Button text="Save and Continue" enabled="false" type="Emphasized" press="onPressSaveBasicDetails"></Button>
-           </VBox>
-        </VBox>
-    </ScrollContainer>
+               <VBox alignContent="End" alignItems="End">
+                    <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveGateDetails"></Button>
+               </VBox>
+          </VBox>
+     </ScrollContainer>
 </mvc:View>

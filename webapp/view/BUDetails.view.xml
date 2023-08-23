@@ -9,22 +9,22 @@
 
 
         <VBox class="sapUiSmallMargin">
-            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>propBUDetail} (Plant - {plantBasicDetailsModel>/Plant} and Property {plantBasicDetailsModel>/LegacyPropertyNumber})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>propBUDetail} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label required="true" text="{i18n>active}" />
-                    <Input id="active" valueHelpRequest="_onValueHelpActive" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="active" valueStateText="Value cannot be blank" valueState="{/Active}" valueHelpRequest="_onValueHelpActive" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" />
                     <Label required="true" text="{i18n>businessUnitType}" />
-                    <Input id="bType" valueHelpRequest="_onValueHelpBUnit" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="bType" valueStateText="Value cannot be blank" valueState="{/BusinessUnitType}" valueHelpRequest="_onValueHelpBUnit" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/BusinessUnitType}" />
 
                     <Label required="true" text="{i18n>customerCode}" />
-                    <Input id="cCode" valueHelpRequest="_onValueHelpCustCode" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Input id="cCode" valueStateText="Value cannot be blank" valueState="{/CustomerCode}" valueHelpRequest="_onValueHelpCustCode" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/CustomerCode}" />
 
                     <Label required="true" text="{i18n>entityType}" />
-                    <Input id="entityType" valueHelpRequest="_onValueHelpEntityType" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/EntityType}" />
+                    <Input id="entityType" valueStateText="Value cannot be blank" valueState="{/EntityType}" valueHelpRequest="_onValueHelpEntityType" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/EntityType}" />
 
                     <Label required="true" text="{i18n>combinedServNumber}" />
-                    <Input id="combinedServ" valueHelpRequest="_onValueHelpComSurvNumber" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
+                    <Input id="combinedServ" valueStateText="Value cannot be blank" valueState="{/CombinedSurvivingNumber}" valueHelpRequest="_onValueHelpComSurvNumber" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
 
                     <Label text="{i18n>Note1}" />
                     <Input id="note1" maxLength="30" value="{plantBasicDetailsModel>/Note1}" />
@@ -35,13 +35,14 @@
                     <Label  text="{i18n>Note3}" />
                     <Input id="note3" maxLength="30" value="{plantBasicDetailsModel>/Note3}" />
 
-                    <Label text="{i18n>atypeProp}" />
-                    <Input id="atypeProp" valueHelpRequest="_onValueHelpComATypeProp" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
+                    <Label required="true" text="{i18n>atypeProp}" />
+                    <Input id="atypeProp" valueStateText="Value cannot be blank" valueState="{/ATypeProperty}" valueHelpRequest="_onValueHelpComATypeProp" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
                     
                     <core:Title text="" />
                     <Label  text="{i18n>billboard}" />
-                    <Select id="bill" selectedKey="{plantBasicDetailsModel>/BillBoard}">
+                    <Select id="bill" selectedKey="{parts: ['plantBasicDetailsModel>/BillBoard'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
+                            <core:Item text="" key="B"/>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
 
@@ -49,25 +50,30 @@
                     </Select>
 
                     <Label  text="{i18n>commercial}" />
-                    <Select id="comm" selectedKey="{plantBasicDetailsModel>/Comercial}">
+                    <Select id="comm" selectedKey="{parts: ['plantBasicDetailsModel>/Comercial'], formatter: '.formatter.getSelectedKeyBlank'}">
+                        <!-- {parts: ['plantBasicDetailsModel>/KioskProperty'], formatter: '.formatter.getSelectedKeyNo'} -->
                         <items>
+                            
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
+                            <core:Item text="" key="B"/>
 
                         </items>
                     </Select>
 
                     <Label  text="{i18n>celltower}" />
-                    <Select id="cell" selectedKey="{plantBasicDetailsModel>/CellTower}">
+                    <Select id="cell" selectedKey="{parts: ['plantBasicDetailsModel>/CellTower'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
+                            <core:Item text="" key="B"/>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
 
                         </items>
                     </Select>
                     <Label text="{i18n>solar}" />
-                    <Select id="solar" selectedKey="{plantBasicDetailsModel>/Solar}">
+                    <Select id="solar" selectedKey="{parts: ['plantBasicDetailsModel>/Solar'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
+                            <core:Item text="" key="B"/>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
 

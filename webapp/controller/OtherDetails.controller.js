@@ -3,24 +3,33 @@ sap.ui.define([
     "sap/m/BusyDialog",
     "sap/m/MessageToast",
     "sap/ui/core/Fragment",
+    "sap/ui/model/json/JSONModel",
+    "com/public/storage/pao/utils/formatter"
 ], function(
 	BaseController,
     BusyDialog,
     MessageToast,
-    Fragment
+    Fragment,
+    JSONModel,
+    formatter
 ) {
 	"use strict";
     var _oController;
 
 	return 	BaseController
     .extend("com.public.storage.pao.controller.OtherDetails", {
-
+        formatter: formatter,
         onInit: function () {
             _oController = this;
             const oRouter = this.getRouter();
             oRouter.getRoute("propOtherDetails").attachMatched(this._onRouteMatched, this);
             //this._oBusyDialog = new BusyDialog();
 			this.getView().addDependent(this._oBusyDialog);
+            this.model = new JSONModel();
+            this.model.setData({
+				KeyTrainingProfessional: "None"
+			});
+            this.getView().setModel(this.model);
 
         },
 
@@ -109,6 +118,16 @@ sap.ui.define([
         onPressSaveOtherDetails: function(){
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
+            let bValidation = true;
+
+            if (this._trainingProff === "" || this._trainingProff === undefined ) {
+                this.model.setProperty("/KeyTrainingProfessional", "Error");
+                bValidation = true;
+            } else {
+                this.model.setProperty("/KeyTrainingProfessional", "None");
+                bValidation = false;
+            }
+            if (bValidation === false){
             const payload = {
                 MarketKey: this._mClass,
                 KeyTraniningProfessional: this._trainingProff
@@ -123,6 +142,9 @@ sap.ui.define([
                     MessageToast.show("Something went wrong with Service")
                 }
             })
-        }
+            } else {
+                MessageToast.show("Please Fill all mandatory fields");
+            }
+    }
 	});
 });

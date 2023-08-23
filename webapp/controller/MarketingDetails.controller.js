@@ -2,25 +2,36 @@ sap.ui.define([
 	"com/public/storage/pao/utils/reusecontroller",
     "sap/m/BusyDialog",
     "sap/m/MessageToast",
-    "sap/ui/core/Fragment"
+    "sap/ui/core/Fragment",
+    "sap/ui/model/json/JSONModel",
+    "com/public/storage/pao/utils/formatter"
 ], function(
 	BaseController,
     BusyDialog,
     MessageToast,
-    Fragment
+    Fragment,
+    JSONModel
 ) {
 	"use strict";
     var _oController;
 
 	return 	BaseController
     .extend("com.public.storage.pao.controller.MarketingDetails", {
-
+        formatter: formatter,
         onInit: function () {
             _oController = this;
             const oRouter = this.getRouter();
             oRouter.getRoute("marketingDetails").attachMatched(this._onRouteMatched, this);
             this._oBusyDialog = new BusyDialog();
 			this.getView().addDependent(this._oBusyDialog);
+            this.model = new JSONModel();
+            this.model.setData({
+				MarketKey: "None",
+                MetroStatisicalArea: "None",
+                Neighborwood: "None",
+                PsConsolidatedPropertygroup: "None"
+			});
+            this.getView().setModel(this.model);
 
         },
 
@@ -170,6 +181,41 @@ sap.ui.define([
         onPressSaveMarketingDetails: function(){
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
+
+            let bValidation = true;
+
+            if (this.marketKey === "" || this.marketKey === undefined ) {
+                this.model.setProperty("/MarketKey", "Error");
+            } else {
+                this.model.setProperty("/MarketKey", "None");
+            }
+
+            if (this._MetroStats === "" || this._MetroStats === undefined ) {
+                this.model.setProperty("/MetroStatisicalArea", "Error");
+            } else {
+                this.model.setProperty("/MetroStatisicalArea", "None");
+            }
+
+            if (this._neighbour === "" || this._neighbour === undefined ) {
+                this.model.setProperty("/Neighborwood", "Error");
+            } else {
+                this.model.setProperty("/Neighborwood", "None");
+            }
+
+            if (this._consolidatedPGroup === "" || this._consolidatedPGroup === undefined ) {
+                this.model.setProperty("/PsConsolidatedPropertygroup", "Error");
+            } else {
+                this.model.setProperty("/PsConsolidatedPropertygroup", "None");
+            }
+
+            if (this.marketKey === "" || this._MetroStats === "" || this._neighbour === "" || this._consolidatedPGroup === "" ||
+            this.marketKey === undefined || this._MetroStats === undefined || this._neighbour === undefined || this._consolidatedPGroup === undefined){
+                bValidation = true ;
+            } else {
+                bValidation = false ;
+            }
+
+            if (bValidation === false){
             const payload = {
                 MarketKey: this.marketKey,
                 MetroStatisicalArea: this._MetroStats,
@@ -185,6 +231,9 @@ sap.ui.define([
                     MessageToast.show("Something went wrong with Service")
                 }
             })
+        } else {
+            MessageToast.show("Please Fill all mandatory fields");
+        }
         }
 	});
 });

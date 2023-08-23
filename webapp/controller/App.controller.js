@@ -73,6 +73,14 @@ sap.ui.define(["com/public/storage/pao/utils/reusecontroller",
                 setURI: sap.ui.require.toUrl("sap/tnt/themes/base/illustrations")
             };
             IllustrationPool.registerIllustrationSet(oTntSet, false);
+
+            var oRootPath = jQuery.sap.getModulePath("com.public.storage.pao"); // your resource root
+		
+                var oImageModel = new sap.ui.model.json.JSONModel({
+                    path : oRootPath,
+                });
+                        
+                this.getView().setModel(oImageModel, "imageModel");
         },
 
         /**
@@ -146,14 +154,17 @@ sap.ui.define(["com/public/storage/pao/utils/reusecontroller",
                 if (Device.system.phone) {
                     this.onToggleSideNavPress();
                 }
-                if (this.getOwnerComponent().plant === "" || this.getOwnerComponent().LegacyPropertyNumber === ""){
+                else if (sKey === "home") {
+                    this.getRouter().navTo(sKey);
+                    
+                } else if (this.getOwnerComponent().plant === "" || this.getOwnerComponent().LegacyPropertyNumber === "") {
                     return MessageBox.error("Enter the Plant/Property Details to proceed further!!",
-                        {
-                            title: "Error",
-                            actions: [MessageBox.Action.OK],
-                            onClose: function (oAction) {
-                            }
+                    {
+                        title: "Error",
+                        actions: [MessageBox.Action.OK],
+                        onClose: function (oAction) {
                         }
+                    }
                     );
                 } else {
                 this.getRouter().navTo(sKey);

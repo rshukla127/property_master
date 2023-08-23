@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="com.public.storage.pao.controller.TaxDetails" >
+	<SelectDialog class="sapUiSizeCompact"
+		id="legalOwnerFeinN"
+		title="Legal Owner FEIN"
+		items="{LegalOwnerFeinModel>/}"
+		search="onValueHelpDialogSearchPlant"
+		confirm="onValueHelpDialogClose"
+		cancel="onValueHelpDialogClose">
+		<StandardListItem
+			class="sapUiSizeCompact"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{LegalOwnerFeinModel>Code}"
+			description="{LegalOwnerFeinModel>Description}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

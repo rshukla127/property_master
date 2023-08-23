@@ -3,12 +3,12 @@
 		id="mgmtPC"
 		title="Management PC"
 		items="{mgmtModel>/}"
-		search="onValueHelpDialogSearchProperty"
-		confirm="onValueHelpDialogCloseProperty"
+		search="onValueHelpDialogSearchPC"
+		confirm="onValueHelpDialogClosePC"
 		cancel="onValueHelpDialogCloseProperty">
 		<StandardListItem
 			iconDensityAware="false"
 			iconInset="false"
-			title="{mgmtModel>Name2}"/>
+			title="{mgmtModel>Prctr}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

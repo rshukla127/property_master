@@ -1,96 +1,127 @@
 <mvc:View controllerName="com.public.storage.pao.controller.WorkingHours"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns:l="sap.ui.layout"
-    xmlns:f="sap.ui.layout.form"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+     xmlns:l="sap.ui.layout"
+     xmlns:f="sap.ui.layout.form"
+     xmlns="sap.m"
+     xmlns:core="sap.ui.core">
+     <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
 
 
 
-        <VBox class="sapUiSmallMargin">
-            <f:SimpleForm id="workingHours" editable="true" layout="ResponsiveGridLayout" title="{i18n>propBasDetails}" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
-                <f:content>
-                    <core:Title text="" visible="false"/>
-                    <Label required="true" text="{i18n>officeSundayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label required="true" text="{i18n>officeMondayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
+          <VBox class="sapUiSmallMargin">
+               <f:SimpleForm id="workingHours" editable="true" layout="ResponsiveGridLayout" title="{i18n>workingHours} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                    <f:content>
+                         <core:Title text="" visible="false"/>
+                         <Label required="true" text="{i18n>officeSundayOpenHr}" />
+                         <TimePicker id="sunOpen"
+                              value="{path: 'plantBasicDetailsModel>/OfficeSundayOpenHr', type: 'sap.ui.model.odata.type.Time'}"
+                              valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true"  placeholder="Choose Time.." />
+
+                         <Label required="true" text="{i18n>officeMondayOpenHr}" />
+                         <TimePicker id="monOpen" 
+                              value="{ 
+                                   path: 'plantBasicDetailsModel>/OfficeMondayOpenHr',
+                                   type: 'sap.ui.model.odata.type.Time'
+                                 }"
+                              valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true"  placeholder="Choose Time.." />
+
+                         <Label required="true" text="{i18n>officeTuesdayOpenHr}" />
+                         <TimePicker id="tueOpen"
+                              value="{ 
+                                   path: 'plantBasicDetailsModel>/OfficeTuesdayOpenHr',
+                                   type: 'sap.ui.model.odata.type.Time'  
+                                 }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+
+                         <Label required="true" text="{i18n>officeWednesdayOpenHr}" />
+                         <TimePicker id="wedOpen" 
+                              value="{ 
+                                   path: 'plantBasicDetailsModel>/OfficeWednessdayOpenHr',
+                                   type: 'sap.ui.model.odata.type.Time'  
+                                 }"
+                               valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
 
+                         <Label required="true" text="{i18n>officeThursdayOpenHr}" />
+                         <TimePicker id="thuOpen"
+                              value="{ 
+                                   path: 'plantBasicDetailsModel>/OfficeThursdayOpenHr',
+                                   type: 'sap.ui.model.odata.type.Time'  
+                                 }"
+                                 valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+
+                         <Label required="true" text="{i18n>officeFriadayOpenHr}" />
+                         <TimePicker id="friOpen"  value="{ 
+                              path: 'plantBasicDetailsModel>/OfficeFridayOpenHr',
+                              type: 'sap.ui.model.odata.type.Time'  
+                            }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>officeSaturdayOpenHr}" />
+                         <TimePicker id="satOpen"
+                              value="{ 
+                                   path: 'plantBasicDetailsModel>/OfficeSaturdayOpenHr',
+                                   type: 'sap.ui.model.odata.type.Time'  
+                                 }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="Day Light Saving Applicable" />
+					<Select id="daylight" valueStateText="Value cannot be blank" selectedKey="{plantBasicDetailsModel>/DayLightSavingsApplicable}">
+						<items>
+							<core:Item text="Yes" key="Y"/>
+							<core:Item text="No" key="N"/>
+
+						</items>
+					</Select>
 
 
-                    <Label required="true" text="{i18n>officeTuesdayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
+                         <core:Title text="" />
 
+                         <Label required="true" text="{i18n>officeSundayClosedHr}" />
+                         <TimePicker id="sunClose"
+                              value="{ 
+                                   path: 'plantBasicDetailsModel>/OfficeSundayCloseHr',
+                                   type: 'sap.ui.model.odata.type.Time'  
+                                 }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>officeMondayClosedHr}" />
+                         <TimePicker id="monClose"
+                              value="{ 
+                                   path: 'plantBasicDetailsModel>/OfficeMondayCloseHr',
+                                   type: 'sap.ui.model.odata.type.Time'  
+                                 }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
+                         <Label required="true" text="{i18n>officeTuesdayClosedHr}" />
+                         <TimePicker id="tueClose"
+                              value="{ 
+                                   path: 'plantBasicDetailsModel>/OfficeTuesdayCloseHr',
+                                   type: 'sap.ui.model.odata.type.Time'  
+                                 }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>officeWednesdayClosedHr}" />
+                         <TimePicker id="wedClose"
+                              value="{ 
+                                   path: 'plantBasicDetailsModel>/OfficeWednessdayCloseHr',
+                                   type: 'sap.ui.model.odata.type.Time'  
+                                 }"  valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
-                    <Label required="true" text="{i18n>officeWednesdayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
+                         <Label required="true" text="{i18n>officeThursdayClosedHr}" />
+                         <TimePicker id="thuClose" value="{ 
+                              path: 'plantBasicDetailsModel>/OfficeThursdayCloseHr',
+                              type: 'sap.ui.model.odata.type.Time'  
+                            }"  valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>officeFriadayClosedHr}" />
+                         <TimePicker id="friClose"
+                              value="{ 
+                                   path: 'plantBasicDetailsModel>/OfficeFridayCloseHr',
+                                   type: 'sap.ui.model.odata.type.Time'  
+                                 }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <Label required="true" text="{i18n>officeSaturdayClosedHr}" />
+                         <TimePicker id="satClose" 
+                         value="{ 
+                              path: 'plantBasicDetailsModel>/OfficeSaturdayCloseHr',
+                              type: 'sap.ui.model.odata.type.Time'  
+                            }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
+                    </f:content>
+               </f:SimpleForm>
 
-                    <Label required="true" text="{i18n>officeThursdayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-                    <Label required="true" text="{i18n>officeFriadayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label required="true" text="{i18n>officeSaturdayOpenHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-
-                    <core:Title text="" />
-
-                    <Label required="true" text="{i18n>officeSundayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label required="true" text="{i18n>officeMondayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-                    <Label required="true" text="{i18n>officeTuesdayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label required="true" text="{i18n>officeWednesdayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-                    <Label required="true" text="{i18n>officeThursdayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label required="true" text="{i18n>officeFriadayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-                    <Label required="true" text="{i18n>officeSaturdayClosedHr}" />
-                    <TimePicker value="{
-				path: '/time',
-				type: 'sap.ui.model.type.Time'}" />
-
-                </f:content>
-            </f:SimpleForm>
-
-            <VBox alignContent="End" alignItems="End">
-               <Button text="Save and Continue" enabled="false" type="Emphasized" press="onPressSaveBasicDetails"></Button>
-           </VBox>
-        </VBox>
-    </ScrollContainer>
+               <VBox alignContent="End" alignItems="End">
+                    <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveWorkingHours"></Button>
+               </VBox>
+          </VBox>
+     </ScrollContainer>
 </mvc:View>

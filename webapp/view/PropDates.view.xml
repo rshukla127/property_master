@@ -7,38 +7,38 @@
     <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
 
         <VBox class="sapUiSmallMargin">
-            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>propDatesTitle} (Plant - {plantBasicDetailsModel>/Plant} and Property - {plantBasicDetailsModel>/LegacyPropertyNumber})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>propDatesTitle} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
                 <f:content>
                     <core:Title text="" visible="false"/>
-                    <Label text="{i18n>buCreate}" />
+                    <Label required="true" text="{i18n>restrtdate}" />
                     <DatePicker id="restrtdate" value="{ 
                         path: 'plantBasicDetailsModel>/ReStartDate',
                         type: 'sap.ui.model.type.Date'  
-                      }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
+                      }" valueFormat="yyyy-MM-dd" valueStateText="Value cannot be blank" valueState="{/ReStartDate}"  placeholder="Choose Date.."/>
 
-                    <Label text="{i18n>buCreate}" />
+                    <Label required="true" text="{i18n>newOwnerdate}" />
                     <DatePicker id="newOwnerdate" value="{ 
                         path: 'plantBasicDetailsModel>/NewOwnershipDate',
                         type: 'sap.ui.model.type.Date'  
-                      }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.." />
+                      }" valueFormat="yyyy-MM-dd" valueStateText="Value cannot be blank" valueState="{/NewOwnershipDate}" placeholder="Choose Date.." />
 
-                    <Label text="{i18n>buCreate}" />
+                    <Label required="true" text="{i18n>orstartdate}" />
                     <DatePicker id="orstartdate" value="{ 
                         path: 'plantBasicDetailsModel>/OriginalStartDate',
                         type: 'sap.ui.model.type.Date'  
-                      }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.." />
+                      }" valueFormat="yyyy-MM-dd" valueStateText="Value cannot be blank" valueState="{/OriginalStartDate}" placeholder="Choose Date.." />
 
-                    <Label text="{i18n>buCreate}" />
+                    <Label required="true" text="{i18n>terminationdate}" />
                     <DatePicker id="terminationdate" value="{ 
                         path: 'plantBasicDetailsModel>/TerminationDate',
                         type: 'sap.ui.model.type.Date'  
-                      }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.." />
+                      }" valueFormat="yyyy-MM-dd" valueStateText="Value cannot be blank" valueState="{/TerminationDate}" placeholder="Choose Date.." />
 
-                    <Label text="{i18n>buCreate}" />
+                    <Label required="true" text="{i18n>buCreate}" />
                     <DatePicker id="bucreatedate" value="{ 
                         path: 'plantBasicDetailsModel>/BuCreateDate',
                         type: 'sap.ui.model.type.Date'  
-                      }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.." />
+                      }" valueFormat="yyyy-MM-dd" valueStateText="Value cannot be blank" valueState="{/BuCreateDate}" placeholder="Choose Date.." />
                 </f:content>
             </f:SimpleForm>
             <VBox alignContent="End" alignItems="End">

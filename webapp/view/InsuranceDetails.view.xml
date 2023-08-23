@@ -9,66 +9,93 @@
 
 
         <VBox class="sapUiSmallMargin">
-            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>insDetails}" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>insDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label text="{i18n>finrepnum1}" />
-                    <Input id="finrep1" value="{plantBasicDetailsModel>/Active}" />
+                    <Input id="finrep1" value="{plantBasicDetailsModel>/FinrepNum1}" />
                     <Label text="{i18n>finrepnum2}" />
-                    <Input id="finrep2" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="finrep2" value="{plantBasicDetailsModel>/FinerepNum2}" />
 
-                    <Label  text="{i18n>insPrem2}" />
-                    <Input id="insprem2" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Label required="true" text="{i18n>insPrem2}" />
+                    <Input id="insprem2" valueStateText="Value cannot be blank" valueState="{/InsPrem2000}" value="{plantBasicDetailsModel>/InsPrem2000}" />
 
-                    <Label  text="{i18n>insPrem3}" />
-                    <Input id="insprem3" value="{plantBasicDetailsModel>/EntityType}" />
+                    <Label required="true" text="{i18n>insPrem3}" />
+                    <Input id="insprem3" valueStateText="Value cannot be blank" valueState="{/InsPrem3000}" value="{plantBasicDetailsModel>/InsPrem3000}" />
 
-                    <Label  text="{i18n>insPrem4}" />
-                    <Input id="insprem4" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
+                    <Label required="true" text="{i18n>insPrem4}" />
+                    <Input id="insprem4" valueStateText="Value cannot be blank" valueState="{/InsPrem4000}" value="{plantBasicDetailsModel>/InsPrem4000}" />
 
-                    <Label text="{i18n>insPrem5}" />
-                    <Input id="insprem5" value="{plantBasicDetailsModel>/Note1}" />
+                    <Label required="true" text="{i18n>insPrem5}" />
+                    <Input id="insprem5" valueStateText="Value cannot be blank" valueState="{/InsPrem5000}" value="{plantBasicDetailsModel>/InsPrem5000}" />
 
                     <Label text="{i18n>finrepnum7}" />
-                    <Input id="insprem7" value="{plantBasicDetailsModel>/Note2}" />
+                    <Input id="finrep7" value="{plantBasicDetailsModel>/FinrepNum7}" />
 
                     <Label text="{i18n>finrepnum8}" />
-                    <Input id="insprem8" value="{plantBasicDetailsModel>/Note3}" />
+                    <Input id="finrep8" value="{plantBasicDetailsModel>/FinrepNum8}" />
 
                     <Label text="{i18n>finrepnum9}" />
-                    <Input id="finrep9" value="{plantBasicDetailsModel>/ATypeProperty}" />
-                    <Label text="{i18n>eRentalMax}" />
-                    <Input id="eRental" value="{plantBasicDetailsModel>/ATypeProperty}" />
+                    <Input id="finrep9" value="{plantBasicDetailsModel>/FinrepNum9}" />
+                    <Label required="true" text="{i18n>eRentalMax}" />
+                    <Input id="eRental" valueStateText="Value cannot be blank" valueState="{/ErentalMaxDays}" value="{plantBasicDetailsModel>/ErentalMaxDays}" />
 
                     <core:Title text="" />
 
-                    <Label text="{i18n>cddStartDate}" />
-                    <Input id="startdate" ValueHelp="trushowe" value="{plantBasicDetailsModel>/KioskActiveDate}" />
+                    <Label required="true" valueStateText="Value cannot be blank" valueState="{/CddStartDate}" text="{i18n>cddStartDate}" />
+                    <DatePicker id="startdate" placeholder="Choose Date.." value="{ 
+                        path: 'plantBasicDetailsModel>/CddStartDate',
+                        type: 'sap.ui.model.type.Date'  
+                      }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
 
                     <Label text="{i18n>finrepD3}" />
-                    <Input id="finrepD3" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
+                    <DatePicker id="finrepD3" placeholder="Choose Date.." value="{ 
+                        path: 'plantBasicDetailsModel>/FinrepDate3',
+                        type: 'sap.ui.model.type.Date'  
+                      }" valueFormat="yyyy-MM-dd"/>
 
                     <Label text="{i18n>finrepD4}" />
-                    <Input id="finrepD4" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
+                    <DatePicker id="finrepD4" placeholder="Choose Date.." value="{ 
+                        path: 'plantBasicDetailsModel>/FinrepDate4',
+                        type: 'sap.ui.model.type.Date'  
+                      }" valueFormat="yyyy-MM-dd" />
                     <Label text="{i18n>finrepD5}" />
-                    <Input id="finrepD5" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
+                    <DatePicker id="finrepD5" placeholder="Choose Date.." value="{ 
+                        path: 'plantBasicDetailsModel>/FinrepDate5',
+                        type: 'sap.ui.model.type.Date'  
+                      }" valueFormat="yyyy-MM-dd"/>
 
                     <Label text="{i18n>finrepD6}" />
-                    <Input id="finrepD6" showValueHelp="true" value="{plantBasicDetailsModel>/AcquiredFrom}" />
+                    <DatePicker id="finrepD6" placeholder="Choose Date.." value="{ 
+                        path: 'plantBasicDetailsModel>/FinrepDate6',
+                        type: 'sap.ui.model.type.Date'  
+                      }" valueFormat="yyyy-MM-dd" />
 
                     <Label text="{i18n>finrepD7}" />
-                    <Input id="finrepD7" showValueHelp="true" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
+                    <DatePicker id="finrepD7" placeholder="Choose Date.." value="{ 
+                        path: 'plantBasicDetailsModel>/FinrepDate7',
+                        type: 'sap.ui.model.type.Date'  
+                      }" valueFormat="yyyy-MM-dd" />
                     <Label text="{i18n>finrepD8}" />
-                    <Input id="finrepD8" showValueHelp="true" value="{plantBasicDetailsModel>/Psd}" />
+                    <DatePicker id="finrepD8" value="{ 
+                        path: 'plantBasicDetailsModel>/FinrepDate8',
+                        type: 'sap.ui.model.type.Date'  
+                      }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
                     <Label text="{i18n>finrepD9}" />
-                    <Input id="finrepD9" showValueHelp="true" value="{plantBasicDetailsModel>/Psd}" />
+                    <DatePicker id="finrepD9" value="{ 
+                        path: 'plantBasicDetailsModel>/FinrepDate9',
+                        type: 'sap.ui.model.type.Date'  
+                      }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.." />
                     <Label text="{i18n>finrepD10}" />
-                    <Input id="finrepD10" showValueHelp="true"  value="{plantBasicDetailsModel>/Psd}" />
+                    <DatePicker id="finrepD10" value="{ 
+                        path: 'plantBasicDetailsModel>/FinrepDate10',
+                        type: 'sap.ui.model.type.Date'  
+                      }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 
                 </f:content>
             </f:SimpleForm>
             <VBox alignContent="End" alignItems="End">
-                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></Button>
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveInsuranceDetails"></Button>
             </VBox>
         </VBox>
 
