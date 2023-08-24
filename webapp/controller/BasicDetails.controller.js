@@ -3,9 +3,13 @@ sap.ui.define([
     "sap/m/BusyDialog",
     "sap/m/MessageToast",
     "sap/ui/model/json/JSONModel",
-    "com/public/storage/pao/utils/formatter"
+    "com/public/storage/pao/utils/formatter",
+    "sap/ui/core/Fragment",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/FilterType"
 ], function(
-	BaseController, BusyDialog, MessageToast, JSONModel, formatter
+	BaseController, BusyDialog, MessageToast, JSONModel, formatter, Fragment, Filter, FilterOperator, FilterType
 ) {
 	"use strict";
     var _oController;
@@ -39,7 +43,58 @@ sap.ui.define([
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber)
-            this.readPropertyMasterData(Plant, LegacyPropertyNumber);
+            //this.readPropertyMasterData(Plant);
+
+        },
+
+        _onValueHelpRequestProperty: function (oEvent) {
+            const that =this;
+            var sInputValue = oEvent.getSource().getValue(),
+                oView = this.getView();
+            if (!this._pValueHelpDialogProp) {
+                this._pValueHelpDialogProp = Fragment.load({
+                    id: oView.getId(),
+                    name: "com.public.storage.pao.fragments.Main.Property",
+                    controller: this
+                }).then(function (oDialog) {
+                    oView.addDependent(oDialog);
+                    return oDialog;
+                });
+            }
+            this._oBusyDialog.open()
+            this._pValueHelpDialogProp.then(function (oDialog) {
+                that.readPropertyMasterData();
+                that._oBusyDialog.close();
+                oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
+                // Open ValueHelpDialog filtered by the input's value
+                oDialog.open(sInputValue);
+            });
+        },
+
+        onValueHelpDialogCloseProperty: function (oEvent) {
+            let oItem = oEvent.getParameter("selectedItem");
+            let sProperty = oItem.getBindingContext("plantsModel").getObject().Name2
+            this.getView().byId("budProp").setValue(sProperty);
+
+        },
+
+        readPropertyMasterData: function () {
+            const that = this;
+            this._oBusyDialog.open()
+            return new Promise(function(){
+                that._oModel.read(`/PlantMasterSet`, {
+                    success: function (oData) {
+                        that._oBusyDialog.close();
+                        const oModel = new JSONModel(oData.results);
+                        that.getOwnerComponent().setModel(oModel, "plantsModel")
+                        sap.ui.getCore().setModel(oModel, "plantsModel");
+                    },
+                    error: function (oData) {
+                        that._oBusyDialog.close();
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+            });
 
         },
 

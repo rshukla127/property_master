@@ -10,7 +10,8 @@ sap.ui.define([
     BusyDialog,
     MessageToast,
     Fragment,
-    JSONModel
+    JSONModel,
+    formatter
 ) {
 	"use strict";
     var _oController;

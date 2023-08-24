@@ -31,7 +31,7 @@ sap.ui.define([
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber)
-            this.readFieldSupName();
+            //this.readFieldSupName();
             this.readFieldSuppOfficeName();
             this.readFiledSupMobile();
             this.readSupFax();

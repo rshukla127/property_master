@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="com.public.storage.pao.controller.Main" >
-	<SelectDialog
+	<!-- <SelectDialog
 		id="storagePC"
 		title="Storage PC"
 		items="{storageModel>/}"
@@ -10,5 +10,46 @@
 			iconDensityAware="false"
 			iconInset="false"
 			title="{storageModel>Prctr}"/>
-	</SelectDialog>
+	</SelectDialog> -->
+
+	<TableSelectDialog id="storagePC" noDataText="No PC Found" title="Storage PC" search="onValueHelpDialogSearchPC" confirm="onValueHelpDialogClosePC" cancel="onValueHelpDialogCloseProperty" items="{
+		path : 'storageModel>/',
+		sorter : {
+			path : 'Name1',
+			descending : false
+		}
+	}">
+	<ColumnListItem vAlign="Middle">
+		<cells>
+			<Text text="{storageModel>Prctr}"/>
+			<Text text="{storageModel>Bukrs}" />
+			<Text text="{storageModel>Name1}" />
+			<Text text="{storageModel>Datab}" />
+		</cells>
+	</ColumnListItem>
+	<columns>
+		<Column width="12em">
+			<header>
+				<Text text="Profit Center" />
+			</header>
+		</Column>
+		<Column minScreenWidth="Desktop" width="12em" demandPopin="true">
+			<header>
+				<Text text="Company Code" />
+			</header>
+		</Column>
+		<Column minScreenWidth="Desktop" width="12em" demandPopin="true" hAlign="End">
+			<header>
+				<Text text="Long Description" />
+			</header>
+		</Column>
+		<Column minScreenWidth="Desktop" demandPopin="true" width="12em" hAlign="Center">
+			<header>
+				<Text text="Valid From" />
+			</header>
+		</Column>
+		
+		
+	</columns>
+</TableSelectDialog>
 </core:FragmentDefinition>

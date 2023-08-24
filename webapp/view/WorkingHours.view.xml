@@ -14,52 +14,34 @@
                          <core:Title text="" visible="false"/>
                          <Label required="true" text="{i18n>officeSundayOpenHr}" />
                          <TimePicker id="sunOpen"
-                              value="{path: 'plantBasicDetailsModel>/OfficeSundayOpenHr', type: 'sap.ui.model.odata.type.Time'}"
+                              value="{parts: ['plantBasicDetailsModel>/OfficeSundayOpenHr'], formatter: '.formatter.formatTime'}"
                               valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true"  placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>officeMondayOpenHr}" />
                          <TimePicker id="monOpen" 
-                              value="{ 
-                                   path: 'plantBasicDetailsModel>/OfficeMondayOpenHr',
-                                   type: 'sap.ui.model.odata.type.Time'
-                                 }"
+                         value="{parts: ['plantBasicDetailsModel>/OfficeMondayOpenHr'], formatter: '.formatter.formatTime'}"
                               valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true"  placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>officeTuesdayOpenHr}" />
                          <TimePicker id="tueOpen"
-                              value="{ 
-                                   path: 'plantBasicDetailsModel>/OfficeTuesdayOpenHr',
-                                   type: 'sap.ui.model.odata.type.Time'  
-                                 }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         value="{parts: ['plantBasicDetailsModel>/OfficeTuesdayOpenHr'], formatter: '.formatter.formatTime'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>officeWednesdayOpenHr}" />
-                         <TimePicker id="wedOpen" 
-                              value="{ 
-                                   path: 'plantBasicDetailsModel>/OfficeWednessdayOpenHr',
-                                   type: 'sap.ui.model.odata.type.Time'  
-                                 }"
+                         <TimePicker id="wedOpen" value="{parts: ['plantBasicDetailsModel>/OfficeWednessdayOpenHr'], formatter: '.formatter.formatTime'}"
+                              
                                valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
 
                          <Label required="true" text="{i18n>officeThursdayOpenHr}" />
-                         <TimePicker id="thuOpen"
-                              value="{ 
-                                   path: 'plantBasicDetailsModel>/OfficeThursdayOpenHr',
-                                   type: 'sap.ui.model.odata.type.Time'  
-                                 }"
+                         <TimePicker id="thuOpen" value="{parts: ['plantBasicDetailsModel>/OfficeThursdayOpenHr'], formatter: '.formatter.formatTime'}"
                                  valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>officeFriadayOpenHr}" />
-                         <TimePicker id="friOpen"  value="{ 
-                              path: 'plantBasicDetailsModel>/OfficeFridayOpenHr',
-                              type: 'sap.ui.model.odata.type.Time'  
-                            }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="friOpen" value="{parts: ['plantBasicDetailsModel>/OfficeFridayOpenHr'], formatter: '.formatter.formatTime'}"
+                           valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>officeSaturdayOpenHr}" />
-                         <TimePicker id="satOpen"
-                              value="{ 
-                                   path: 'plantBasicDetailsModel>/OfficeSaturdayOpenHr',
-                                   type: 'sap.ui.model.odata.type.Time'  
-                                 }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="satOpen" value="{parts: ['plantBasicDetailsModel>/OfficeSaturdayOpenHr'], formatter: '.formatter.formatTime'}"
+                              valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="Day Light Saving Applicable" />
 					<Select id="daylight" valueStateText="Value cannot be blank" selectedKey="{plantBasicDetailsModel>/DayLightSavingsApplicable}">
 						<items>
@@ -69,52 +51,31 @@
 						</items>
 					</Select>
 
-
                          <core:Title text="" />
 
                          <Label required="true" text="{i18n>officeSundayClosedHr}" />
-                         <TimePicker id="sunClose"
-                              value="{ 
-                                   path: 'plantBasicDetailsModel>/OfficeSundayCloseHr',
-                                   type: 'sap.ui.model.odata.type.Time'  
-                                 }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="sunClose" value="{parts: ['plantBasicDetailsModel>/OfficeSundayCloseHr'], formatter: '.formatter.formatTimeSatandSunClose'}"
+                          valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>officeMondayClosedHr}" />
-                         <TimePicker id="monClose"
-                              value="{ 
-                                   path: 'plantBasicDetailsModel>/OfficeMondayCloseHr',
-                                   type: 'sap.ui.model.odata.type.Time'  
-                                 }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="monClose" value="{parts: ['plantBasicDetailsModel>/OfficeMondayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
+                          valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>officeTuesdayClosedHr}" />
-                         <TimePicker id="tueClose"
-                              value="{ 
-                                   path: 'plantBasicDetailsModel>/OfficeTuesdayCloseHr',
-                                   type: 'sap.ui.model.odata.type.Time'  
-                                 }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="tueClose" value="{parts: ['plantBasicDetailsModel>/OfficeTuesdayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
+                         valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>officeWednesdayClosedHr}" />
-                         <TimePicker id="wedClose"
-                              value="{ 
-                                   path: 'plantBasicDetailsModel>/OfficeWednessdayCloseHr',
-                                   type: 'sap.ui.model.odata.type.Time'  
-                                 }"  valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="wedClose" value="{parts: ['plantBasicDetailsModel>/OfficeWednessdayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
+                          valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>officeThursdayClosedHr}" />
-                         <TimePicker id="thuClose" value="{ 
-                              path: 'plantBasicDetailsModel>/OfficeThursdayCloseHr',
-                              type: 'sap.ui.model.odata.type.Time'  
-                            }"  valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="thuClose" value="{parts: ['plantBasicDetailsModel>/OfficeThursdayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
+                          valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>officeFriadayClosedHr}" />
-                         <TimePicker id="friClose"
-                              value="{ 
-                                   path: 'plantBasicDetailsModel>/OfficeFridayCloseHr',
-                                   type: 'sap.ui.model.odata.type.Time'  
-                                 }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="friClose" value="{parts: ['plantBasicDetailsModel>/OfficeFridayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
+                         valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>officeSaturdayClosedHr}" />
-                         <TimePicker id="satClose" 
-                         value="{ 
-                              path: 'plantBasicDetailsModel>/OfficeSaturdayCloseHr',
-                              type: 'sap.ui.model.odata.type.Time'  
-                            }" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="satClose" value="{parts: ['plantBasicDetailsModel>/OfficeSaturdayCloseHr'], formatter: '.formatter.formatTimeSatandSunClose'}"
+                         valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                     </f:content>
                </f:SimpleForm>

@@ -247,6 +247,9 @@ sap.ui.define([
             } else if(sTitle === "Customer Code"){
                 this.byId("cCode").setValue(sDescription);
                 this._custCode = sCode
+            } else if(sTitle === "Active"){
+                this.byId("active").setValue(sDescription);
+                this._custCode = sCode
             } else if(sTitle === "Entity Type"){
                 this.byId("entityType").setValue(sDescription);
                 this._entityType = sCode

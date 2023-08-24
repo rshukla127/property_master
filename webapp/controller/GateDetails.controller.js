@@ -32,65 +32,75 @@ sap.ui.define([
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber;
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber);
-            this.setDefaultValues();
-
 
         },
 
-        setDefaultValues: function(){
-            this.getView().byId("gateSunOpen").setValue("09:30:00");
-            this.getView().byId("gateMonOpen").setValue("09:30:00");
-            this.getView().byId("gateTueOpen").setValue("09:30:00");
-            this.getView().byId("gateWedOpen").setValue("09:30:00");
-            this.getView().byId("gateThuOpen").setValue("09:30:00");
-            this.getView().byId("gateFriOpen").setValue("09:30:00");
-            this.getView().byId("gateSatOpen").setValue("09:30:00");
-            this.getView().byId("gateThanksOpen").setValue("09:30:00");
-            this.getView().byId("gateChrisOpen").setValue("09:30:00");
-            this.getView().byId("gateNewYearOpen").setValue("09:30:00");
-            this.getView().byId("gateSunClose").setValue("17:00:00");
-            this.getView().byId("gateMonClose").setValue("17:00:00");
-            this.getView().byId("gateTueClose").setValue("17:00:00");
-            this.getView().byId("gateWedClose").setValue("17:00:00");
-            this.getView().byId("gateThuClose").setValue("17:00:00");
-            this.getView().byId("gateFriClose").setValue("17:00:00");
-            this.getView().byId("gateSatClose").setValue("17:00:00");
-            this.getView().byId("gateThanksClose").setValue("17:00:00");
-            this.getView().byId("gateChrisClose").setValue("17:00:00");
-            this.getView().byId("gateNewYearClose").setValue("17:00:00");
-        },
 
         onPressSaveGateDetails: function(){
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             // let sTime = "T00:00:00";
-                let sunOpen = this.byId("sunOpen").getValue().split(':').map(Number);
-                let hours = sunOpen[0]
-                let minutes = sunOpen[1]
-                let seconds = sunOpen[2]
-                let finalSunOpen = "PT" + hours + "H" + minutes + "M" + seconds + "S";
-            const payload = {
-                GateSundayOpenHr: this.getView().byId("gateSunOpen").getValue(),
-                GateSundayCloseHr: this.getView().byId("gateSunClose").getValue(),
-                GateMondayOpenHr: this.getView().byId("gateMonOpen").getValue(),
-                GateMondayCloseHr: this.getView().byId("gateMonClose").getValue(),
-                GateTuesdayOpenHr: this.getView().byId("gateTueOpen").getValue(),
-                GateTuesdayCloseHr: this.getView().byId("gateTueClose").getValue(),
-                GateWednessdayOpenHr: this.getView().byId("gateWedOpen").getValue(),
-                GateWednessdayCloseHr: this.getView().byId("gateWedClose").getValue(),
-                GateThursdayOpenHr: this.getView().byId("gateThuOpen").getValue(),
-                GateThursdayCloseHr: this.getView().byId("gateThuClose").getValue(),
-                GateFridayOpenHr: this.getView().byId("gateFriOpen").getValue(),
-                GateFridayCloseHr: this.getView().byId("gateFriClose").getValue(),
-                GateSaturdayOpenHr: this.getView().byId("gateSatOpen").getValue(),
-                GateSaturdayCloseHr: this.getView().byId("satClose").getValue(),
+                let sunOpen = this.byId("gateSunOpen").getValue().split(':').map(Number);
+                let monOpen = this.byId("gateMonOpen").getValue().split(':').map(Number);
+                let tueOpen = this.byId("gateTueOpen").getValue().split(':').map(Number);
+                let wedOpen = this.byId("gateWedOpen").getValue().split(':').map(Number);
+                let thuOpen = this.byId("gateThuOpen").getValue().split(':').map(Number);
+                let friOpen = this.byId("gateFriOpen").getValue().split(':').map(Number);
+                let satOpen = this.byId("gateSatOpen").getValue().split(':').map(Number);
 
-                GateThanksgivingOpenHr: this.getView().byId("gateThanksOpen").getValue(),
-                GateThanksgivingCloseHr: this.getView().byId("gateThanksClose").getValue(),
-                GateChristmasOpenHr: this.getView().byId("gateChrisOpen").getValue(),
-                GateChristmasCloseHr: this.getView().byId("gateChrisClose").getValue(),
-                GateNewyearOpenHr: this.getView().byId("gateNewYearOpen").getValue(),
-                GateNewyearCloseHr: this.getView().byId("gateNewYearClose").getValue(),
+                let gateThanksOpen = this.byId("gateThanksOpen").getValue().split(':').map(Number);
+                let gateChrisOpen = this.byId("gateChrisOpen").getValue().split(':').map(Number);
+                let gateNewYearOpen = this.byId("gateNewYearOpen").getValue().split(':').map(Number);
+
+                let sunClose = this.byId("gateSunClose").getValue().split(':').map(Number);
+                let monClose = this.byId("gateMonClose").getValue().split(':').map(Number);
+                let tueClose = this.byId("gateTueClose").getValue().split(':').map(Number);
+                let wedClose = this.byId("gateWedClose").getValue().split(':').map(Number);
+                let thuClose = this.byId("gateThuClose").getValue().split(':').map(Number);
+                let friClose = this.byId("gateFriClose").getValue().split(':').map(Number);
+                let satClose = this.byId("gateSatClose").getValue().split(':').map(Number);
+
+                let geteThanksClosed = this.byId("gateThanksClose").getValue().split(':').map(Number);
+                let gateChrisClosed = this.byId("gateChrisClose").getValue().split(':').map(Number);
+                let gateNewYearClosed = this.byId("gateNewYearClose").getValue().split(':').map(Number);
+
+                let finalSunOpen = "PT" + sunOpen[0] + "H" + sunOpen[1] + "M" + sunOpen[2] + "S";
+                let finalMonOpen = "PT" + monOpen[0] + "H" + monOpen[1] + "M" + monOpen[2] + "S";
+                let finalTueOpen = "PT" + tueOpen[0] + "H" + tueOpen[1] + "M" + tueOpen[2] + "S";
+                let finalWedOpen = "PT" + wedOpen[0] + "H" + wedOpen[1] + "M" + wedOpen[2] + "S";
+                let finalThuOpen = "PT" + thuOpen[0] + "H" + thuOpen[1] + "M" + thuOpen[2] + "S";
+                let finalFriOpen = "PT" + friOpen[0] + "H" + friOpen[1] + "M" + friOpen[2] + "S";
+                let finalSatOpen = "PT" + satOpen[0] + "H" + satOpen[1] + "M" + satOpen[2] + "S";
+                let finalSunClosed = "PT" + sunClose[0] + "H" + sunClose[1] + "M" + sunClose[2] + "S";
+                let finalMonClosed = "PT" + monClose[0] + "H" + monClose[1] + "M" + monClose[2] + "S";
+                let finalTueClosed = "PT" + tueClose[0] + "H" + tueClose[1] + "M" + tueClose[2] + "S";
+                let finalWedClosed = "PT" + wedClose[0] + "H" + wedClose[1] + "M" + wedClose[2] + "S";
+                let finalThuClosed = "PT" + thuClose[0] + "H" + thuClose[1] + "M" + thuClose[2] + "S";
+                let finalFriClosed = "PT" + friClose[0] + "H" + friClose[1] + "M" + friClose[2] + "S";
+                let finalSatClosed = "PT" + satClose[0] + "H" + satClose[1] + "M" + satClose[2] + "S";
+
+
+            const payload = {
+                GateSundayOpenHr: finalSunOpen,
+                GateSundayCloseHr: finalSunClosed,
+                GateMondayOpenHr: finalMonOpen,
+                GateMondayCloseHr: finalMonClosed,
+                GateTuesdayOpenHr: finalTueOpen,
+                GateTuesdayCloseHr: finalTueClosed,
+                GateWednessdayOpenHr: finalWedOpen,
+                GateWednessdayCloseHr: finalWedClosed,
+                GateThursdayOpenHr: finalThuOpen,
+                GateThursdayCloseHr: finalThuClosed,
+                GateFridayOpenHr: finalFriOpen,
+                GateFridayCloseHr: finalFriClosed,
+                GateSaturdayOpenHr: finalSatOpen,
+                GateSaturdayCloseHr: finalSatClosed,
+                //GateThanksgivingOpenHr: gateThanksOpen,
+                // GateThanksgivingCloseHr: geteThanksClosed,
+                // GateChristmasOpenHr: gateChrisOpen,
+                // GateChristmasCloseHr: gateChrisClosed,
+                // GateNewyearOpenHr: gateNewYearOpen,
+                // GateNewyearCloseHr: gateNewYearClosed,
                 GateAccessZone01: this.getView().byId("gateac1").getValue(),
                 GateAccessZone02: this.getView().byId("gateac2").getValue(),
                 GateAccessZone03: this.getView().byId("gateac3").getValue(),

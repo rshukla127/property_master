@@ -13,31 +13,31 @@
                     <f:content>
                          <core:Title text="" visible="false"/>
                          <Label required="true" text="{i18n>gateSundayOpenHr}" />
-                         <TimePicker id="gateSunOpen" value="{plantBasicDetailsModel>/GateSundayOpenHr}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateSunOpen" value="{parts: ['plantBasicDetailsModel>/GateSundayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}"  valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>gateMondayOpenHr}" />
-                         <TimePicker id="gateMonOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateMondayOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateMonOpen" value="{parts: ['plantBasicDetailsModel>/GateMondayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>gateTuesdayOpenHr}" />
-                         <TimePicker id="gateTueOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateTuesdayOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateTueOpen" value="{parts: ['plantBasicDetailsModel>/GateTuesdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>gateWednesdayOpenHr}" />
-                         <TimePicker id="gateWedOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateWednessdayOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateWedOpen" value="{parts: ['plantBasicDetailsModel>/GateWednessdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
 
                          <Label required="true" text="{i18n>gateThursdayOpenHr}" />
-                         <TimePicker id="gateThuOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateThursdayOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateThuOpen" value="{parts: ['plantBasicDetailsModel>/GateThursdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>gateFriadayOpenHr}" />
-                         <TimePicker id="gateFriOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateFridayOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateFriOpen" value="{parts: ['plantBasicDetailsModel>/GateFridayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>gateSaturdayOpenHr}" />
-                         <TimePicker id="gateSatOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateSaturdayOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateSatOpen" value="{parts: ['plantBasicDetailsModel>/GateSaturdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>gateThanksGivingOpenHr}" />
-                         <TimePicker id="gateThanksOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateThanksgivingOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateThanksOpen" value="{parts: ['plantBasicDetailsModel>/GateThanksgivingOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>gateChristmasOpenHr}" />
-                         <TimePicker id="gateChrisOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateChristmasOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateChrisOpen" value="{parts: ['plantBasicDetailsModel>/GateChristmasOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>gateNewYearOpenHr}" />
-                         <TimePicker id="gateNewYearOpen" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateNewyearOpenHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateNewYearOpen" value="{parts: ['plantBasicDetailsModel>/GateNewyearOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>gateAccessZone1}" />
                          <Input id="gateac1" value="{plantBasicDetailsModel>/GateAccessZone01}" />
@@ -54,30 +54,29 @@
                          <core:Title text="" />
 
                          <Label required="true" text="{i18n>gateSundayClosedHr}" />
-                         <TimePicker id="gateSunClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateSundayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateSunClose" value="{parts: ['plantBasicDetailsModel>/GateSundayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>gateMondayClosedHr}" />
-                         <TimePicker id="gateMonClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateMondayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateMonClose" value="{parts: ['plantBasicDetailsModel>/GateMondayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>gateTuesdayClosedHr}" />
-                         <TimePicker id="gateTueClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateTuesdayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateTueClose" value="{parts: ['plantBasicDetailsModel>/GateTuesdayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>gateWednesdayClosedHr}" />
-                         <TimePicker id="gateWedClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateWednessdayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateWedClose" value="{parts: ['plantBasicDetailsModel>/GateWednessdayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>gateThursdayClosedHr}" />
-                         <TimePicker id="gateThuClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateSundayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateThuClose" value="{parts: ['plantBasicDetailsModel>/GateThursdayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>gateFriadayClosedHr}" />
-                         <TimePicker id="gateFriClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateThursdayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateFriClose" value="{parts: ['plantBasicDetailsModel>/GateFridayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>gateSaturdayClosedHr}" />
-                         <TimePicker id="gateSatClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateFridayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateSatClose" value="{parts: ['plantBasicDetailsModel>/GateSaturdayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>gateThanksGivingClosedHr}" />
-                         <TimePicker id="gateThanksClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateSaturdayCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-
+                         <TimePicker id="gateThanksClose" value="{parts: ['plantBasicDetailsModel>/GateThanksgivingCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>gateChristmasClosedHr}" />
-                         <TimePicker id="gateChrisClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateThanksgivingCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateChrisClose" value="{parts: ['plantBasicDetailsModel>/GateChristmasCloseHr'], formatter: '.formatter.formatGateTimeClose'}"  valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>gateNewYearClosedHr}" />
-                         <TimePicker id="gateNewYearClose" valueFormat="HH:mm:ss" value="{plantBasicDetailsModel>/GateNewyearCloseHr}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         <TimePicker id="gateNewYearClose" value="{parts: ['plantBasicDetailsModel>/GateNewyearCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>gateAccessZone6}" />
                          <Input id="gateac6" value="{plantBasicDetailsModel>/GateAccessZone06}" />

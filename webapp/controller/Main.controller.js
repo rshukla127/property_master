@@ -56,7 +56,7 @@ sap.ui.define([
             readRetailPC: function(){
                 const that = this;
                 
-                this._oModel.read(`/RetailProfitCenterSet`, {
+                this._oModel.read(`/RetailProfitCenter2Set`, {
                         success: function (oData) {
                             
                             const oModel = new JSONModel(oData.results);
@@ -73,7 +73,7 @@ sap.ui.define([
             readStoragePC: function(){
                 const that = this;
                
-                this._oModel.read(`/StorageProfitCenterSet`, {
+                this._oModel.read(`/StorageProfitCenter2Set`, {
                         success: function (oData) {
                            
                             const oModel = new JSONModel(oData.results);
@@ -90,7 +90,7 @@ sap.ui.define([
             readTennentPC: function(){
                 const that = this;
                
-                this._oModel.read(`/StorageProfitCenterSet`, {
+                this._oModel.read(`/TenentInsProfitCenter2Set`, {
                         success: function (oData) {
                            
                             const oModel = new JSONModel(oData.results);
@@ -107,7 +107,7 @@ sap.ui.define([
             readManagementPC: function(){
                 const that = this;
                
-                this._oModel.read(`/ManagementProfitCenterSet`, {
+                this._oModel.read(`/ManagementProfitCenter2Set`, {
                         success: function (oData) {
                            
                             const oModel = new JSONModel(oData.results);
@@ -124,7 +124,7 @@ sap.ui.define([
             readCommPC: function(){
                 const that = this;
                 
-                this._oModel.read(`/CommercialProfitCenterSet`, {
+                this._oModel.read(`/CommercialProfitCenter2Set`, {
                         success: function (oData) {
                            
                             const oModel = new JSONModel(oData.results);
@@ -617,7 +617,7 @@ sap.ui.define([
             },
 
             onValueHelpDialogClosePC: function (oEvent) {
-                let sCompanyCode,sDatab, finalStartDate
+                let sCompanyCode,sDatab, finalStartDate,sPC
                 const sSelectedRBButton = this.getView().byId("rbg1").getSelectedButton().getText();
                 let	oSelectedItem = oEvent.getParameter("selectedItem");
                 //let oModel = oSelectedItem.getBindingContext()
@@ -627,41 +627,44 @@ sap.ui.define([
                 if (!oSelectedItem) {
                     return;
                 }
-                let sDescription = oSelectedItem.getDescription();
-                let sCode =  oSelectedItem.getTitle();
+                //let sDescription = oSelectedItem.getDescription();
+                //let sCode =  oSelectedItem.getTitle();
 
                 if (sSelectedRBButton ==="Own"){
                     if (sTitle === "Retail PC"){
-
+                        sPC = oSelectedItem.getBindingContext("retailpcModel").getObject().Prctr;
                         sCompanyCode = oSelectedItem.getBindingContext("retailpcModel").getObject().Bukrs;
                         sDatab = oSelectedItem.getBindingContext("retailpcModel").getObject().Datab;
                         finalStartDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDatab));
-                        this.byId("retailPc").setValue(sCode);
+                        this.byId("retailPc").setValue(sPC);
                         this.byId("ccCode").setValue(sCompanyCode);
                         this.byId("startdate").setValue(finalStartDate);
                         
                         //this.rtailPC = sCode
                     } else if(sTitle === "Storage PC"){
+                        sPC = oSelectedItem.getBindingContext("storageModel").getObject().Prctr;
                         sCompanyCode = oSelectedItem.getBindingContext("storageModel").getObject().Bukrs;
                         sDatab = oSelectedItem.getBindingContext("storageModel").getObject().Datab;
                         finalStartDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDatab));
-                        this.byId("storagePc").setValue(sCode);
+                        this.byId("storagePc").setValue(sPC);
                         this.byId("ccCode1").setValue(sCompanyCode);
                         this.byId("startdate1").setValue(finalStartDate);
                         //this.storagePC = sCode
                     } else if(sTitle === "Commercial PC"){
+                        sPC = oSelectedItem.getBindingContext("commPcModel").getObject().Prctr;
                         sCompanyCode = oSelectedItem.getBindingContext("commPcModel").getObject().Bukrs;
                         sDatab = oSelectedItem.getBindingContext("commPcModel").getObject().Datab;
                         finalStartDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDatab));
-                        this.byId("commPc").setValue(sCode);
+                        this.byId("commPc").setValue(sPC);
                         this.byId("ccCode3").setValue(sCompanyCode);
                         this.byId("startdate3").setValue(finalStartDate);
                         //this.commPC = sCode
                     } else if(sTitle === "Tennent PC"){
+                        sPC = oSelectedItem.getBindingContext("tennentModel").getObject().Prctr;
                         sCompanyCode = oSelectedItem.getBindingContext("tennentModel").getObject().Bukrs;
                         sDatab = oSelectedItem.getBindingContext("tennentModel").getObject().Datab;
                         finalStartDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDatab));
-                        this.byId("tenPc").setValue(sCode);
+                        this.byId("tenPc").setValue(sPC);
                         this.byId("ccCode2").setValue(sCompanyCode);
                         this.byId("startdate2").setValue(finalStartDate);
                         //this.tennentPC = sCode
@@ -669,34 +672,38 @@ sap.ui.define([
 
                 } else {
                     if (sTitle === "Retail PC"){
+                        sPC = oSelectedItem.getBindingContext("retailpcModel").getObject().Prctr;
                         sCompanyCode = oSelectedItem.getBindingContext("retailpcModel").getObject().Bukrs;
                         sDatab = oSelectedItem.getBindingContext("retailpcModel").getObject().Datab;
                         finalStartDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDatab));
-                        this.byId("ccCodeTp").setValue(sCompanyCode);
+                        this.byId("ccCodeTp").setValue(sPC);
                         this.byId("startdateTp").setValue(finalStartDate);
                         this.byId("retailPcTP").setValue(sCode);
                         //this.rtailPCTP = sCode
                     } else if(sTitle === "Storage PC"){
+                        sPC = oSelectedItem.getBindingContext("storageModel").getObject().Prctr;
                         sCompanyCode = oSelectedItem.getBindingContext("storageModel").getObject().Bukrs;
                         sDatab = oSelectedItem.getBindingContext("storageModel").getObject().Datab;
                         finalStartDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDatab));
-                        this.byId("storagePcTP").setValue(sCode);
+                        this.byId("storagePcTP").setValue(sPC);
                         this.byId("ccCodeTp1").setValue(sCompanyCode);
                         this.byId("startdateTp1").setValue(finalStartDate);
                         //this.storagePCTP = sCode
                     } else if(sTitle === "Management PC"){
+                        sPC = oSelectedItem.getBindingContext("mgmtModel").getObject().Prctr;
                         sCompanyCode = oSelectedItem.getBindingContext("mgmtModel").getObject().Bukrs;
                         sDatab = oSelectedItem.getBindingContext("mgmtModel").getObject().Datab;
                         finalStartDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDatab));
-                        this.byId("mgmtPcTP").setValue(sCode);
+                        this.byId("mgmtPcTP").setValue(sPC);
                         this.byId("ccCodeTp3").setValue(sCompanyCode);
                         this.byId("startdateTp3").setValue(finalStartDate);
                         //this.managmentPCTP = sCode
                     } else if(sTitle === "Tennent PC"){
+                        sPC = oSelectedItem.getBindingContext("tennentModel").getObject().Prctr;
                         sCompanyCode = oSelectedItem.getBindingContext("tennentModel").getObject().Bukrs;
                         sDatab = oSelectedItem.getBindingContext("tennentModel").getObject().Datab;
                         finalStartDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDatab));
-                        this.byId("tenPcTP").setValue(sCode);
+                        this.byId("tenPcTP").setValue(sPC);
                         this.byId("ccCodeTp2").setValue(sCompanyCode);
                         this.byId("startdateTp2").setValue(finalStartDate);
                         //this.tennentPCTP = sCode
@@ -1015,7 +1022,8 @@ sap.ui.define([
                             CompanyCode1 : this.byId("ccCode").getValue(),
                             CompanyCode2 : this.byId("ccCode1").getValue(),
                             CompanyCode3 : this.byId("ccCode2").getValue(),
-                            CompanyCode4 : this.byId("ccCode3").getValue()
+                            CompanyCode4 : this.byId("ccCode3").getValue(),
+                            PropertyType: "O"
                         }
 
                     } else {
@@ -1027,7 +1035,8 @@ sap.ui.define([
                             CompanyCode1 : this.byId("ccCode1").getValue(),
                             CompanyCode2 : this.byId("ccCodeTp1").getValue(),
                             CompanyCode3 : this.byId("ccCodeTp2").getValue(),
-                            CompanyCode5 : this.byId("ccCodeTp3").getValue()
+                            CompanyCode5 : this.byId("ccCodeTp3").getValue(),
+                            PropertyType: "T"
                         }
                     }
                    const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
