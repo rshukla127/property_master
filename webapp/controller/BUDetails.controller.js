@@ -271,7 +271,7 @@ sap.ui.define([
             let bValidation = true;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
-            let sActive = this.getView().byId("active").getValue();
+            let sActive = this.getView().byId("active").getSelectedKey();
             if (sActive === "") {
                 this.model.setProperty("/Active", "Error");
                
@@ -316,7 +316,7 @@ sap.ui.define([
 
             if(bValidation === false){
             const payload = {
-                Active: this.getView().byId("active").getValue(),
+                Active: sActive,
                 BusinessUnitType: this._bType,
                 CustomerCode: this._custCode,
                 EntityType: this._entityType,

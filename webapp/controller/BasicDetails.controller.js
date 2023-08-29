@@ -54,7 +54,7 @@ sap.ui.define([
             if (!this._pValueHelpDialogProp) {
                 this._pValueHelpDialogProp = Fragment.load({
                     id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.Main.Property",
+                    name: "com.public.storage.pao.fragments.BasicDetails.Property",
                     controller: this
                 }).then(function (oDialog) {
                     oView.addDependent(oDialog);
@@ -63,9 +63,9 @@ sap.ui.define([
             }
             this._oBusyDialog.open()
             this._pValueHelpDialogProp.then(function (oDialog) {
-                that.readPropertyMasterData();
+                that.readPropertyMasterBuddyData();
                 that._oBusyDialog.close();
-                oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
+                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
                 // Open ValueHelpDialog filtered by the input's value
                 oDialog.open(sInputValue);
             });
@@ -73,12 +73,12 @@ sap.ui.define([
 
         onValueHelpDialogCloseProperty: function (oEvent) {
             let oItem = oEvent.getParameter("selectedItem");
-            let sProperty = oItem.getBindingContext("plantsModel").getObject().Name2
+            let sProperty = oItem.getBindingContext("plantsBuddyModel").getObject().Name2
             this.getView().byId("budProp").setValue(sProperty);
 
         },
 
-        readPropertyMasterData: function () {
+        readPropertyMasterBuddyData: function () {
             const that = this;
             this._oBusyDialog.open()
             return new Promise(function(){
@@ -86,8 +86,8 @@ sap.ui.define([
                     success: function (oData) {
                         that._oBusyDialog.close();
                         const oModel = new JSONModel(oData.results);
-                        that.getOwnerComponent().setModel(oModel, "plantsModel")
-                        sap.ui.getCore().setModel(oModel, "plantsModel");
+                        that.getOwnerComponent().setModel(oModel, "plantsBuddyModel")
+                        sap.ui.getCore().setModel(oModel, "plantsBuddyModel");
                     },
                     error: function (oData) {
                         that._oBusyDialog.close();
@@ -95,6 +95,13 @@ sap.ui.define([
                     }
                 });
             });
+
+        },
+
+        onDateChange: function(oEvent){
+            let sTime = "T00:00:00";
+            const sValue = oEvent.getSource().getValue();
+            this.fromattedDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sValue)) + sTime;
 
         },
 
@@ -109,11 +116,22 @@ sap.ui.define([
             let sPublishedPhoneNo = this.getView().byId("pubPhone").getValue();
             let sLocalPhoneNumber = this.getView().byId("localPh").getValue();
             let sNetwork2IpAddress =  this.getView().byId("network2").getValue();
-            let kisokACtivDate = this.getView().byId("kisok").getValue();
+            let kisokACtivDate = this.fromattedDate;
             let sGeoCode = this.getView().byId("geo").getValue();
+            if (kisokACtivDate !== ""){
+                //let fromattedDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(kisokACtivDate)) + sTime;
+                kisokACtivDate = this.fromattedDate === "T00:00:00" ? null : this.fromattedDate ;
+            } else {
+
+            }
             
-            let fromattedDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(kisokACtivDate)) + sTime;
-            kisokACtivDate = fromattedDate === "T00:00:00" ? null : fromattedDate ;
+            if (kisokACtivDate === "" || kisokACtivDate == null) {
+                this.model.setProperty("/KioskActiveDate", "Error");
+               
+            } else {
+                this.model.setProperty("/KioskActiveDate", "None");
+               
+            }
 
             if (sTollFreeNumber === "") {
                 this.model.setProperty("/tollFreeNumber", "Error");
@@ -147,14 +165,6 @@ sap.ui.define([
                
             }
 
-            if (kisokACtivDate === null) {
-                this.model.setProperty("/KioskActiveDate", "Error");
-               
-            } else {
-                this.model.setProperty("/KioskActiveDate", "None");
-               
-            }
-
             if (sPublishedPhoneNo === "") {
                 this.model.setProperty("/publishedPhoneNo", "Error");
             } else {
@@ -177,7 +187,7 @@ sap.ui.define([
             }
             
             if (sTollFreeNumber === "" || sGeoCode === "" || sLocalPhoneNumber === "" || sPublishedPhoneNo === "" || kisokACtivDate === null
-            || sKioskProperty === "" || sNetwork2IpAddress === "" || sNetwork1IpAddress === ""){
+            ||  sKioskProperty === "" || kisokACtivDate ==="" || sNetwork2IpAddress === "" || sNetwork1IpAddress === ""){
                 bValidation = true ;
             } else {
                 bValidation = false ;

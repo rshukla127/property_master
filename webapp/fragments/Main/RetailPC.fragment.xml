@@ -22,9 +22,11 @@
 	<ColumnListItem vAlign="Middle">
 		<cells>
 			<Text text="{retailpcModel>Prctr}"/>
+				<Text text="{retailpcModel>Name2}" />
 			<Text text="{retailpcModel>Bukrs}" />
-			<Text text="{retailpcModel>Name1}" />
-			<Text text="{retailpcModel>Datab}" />
+			
+			<Text text="{parts: ['retailpcModel>Datab'], formatter: '.formatter.formatDate'}" />
+				
 		</cells>
 	</ColumnListItem>
 	<columns>
@@ -33,17 +35,18 @@
 				<Text text="Profit Center" />
 			</header>
 		</Column>
+		
+		<Column minScreenWidth="Desktop" width="12em" demandPopin="true" >
+			<header>
+				<Text text="Long Description" />
+			</header>
+		</Column>
 		<Column minScreenWidth="Desktop" width="12em" demandPopin="true">
 			<header>
 				<Text text="Company Code" />
 			</header>
 		</Column>
-		<Column minScreenWidth="Desktop" width="12em" demandPopin="true" hAlign="End">
-			<header>
-				<Text text="Long Description" />
-			</header>
-		</Column>
-		<Column minScreenWidth="Desktop" demandPopin="true" width="12em" hAlign="Center">
+		<Column minScreenWidth="Desktop" demandPopin="true" width="12em" >
 			<header>
 				<Text text="Valid From" />
 			</header>

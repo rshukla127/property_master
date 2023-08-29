@@ -31,7 +31,8 @@
                          <Label required="true" text="{i18n>gateSaturdayOpenHr}" />
                          <TimePicker id="gateSatOpen" value="{parts: ['plantBasicDetailsModel>/GateSaturdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>gateThanksGivingOpenHr}" />
-                         <TimePicker id="gateThanksOpen" value="{parts: ['plantBasicDetailsModel>/GateThanksgivingOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                         
+                              <TimePicker id="gateThanksOpen" value="{parts: ['plantBasicDetailsModel>/GateThanksgivingOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss"  displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>gateChristmasOpenHr}" />
                          <TimePicker id="gateChrisOpen" value="{parts: ['plantBasicDetailsModel>/GateChristmasOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />

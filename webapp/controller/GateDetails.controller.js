@@ -64,7 +64,10 @@ sap.ui.define([
                 let gateChrisClosed = this.byId("gateChrisClose").getValue().split(':').map(Number);
                 let gateNewYearClosed = this.byId("gateNewYearClose").getValue().split(':').map(Number);
 
-                let finalSunOpen = "PT" + sunOpen[0] + "H" + sunOpen[1] + "M" + sunOpen[2] + "S";
+                
+                    let finalSunOpen = "PT" + sunOpen[0] + "H" + sunOpen[1] + "M" + sunOpen[2] + "S";
+            
+                
                 let finalMonOpen = "PT" + monOpen[0] + "H" + monOpen[1] + "M" + monOpen[2] + "S";
                 let finalTueOpen = "PT" + tueOpen[0] + "H" + tueOpen[1] + "M" + tueOpen[2] + "S";
                 let finalWedOpen = "PT" + wedOpen[0] + "H" + wedOpen[1] + "M" + wedOpen[2] + "S";
@@ -78,6 +81,16 @@ sap.ui.define([
                 let finalThuClosed = "PT" + thuClose[0] + "H" + thuClose[1] + "M" + thuClose[2] + "S";
                 let finalFriClosed = "PT" + friClose[0] + "H" + friClose[1] + "M" + friClose[2] + "S";
                 let finalSatClosed = "PT" + satClose[0] + "H" + satClose[1] + "M" + satClose[2] + "S";
+                
+                let finalgateThanksOpen = "PT" + gateThanksOpen[0] + "H" + gateThanksOpen[1] + "M" + gateThanksOpen[2] + "S";
+
+
+                let finalgateChrisOpen = "PT" + gateChrisOpen[0] + "H" + gateChrisOpen[1] + "M" + gateChrisOpen[2] + "S";
+               
+                let finalgateNewYearOpen = "PT" + gateNewYearOpen[0] + "H" + gateNewYearOpen[1] + "M" + gateNewYearOpen[2] + "S";
+                let finalgateThanksClosed = "PT" + geteThanksClosed[0] + "H" + geteThanksClosed[1] + "M" + geteThanksClosed[2] + "S";
+                let finalgateChrisClosed = "PT" + gateChrisClosed[0] + "H" + gateChrisClosed[1] + "M" + gateChrisClosed[2] + "S";
+                let finalNewYearClosed = "PT" + gateNewYearClosed[0] + "H" + gateNewYearClosed[1] + "M" + gateNewYearClosed[2] + "S";
 
 
             const payload = {
@@ -95,12 +108,12 @@ sap.ui.define([
                 GateFridayCloseHr: finalFriClosed,
                 GateSaturdayOpenHr: finalSatOpen,
                 GateSaturdayCloseHr: finalSatClosed,
-                //GateThanksgivingOpenHr: gateThanksOpen,
-                // GateThanksgivingCloseHr: geteThanksClosed,
-                // GateChristmasOpenHr: gateChrisOpen,
-                // GateChristmasCloseHr: gateChrisClosed,
-                // GateNewyearOpenHr: gateNewYearOpen,
-                // GateNewyearCloseHr: gateNewYearClosed,
+                GateThanksgivingOpenHr: finalgateThanksOpen,
+                GateThanksgivingCloseHr: finalgateThanksClosed,
+                GateChristmasOpenHr: finalgateChrisOpen,
+                GateChristmasCloseHr: finalgateChrisClosed,
+                GateNewyearOpenHr: finalgateNewYearOpen,
+                GateNewyearCloseHr: finalNewYearClosed,
                 GateAccessZone01: this.getView().byId("gateac1").getValue(),
                 GateAccessZone02: this.getView().byId("gateac2").getValue(),
                 GateAccessZone03: this.getView().byId("gateac3").getValue(),

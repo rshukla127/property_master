@@ -169,11 +169,11 @@ sap.ui.define([
                 this.model.setProperty("/WebsiteEnabledDate", "None"); 
             }
 
-            if (nfsfeeeffectiveDate === null) {
-                this.model.setProperty("/NsfFeeEffectiveDate", "Error");
-            } else {
-                this.model.setProperty("/NsfFeeEffectiveDate", "None"); 
-            }
+            // if (nfsfeeeffectiveDate === null) {
+            //     this.model.setProperty("/NsfFeeEffectiveDate", "Error");
+            // } else {
+            //     this.model.setProperty("/NsfFeeEffectiveDate", "None"); 
+            // }
 
             if (callCentDate === null) {
                 this.model.setProperty("/CallCenterEnabledDate", "Error");
@@ -183,7 +183,7 @@ sap.ui.define([
 
             if (PropertyLatitude === "" || PropertyLongitude === "" || PropertyAdminFee === "" || PropertyWebsiteReservations === "" || PropertyCallCenterReservati === ""
             || PropertyNfsFee === "" || MaxReservationDays === "" || PropertyNfsAchFee === "" || PropertyInsuranceFrozen === "" || PropertyInsuranceCancelDay === "" || PreReservationDays === ""
-            || websiteEnabledDate === null  || nfsfeeeffectiveDate === null || callCentDate === null){
+            || websiteEnabledDate === null || websiteEnabledDate === "" || callCentDate === null || callCentDate === ""){
                 bValidation = true ;
             } else {
                 bValidation = false ;

@@ -74,6 +74,10 @@ sap.ui.define(["sap/m/MessageToast",],
                   } else {
                   return "21:00:00"
                   }
-             }
+             },
+             formatDate: function(sDate){
+              if (sDate){
+              return sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDate));
+            }}
 		};
 	});

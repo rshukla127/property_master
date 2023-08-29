@@ -65,13 +65,11 @@
                                 <HBox alignContent="Inherit" class="sapUiSmallMargin" alignItems="Center" justifyContent="Start">
 
                                     <Label text="Plant:" required="true" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" />
-                                        <Input id="plantInput" textFormatMode="KeyValue" placeholder="Enter plant" showSuggestion="true" value="{plantsModel>/plant}" 
-                                            enabled="{oVisModel>/enabledForPlant}" showValueHelp="true" submit="onSubmitPlant" valueHelpRequest="_onValueHelpPlant"
-                                            suggestionItems="{path: 'plantsModel>/', length:5000}" suggestionItemSelected="onSuggestionPlantSelected">
-                                            <suggestionItems>
-                                                <core:ListItem key="{plantsModel>Werks}" text="{plantsModel>Werks}" />
-                                            </suggestionItems>
-                                        </Input>
+                                    <Input id="plantInput" textFormatMode="KeyValue" placeholder="Enter plant" showSuggestion="true" value="{plantsModel>/plant}" enabled="{oVisModel>/enabledForPlant}" showValueHelp="true" submit="onSubmitPlant" valueHelpRequest="_onValueHelpPlant" suggestionItems="{path: 'plantsModel>/', length:5000}" suggestionItemSelected="onSuggestionPlantSelected">
+                                        <suggestionItems>
+                                            <core:ListItem key="{plantsModel>Werks}" text="{plantsModel>Werks}" />
+                                        </suggestionItems>
+                                    </Input>
                                     <Label text="Property:" required="true" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" />
                                     <Input id="propertyInput" textFormatMode="KeyValue" placeholder="Enter property" showSuggestion="true" enabled="{oVisModel>/enabledForProperty}" showValueHelp="true" value="{plantsModel>/property}" valueHelpRequest="_onValueHelpRequestProperty" suggestionItems="{path: 'plantsModel>/', length:5000}" suggestionItemSelected="onSuggestionPropertySelected">
                                         <suggestionItems>
@@ -107,45 +105,39 @@
                                 <HBox alignContent="Inherit" id="owner" alignItems="Center" visible="{oVisModel>/visibliltyForOwner}" class="sapUiSmallMargin" justifyContent="Start">
                                     <VBox class="sapUiMediumMarginEnd sapUiMediumMarginBegin" visible="{oVisModel>/visForRetailPCBlock}">
                                         <Label text="{i18n>retailPC}" required="true"/>
-                                        <Input id="retailPc" value="{plantBasicDetailsModel>/0/RetailPc}" placeholder="Search PC.." 
-                                            showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestReatilPC" 
-                                            suggestionItems="{path: 'retailpcModel>/', length:5000}" suggestionItemSelected="onSuggestionItemSelected">
+                                        <Input id="retailPc" value="{plantBasicDetailsModel>/0/RetailPc}" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestReatilPC" suggestionItems="{path: 'retailpcModel>/', length:5000}" suggestionItemSelected="onSuggestionItemSelected">
                                             <suggestionItems>
                                                 <core:ListItem key="{retailpcModel>Prctr}" text="{retailpcModel>Prctr}"/>
                                             </suggestionItems>
                                         </Input>
-                                        <Label text="Company Code"  />
+                                        <Label text="Company Code" />
                                         <Input id="ccCode" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode1}" />
-                                        <Label text="Active Date"  />
+                                        <Label text="Active Date" />
                                         <DatePicker id="startdate" enabled="false" placeholder="Choose Date.." value="{ 
-                                            path: 'plantBasicDetailsModel>/CddStartDate',
+                                            path: 'plantBasicDetailsModel>/0/RetailPCAdate',
                                             type: 'sap.ui.model.type.Date'  
-                                          }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
+                                          }" valueFormat="yyyy-MM-dd"/>
                                     </VBox>
                                     <VBox class="sapUiMediumMarginEnd sapUiMediumMarginBegin" visible="{oVisModel>/visForStoragePCBlock}">
                                         <Label text="{i18n>storagePC}" />
-                                        <Input id="storagePc" textFormatMode="KeyValue" value="{plantBasicDetailsModel>/0/StoragePc}" 
-                                            placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestStoragePC" 
-                                            suggestionItems="{path: 'storageModel>/', length:5000}" suggestionItemSelected="onSuggestionItemSelected">
+                                        <Input id="storagePc" change="onChangePCs" textFormatMode="KeyValue" value="{plantBasicDetailsModel>/0/StoragePc}" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestStoragePC" suggestionItems="{path: 'storageModel>/', length:5000}" suggestionItemSelected="onSuggestionItemSelected">
                                             <suggestionItems>
                                                 <core:ListItem key="{storageModel>Prctr}" text="{storageModel>Prctr}"/>
                                             </suggestionItems>
                                         </Input>
-                                        <Label text="Company Code"  />
+                                        <Label text="Company Code" />
                                         <Input id="ccCode1" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode2}" />
                                         <Label text="Active Date"/>
                                         <DatePicker id="startdate1" enabled="false" placeholder="Choose Date.." value="{ 
-                                                path: 'plantBasicDetailsModel>/CddStartDate',
+                                                path: 'plantBasicDetailsModel>/0/StoragePcAdate',
                                                 type: 'sap.ui.model.type.Date'  
-                                              }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
+                                              }" valueFormat="yyyy-MM-dd"/>
 
                                     </VBox>
                                     <VBox class="sapUiMediumMarginEnd sapUiMediumMarginBegin" visible="{oVisModel>/visForTennentPCBlock}">
 
-                                        <Label text="{i18n>tennetPC}"  />
-                                        <Input id="tenPc" textFormatMode="KeyValue" value="{plantBasicDetailsModel>/0/TennentInsPc}" placeholder="Search PC.." 
-                                            showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestTennentPC" 
-                                            suggestionItems="{path: 'tennentModel>/', length:5000}" suggestionItemSelected=".onSuggestionItemSelected">
+                                        <Label text="{i18n>tennetPC}" />
+                                        <Input id="tenPc" textFormatMode="KeyValue" value="{plantBasicDetailsModel>/0/TennentInsPc}" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestTennentPC" suggestionItems="{path: 'tennentModel>/', length:5000}" suggestionItemSelected="onSuggestionItemSelected">
                                             <suggestionItems>
                                                 <core:ListItem key="{tennentModel>Prctr}" text="{tennentModel>Prctr}"/>
                                             </suggestionItems>
@@ -154,110 +146,98 @@
                                         <Input id="ccCode2" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode3}" />
                                         <Label text="Active Date"/>
                                         <DatePicker id="startdate2" enabled="false" placeholder="Choose Date.." value="{ 
-                                            path: 'plantBasicDetailsModel>/CddStartDate',
+                                            path: 'plantBasicDetailsModel>/0/TennentinPcAdate',
                                             type: 'sap.ui.model.type.Date'  
-                                          }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
+                                          }" valueFormat="yyyy-MM-dd"/>
 
                                     </VBox>
                                     <VBox class="sapUiMediumMarginEnd sapUiMediumMarginBegin" visible="{oVisModel>/visForCommPCBlock}">
 
-                                    <Label text="{i18n>commPC}" />
-                                    <Input id="commPc" textFormatMode="KeyValue" value="{plantBasicDetailsModel>/0/CommercialPc}" placeholder="Search PC.." 
-                                        showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestCommPC" 
-                                        suggestionItems="{path: 'commPcModel>/', length:5000}" suggestionItemSelected=".onSuggestionItemSelected">
-                                        <suggestionItems>
-                                            <core:ListItem key="{commPcModel>Prctr}" text="{commPcModel>Prctr}"/>
-                                        </suggestionItems>
-                                    </Input>
-                                    <Label text="Company Code" />
-                                    <Input id="ccCode3" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode4}" />
-                                    <Label text="Active Date"  />
-                                    <DatePicker id="startdate3" enabled="false" placeholder="Choose Date.." value="{ 
-                                        path: 'plantBasicDetailsModel>/CddStartDate',
+                                        <Label text="{i18n>commPC}" />
+                                        <Input id="commPc" textFormatMode="KeyValue" value="{plantBasicDetailsModel>/0/CommercialPc}" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestCommPC" suggestionItems="{path: 'commPcModel>/', length:5000}" suggestionItemSelected="onSuggestionItemSelected">
+                                            <suggestionItems>
+                                                <core:ListItem key="{commPcModel>Prctr}" text="{commPcModel>Prctr}"/>
+                                            </suggestionItems>
+                                        </Input>
+                                        <Label text="Company Code" />
+                                        <Input id="ccCode3" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode4}" />
+                                        <Label text="Active Date" />
+                                        <DatePicker id="startdate3" enabled="false" placeholder="Choose Date.." value="{ 
+                                        path: 'plantBasicDetailsModel>/0/CommercialPcAdate',
                                         type: 'sap.ui.model.type.Date'  
-                                      }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
+                                      }" valueFormat="yyyy-MM-dd"/>
 
-                                </VBox>
+                                    </VBox>
                                 </HBox>
 
                                 <HBox alignContent="Inherit" id="thirdParty" visible="{oVisModel>/visibliltyForThirdParty}" alignItems="Center" class="sapUiSmallMargin" justifyContent="Start">
                                     <VBox class="sapUiMediumMarginEnd sapUiMediumMarginBegin" visible="{oVisModel>/visForRetailPCBlock}">
-                                    <Label text="{i18n>retailPC}" required="true" />
-                                        <Input id="retailPcTP" value="{plantBasicDetailsModel>/0/RetailPc}" placeholder="Search PC.." 
-                                            showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestReatilPC" 
-                                            suggestionItems="{path: 'retailpcModel>/', length:5000}" suggestionItemSelected=".onSuggestionItemSelected">
+                                        <Label text="{i18n>retailPC}" required="true" />
+                                        <Input id="retailPcTP" value="{plantBasicDetailsModel>/0/RetailPc}" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestReatilPC" suggestionItems="{path: 'retailpcModel>/', length:5000}" suggestionItemSelected="onSuggestionItemSelected">
                                             <suggestionItems>
                                                 <core:ListItem key="{retailpcModel>Prctr}" text="{retailpcModel>Prctr}"/>
                                             </suggestionItems>
-                                    </Input>
-                                    <Label text="Company Code"  />
-                                    <Input id="ccCodeTp" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode1}" />
-                                    <Label text="Active Date"  />
-                                    <DatePicker id="startdateTp" enabled="false" placeholder="Choose Date.." value="{ 
-                                        path: 'plantBasicDetailsModel>/CddStartDate',
+                                        </Input>
+                                        <Label text="Company Code" />
+                                        <Input id="ccCodePcTp" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode1}" />
+                                        <Label text="Active Date" />
+                                        <DatePicker id="startdatereatilPcTp" enabled="false" placeholder="Choose Date.." value="{ 
+                                        path: 'plantBasicDetailsModel>/0/RetailPCAdate',
                                         type: 'sap.ui.model.type.Date'  
                                       }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
 
                                     </VBox>
                                     <VBox class="sapUiMediumMarginEnd sapUiMediumMarginBegin" visible="{oVisModel>/visForStoragePCBlock}">
 
-                                    <Label text="{i18n>storagePC}" />
-                                    <Input id="storagePcTP" textFormatMode="KeyValue" value="{plantBasicDetailsModel>/0/StoragePc}" placeholder="Search PC.."
-                                         showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestStoragePC" 
-                                         suggestionItems="{path: 'storageModel>/', length:5000}" suggestionItemSelected=".onSuggestionItemSelected">
-                                         <suggestionItems>
-                                            <core:ListItem key="{storageModel>Prctr}" text="{storageModel>Prctr}"/>
-                                        </suggestionItems>
-                                    </Input>
-                                    <Label text="Company Code"  />
-                                    <Input id="ccCodeTp1" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode2}" />
-                                    <Label text="Active Date"  />
-                                    <DatePicker id="startdateTp1" enabled="false" placeholder="Choose Date.." value="{ 
-                                        path: 'plantBasicDetailsModel>/CddStartDate',
+                                        <Label text="{i18n>storagePC}" />
+                                        <Input id="storagePcTP" textFormatMode="KeyValue" value="{plantBasicDetailsModel>/0/StoragePc}" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestStoragePC" suggestionItems="{path: 'storageModel>/', length:5000}" suggestionItemSelected="onSuggestionItemSelected">
+                                            <suggestionItems>
+                                                <core:ListItem key="{storageModel>Prctr}" text="{storageModel>Prctr}"/>
+                                            </suggestionItems>
+                                        </Input>
+                                        <Label text="Company Code" />
+                                        <Input id="ccCodeStTp" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode2}" />
+                                        <Label text="Active Date" />
+                                        <DatePicker id="startdateStoragePcTp" enabled="false" placeholder="Choose Date.." value="{ 
+                                        path: 'plantBasicDetailsModel>/0/StoragePcAdate',
                                         type: 'sap.ui.model.type.Date'  
                                       }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
 
-                                </VBox>
-                                <VBox class="sapUiMediumMarginEnd sapUiMediumMarginBegin" visible="{oVisModel>/visForTennentPCBlock}">
+                                    </VBox>
+                                    <VBox class="sapUiMediumMarginEnd sapUiMediumMarginBegin" visible="{oVisModel>/visForTennentPCBlock}">
 
-                                    <Label text="{i18n>tennetPC}"/>
-                                    <Input id="tenPcTP" textFormatMode="KeyValue" value="{plantBasicDetailsModel>/0/TennentInsPc}" placeholder="Search PC.."
-                                         showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestTennentPC"
-                                         suggestionItems="{path: 'tennentModel>/', length:5000}" suggestionItemSelected=".onSuggestionItemSelected">
-                                         <suggestionItems>
-                                            <core:ListItem key="{tennentModel>Prctr}" text="{tennentModel>Prctr}"/>
-                                        </suggestionItems>
-                                    </Input>
+                                        <Label text="{i18n>tennetPC}"/>
+                                        <Input id="tenPcTP" textFormatMode="KeyValue" value="{plantBasicDetailsModel>/0/TennentInsPc}" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestTennentPC" suggestionItems="{path: 'tennentModel>/', length:5000}" suggestionItemSelected="onSuggestionItemSelected">
+                                            <suggestionItems>
+                                                <core:ListItem key="{tennentModel>Prctr}" text="{tennentModel>Prctr}"/>
+                                            </suggestionItems>
+                                        </Input>
 
-                                    <Label text="Company Code"  />
-                                    <Input id="ccCodeTp2" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode3}" />
-                                    <Label text="Active Date"  />
-                                    <DatePicker id="startdateTp2" enabled="false" placeholder="Choose Date.." value="{ 
-                                        path: 'plantBasicDetailsModel>/CddStartDate',
+                                        <Label text="Company Code" />
+                                        <Input id="ccCodeTenTp" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode3}" />
+                                        <Label text="Active Date" />
+                                        <DatePicker id="startdateTanentPcTp" enabled="false" placeholder="Choose Date.." value="{ 
+                                        path: 'plantBasicDetailsModel>/0/TennentinPcAdate',
                                         type: 'sap.ui.model.type.Date'  
                                       }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
 
-                                </VBox>
-
-                                <VBox class="sapUiMediumMarginEnd sapUiMediumMarginBegin" visible="{oVisModel>/visForManagementPCBlock}">
-
-                                    <Label text="{i18n>mgmtPC}"/>
-                                    <Input id="mgmtPcTP" textFormatMode="KeyValue" value="{plantBasicDetailsModel>/0/ManagmentPc}"  placeholder="Search PC.." 
-                                        showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestMgmtPC" 
-                                        suggestionItems="{path: 'mgmtModel>/', length:5000}" suggestionItemSelected=".onSuggestionItemSelected">
-                                        <suggestionItems>
-                                            <core:ListItem key="{mgmtModel>Prctr}" text="{mgmtModel>Prctr}"/>
-                                        </suggestionItems>
-                                    </Input>
-                                    <Label text="Company Code"  />
-                                    <Input id="ccCodeTp3" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode5}" />
-                                    <Label text="Active Date"  />
-                                    <DatePicker id="startdateTp3" enabled="false" placeholder="Choose Date.." value="{ 
-                                        path: 'plantBasicDetailsModel>/CddStartDate',
+                                    </VBox>
+                                    <VBox class="sapUiMediumMarginEnd sapUiMediumMarginBegin" visible="{oVisModel>/visForManagementPCBlock}">
+                                        <Label text="{i18n>mgmtPC}"/>
+                                        <Input id="mgmtPcTP" textFormatMode="KeyValue" value="{plantBasicDetailsModel>/0/ManagmentPc}" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestMgmtPC" suggestionItems="{path: 'mgmtModel>/', length:5000}" suggestionItemSelected="onSuggestionItemSelected">
+                                            <suggestionItems>
+                                                <core:ListItem key="{mgmtModel>Prctr}" text="{mgmtModel>Prctr}"/>
+                                            </suggestionItems>
+                                        </Input>
+                                        <Label text="Company Code" />
+                                        <Input id="ccCodeMgTp" enabled="false" value="{plantBasicDetailsModel>/0/CompanyCode5}" />
+                                        <Label text="Active Date" />
+                                        <DatePicker id="startdateMgmtPcTp" enabled="false" placeholder="Choose Date.." value="{ 
+                                        path: 'plantBasicDetailsModel>/0/ManagementPcAdate',
                                         type: 'sap.ui.model.type.Date'  
                                       }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
 
-                                </VBox>
+                                    </VBox>
                                 </HBox>
                                 <VBox alignContent="End" alignItems="End">
                                     <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSave"></Button>
