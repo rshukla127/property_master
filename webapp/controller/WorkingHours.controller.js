@@ -2,12 +2,14 @@ sap.ui.define([
 	"com/public/storage/pao/utils/reusecontroller",
     "sap/m/BusyDialog",
     "sap/m/MessageToast",
-    "com/public/storage/pao/utils/formatter"
+    "com/public/storage/pao/utils/formatter",
+    "sap/ui/model/json/JSONModel"
 ], function(
 	BaseController,
     BusyDialog,
     MessageToast,
-    formatter
+    formatter,
+    JSONModel
 ) {
 	"use strict";
     var _oController;
@@ -21,6 +23,24 @@ sap.ui.define([
             oRouter.getRoute("workingHours").attachMatched(this._onRouteMatched, this);
             this._oBusyDialog = new BusyDialog();
 			this.getView().addDependent(this._oBusyDialog);
+            this.model = new JSONModel();
+			this.model.setData({
+				sunOpenHR: "None",
+				monOpenHR: "None",
+                tueOpenHR: "None",
+                wedOpenHR: "None",
+                thuOpenHR: "None",
+                friOpenHR: "None",
+                satOpenHR: "None",
+                sunCloseHR: "None",
+                monCloseHR: "None",
+                tueCloseHR: "None",
+                wedCloseHR: "None",
+                thuCloseHR: "None",
+                friCloseHR: "None",
+                satCloseHR: "None"
+			});
+            this.getView().setModel(this.model);
 
         },
 
@@ -52,23 +72,122 @@ sap.ui.define([
         // },
 
         onPressSaveWorkingHours: function(){
+            var bValidation = true;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             // let sTime = "T00:00:00";
-                let sunOpen = this.byId("sunOpen").getValue().split(':').map(Number);
-                let monOpen = this.byId("monOpen").getValue().split(':').map(Number);
-                let tueOpen = this.byId("tueOpen").getValue().split(':').map(Number);
-                let wedOpen = this.byId("wedOpen").getValue().split(':').map(Number);
-                let thuOpen = this.byId("thuOpen").getValue().split(':').map(Number);
-                let friOpen = this.byId("friOpen").getValue().split(':').map(Number);
-                let satOpen = this.byId("satOpen").getValue().split(':').map(Number);
-                let sunClose = this.byId("sunClose").getValue().split(':').map(Number);
-                let monClose = this.byId("monClose").getValue().split(':').map(Number);
-                let tueClose = this.byId("tueClose").getValue().split(':').map(Number);
-                let wedClose = this.byId("wedClose").getValue().split(':').map(Number);
-                let thuClose = this.byId("thuClose").getValue().split(':').map(Number);
-                let friClose = this.byId("friClose").getValue().split(':').map(Number);
-                let satClose = this.byId("satClose").getValue().split(':').map(Number);
+            let sunOpenN = this.byId("sunOpen").getValue();
+            let monOpenN = this.byId("monOpen").getValue();
+            let tueOpenN = this.byId("tueOpen").getValue();
+            let wedOpenN = this.byId("wedOpen").getValue();
+            let thuOpenN = this.byId("thuOpen").getValue();
+            let friOpenN= this.byId("friOpen").getValue();
+            let satOpenN = this.byId("satOpen").getValue();
+            let sunCloseN = this.byId("sunClose").getValue();
+            let monCloseN = this.byId("monClose").getValue();
+            let tueCloseN = this.byId("tueClose").getValue();
+            let wedCloseN = this.byId("wedClose").getValue();
+            let thuCloseN = this.byId("thuClose").getValue();
+            let friCloseN = this.byId("friClose").getValue();
+            let satCloseN = this.byId("satClose").getValue();
+
+            if (sunOpenN === "" || sunOpenN == null) {
+                this.model.setProperty("/sunOpenHR", "Error");
+            } else {
+                this.model.setProperty("/sunOpenHR", "None");
+            }
+            if (monOpenN === "" || monOpenN === "") {
+                this.model.setProperty("/monOpenHR", "Error");
+            } else {
+                this.model.setProperty("/monOpenHR", "None");
+            }
+
+            if (tueOpenN === "" || tueOpenN == null) {
+                this.model.setProperty("/tueOpenHR", "Error");
+            } else {
+                this.model.setProperty("/tueOpenHR", "None");
+            }
+            if (wedOpenN === "" || wedOpenN === "") {
+                this.model.setProperty("/wedOpenHR", "Error");
+            } else {
+                this.model.setProperty("/wedOpenHR", "None");
+            }
+
+            if (thuOpenN === "" || thuOpenN == null) {
+                this.model.setProperty("/thuOpenHR", "Error");
+            } else {
+                this.model.setProperty("/wedOpenHR", "None");
+            }
+            if (friOpenN === "" || friOpenN === "") {
+                this.model.setProperty("/friOpenHR", "Error");
+            } else {
+                this.model.setProperty("/friOpenHR", "None");
+            }
+            if (satOpenN === "" || satOpenN === "") {
+                this.model.setProperty("/satOpenHR", "Error");
+            } else {
+                this.model.setProperty("/satOpenHR", "None");
+            }
+            if (sunCloseN === "" || sunCloseN === "") {
+                this.model.setProperty("/sunCloseHR", "Error");
+            } else {
+                this.model.setProperty("/sunCloseHR", "None");
+            }
+
+            if (monCloseN === "" || monCloseN === "") {
+                this.model.setProperty("/monCloseHR", "Error");
+            } else {
+                this.model.setProperty("/monCloseHR", "None");
+            }
+            if (tueCloseN === "" || tueCloseN === "") {
+                this.model.setProperty("/tueCloseHR", "Error");
+            } else {
+                this.model.setProperty("/tueCloseHR", "None");
+            }
+            if (wedCloseN === "" || wedCloseN === "") {
+                this.model.setProperty("/wedCloseHR", "Error");
+            } else {
+                this.model.setProperty("/wedCloseHR", "None");
+            }
+            if (thuCloseN === "" || thuCloseN === "") {
+                this.model.setProperty("/thuCloseHR", "Error");
+            } else {
+                this.model.setProperty("/thuCloseHR", "None");
+            }
+            if (friCloseN === "" || friCloseN === "") {
+                this.model.setProperty("/friCloseHR", "Error");
+            } else {
+                this.model.setProperty("/friCloseHR", "None");
+            }
+            if (satCloseN === "" || satCloseN === "") {
+                this.model.setProperty("/satCloseHR", "Error");
+            } else {
+                this.model.setProperty("/satCloseHR", "None");
+            }
+            if (sunOpenN === "" || monOpenN === "" || tueOpenN === "" || wedOpenN === "" || thuOpenN === ""
+            ||  friOpenN === "" || satOpenN === "" ||  sunCloseN ==="" || monCloseN === "" || tueCloseN === "" || wedCloseN === "" || thuCloseN === "" || friCloseN === ""
+            || satCloseN === ""){
+                bValidation = true ;
+            } else {
+                bValidation = false ;
+            }
+
+                if (bValidation === false){
+
+                let sunOpen = sunOpenN.split(':').map(Number);
+                let monOpen = monOpenN.split(':').map(Number);
+                let tueOpen = tueOpenN.split(':').map(Number);
+                let wedOpen = wedOpenN.split(':').map(Number);
+                let thuOpen = thuOpenN.split(':').map(Number);
+                let friOpen = friOpenN.split(':').map(Number);
+                let satOpen = satOpenN.split(':').map(Number);
+                let sunClose = sunCloseN.split(':').map(Number);
+                let monClose = monCloseN.split(':').map(Number);
+                let tueClose = tueCloseN.split(':').map(Number);
+                let wedClose = wedCloseN.split(':').map(Number);
+                let thuClose = thuCloseN.split(':').map(Number);
+                let friClose = friCloseN.split(':').map(Number);
+                let satClose = satCloseN.split(':').map(Number);
 
                 let finalSunOpen = "PT" + sunOpen[0] + "H" + sunOpen[1] + "M" + sunOpen[2] + "S";
                 let finalMonOpen = "PT" + monOpen[0] + "H" + monOpen[1] + "M" + monOpen[2] + "S";
@@ -111,7 +230,9 @@ sap.ui.define([
                     MessageToast.show("Something went wrong with Service")
                 }
             })
-
+        }else {
+            MessageToast.show("Please Fill all mandatory fields");
+        }
         }
 	});
 });

@@ -164,53 +164,61 @@ sap.ui.define([
             let sCode =  oSelectedItem.getTitle();
 
             if (sTitle === "Market Key"){
-                this.byId("markKey").setValue(sDescription);
-                this.marketKey = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/MarketKey", sCode);
+                // this.byId("markKey").setValue(sDescription);
+                // this.marketKey = sCode
             } else if(sTitle === "Metro Statistical Area"){
-                this.byId("metroStats").setValue(sDescription);
-                this._MetroStats = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/MetroStatisicalArea", sCode);
+                // this.byId("metroStats").setValue(sDescription);
+                // this._MetroStats = sCode
             } else if(sTitle === "Neighbourhood"){
-                this.byId("neighbourwood").setValue(sDescription);
-                this._neighbour = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/Neighborwood", sCode);
+                // this.byId("neighbourwood").setValue(sDescription);
+                // this._neighbour = sCode
             } else if(sTitle === "Consolidated Property Group"){
-                this.byId("psCons").setValue(sDescription);
-                this._consolidatedPGroup = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/PsConsolidatedPropertygroup", sCode);
+                // this.byId("psCons").setValue(sDescription);
+                // this._consolidatedPGroup = sCode
             }
             
 		},
 
         onPressSaveMarketingDetails: function(){
             const sPlant = this.getOwnerComponent().plant
-            const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
+            const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
+            let sMarketKey = this.byId("markKey").getValue();
+            let sMetroStatus = this.byId("metroStats").getValue();
+            let sNeighbourhood = this.byId("neighbourwood").getValue();
+            let sConslidatedGroup = this.byId("psCons").getValue();
 
             let bValidation = true;
 
-            if (this.marketKey === "" || this.marketKey === undefined ) {
+            if (sMarketKey === "" || sMarketKey === undefined ) {
                 this.model.setProperty("/MarketKey", "Error");
             } else {
                 this.model.setProperty("/MarketKey", "None");
             }
 
-            if (this._MetroStats === "" || this._MetroStats === undefined ) {
+            if (sMetroStatus === "" || sMetroStatus === undefined ) {
                 this.model.setProperty("/MetroStatisicalArea", "Error");
             } else {
                 this.model.setProperty("/MetroStatisicalArea", "None");
             }
 
-            if (this._neighbour === "" || this._neighbour === undefined ) {
+            if (sNeighbourhood === "" || sNeighbourhood === undefined ) {
                 this.model.setProperty("/Neighborwood", "Error");
             } else {
                 this.model.setProperty("/Neighborwood", "None");
             }
 
-            if (this._consolidatedPGroup === "" || this._consolidatedPGroup === undefined ) {
+            if (sConslidatedGroup === "" || sConslidatedGroup === undefined ) {
                 this.model.setProperty("/PsConsolidatedPropertygroup", "Error");
             } else {
                 this.model.setProperty("/PsConsolidatedPropertygroup", "None");
             }
 
-            if (this.marketKey === "" || this._MetroStats === "" || this._neighbour === "" || this._consolidatedPGroup === "" ||
-            this.marketKey === undefined || this._MetroStats === undefined || this._neighbour === undefined || this._consolidatedPGroup === undefined){
+            if (sMarketKey === "" || sMetroStatus === "" || sNeighbourhood === "" || sConslidatedGroup === "" ||
+            sMarketKey === undefined || sMetroStatus === undefined || sNeighbourhood === undefined || sConslidatedGroup === undefined){
                 bValidation = true ;
             } else {
                 bValidation = false ;
@@ -218,10 +226,10 @@ sap.ui.define([
 
             if (bValidation === false){
             const payload = {
-                MarketKey: this.marketKey,
-                MetroStatisicalArea: this._MetroStats,
-                Neighborwood: this._neighbour,
-                PsConsolidatedPropertygroup: this._consolidatedPGroup
+                MarketKey: sMarketKey,
+                MetroStatisicalArea: sMetroStatus,
+                Neighborwood: sNeighbourhood,
+                PsConsolidatedPropertygroup: sConslidatedGroup
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
             this._oModel.update(uri, payload, {

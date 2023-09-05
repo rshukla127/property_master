@@ -12,7 +12,7 @@
 			title="{retailpcModel>Prctr}"/>
 	</SelectDialog> -->
 
-	<TableSelectDialog id="retailPC" noDataText="No PC Found" title="Retail PC" search="onValueHelpDialogSearchPC" confirm="onValueHelpDialogClosePC" cancel="onValueHelpDialogCloseProperty" items="{
+	<TableSelectDialog id="retailPC" noDataText="No PC Found" title="Retail PC"  search="onValueHelpDialogSearchPC" confirm="onValueHelpDialogClosePC" cancel="onValueHelpDialogCloseProperty" items="{
 		path : 'retailpcModel>/',
 		sorter : {
 			path : 'Name1',

@@ -48,11 +48,11 @@ sap.ui.define([
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
             var bValidation = true;
             let sTime = "T00:00:00";
-            let valResstartdate = this.byId("restrtdate").getValue();
-            let valnewOwnerdate = this.byId("newOwnerdate").getValue();
-            let valorstartdate = this.byId("orstartdate").getValue();
-            let valterminationdate = this.byId("terminationdate").getValue();
-            let valbucreatedate = this.byId("bucreatedate").getValue();
+            let valResstartdate = this.byId("restrtdate").getValue().split(".").reverse().join("-");
+            let valnewOwnerdate = this.byId("newOwnerdate").getValue().split(".").reverse().join("-");
+            let valorstartdate = this.byId("orstartdate").getValue().split(".").reverse().join("-");
+            let valterminationdate = this.byId("terminationdate").getValue().split(".").reverse().join("-");
+            let valbucreatedate = this.byId("bucreatedate").getValue().split(".").reverse().join("-");
             let finalStartDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(valResstartdate)) + sTime;
             let finalOwnerDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(valnewOwnerdate)) + sTime;
             let finalvalorstartdate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(valorstartdate)) + sTime;
@@ -65,31 +65,31 @@ sap.ui.define([
             valbucreatedate = finalbucreatedate === "T00:00:00" ? null : finalbucreatedate ;
 
 
-            if (valResstartdate === null) {
+            if (valResstartdate === null || valResstartdate === "") {
                 this.model.setProperty("/ReStartDate", "Error");
             } else {
                 this.model.setProperty("/ReStartDate", "None");
             }
 
-            if (valnewOwnerdate === null) {
+            if (valnewOwnerdate === null || valnewOwnerdate === "" ) {
                 this.model.setProperty("/NewOwnershipDate", "Error");
             } else {
                 this.model.setProperty("/NewOwnershipDate", "None");
             }
 
-            if (valorstartdate === null) {
+            if (valorstartdate === null || valorstartdate === "") {
                 this.model.setProperty("/OriginalStartDate", "Error");
             } else {
                 this.model.setProperty("/OriginalStartDate", "None");
             }
 
-            if (valterminationdate === null) {
+            if (valterminationdate === null || valterminationdate === "") {
                 this.model.setProperty("/TerminationDate", "Error");
             } else {
                 this.model.setProperty("/TerminationDate", "None");
             }
 
-            if (valbucreatedate === null) {
+            if (valbucreatedate === null || valbucreatedate === "") {
                 this.model.setProperty("/BuCreateDate", "Error");
             } else {
                 this.model.setProperty("/BuCreateDate", "None");

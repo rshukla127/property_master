@@ -540,6 +540,9 @@ sap.ui.define([
                 let sCompanyCodeMgmtPcTP,sDatabMgmtPcTP, finalStartDateMgmtPcTP,sPCMgmtTP;
                 let sCompanyCodeTennentTP,sDatabTennetTP, finalStartDateTennetTP,sPCTennetTP;
                 var oSelectedItem = oEvent.getParameter("selectedItem");
+                if (oSelectedItem){
+                    
+                }
                 //var sCode = oEvent.getSource().getValue();
                 var oText = oSelectedItem ? oSelectedItem.getKey() : "";
                 const sSelectedRBButton = this.getView().byId("rbg1").getSelectedButton().getText();
@@ -553,6 +556,7 @@ sap.ui.define([
                 const sIDmgmtPCTP = oEvent.getSource().getId().includes("mgmtPcTP");
                 if (sSelectedRBButton ==="Own"){
                     if (sIDRetail === true){
+                        this.byId("retailPc").setValueState(sap.ui.core.ValueState.None);
                         sPCRetail = oSelectedItem.getBindingContext("retailpcModel").getObject().Prctr;
                         sCompanyCodeRetail = oSelectedItem.getBindingContext("retailpcModel").getObject().Bukrs;
                         sDatabRetail = oSelectedItem.getBindingContext("retailpcModel").getObject().Datab;
@@ -569,6 +573,7 @@ sap.ui.define([
                         //this.rtailPC = sCode
                     }
                     if(sIDStorage === true){
+                        this.byId("storagePc").setValueState(sap.ui.core.ValueState.None);
                         sPCStorage = oSelectedItem.getBindingContext("storageModel").getObject().Prctr;
                         sCompanyCodeStorage = oSelectedItem.getBindingContext("storageModel").getObject().Bukrs;
                         sDatabStorage = oSelectedItem.getBindingContext("storageModel").getObject().Datab;
@@ -585,6 +590,7 @@ sap.ui.define([
                         //this.storagePC = sCode
                     } 
                     if(sIDcommPC === true){
+                        this.byId("commPc").setValueState(sap.ui.core.ValueState.None);
                         sPCComm = oSelectedItem.getBindingContext("commPcModel").getObject().Prctr;
                         sCompanyCodeCommPc = oSelectedItem.getBindingContext("commPcModel").getObject().Bukrs;
                         sDatabCommPc = oSelectedItem.getBindingContext("commPcModel").getObject().Datab;
@@ -599,6 +605,7 @@ sap.ui.define([
                         //this.commPC = sCode
                     } 
                     if(sIDTent === true){
+                        this.byId("tenPc").setValueState(sap.ui.core.ValueState.None);
                         sPCTennet = oSelectedItem.getBindingContext("tennentModel").getObject().Prctr;
                         sCompanyCodeTennent = oSelectedItem.getBindingContext("tennentModel").getObject().Bukrs;
                         sDatabTennet = oSelectedItem.getBindingContext("tennentModel").getObject().Datab;
@@ -617,6 +624,7 @@ sap.ui.define([
                 } else {
                     
                     if (sIDRetailTP === true){
+                        this.byId("retailPcTP").setValueState(sap.ui.core.ValueState.None);
                         sPCRetailTP = oSelectedItem.getBindingContext("retailpcModel").getObject().Prctr;
                         sCompanyCodeRetailTP = oSelectedItem.getBindingContext("retailpcModel").getObject().Bukrs;
                         sDatabRetailTP = oSelectedItem.getBindingContext("retailpcModel").getObject().Datab;
@@ -631,7 +639,7 @@ sap.ui.define([
                         //this.rtailPCTP = sCode
                     } 
                     if(sIDStorageTP === true){
-
+                        this.byId("storagePcTP").setValueState(sap.ui.core.ValueState.None);
                         sPCStorageTP = oSelectedItem.getBindingContext("storageModel").getObject().Prctr;
                         sCompanyCodeStorageTP = oSelectedItem.getBindingContext("storageModel").getObject().Bukrs;
                         sDatabStorageTP = oSelectedItem.getBindingContext("storageModel").getObject().Datab;
@@ -643,7 +651,7 @@ sap.ui.define([
                         this.byId("startdateStoragePcTp").setValue(finalStartDateStorageTP);
                     } 
                     if(sIDTentTP === true){
-                        
+                        this.byId("tenPcTP").setValueState(sap.ui.core.ValueState.None);
                         sPCTennetTP = oSelectedItem.getBindingContext("tennentModel").getObject().Prctr;
                         sCompanyCodeTennentTP = oSelectedItem.getBindingContext("tennentModel").getObject().Bukrs;
                         sDatabTennetTP = oSelectedItem.getBindingContext("tennentModel").getObject().Datab;
@@ -659,7 +667,7 @@ sap.ui.define([
                         //this.getView().getModel("plantBasicDetailsModel").setProperty("/0/TennentinPcAdate", finalStartDateTennetTP);
                     } 
                     if(sIDmgmtPCTP === true){
-                        
+                        this.byId("mgmtPcTP").setValueState(sap.ui.core.ValueState.None);
                         sPCMgmtTP = oSelectedItem.getBindingContext("mgmtModel").getObject().Prctr;
                         sCompanyCodeMgmtPcTP = oSelectedItem.getBindingContext("mgmtModel").getObject().Bukrs;
                         sDatabMgmtPcTP = oSelectedItem.getBindingContext("mgmtModel").getObject().Datab;
@@ -697,8 +705,12 @@ sap.ui.define([
                 //let oModel = oSelectedItem.getBindingContext()
                
                 let sTitle = oEvent.getSource().getTitle();
-                oEvent.getSource().getBinding("items").filter([]);
+                // oEvent.getSource().getBinding("items").filter([]);
+                // if (!oSelectedItem) {
+                //     return;
+                // }
                 if (!oSelectedItem) {
+                    //oInput.resetProperty("value");
                     return;
                 }
                 //let sDescription = oSelectedItem.getDescription();
@@ -799,11 +811,79 @@ sap.ui.define([
                         finalStartDateMgmtPcTP = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDatabMgmtPcTP));
                         this.getView().getModel("plantBasicDetailsModel").setProperty("/0/ManagmentPc", sPCMgmtTP);
                         this.getView().getModel("plantBasicDetailsModel").setProperty("/0/CompanyCode5", sCompanyCodeMgmtPcTP);
-                        this.byId("startdateMgmtPcTp").setValue(finalStartDateTennetTP);
+                        this.byId("startdateMgmtPcTp").setValue(finalStartDateMgmtPcTP);
                         //this.getView().getModel("plantBasicDetailsModel").setProperty("/0/ManagementPcAdate", finalStartDateMgmtPcTP);
                     } 
                 }  
             },
+
+                    oncheckRetailPc: function(oEvent){
+                            var oInput = oEvent.getSource();
+                            var sValue = oInput.getValue();
+                            const sId = oInput.getId();
+                            // var oSuggestionModelRetail = this.getView().getModel("retailpcModel").getData();
+                            // var oSuggestionModelStorage = this.getView().getModel("storageModel").getData();
+                            // var oSuggestionModelTenant = this.getView().getModel("tennentModel").getData();
+                            // var oSuggestionModelComm = this.getView().getModel("commPcModel").getData();
+                            // var oSuggestionModelMgmt = this.getView().getModel("mgmtModel").getData();
+
+                            // if (sId.includes() == ""){
+
+                            // }
+                            var oSuggestionModel = this.getView().getModel("retailpcModel").getData();
+                
+                            if (oSuggestionModel.indexOf(sValue) !== -1) {
+                                oInput.setValueState(sap.ui.core.ValueState.None);
+                            } else {
+                                oInput.setValueState(sap.ui.core.ValueState.Error);
+                            }
+
+                        },
+                    oncheckStoragePc: function(oEvent){
+                        var oInput = oEvent.getSource();
+                        var sValue = oInput.getValue();
+                        var oSuggestionModel = this.getView().getModel("storageModel").getData();
+                        if (oSuggestionModel.indexOf(sValue) !== -1 ) {
+                            oInput.setValueState(sap.ui.core.ValueState.None);
+                        } else {
+                            oInput.setValueState(sap.ui.core.ValueState.Error);
+                        }
+                    },
+                    
+                    oncheckTentPc: function(oEvent){
+                        var oInput = oEvent.getSource();
+                        var sValue = oInput.getValue();
+                        var oSuggestionModel = this.getView().getModel("tennentModel").getData();
+                        if (oSuggestionModel.indexOf(sValue) !== -1 ) {
+                            oInput.setValueState(sap.ui.core.ValueState.None);
+                        } else {
+                            oInput.setValueState(sap.ui.core.ValueState.Error);
+                        }
+                    },
+
+                    oncheckCommPc: function(oEvent){
+                        var oInput = oEvent.getSource();
+                        var sValue = oInput.getValue();
+                        var oSuggestionModel = this.getView().getModel("commPcModel").getData();
+                        if (oSuggestionModel.indexOf(sValue) !== -1 ) {
+                            oInput.setValueState(sap.ui.core.ValueState.None);
+                        } else {
+                            oInput.setValueState(sap.ui.core.ValueState.Error);
+                        }
+
+                    },
+
+                    oncheckMgmtPc: function(oEvent){
+                        var oInput = oEvent.getSource();
+                        var sValue = oInput.getValue();
+                        var oSuggestionModel = this.getView().getModel("mgmtModel").getData();
+                        if (oSuggestionModel.indexOf(sValue) !== -1 ) {
+                            oInput.setValueState(sap.ui.core.ValueState.None);
+                        } else {
+                            oInput.setValueState(sap.ui.core.ValueState.Error);
+                        }
+
+                    },
 
             onCheckPropertyTable:async function(){
                //var response = this.readPropertyMasterData();
@@ -891,9 +971,8 @@ sap.ui.define([
                 this.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", false);
                 this.getView().getModel("oVisModel").setProperty("/visibliltyForThirdParty", false);
                 this.byId("idReset").setEnabled(false);
-                this.getView().byId("plantInput").setValue("");
-                this.getView().byId("address").setText("");
-                this.getView().byId("propertyInput").setValue("");
+                this.byId("rb1").setSelected(true);
+              
                 this.getOwnerComponent().plant = "";
                 this.getOwnerComponent().LegacyPropertyNumber = "";
                 this.byId("rbg1").setSelectedIndex(0);
@@ -901,6 +980,11 @@ sap.ui.define([
                 this.byId("storagePc").setValue("");
                 this.byId("tenPc").setValue("");
                 this.byId("commPc").setValue("");
+
+                this.byId("retailPc").setValueState("None");
+                this.byId("storagePc").setValueState("None");
+                this.byId("tenPc").setValueState("None");
+                this.byId("commPc").setValueState("None");
                 this.byId("ccCode").setValue("");
                 this.byId("ccCode1").setValue("");
                 this.byId("ccCode2").setValue("");
@@ -910,10 +994,17 @@ sap.ui.define([
                 this.byId("storagePcTP").setValue("");
                 this.byId("tenPcTP").setValue("");
                 this.byId("mgmtPcTP").setValue("");
+                this.getView().byId("plantInput").setValue("");
+                this.getView().byId("address").setText("");
+                this.getView().byId("propertyInput").setValue("");
                 this.byId("ccCode1").setValue("");
                 this.byId("ccCodeTp1").setValue("");
                 this.byId("ccCodeTp2").setValue("");
                 this.byId("ccCodeTp3").setValue("");
+                this.byId("retailPcTP").setValueState("None");
+                this.byId("storagePcTP").setValueState("None");
+                this.byId("tenPcTP").setValueState("None");
+                this.byId("mgmtPcTP").setValueState("None");
 
                 this.byId("startdate").setValue("");
                 this.byId("startdate1").setValue("");
@@ -923,6 +1014,9 @@ sap.ui.define([
                 this.byId("startdateTp1").setValue("");
                 this.byId("startdateTp2").setValue("");
                 this.byId("startdateTp3").setValue("");
+              
+                //that.getOwnerComponent().getModel("plantsModel")
+              
                 
             },
 
@@ -1167,11 +1261,18 @@ sap.ui.define([
                             MailingName2: sName2,
                             Country: sRegion,
                             PostalCode: sPin,
-                            RetailPCAdate: sDateRetailPcTp,
+                            RetailPCAdate: sDateRetailPc,
                             StoragePcAdate: sDateStoragePc,
                             TennentinPcAdate: sDateTenantPc,
                             CommercialPcAdate: sDateCommPc
 
+                        }
+                        if (this.byId("retailPc").getValue() === "" || this.byId("storagePc").getValue() === ""){
+                            return MessageToast.show("Please fill all mandatory fields");
+                        }
+                        if (this.byId("retailPc").getValueState() === "Error" || this.byId("storagePc").getValueState() === "Error"
+                        || this.byId("tenPc").getValueState() === "Error" || this.byId("commPc").getValueState() === "Error" ){
+                            return MessageToast.show("Please Enter valid value's for PC's");
                         }
 
                     } else {
@@ -1180,10 +1281,10 @@ sap.ui.define([
                             StoragePc:  this.byId("storagePcTP").getValue(),
                             TennentInsPc: this.byId("tenPcTP").getValue(),
                             ManagmentPc: this.byId("mgmtPcTP").getValue(),
-                            CompanyCode1 : this.byId("ccCode1").getValue(),
-                            CompanyCode2 : this.byId("ccCodeTp1").getValue(),
-                            CompanyCode3 : this.byId("ccCodeTp2").getValue(),
-                            CompanyCode5 : this.byId("ccCodeTp3").getValue(),
+                            CompanyCode1 : this.byId("ccCodePcTp").getValue(),
+                            CompanyCode2 : this.byId("ccCodeStTp").getValue(),
+                            CompanyCode3 : this.byId("ccCodeTenTp").getValue(),
+                            CompanyCode5 : this.byId("ccCodeMgTp").getValue(),
                             PropertyType: "T",
                             City: sOrt01,
                             Street: sLand,
@@ -1196,7 +1297,15 @@ sap.ui.define([
                             TennentinPcAdate: sDateTenantPcTp,
                             ManagementPcAdate: sDateMgmtPcTp
                         }
+                        if (this.byId("retailPcTP").getValue() === "" || this.byId("storagePcTP").getValue() === ""){
+                            return MessageToast.show("Please fill all mandatory fields");
+                        }
+                        if (this.byId("retailPcTP").getValueState() === "Error" || this.byId("storagePcTP").getValueState() === "Error"
+                        || this.byId("tenPcTP").getValueState() === "Error" || this.byId("mgmtPcTP").getValueState() === "Error" ){
+                            return MessageToast.show("Please Enter valid value's for PC's");
+                        }
                     }
+
                    const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
         
                     this._oModel.update(uri, payload, {

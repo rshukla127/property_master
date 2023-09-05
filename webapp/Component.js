@@ -31,6 +31,13 @@ sap.ui.define([
                 this.setModel(models.createDeviceModel(), "device");
                 const oModel = this.getModel("mainModel");
                 sap.ui.getCore().setModel(oModel, "mainModel");
+                var oRootPath = jQuery.sap.getModulePath("com.public.storage.pao"); // your resource root
+		
+                var oImageModel = new sap.ui.model.json.JSONModel({
+                    path : oRootPath,
+                });
+                        
+                this.setModel(oImageModel, "imageModel");
                
             },
 

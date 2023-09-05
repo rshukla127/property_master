@@ -242,26 +242,38 @@ sap.ui.define([
             let sCode =  oSelectedItem.getTitle();
 
             if (sTitle === "Business Unit"){
-                this.byId("bType").setValue(sDescription);
-                this._bType = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/BusinessUnitType", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/bTypeDesc", `${sDescription}`);
+                //this.byId("bType").setValue(sDescription);
+                //this._bType = sCode
             } else if(sTitle === "Customer Code"){
-                this.byId("cCode").setValue(sDescription);
-                this._custCode = sCode
+                // this.byId("cCode").setValue(sDescription);
+                // this._custCode = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/CustomerCode", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/custCodeDesc", `${sDescription}`);
             } else if(sTitle === "Active"){
-                this.byId("active").setValue(sDescription);
-                this._custCode = sCode
+                // this.byId("active").setValue(sDescription);
+                // this._custCode = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/TennentInsPc", sCode);
             } else if(sTitle === "Entity Type"){
-                this.byId("entityType").setValue(sDescription);
-                this._entityType = sCode
+                // this.byId("entityType").setValue(sDescription);
+                // this._entityType = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/EntityType", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/entityTypeDesc", `${sDescription}`);
             } else if(sTitle === "Property Type Model"){
-                this.byId("atypeProp").setValue(sDescription);
-                this._aTypeProp = sCode
+                // this.byId("atypeProp").setValue(sDescription);
+                // this._aTypeProp = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/ATypeProperty", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/aTypeDesc", `${sDescription}`);
             } else if(sTitle === "Combined Surviving Number"){
-                this.byId("combinedServ").setValue(sDescription);
-                this._comSurvNumer = sCode
+                // this.byId("combinedServ").setValue(sDescription);
+                // this._comSurvNumer = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/CombinedSurvivingNumber", sCode);
             } else if(sTitle === "Aquired Third Party"){
-                this.byId("aquiredFromTP").setValue(sDescription);
-                this._aquiredTP = sCode
+                // this.byId("aquiredFromTP").setValue(sDescription);
+                // this._aquiredTP = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/AcquiredDevelopedThirdP", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/aquiredTpDesc", `${sDescription}`);
             }
 
             
@@ -270,8 +282,14 @@ sap.ui.define([
         onPressSaveBUDetails: function(){
             let bValidation = true;
             const sPlant = this.getOwnerComponent().plant
-            const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
+            const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
             let sActive = this.getView().byId("active").getSelectedKey();
+            var regExp = "/\(([^)]+)\)/";
+            let sUnitType = this.byId("bType").getValue();
+            let custCode = this.byId("cCode").getValue();
+            let sEntityType = this.byId("entityType").getValue();
+            let combinedServ = this.byId("combinedServ").getValue();
+            let aTypeProp = this.byId("atypeProp").getValue();
             if (sActive === "") {
                 this.model.setProperty("/Active", "Error");
                
@@ -279,36 +297,36 @@ sap.ui.define([
                 this.model.setProperty("/Active", "None");
             }
 
-            if (this._bType === "" || this._bType === undefined) {
+            if (sUnitType === "" || sUnitType === undefined) {
                 this.model.setProperty("/BusinessUnitType", "Error");
             } else {
                 this.model.setProperty("/BusinessUnitType", "None");
             }
 
-            if (this._custCode === "" || this._custCode === undefined) {
+            if (custCode === "" || custCode === undefined) {
                 this.model.setProperty("/CustomerCode", "Error");
             } else {
                 this.model.setProperty("/CustomerCode", "None");
             }
 
-            if (this._entityType === "" || this._entityType === undefined) {
+            if (sEntityType === "" || sEntityType === undefined) {
                 this.model.setProperty("/EntityType", "Error");
             } else {
                 this.model.setProperty("/EntityType", "None");
             }
 
-            if (this._comSurvNumer === "" || this._comSurvNumer === undefined) {
+            if (combinedServ === "" || combinedServ === undefined) {
                 this.model.setProperty("/CombinedSurvivingNumber", "Error");
             } else {
                 this.model.setProperty("/CombinedSurvivingNumber", "None");
             }
 
-            if (this._aTypeProp === "" || this._aTypeProp === undefined) {
+            if (aTypeProp === "" || aTypeProp=== undefined) {
                 this.model.setProperty("/ATypeProperty", "Error");
             } else {
                 this.model.setProperty("/ATypeProperty", "None");
             }
-            if (sActive === "" || this._bType === "" || this._custCode === "" || this._entityType === "" || this._aTypeProp === ""){
+            if (sUnitType === "" || sActive === "" || custCode === "" || sEntityType === "" || combinedServ === "" || aTypeProp === ""){
                 bValidation = true;
             } else {
                 bValidation = false;
@@ -317,14 +335,14 @@ sap.ui.define([
             if(bValidation === false){
             const payload = {
                 Active: sActive,
-                BusinessUnitType: this._bType,
-                CustomerCode: this._custCode,
-                EntityType: this._entityType,
-                CombinedSurvivingNumber: this._comSurvNumer,
+                BusinessUnitType: sActive,
+                CustomerCode: custCode,
+                EntityType: sEntityType,
+                CombinedSurvivingNumber: combinedServ,
                 Note1: this.getView().byId("note1").getValue(),
                 Note2: this.getView().byId("note2").getValue(),
                 Note3: this.getView().byId("note3").getValue(),
-                ATypeProperty: this._aTypeProp, 
+                ATypeProperty: aTypeProp, 
                 BillBoard: this.getView().byId("bill").getSelectedKey(),
                 Comercial: this.getView().byId("comm").getSelectedKey(),
                 CellTower: this.getView().byId("cell").getSelectedKey(),

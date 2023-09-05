@@ -106,11 +106,13 @@ sap.ui.define([
             let sCode =  oSelectedItem.getTitle();
 
             if (sTitle === "Market Class"){
-                this.byId("mClass").setValue(sDescription);
-                this._mClass = sCode
+                // this.byId("mClass").setValue(sDescription);
+                // this._mClass = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/MarketKey", sCode);
             } else if(sTitle === "Training Proffesionals"){
-                this.byId("keyTrain").setValue(sDescription);
-                this._trainingProff = sCode
+                // this.byId("keyTrain").setValue(sDescription);
+                // this._trainingProff = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/KeyTraniningProfessional", sCode); 
             }
 		},
 
@@ -118,9 +120,12 @@ sap.ui.define([
         onPressSaveOtherDetails: function(){
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
+            let sKeyTraining = this.byId("keyTrain").getValue();
+            let sMarketClass = this.byId("mClass").getValue();
+
             let bValidation = true;
 
-            if (this._trainingProff === "" || this._trainingProff === undefined ) {
+            if (sKeyTraining === "" || sKeyTraining === undefined ) {
                 this.model.setProperty("/KeyTrainingProfessional", "Error");
                 bValidation = true;
             } else {
@@ -129,8 +134,8 @@ sap.ui.define([
             }
             if (bValidation === false){
             const payload = {
-                MarketKey: this._mClass,
-                KeyTraniningProfessional: this._trainingProff
+                MarketKey: sMarketClass,
+                KeyTraniningProfessional: sKeyTraining
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
 

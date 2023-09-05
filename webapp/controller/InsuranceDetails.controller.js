@@ -25,10 +25,10 @@ sap.ui.define([
 			this.getView().addDependent(this._oBusyDialog);
             this.model = new JSONModel();
             this.model.setData({
-				InsPrem2000: "None",
-				InsPrem3000: "None",
-                InsPrem4000: "None",
-                InsPrem5000: "None",
+				// InsPrem2000: "None",
+				// InsPrem3000: "None",
+                // InsPrem4000: "None",
+                // InsPrem5000: "None",
                 ErentalMaxDays: "None",
                 CddStartDate: "None"
 			});
@@ -50,15 +50,15 @@ sap.ui.define([
             let sTime = "T00:00:00";
             var bValidation = true;
             
-            let cddStartDate = this.byId("startdate").getValue();
-            let finrepD3 = this.byId("finrepD3").getValue();
-            let finrepD4 = this.byId("finrepD4").getValue();
-            let finrepD5 = this.byId("finrepD5").getValue();
-            let finrepD6 = this.byId("finrepD6").getValue();
-            let finrepD7 = this.byId("finrepD7").getValue();
-            let finrepD8 = this.byId("finrepD8").getValue();
-            let finrepD9 = this.byId("finrepD9").getValue();
-            let finrepD10 = this.byId("finrepD10").getValue();
+            let cddStartDate = this.byId("startdate").getValue().split(".").reverse().join("-");
+            let finrepD3 = this.byId("finrepD3").getValue().split(".").reverse().join("-");
+            let finrepD4 = this.byId("finrepD4").getValue().split(".").reverse().join("-");
+            let finrepD5 = this.byId("finrepD5").getValue().split(".").reverse().join("-");
+            let finrepD6 = this.byId("finrepD6").getValue().split(".").reverse().join("-");
+            let finrepD7 = this.byId("finrepD7").getValue().split(".").reverse().join("-");
+            let finrepD8 = this.byId("finrepD8").getValue().split(".").reverse().join("-");
+            let finrepD9 = this.byId("finrepD9").getValue().split(".").reverse().join("-");
+            let finrepD10 = this.byId("finrepD10").getValue().split(".").reverse().join("-");
             let formattedD3 = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(finrepD3)) + sTime;
             let formattedD4 = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(finrepD4)) + sTime;
             let formattedD5 = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(finrepD5)) + sTime;
@@ -84,31 +84,31 @@ sap.ui.define([
             let InsPrem5000 =  this.getView().byId("insprem5").getValue();
             let ErentalMaxDays = this.getView().byId("eRental").getValue();
 
-            if (InsPrem2000 === "") {
-                this.model.setProperty("/InsPrem2000", "Error");
-            } else {
-                this.model.setProperty("/InsPrem2000", "None");
-            }
+            // if (InsPrem2000 === "") {
+            //     this.model.setProperty("/InsPrem2000", "Error");
+            // } else {
+            //     this.model.setProperty("/InsPrem2000", "None");
+            // }
 
-            if (InsPrem3000 === "") {
-                this.model.setProperty("/InsPrem3000", "Error");
-            } else {
-                this.model.setProperty("/InsPrem3000", "None");
-            }
+            // if (InsPrem3000 === "") {
+            //     this.model.setProperty("/InsPrem3000", "Error");
+            // } else {
+            //     this.model.setProperty("/InsPrem3000", "None");
+            // }
 
-            if (InsPrem4000 === "") {
-                this.model.setProperty("/InsPrem4000", "Error");
-            } else {
-                this.model.setProperty("/InsPrem4000", "None");
-            }
+            // if (InsPrem4000 === "") {
+            //     this.model.setProperty("/InsPrem4000", "Error");
+            // } else {
+            //     this.model.setProperty("/InsPrem4000", "None");
+            // }
 
-            if (InsPrem5000 === "") {
-                this.model.setProperty("/InsPrem5000", "Error");
-            } else {
-                this.model.setProperty("/InsPrem5000", "None");
-            }
+            // if (InsPrem5000 === "") {
+            //     this.model.setProperty("/InsPrem5000", "Error");
+            // } else {
+            //     this.model.setProperty("/InsPrem5000", "None");
+            // }
 
-            if (ErentalMaxDays === null) {
+            if (ErentalMaxDays === null || ErentalMaxDays === "") {
                 this.model.setProperty("/ErentalMaxDays", "Error");
             } else {
                 this.model.setProperty("/ErentalMaxDays", "None");
@@ -120,8 +120,7 @@ sap.ui.define([
                 this.model.setProperty("/CddStartDate", "None");
             }
 
-            if (cddStartDate === "" || cddStartDate === "" || ErentalMaxDays === "" || InsPrem5000 === "" || InsPrem4000 === ""
-            || InsPrem3000 === "" || InsPrem2000 === ""){
+            if (cddStartDate === "" || ErentalMaxDays === ""){
                 bValidation = true ;
             } else {
                 bValidation = false ;

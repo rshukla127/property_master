@@ -43,8 +43,31 @@ sap.ui.define([
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber)
-            //this.readPropertyMasterData(Plant);
+            this.readPlantData(Plant);
 
+        },
+
+        readPlantData: function(Plant){
+            const that = this;
+            const uri= `/PlantMasterSet`
+            this._oBusyDialog.open()
+            this._oModel.read(uri, {
+                success: function (oData) {
+                    that._oBusyDialog.close();
+                    const oModel = new JSONModel(oData.results);
+                    const FilterData = oModel.getData().filter( item => item.Werks === Plant);
+                    that.getOwnerComponent().getModel("plantsModel").setProperty("/Address", FilterData[0].Address);
+                    that.getOwnerComponent().getModel("plantsModel").setProperty("/Email", FilterData[0].Email);
+                    that.getOwnerComponent().getModel("plantsModel").setProperty("/Faxnumber", FilterData[0].Faxnumber);
+                    // that.getView().setModel(oModel, "plantModelNew")
+                    // sap.ui.getCore().setModel(oModel, "plantModelNew");
+                    // that.getView().getModel("plantModelNew").refresh();
+                },
+                error: function (oData) {
+                    that._oBusyDialog.close();
+                    MessageToast.show("Something went wrong with Service")
+                }
+            })
         },
 
         _onValueHelpRequestProperty: function (oEvent) {
@@ -98,12 +121,12 @@ sap.ui.define([
 
         },
 
-        onDateChange: function(oEvent){
-            let sTime = "T00:00:00";
-            const sValue = oEvent.getSource().getValue();
-            this.fromattedDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sValue)) + sTime;
+        // onDateChange: function(oEvent){
+        //     let sTime = "T00:00:00";
+        //     const sValue = oEvent.getSource().getValue();
+        //     this.fromattedDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sValue)) + sTime;
 
-        },
+        // },
 
         onPressSaveBasicDetails: function(){
             const sPlant = this.getOwnerComponent().plant
@@ -116,11 +139,11 @@ sap.ui.define([
             let sPublishedPhoneNo = this.getView().byId("pubPhone").getValue();
             let sLocalPhoneNumber = this.getView().byId("localPh").getValue();
             let sNetwork2IpAddress =  this.getView().byId("network2").getValue();
-            let kisokACtivDate = this.fromattedDate;
+            let kisokACtivDate = this.getView().byId("kisok").getValue().split(".").reverse().join("-");
             let sGeoCode = this.getView().byId("geo").getValue();
             if (kisokACtivDate !== ""){
-                //let fromattedDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(kisokACtivDate)) + sTime;
-                kisokACtivDate = this.fromattedDate === "T00:00:00" ? null : this.fromattedDate ;
+                let fromattedDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(kisokACtivDate)) + sTime;
+                kisokACtivDate = fromattedDate === "T00:00:00" ? null : fromattedDate ;
             } else {
 
             }

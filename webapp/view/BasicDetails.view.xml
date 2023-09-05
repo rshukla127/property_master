@@ -13,9 +13,9 @@
 				<f:content>
 					<core:Title text="" visible="false"/>
 					<Label text="{i18n>direPhoneNo}" />
-					<Input maxLength="30" id="dirPhoneNo" value="{plantBasicDetailsModel>/DirectPhoneNo}" enabled="false" />
+					<Input maxLength="30" id="dirPhoneNo" value="{plantsModel>/Address}" enabled="false" />
 					<Label text="{i18n>faxNumber}" />
-					<Input maxLength="30" id="faxNo" enabled="false" value="{basicDetailPlantModel>/Faxnumber}" />
+					<Input maxLength="30" id="faxNo" enabled="false" value="{plantsModel>/Faxnumber}" />
 
 					<Label required="true" text="{i18n>tollfreeNo}" />
 					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/tollFreeNumber}" id="tollFree" value="{plantBasicDetailsModel>/TollFreeNumber}"/>
@@ -49,7 +49,7 @@
 					<Label required="true" text="{i18n>publishedPhoneNo}" />
 					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/publishedPhoneNo}" id="pubPhone" value="{plantBasicDetailsModel>/PublishedPhoneNo}" />
 					<Label text="{i18n>propEmailAdd}" />
-					<Input id="email" enabled="false" value="{basicDetailPlantModel>/Email}" />
+					<Input id="email" enabled="false" value="{plantsModel>/Email}" />
 
 					<Label text="{i18n>localPhoneNo}" />
 					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/localPhoneNumber}" required="true" id="localPh" value="{plantBasicDetailsModel>/LocalPhoneNumber}" type="Url" />

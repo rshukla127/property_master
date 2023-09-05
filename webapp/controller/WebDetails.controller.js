@@ -58,11 +58,11 @@ sap.ui.define([
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
             var bValidation = true;
             let sTime = "T00:00:00"
-            let adminFeeEffectiveDate = this.byId("effDate").getValue();
-            let websiteEnabledDate = this.byId("webenabled").getValue();
-            let callCentDate = this.byId("callCenter").getValue();
-            let nfsfeeeffectiveDate = this.byId("nsfFeeEff").getValue();
-            let nfsAshfeeffectiveDate = this.byId("nfsAshfeeeff").getValue();
+            let adminFeeEffectiveDate = this.byId("effDate").getValue().split(".").reverse().join("-");
+            let websiteEnabledDate = this.byId("webenabled").getValue().split(".").reverse().join("-");
+            let callCentDate = this.byId("callCenter").getValue().split(".").reverse().join("-");
+            let nfsfeeeffectiveDate = this.byId("nsfFeeEff").getValue().split(".").reverse().join("-");
+            let nfsAshfeeffectiveDate = this.byId("nfsAshfeeeff").getValue().split(".").reverse().join("-");
           
             let finaladminFeeEffectiveDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(adminFeeEffectiveDate)) + sTime;
             let finalwebsiteEnabledDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(websiteEnabledDate)) + sTime;

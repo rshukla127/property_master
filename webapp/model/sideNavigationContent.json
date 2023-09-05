@@ -85,31 +85,5 @@
 				}
 			]
 		}
-	],
-	"fixedNavigation": [
-		{
-			"title": "Legal",
-			"icon": "sap-icon://compare",
-			"key": "noroute",
-			"expanded": false,
-			"items": [
-				{
-					"title": "{i18n>privacy}",
-					"key": "noroute"
-				},
-				{
-					"title": "{i18n>terms}",
-					"key": "noroute"
-				},
-				{
-					"title": "{i18n>legalDisclosure}",
-					"key": "noroute"
-				},
-				{
-					"title": "{i18n>copyrights}",
-					"key": "noroute"
-				}
-			]
-		}
 	]
 }

@@ -13,34 +13,34 @@
                     <f:content>
                          <core:Title text="" visible="false"/>
                          <Label required="true" text="{i18n>officeSundayOpenHr}" />
-                         <TimePicker id="sunOpen"
+                         <TimePicker id="sunOpen" valueStateText="Value cannot be blank" valueState="{/sunOpenHR}" 
                               value="{parts: ['plantBasicDetailsModel>/OfficeSundayOpenHr'], formatter: '.formatter.formatTime'}"
                               valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true"  placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>officeMondayOpenHr}" />
-                         <TimePicker id="monOpen" 
+                         <TimePicker id="monOpen" valueStateText="Value cannot be blank" valueState="{/monOpenHR}" 
                          value="{parts: ['plantBasicDetailsModel>/OfficeMondayOpenHr'], formatter: '.formatter.formatTime'}"
                               valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true"  placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>officeTuesdayOpenHr}" />
-                         <TimePicker id="tueOpen"
+                         <TimePicker id="tueOpen" valueStateText="Value cannot be blank" valueState="{/tueOpenHR}" 
                          value="{parts: ['plantBasicDetailsModel>/OfficeTuesdayOpenHr'], formatter: '.formatter.formatTime'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>officeWednesdayOpenHr}" />
-                         <TimePicker id="wedOpen" value="{parts: ['plantBasicDetailsModel>/OfficeWednessdayOpenHr'], formatter: '.formatter.formatTime'}"
+                         <TimePicker id="wedOpen" valueStateText="Value cannot be blank" valueState="{/wedOpenHR}"  value="{parts: ['plantBasicDetailsModel>/OfficeWednessdayOpenHr'], formatter: '.formatter.formatTime'}"
                               
                                valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
 
                          <Label required="true" text="{i18n>officeThursdayOpenHr}" />
-                         <TimePicker id="thuOpen" value="{parts: ['plantBasicDetailsModel>/OfficeThursdayOpenHr'], formatter: '.formatter.formatTime'}"
+                         <TimePicker id="thuOpen" valueStateText="Value cannot be blank" valueState="{/thuOpenHR}" value="{parts: ['plantBasicDetailsModel>/OfficeThursdayOpenHr'], formatter: '.formatter.formatTime'}"
                                  valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>officeFriadayOpenHr}" />
-                         <TimePicker id="friOpen" value="{parts: ['plantBasicDetailsModel>/OfficeFridayOpenHr'], formatter: '.formatter.formatTime'}"
+                         <TimePicker id="friOpen" valueStateText="Value cannot be blank" valueState="{/friOpenHR}"  value="{parts: ['plantBasicDetailsModel>/OfficeFridayOpenHr'], formatter: '.formatter.formatTime'}"
                            valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>officeSaturdayOpenHr}" />
-                         <TimePicker id="satOpen" value="{parts: ['plantBasicDetailsModel>/OfficeSaturdayOpenHr'], formatter: '.formatter.formatTime'}"
+                         <TimePicker id="satOpen" valueStateText="Value cannot be blank" valueState="{/satOpenHR}"  value="{parts: ['plantBasicDetailsModel>/OfficeSaturdayOpenHr'], formatter: '.formatter.formatTime'}"
                               valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="Day Light Saving Applicable" />
 					<Select id="daylight" valueStateText="Value cannot be blank" selectedKey="{plantBasicDetailsModel>/DayLightSavingsApplicable}">
@@ -54,27 +54,27 @@
                          <core:Title text="" />
 
                          <Label required="true" text="{i18n>officeSundayClosedHr}" />
-                         <TimePicker id="sunClose" value="{parts: ['plantBasicDetailsModel>/OfficeSundayCloseHr'], formatter: '.formatter.formatTimeSatandSunClose'}"
+                         <TimePicker id="sunClose" valueStateText="Value cannot be blank" valueState="{/sunCloseHR}"  value="{parts: ['plantBasicDetailsModel>/OfficeSundayCloseHr'], formatter: '.formatter.formatTimeSatandSunClose'}"
                           valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>officeMondayClosedHr}" />
-                         <TimePicker id="monClose" value="{parts: ['plantBasicDetailsModel>/OfficeMondayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
+                         <TimePicker id="monClose" valueStateText="Value cannot be blank" valueState="{/monCloseHR}" value="{parts: ['plantBasicDetailsModel>/OfficeMondayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
                           valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>officeTuesdayClosedHr}" />
-                         <TimePicker id="tueClose" value="{parts: ['plantBasicDetailsModel>/OfficeTuesdayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
+                         <TimePicker id="tueClose" valueStateText="Value cannot be blank" valueState="{/tueCloseHR}" value="{parts: ['plantBasicDetailsModel>/OfficeTuesdayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
                          valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>officeWednesdayClosedHr}" />
-                         <TimePicker id="wedClose" value="{parts: ['plantBasicDetailsModel>/OfficeWednessdayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
+                         <TimePicker id="wedClose" valueStateText="Value cannot be blank" valueState="{/wedCloseHR}" value="{parts: ['plantBasicDetailsModel>/OfficeWednessdayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
                           valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                          <Label required="true" text="{i18n>officeThursdayClosedHr}" />
-                         <TimePicker id="thuClose" value="{parts: ['plantBasicDetailsModel>/OfficeThursdayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
+                         <TimePicker id="thuClose" valueStateText="Value cannot be blank" valueState="{/thuCloseHR}" value="{parts: ['plantBasicDetailsModel>/OfficeThursdayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
                           valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>officeFriadayClosedHr}" />
-                         <TimePicker id="friClose" value="{parts: ['plantBasicDetailsModel>/OfficeFridayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
+                         <TimePicker id="friClose" valueStateText="Value cannot be blank" valueState="{/friCloseHR}" value="{parts: ['plantBasicDetailsModel>/OfficeFridayCloseHr'], formatter: '.formatter.formatTimeOthersClose'}"
                          valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                          <Label required="true" text="{i18n>officeSaturdayClosedHr}" />
-                         <TimePicker id="satClose" value="{parts: ['plantBasicDetailsModel>/OfficeSaturdayCloseHr'], formatter: '.formatter.formatTimeSatandSunClose'}"
+                         <TimePicker id="satClose" valueStateText="Value cannot be blank" valueState="{/satCloseHR}" value="{parts: ['plantBasicDetailsModel>/OfficeSaturdayCloseHr'], formatter: '.formatter.formatTimeSatandSunClose'}"
                          valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
 
                     </f:content>

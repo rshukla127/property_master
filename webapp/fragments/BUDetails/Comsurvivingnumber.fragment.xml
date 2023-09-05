@@ -10,6 +10,6 @@
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{plantsModel>Werks}"/>
+			title="{plantsModel>Name2}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

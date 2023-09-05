@@ -17,16 +17,16 @@
                     <Label text="{i18n>finrepnum2}" />
                     <Input id="finrep2" value="{plantBasicDetailsModel>/FinerepNum2}" />
 
-                    <Label required="true" text="{i18n>insPrem2}" />
+                    <Label text="{i18n>insPrem2}" />
                     <Input id="insprem2" valueStateText="Value cannot be blank" valueState="{/InsPrem2000}" value="{plantBasicDetailsModel>/InsPrem2000}" />
 
-                    <Label required="true" text="{i18n>insPrem3}" />
+                    <Label text="{i18n>insPrem3}" />
                     <Input id="insprem3" valueStateText="Value cannot be blank" valueState="{/InsPrem3000}" value="{plantBasicDetailsModel>/InsPrem3000}" />
 
-                    <Label required="true" text="{i18n>insPrem4}" />
+                    <Label text="{i18n>insPrem4}" />
                     <Input id="insprem4" valueStateText="Value cannot be blank" valueState="{/InsPrem4000}" value="{plantBasicDetailsModel>/InsPrem4000}" />
 
-                    <Label required="true" text="{i18n>insPrem5}" />
+                    <Label text="{i18n>insPrem5}" />
                     <Input id="insprem5" valueStateText="Value cannot be blank" valueState="{/InsPrem5000}" value="{plantBasicDetailsModel>/InsPrem5000}" />
 
                     <Label text="{i18n>finrepnum7}" />
@@ -42,8 +42,8 @@
 
                     <core:Title text="" />
 
-                    <Label required="true" valueStateText="Value cannot be blank" valueState="{/CddStartDate}" text="{i18n>cddStartDate}" />
-                    <DatePicker id="startdate" placeholder="Choose Date.." value="{ 
+                    <Label required="true"  text="{i18n>cddStartDate}" />
+                    <DatePicker id="startdate" placeholder="Choose Date.." valueStateText="Value cannot be blank" valueState="{/CddStartDate}" value="{ 
                         path: 'plantBasicDetailsModel>/CddStartDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
