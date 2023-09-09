@@ -188,11 +188,11 @@ sap.ui.define([
                         return oDialog;
                     });
                 }
-                this.BusyDialog.open()
+                //this.BusyDialog.open()
                 this._pValueHelpDialog.then(function (oDialog) {
                    
                     that.readPropertyMasterData();
-                    that.BusyDialog.close();
+                    //that.BusyDialog.close();
                     // Create a filter for the binding
                     oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
                     // Open ValueHelpDialog filtered by the input's value
@@ -922,8 +922,14 @@ sap.ui.define([
                                                                 that.getView().getModel("oVisModel").setProperty("/enabledForPlant", false);
                                                                 that.getView().getModel("oVisModel").setProperty("/enabledForProperty", false);
                                                                 that.getView().byId("idReset").setEnabled(true);
+                                                                if (that.getOwnerComponent().plant.includes("A") || that.getOwnerComponent().plant.includes("a")){
+                                                                    that.byId("rb1").setSelected(true);
+                                                                    that.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", true);
+                                                                } else {
+                                                                    that.byId("rb2").setSelected(true);
+                                                                    that.getView().getModel("oVisModel").setProperty("/visibliltyForThirdParty", true);
+                                                                }
                                                                 
-                                                              
                                                             } else {
                                                                 // Handle the "Cancel" button action or do nothing if canceled
                                                             }
@@ -946,6 +952,15 @@ sap.ui.define([
                                                                     that.getView().getModel("oVisModel").setProperty("/enabledForPlant", false);
                                                                     that.getView().getModel("oVisModel").setProperty("/enabledForProperty", false);
                                                                     that.getView().byId("idReset").setEnabled(true);
+                                                                    if (that.getOwnerComponent().plant.includes("A") || that.getOwnerComponent().plant.includes("a")){
+                                                                        that.byId("rb1").setSelected(true);
+                                                                        that.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", true);
+                                                                        
+                                                                    } else {
+                                                                        that.byId("rb2").setSelected(true)
+                                                                        
+                                                                        that.getView().getModel("oVisModel").setProperty("/visibliltyForThirdParty", true);
+                                                                    }
                                                                     that.createNewProperty();
                                                                 } else {
                                                                     // Handle the "Cancel" button action or do nothing if canceled
@@ -976,44 +991,45 @@ sap.ui.define([
                 this.getOwnerComponent().plant = "";
                 this.getOwnerComponent().LegacyPropertyNumber = "";
                 this.byId("rbg1").setSelectedIndex(0);
-                this.byId("retailPc").setValue("");
-                this.byId("storagePc").setValue("");
-                this.byId("tenPc").setValue("");
-                this.byId("commPc").setValue("");
+                // this.byId("retailPc").setValue("");
+                // this.byId("storagePc").setValue("");
+                // this.byId("tenPc").setValue("");
+                // this.byId("commPc").setValue("");
 
-                this.byId("retailPc").setValueState("None");
-                this.byId("storagePc").setValueState("None");
-                this.byId("tenPc").setValueState("None");
-                this.byId("commPc").setValueState("None");
-                this.byId("ccCode").setValue("");
-                this.byId("ccCode1").setValue("");
-                this.byId("ccCode2").setValue("");
-                this.byId("ccCode3").setValue("");
+                // this.byId("retailPc").setValueState("None");
+                // this.byId("storagePc").setValueState("None");
+                // this.byId("tenPc").setValueState("None");
+                // this.byId("commPc").setValueState("None");
+                // this.byId("ccCode").setValue("");
+                // this.byId("ccCode1").setValue("");
+                // this.byId("ccCode2").setValue("");
+                // this.byId("ccCode3").setValue("");
 
-                this.byId("retailPcTP").setValue("");
-                this.byId("storagePcTP").setValue("");
-                this.byId("tenPcTP").setValue("");
-                this.byId("mgmtPcTP").setValue("");
-                this.getView().byId("plantInput").setValue("");
+                // this.byId("retailPcTP").setValue("");
+                // this.byId("storagePcTP").setValue("");
+                // this.byId("tenPcTP").setValue("");
+                // this.byId("mgmtPcTP").setValue("");
+                
                 this.getView().byId("address").setText("");
+                this.getView().byId("plantInput").setValue("");
                 this.getView().byId("propertyInput").setValue("");
-                this.byId("ccCode1").setValue("");
-                this.byId("ccCodeTp1").setValue("");
-                this.byId("ccCodeTp2").setValue("");
-                this.byId("ccCodeTp3").setValue("");
-                this.byId("retailPcTP").setValueState("None");
-                this.byId("storagePcTP").setValueState("None");
-                this.byId("tenPcTP").setValueState("None");
-                this.byId("mgmtPcTP").setValueState("None");
+                // this.byId("ccCode1").setValue("");
+                // this.byId("ccCodeTp1").setValue("");
+                // this.byId("ccCodeTp2").setValue("");
+                // this.byId("ccCodeTp3").setValue("");
+                // this.byId("retailPcTP").setValueState("None");
+                // this.byId("storagePcTP").setValueState("None");
+                // this.byId("tenPcTP").setValueState("None");
+                // this.byId("mgmtPcTP").setValueState("None");
 
-                this.byId("startdate").setValue("");
-                this.byId("startdate1").setValue("");
-                this.byId("startdate2").setValue("");
-                this.byId("startdate3").setValue("");
-                this.byId("startdateTp").setValue("");
-                this.byId("startdateTp1").setValue("");
-                this.byId("startdateTp2").setValue("");
-                this.byId("startdateTp3").setValue("");
+                // this.byId("startdate").setValue("");
+                // this.byId("startdate1").setValue("");
+                // this.byId("startdate2").setValue("");
+                // this.byId("startdate3").setValue("");
+                // this.byId("startdateTp").setValue("");
+                // this.byId("startdateTp1").setValue("");
+                // this.byId("startdateTp2").setValue("");
+                // this.byId("startdateTp3").setValue("");
               
                 //that.getOwnerComponent().getModel("plantsModel")
               

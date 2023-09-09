@@ -78,6 +78,11 @@ sap.ui.define(["sap/m/MessageToast",],
              formatDate: function(sDate){
               if (sDate){
               return sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDate));
-            }}
+            }
+          },
+
+            removeLeadingZeros: function(sValue){
+              return parseInt(sValue);
+            }
 		};
 	});

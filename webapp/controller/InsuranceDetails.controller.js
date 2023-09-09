@@ -45,6 +45,7 @@ sap.ui.define([
         },
 
         onPressSaveInsuranceDetails: function(){
+            const that = this;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             let sTime = "T00:00:00";
@@ -149,12 +150,14 @@ sap.ui.define([
                 FinrepDate10: finrepD10
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
-
+           this._oBusyDialog.open();
             this._oModel.update(uri, payload, {
                 success: function (oData) {
+                    that._oBusyDialog.close();
                    MessageToast.show("Saved Successfully");
                 },
-                error: function (oData) {
+                error: function (error) {
+                    that._oBusyDialog.close();
                     MessageToast.show("Something went wrong with Service")
                 }
             })

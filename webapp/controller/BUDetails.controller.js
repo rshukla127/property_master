@@ -280,6 +280,7 @@ sap.ui.define([
 		},
 
         onPressSaveBUDetails: function(){
+            const that = this;
             let bValidation = true;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
@@ -352,12 +353,14 @@ sap.ui.define([
                 Psd:this.getView().byId("psd").getValue()
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
-
+           this._oBusyDialog.open();
             this._oModel.update(uri, payload, {
                 success: function (oData) {
+                    that._oBusyDialog.close();
                    MessageToast.show("Saved Successfully");
                 },
-                error: function (oData) {
+                error: function (error) {
+                    that._oBusyDialog.close();
                     MessageToast.show("Something went wrong with Service")
                 }
             })

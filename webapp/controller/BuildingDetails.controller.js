@@ -33,6 +33,7 @@ sap.ui.define([
         },
 
         onPressSaveBuildingDetails: function(){
+            const that = this;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             const payload = {
@@ -64,12 +65,14 @@ sap.ui.define([
                 NumberOfBathRoom2: this.getView().byId("bathroom2").getValue()
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
-
+           this._oBusyDialog.open();
             this._oModel.update(uri, payload, {
                 success: function (oData) {
+                    that._oBusyDialog.close()
                    MessageToast.show("Saved Successfully");
                 },
                 error: function (oData) {
+                    that._oBusyDialog.close();
                     MessageToast.show("Something went wrong with Service")
                 }
             })

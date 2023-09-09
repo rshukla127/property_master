@@ -50,7 +50,7 @@ sap.ui.define([
         readPlantData: function(Plant){
             const that = this;
             const uri= `/PlantMasterSet`
-            this._oBusyDialog.open()
+            this._oBusyDialog.open();
             this._oModel.read(uri, {
                 success: function (oData) {
                     that._oBusyDialog.close();
@@ -129,6 +129,7 @@ sap.ui.define([
         // },
 
         onPressSaveBasicDetails: function(){
+            const that = this;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             var bValidation = true;
@@ -242,16 +243,18 @@ sap.ui.define([
 
 
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
-
+           that._oBusyDialog.open()
             this._oModel.update(uri, payload, {
                 // urlParameters: {
                 //     "$filter": this._Plant
                 // },
                 success: function (oData) {
                    MessageToast.show("Saved Successfully");
+                   that._oBusyDialog.close();
                 },
-                error: function (oData) {
+                error: function (error) {
                     MessageToast.show("Something went wrong with Service")
+                    that._oBusyDialog.close();
                 }
             })
         } else {

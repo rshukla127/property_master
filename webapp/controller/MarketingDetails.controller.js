@@ -184,6 +184,7 @@ sap.ui.define([
 		},
 
         onPressSaveMarketingDetails: function(){
+            const that = this;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
             let sMarketKey = this.byId("markKey").getValue();
@@ -232,11 +233,14 @@ sap.ui.define([
                 PsConsolidatedPropertygroup: sConslidatedGroup
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
+           this._oBusyDialog.open();
             this._oModel.update(uri, payload, {
                 success: function (oData) {
+                    that._oBusyDialog.close();
                    MessageToast.show("Saved Successfully");
                 },
-                error: function (oData) {
+                error: function (error) {
+                    that._oBusyDialog.close();
                     MessageToast.show("Something went wrong with Service")
                 }
             })

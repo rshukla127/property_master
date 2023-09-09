@@ -118,6 +118,7 @@ sap.ui.define([
 
 
         onPressSaveOtherDetails: function(){
+            const that = this;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             let sKeyTraining = this.byId("keyTrain").getValue();
@@ -138,12 +139,14 @@ sap.ui.define([
                 KeyTraniningProfessional: sKeyTraining
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
-
+           this._oBusyDialog.open();
             this._oModel.update(uri, payload, {
                 success: function (oData) {
+                    that._oBusyDialog.close();
                    MessageToast.show("Saved Successfully");
                 },
-                error: function (oData) {
+                error: function (error) {
+                    that._oBusyDialog.close();
                     MessageToast.show("Something went wrong with Service")
                 }
             })

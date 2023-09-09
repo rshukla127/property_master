@@ -54,6 +54,7 @@ sap.ui.define([
         },
 
         onPressSaveWebDetails: function(){
+            const that = this;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
             var bValidation = true;
@@ -212,13 +213,15 @@ sap.ui.define([
                 PreReservationDays: PreReservationDays
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
-
+           this._oBusyDialog.open();
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                    MessageToast.show("Saved Successfully");
+                   that._oBusyDialog.close();
                 },
                 error: function (oData) {
-                    MessageToast.show("Something went wrong with Service")
+                    MessageToast.show("Something went wrong with Service");
+                    that._oBusyDialog.close();
                 }
             })
         } else {

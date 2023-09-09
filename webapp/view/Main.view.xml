@@ -45,6 +45,14 @@
                                 <Title text="{i18n>addPropTitle}" level="H3" titleStyle="H3" class="slideInLeft" wrapping="true" />
                             </VBox>
                         </HBox>
+                        <HBox width="100%" class="sapUiMediumMarginBottom">
+                            <MessageStrip
+                                text="{i18n>note}"
+                                showIcon="true"
+                                showCloseButton="false"
+                                >
+                            </MessageStrip>
+                         </HBox>
 
 
                         <!-- <Title text="Select Plant/Property" titleStyle="H3" class="boldTitle
@@ -57,6 +65,7 @@
                                 <f:layoutData>
                                     <grid:ResponsiveColumnItemLayoutData columns="19" rows="7" />
                                 </f:layoutData>
+                                
                                 <HBox width="100%">
                                     <IllustratedMessage illustrationSize="Dot" illustrationType="tnt-Radar" />
                                     <Title text="{i18n>propTitle}" class="sapUiTinyMargin" />
@@ -102,7 +111,69 @@
                                     </RadioButtonGroup>
                                 </HBox>
 
-                                <HBox alignContent="Inherit" id="owner" alignItems="Center" visible="{oVisModel>/visibliltyForOwner}" class="sapUiSmallMargin" justifyContent="Start">
+                                <Table id="idProductsTable"
+                                inset="false"
+                                items="{
+                                    path: '/ProductCollection',
+                                    sorter: {
+                                        path: 'Name'
+                                    }
+                                }">
+                                
+                                <columns>
+                                    <Column
+                                        width="12em">
+                                        <Text text="Profit Center" />
+                                    </Column>
+                                    <Column
+                                        minScreenWidth="Tablet"
+                                        demandPopin="true">
+                                        <Text text="Long Text" />
+                                    </Column>
+                                    <Column
+                                        minScreenWidth="Desktop"
+                                        demandPopin="true"
+                                        hAlign="End">
+                                        <Text text="Company Code" />
+                                    </Column>
+                                    <Column
+                                        minScreenWidth="Desktop"
+                                        demandPopin="true"
+                                        hAlign="Center">
+                                        <Text text="Valid From" />
+                                    </Column>
+                                    <Column
+                                        hAlign="End">
+                                        <Text text="Valid To" />
+                                    </Column>
+                                    <Column
+                                        hAlign="End">
+                                        <Text text="Segment" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem vAlign="Middle">
+                                        <cells>
+                                            <Text
+                                                title="{Name}"
+                                                text="{ProductId}"/>
+                                            <Text
+                                                text="{SupplierName}" />
+                                            <Text
+                                                text="{Width} x {Depth} x {Height} {DimUnit}" />
+                                                <Text
+                                                title="{Name}"
+                                                text="{ProductId}"/>
+                                            <Text
+                                                text="{SupplierName}" />
+                                            <Text
+                                                text="{Width} x {Depth} x {Height} {DimUnit}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+
+                                <!-- <HBox alignContent="Inherit" id="owner" alignItems="Center" visible="{oVisModel>/visibliltyForOwner}" class="sapUiSmallMargin" justifyContent="Start">
                                     <VBox class="sapUiMediumMarginEnd sapUiMediumMarginBegin" visible="{oVisModel>/visForRetailPCBlock}">
                                         <Label text="{i18n>retailPC}" required="true"/>
                                         <Input id="retailPc" liveChange="oncheckRetailPc" value="{plantBasicDetailsModel>/0/RetailPc}" placeholder="Search PC.." showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequestReatilPC" suggestionItems="{path: 'retailpcModel>/', length:5000}" suggestionItemSelected="onSuggestionItemSelected">
@@ -267,7 +338,7 @@
                                       }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
 
                                     </VBox>
-                                </HBox>
+                                </HBox> -->
                                 <VBox alignContent="End" alignItems="End">
                                     <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSave"></Button>
                                 </VBox>

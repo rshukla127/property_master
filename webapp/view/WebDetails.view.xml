@@ -19,7 +19,8 @@
                     <Input id="propLong" valueStateText="Value cannot be blank" valueState="{/PropertyLongitude}" value="{plantBasicDetailsModel>/PropertyLongitude}" />
 
                     <Label required="true" text="{i18n>propAdminFee}" />
-                    <Input id="propAdmin" valueStateText="Value cannot be blank" valueState="{/PropertyAdminFee}" type="Number" value="{plantBasicDetailsModel>/PropertyAdminFee}" />
+                    <Input id="propAdmin" valueStateText="Value cannot be blank" valueState="{/PropertyAdminFee}" type="Number" 
+                    value="{parts: ['plantBasicDetailsModel>/PropertyAdminFee'], formatter: '.formatter.removeLeadingZeros'}"/>
 
                     <Label required="true" text="{i18n>adminFeeEff}" />
                     <DatePicker id="effDate" valueStateText="Value cannot be blank" valueState="{/tollFreeNumber}" placeholder="Choose Date..." value="{ 
@@ -77,10 +78,11 @@
                       }" valueFormat="yyyy-MM-dd"/>
 
                     <Label required="true" text="{i18n>propNFSFee}" />
-                    <Input id="propNFS" valueStateText="Value cannot be blank" valueState="{/PropertyNfsFee}" value="{plantBasicDetailsModel>/PropertyNfsFee}" />
+                    <Input id="propNFS" type="Number" valueStateText="Value cannot be blank" valueState="{/PropertyNfsFee}"
+                     value="{parts: ['plantBasicDetailsModel>/PropertyNfsFee'], formatter: '.formatter.removeLeadingZeros'}"/>
 
                     <Label required="true" text="{i18n>maxResDays}" />
-                    <Input id="maxRes" valueStateText="Value cannot be blank" valueState="{/MaxReservationDays}" value="{plantBasicDetailsModel>/MaxReservationDays}" />
+                    <Input id="maxRes" valueStateText="Value cannot be blank" type="Number" maxLength="3" valueState="{/MaxReservationDays}" value="{plantBasicDetailsModel>/MaxReservationDays}" />
                     <Label text="{i18n>nsfFeeEff}" />
                     <DatePicker id="nsfFeeEff" placeholder="Choose Date..." 
                     value="{ 
@@ -89,7 +91,8 @@
                       }" valueFormat="yyyy-MM-dd"/>
 
                     <Label required="true" text="{i18n>propNFS}" />
-                    <Input id="propNFSACH" valueStateText="Value cannot be blank" valueState="{/PropertyNfsAchFee}" value="{plantBasicDetailsModel>/PropertyNfsAchFee}" />
+                    <Input id="propNFSACH" valueStateText="Value cannot be blank" type="Number" valueState="{/PropertyNfsAchFee}" 
+                    value="{parts: ['plantBasicDetailsModel>/PropertyNfsAchFee'], formatter: '.formatter.removeLeadingZeros'}"/>
 
                     <Label text="{i18n>nfsachfeeEffective}" />
                     <DatePicker id="nfsAshfeeeff" placeholder="Choose Date..." 
