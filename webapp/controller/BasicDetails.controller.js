@@ -59,6 +59,7 @@ sap.ui.define([
                     that.getOwnerComponent().getModel("plantsModel").setProperty("/Address", FilterData[0].Address);
                     that.getOwnerComponent().getModel("plantsModel").setProperty("/Email", FilterData[0].Email);
                     that.getOwnerComponent().getModel("plantsModel").setProperty("/Faxnumber", FilterData[0].Faxnumber);
+                    that.getOwnerComponent().getModel("plantsModel").setProperty("/Telnumber", FilterData[0].Telnumber);
                     // that.getView().setModel(oModel, "plantModelNew")
                     // sap.ui.getCore().setModel(oModel, "plantModelNew");
                     // that.getView().getModel("plantModelNew").refresh();

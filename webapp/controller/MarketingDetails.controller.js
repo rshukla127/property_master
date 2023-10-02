@@ -164,19 +164,19 @@ sap.ui.define([
             let sCode =  oSelectedItem.getTitle();
 
             if (sTitle === "Market Key"){
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/MarketKey", sCode);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/MarketKey", `(${sCode}) ${sDescription}`);
                 // this.byId("markKey").setValue(sDescription);
                 // this.marketKey = sCode
             } else if(sTitle === "Metro Statistical Area"){
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/MetroStatisicalArea", sCode);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/MetroStatisicalArea", `(${sCode}) ${sDescription}`);
                 // this.byId("metroStats").setValue(sDescription);
                 // this._MetroStats = sCode
             } else if(sTitle === "Neighbourhood"){
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/Neighborwood", sCode);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/Neighborwood", `(${sCode}) ${sDescription}`);
                 // this.byId("neighbourwood").setValue(sDescription);
                 // this._neighbour = sCode
             } else if(sTitle === "Consolidated Property Group"){
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/PsConsolidatedPropertygroup", sCode);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/PsConsolidatedPropertygroup", `(${sCode}) ${sDescription}`);
                 // this.byId("psCons").setValue(sDescription);
                 // this._consolidatedPGroup = sCode
             }

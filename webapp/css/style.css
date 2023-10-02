@@ -6,3 +6,20 @@
     background-position: center center;
     height: 100%;
 } */
+
+
+.sapMSuggestionsPopover.sapMPopover {
+    max-width: calc(100% - 29rem) !important;
+    margin-left: 1rem;
+    width: 70rem !important;
+    margin-right: 1rem;
+}
+
+.sapMPopover .sapMPopoverCont {
+    padding: 0.0625rem;
+    width: 70rem !important;
+}
+
+.marginBtn {
+    margin-left: 54rem !important;
+}

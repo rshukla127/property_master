@@ -108,11 +108,11 @@ sap.ui.define([
             if (sTitle === "Market Class"){
                 // this.byId("mClass").setValue(sDescription);
                 // this._mClass = sCode
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/MarketKey", sCode);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/MarketKey", `(${sCode}) ${sDescription}`);
             } else if(sTitle === "Training Proffesionals"){
                 // this.byId("keyTrain").setValue(sDescription);
                 // this._trainingProff = sCode
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/KeyTraniningProfessional", sCode); 
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/KeyTraniningProfessional", `(${sCode}) ${sDescription}`); 
             }
 		},
 

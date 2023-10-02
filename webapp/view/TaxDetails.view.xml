@@ -24,9 +24,11 @@
                     <Label required="true" text="{i18n>ownerOfRec}" />
                     <Input id="ownerRecord" valueStateText="Value cannot be blank" valueState="{/OwnerOfRecord}" valueHelpRequest="_onValueHelOwnerRecord" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/OwnerOfRecord}" />
 
-                    <Label required="true" text="{i18n>taxFillingEntity}" />
-                    <Input id="taxFiling" valueStateText="Value cannot be blank" valueState="{/TaxFilingEntity}" valueHelpRequest="_onValueHelpTaxFillingEntity" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/TaxFilingEntity}" />
+                    <!-- <Label required="true" text="{i18n>taxFillingEntity}" />
+                    <Input id="taxFiling" valueStateText="Value cannot be blank" valueState="{/TaxFilingEntity}" valueHelpRequest="_onValueHelpTaxFillingEntity" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/TaxFilingEntity}" /> -->
                    
+                    <Label required="true" text="Solar Entity" />
+                    <TextArea id="taxFiling" valueStateText="Value cannot be blank" valueState="{/TaxFilingEntity}" valueHelpRequest="_onValueHelpTaxFillingEntity"  value="{plantBasicDetailsModel>/TaxFilingEntity}" />
 
                 </f:content>
             </f:SimpleForm>
