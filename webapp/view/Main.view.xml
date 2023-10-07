@@ -188,7 +188,7 @@
                                     </RadioButtonGroup>
                                     <FlexBox justifyContent="End" width="100%">
                                         <!-- Other content or controls -->
-                                        <Button text="Refresh" icon="sap-icon://refresh"/>
+                                        <Button text="Refresh" icon="sap-icon://refresh" press="onRefresPCs"/>
                                     </FlexBox>
                                     
                                         

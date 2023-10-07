@@ -929,16 +929,14 @@ sap.ui.define([
                var FinalFIlter = new sap.ui.model.Filter([FilterPlant, FilterProperty], true);
                this.BusyDialog.open()
                return new Promise(function(){
-                   that._oModel.read(`/ProfitCenterSet`, {
+                   that._oModel.read(`/PropertyMasterSet`, {
                     filters: [FinalFIlter],
                     and: false,
                        success: function (oData) {
                            that.BusyDialog.close();
-                           const oModel = new JSONModel(oData.results);
                            //const filterData = oModel.getData().filter(item => (item.LegacyPropertyNumber === that.getOwnerComponent().LegacyPropertyNumber))
                            if(oData.results.length){
-                            that.getView().setModel(oModel, "profitCenterModel")
-                            sap.ui.getCore().setModel(oModel, "profitCenterModel");
+                            
                             MessageBox.confirm(
                                                     `Property Details for the property ${that.getOwnerComponent().LegacyPropertyNumber} is available. Do you want to change?`,
                                                     {
@@ -948,6 +946,8 @@ sap.ui.define([
                                                         onClose: function (oAction) {
                                                             if (oAction === MessageBox.Action.YES) {
                                                                 //that.getView().getModel("plantsModel").setProperty("/street", sSelectedPlantAddress)
+                                                               
+                                                               
                                                                 that.getView().getModel("plantsModel").setProperty("/property", that.getOwnerComponent().LegacyPropertyNumber)
                                                                 that.getView().getModel("oVisModel").setProperty("/visibilityForPTypeBlock", true);
                                                                 that.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", true);
@@ -961,6 +961,7 @@ sap.ui.define([
                                                                     that.byId("rb2").setSelected(true);
                                                                     //that.getView().getModel("oVisModel").setProperty("/visibliltyForThirdParty", true);
                                                                 }
+                                                                that.readProfitCenters();
                                                                 
                                                             } else {
                                                                 // Handle the "Cancel" button action or do nothing if canceled
@@ -979,7 +980,7 @@ sap.ui.define([
                                                                 if (oAction === MessageBox.Action.YES) {
                                                                     // Handle the "Confirm" button action
                                                                     that.getView().getModel("plantsModel").setProperty("/property", that.getOwnerComponent().LegacyPropertyNumber);
-                                                                    that.getView().getModel("oVisModel").setProperty("/visibilityForPTypeBlock", true);
+                                                                    that.getView().getModel("oVisModel").setProperty("/visibilityForPTypeBlock", false);
                                                                    // that.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", true);
                                                                     that.getView().getModel("oVisModel").setProperty("/enabledForPlant", false);
                                                                     that.getView().getModel("oVisModel").setProperty("/enabledForProperty", false);
@@ -1009,6 +1010,27 @@ sap.ui.define([
                    });
                });
 
+            },
+
+            readProfitCenters: function(){
+                const that = this;
+                var FilterPlant = new sap.ui.model.Filter('Plant', 'EQ', this.getOwnerComponent().plant);
+                var FilterProperty = new sap.ui.model.Filter('LegacyPropertyNumber', 'EQ', this.getOwnerComponent().LegacyPropertyNumber);
+                var FinalFIlter = new sap.ui.model.Filter([FilterPlant, FilterProperty], true);
+                this._oModel.read(`/ProfitCenterSet`,{
+                    filters: [FinalFIlter],
+                    and: false,
+                    success: function(oData){
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "profitCenterModel");
+                        sap.ui.getCore().setModel(oModel, "profitCenterModel");
+                    },
+                    error: function (oData) {
+                        MessageToast.show("Something went wrong with Service")
+                    }
+
+                })
+                
             },
 
             onResetField: function(){
@@ -1069,6 +1091,7 @@ sap.ui.define([
             },
 
             createNewProperty: function(){
+                const that = this;
                 const sPlant = this.getOwnerComponent().plant
                 const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
                 const payload = {
@@ -1078,6 +1101,7 @@ sap.ui.define([
                 this._oModel.create(`/PropertyMasterSet`, payload,{
                     success: function(){
                         MessageToast.show("Success");
+                        that.readProfitCenters();
                     },
                     error: function (oData) {
                         MessageToast.show("Something went wrong with Service")
@@ -1237,6 +1261,36 @@ sap.ui.define([
                 var oFilter = new Filter("Name2", FilterOperator.Contains, sValue);
 
                 oEvent.getSource().getBinding("items").filter([oFilter]);
+            },
+
+            onRefresPCs: function(){
+                const that = this;
+                var FilterPlant = new sap.ui.model.Filter('Plant', 'EQ', this.getOwnerComponent().plant);
+                var FilterProperty = new sap.ui.model.Filter('LegacyPropertyNumber', 'EQ', this.getOwnerComponent().LegacyPropertyNumber);
+                var sActioFilter = new sap.ui.model.Filter('Action', 'EQ', 'REFRESH');
+                var FinalFIlter = new sap.ui.model.Filter([FilterPlant, FilterProperty, sActioFilter], true);
+                this.BusyDialog.open();
+                    that._oModel.read(`/ProfitCenterSet`, {
+                     filters: [FinalFIlter],
+                     and: false,
+                        success: function (oData) {
+                            that.BusyDialog.close();
+                            const oModel = new JSONModel(oData.results);
+                            //const filterData = oModel.getData().filter(item => (item.LegacyPropertyNumber === that.getOwnerComponent().LegacyPropertyNumber))
+                            if(oData.results.length){
+                             that.getView().setModel(oModel, "profitCenterModel");
+                             sap.ui.getCore().setModel(oModel, "profitCenterModel");
+                             that.getView().getModel("profitCenterModel").refresh();
+                         }
+                        },
+                        error: function (oData) {
+                             that.BusyDialog.close();
+                            MessageToast.show("Something went wrong with Service")
+                        }
+                    });
+               
+ 
+
             },
 
 

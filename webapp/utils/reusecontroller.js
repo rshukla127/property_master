@@ -56,27 +56,27 @@ sap.ui.define([
 
         },
 
-        readPropertyMasterData: function(Plant, LegacyPropertyNumber){
-            const that = this;
-            // var FilterPlant = new sap.ui.model.Filter('Werks', 'EQ', Plant);
-            // var FilterProperty = new sap.ui.model.Filter('Name2', 'EQ', LegacyPropertyNumber);
-            const uri= `/PlantMasterSet(Werks='${Plant}')`
-            this._oBusyDialog.open()
-            this._oModel.read(uri, {
-                success: function (oData) {
-                    that._oBusyDialog.close();
-                    const oModel = new JSONModel(oData);
-                    that.getView().setModel(oModel, "basicDetailPlantModel")
-                    sap.ui.getCore().setModel(oModel, "basicDetailPlantModel");
-                    that.getView().getModel("basicDetailPlantModel").refresh();
-                },
-                error: function (oData) {
-                    that._oBusyDialog.close();
-                    MessageToast.show("Something went wrong with Service")
-                }
-            })
+        // readPropertyMasterData: function(Plant, LegacyPropertyNumber){
+        //     const that = this;
+        //     // var FilterPlant = new sap.ui.model.Filter('Werks', 'EQ', Plant);
+        //     // var FilterProperty = new sap.ui.model.Filter('Name2', 'EQ', LegacyPropertyNumber);
+        //     const uri= `/PlantMasterSet(Werks='${Plant}')`
+        //     this._oBusyDialog.open()
+        //     this._oModel.read(uri, {
+        //         success: function (oData) {
+        //             that._oBusyDialog.close();
+        //             const oModel = new JSONModel(oData);
+        //             that.getView().setModel(oModel, "basicDetailPlantModel")
+        //             sap.ui.getCore().setModel(oModel, "basicDetailPlantModel");
+        //             that.getView().getModel("basicDetailPlantModel").refresh();
+        //         },
+        //         error: function (oData) {
+        //             that._oBusyDialog.close();
+        //             MessageToast.show("Something went wrong with Service")
+        //         }
+        //     })
 
-        },
+        // },
 
         readBUType:function(){
             const that = this;
