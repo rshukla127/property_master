@@ -12,16 +12,16 @@
 			<f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>propBasDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
 				<f:content>
 					<core:Title text="" visible="false"/>
-					<Label text="{i18n>direPhoneNo}" />
+					<!-- <Label text="{i18n>direPhoneNo}" />
 					<Input maxLength="30" id="dirPhoneNo" value="{plantsModel>/Telnumber}" enabled="false" />
 					<Label text="{i18n>faxNumber}" />
 					<Input maxLength="30" id="faxNo" enabled="false" value="{plantsModel>/Faxnumber}" />
 
 					<Label required="true" text="{i18n>tollfreeNo}" />
-					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/tollFreeNumber}" id="tollFree" value="{plantBasicDetailsModel>/TollFreeNumber}"/>
+					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/tollFreeNumber}" id="tollFree" value="{plantBasicDetailsModel>/TollFreeNumber}"/> -->
 
-					<Label required="true" text="{i18n>netIpAddress}" />
-					<Input maxLength="30" id="network1" valueStateText="Value cannot be blank" valueState="{/network1IpAddress}" value="{plantBasicDetailsModel>/Network1IpAddress}"/>
+					<!-- <Label required="true" text="{i18n>netIpAddress}" />
+					<Input maxLength="30" id="network1" valueStateText="Value cannot be blank" valueState="{/network1IpAddress}" value="{plantBasicDetailsModel>/Network1IpAddress}"/> -->
 
 					<Label required="true" text="{i18n>kioskProp}" />
 					<Select id="kiskProp" valueStateText="Value cannot be blank" valueState="{/KioskProperty}" selectedKey="{parts: ['plantBasicDetailsModel>/KioskProperty'], formatter: '.formatter.getSelectedKeyNo'}">
@@ -46,15 +46,15 @@
 
 					<core:Title text="" />
 
-					<Label required="true" text="{i18n>publishedPhoneNo}" />
-					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/publishedPhoneNo}" id="pubPhone" value="{plantBasicDetailsModel>/PublishedPhoneNo}" />
+					<!-- <Label required="true" text="{i18n>publishedPhoneNo}" />
+					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/publishedPhoneNo}" id="pubPhone" value="{plantBasicDetailsModel>/PublishedPhoneNo}" /> -->
 					<Label text="{i18n>propEmailAdd}" />
 					<Input id="email" enabled="false" value="{plantsModel>/Email}" />
 
-					<Label text="{i18n>localPhoneNo}" />
-					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/localPhoneNumber}" required="true" id="localPh" value="{plantBasicDetailsModel>/LocalPhoneNumber}" type="Url" />
-					<Label required="true" text="{i18n>network2Ip}" />
-					<Input id="network2" valueStateText="Value cannot be blank" valueState="{/network2IpAddress}" value="{plantBasicDetailsModel>/Network2IpAddress}" />
+					<!-- <Label text="{i18n>localPhoneNo}" />
+					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/localPhoneNumber}" required="true" id="localPh" value="{plantBasicDetailsModel>/LocalPhoneNumber}" type="Url" /> -->
+					<!-- <Label required="true" text="{i18n>network2Ip}" />
+					<Input id="network2" valueStateText="Value cannot be blank" valueState="{/network2IpAddress}" value="{plantBasicDetailsModel>/Network2IpAddress}" /> -->
 
 					<Label text="{i18n>kisokActivDate}" labelFor="kisok" />
 					<DatePicker valueStateText="Value cannot be blank" valueState="{/KioskActiveDate}" change="onDateChange" required="true" id="kisok" value="{ 

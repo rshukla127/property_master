@@ -181,9 +181,24 @@
           "target": ["buildDetails"]
         },
         {
+          "name": "apartDetails",
+          "pattern": "apartDetails",
+          "target": ["apartDetails"]
+        },
+        {
           "name": "feesDetails",
           "pattern": "feesDetails",
           "target": ["feesDetails"]
+        },
+        {
+          "name": "internet",
+          "pattern": "internet",
+          "target": ["internet"]
+        },
+        {
+          "name": "phone",
+          "pattern": "phone",
+          "target": ["phone"]
         }
       ],
       "targets": {
@@ -252,6 +267,11 @@
           "viewId": "webDetails",
           "viewName": "WebDetails"
         },
+        "apartDetails": {
+          "viewType": "XML",
+          "viewId": "apartDetails",
+          "viewName": "ApartmentDetails"
+        },
         "buildDetails": {
           "viewType": "XML",
           "viewId": "buildDetails",
@@ -261,6 +281,16 @@
           "viewType": "XML",
           "viewId": "feesDetails",
           "viewName": "FeesDetails"
+        },
+        "internet": {
+          "viewType": "XML",
+          "viewId": "internet",
+          "viewName": "Internet"
+        },
+        "phone": {
+          "viewType": "XML",
+          "viewId": "phone",
+          "viewName": "Phone"
         }
         
       }

@@ -32,8 +32,8 @@ sap.ui.define([
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber)
             //this.readFieldSupName();
-            this.readFieldSuppOfficeName();
-            this.readFiledSupMobile();
+            //this.readFieldSuppOfficeName();
+            //this.readFiledSupMobile();
             this.readSupFax();
             this.readSupEmailAddress();
             this.readRegion();

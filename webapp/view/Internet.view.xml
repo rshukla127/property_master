@@ -1,0 +1,40 @@
+<mvc:View controllerName="com.public.storage.pao.controller.Internet"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+
+
+
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="Internet (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                <f:content>
+                    <core:Title text="" visible="false"/>
+
+
+                    <Label required="true" text="Network 1 IP address" />
+                    <Input id="n1ip" valueStateText="Value cannot be blank" valueState="{/n1ip}" maxLength="30" value="{plantBasicDetailsModel>/FinrepNum7}" />
+
+                    <Label required="true" text="Network 2 IP address" />
+                    <Input id="n2ip" valueStateText="Value cannot be blank" valueState="{/n2ip}" maxLength="30" value="{plantBasicDetailsModel>/FinrepNum7}" />
+
+                    <Label text="Network Type" />
+                    <Input id="ntype" maxLength="30" value="{plantBasicDetailsModel>/NetworkType}" />
+
+                    <Label text="Network Vendor" />
+                    <Input id="nvendor" maxLength="30" value="{plantBasicDetailsModel>/NetworkVendor}" />
+                    <Label text="Network Router Address" />
+                    <Input id="nrouteradd" maxLength="30" value="{plantBasicDetailsModel>/NetworkRouterAddress}" />
+
+                </f:content>
+            </f:SimpleForm>
+            <VBox alignContent="End" alignItems="End">
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveInternetDetails"></Button>
+            </VBox>
+        </VBox>
+
+
+    </ScrollContainer>
+</mvc:View>

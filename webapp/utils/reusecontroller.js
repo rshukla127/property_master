@@ -80,8 +80,9 @@ sap.ui.define([
 
         readBUType:function(){
             const that = this;
+            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'BUTYPE');
             this._oBusyDialog.open()
-            that._oModel.read(`/ButypeSet`, {
+            that._oModel.read(`/ButypeSet?$filter = keyfield eq ${keyFilter}`, {
                     success: function (oData) {
                         that._oBusyDialog.close();
                         const oModel = new JSONModel(oData.results);
@@ -98,8 +99,9 @@ sap.ui.define([
 
         readCustomerCode:function(){
             const that = this;
+            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'CUSTCODES');
             this._oBusyDialog.open()
-            that._oModel.read(`/CustCodesSet`, {
+            that._oModel.read(`/CustCodesSet?$filter = keyfield eq ${keyFilter}`, {
                     success: function (oData) {
                         that._oBusyDialog.close();
                         const oModel = new JSONModel(oData.results);
@@ -116,8 +118,9 @@ sap.ui.define([
 
         readEntityType:function(){
             const that = this;
-            this._oBusyDialog.open()
-            that._oModel.read(`/EntityTypesSet`, {
+            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'ENTITYTYPES');
+            this._oBusyDialog.open();
+            that._oModel.read(`/EntityTypesSet?$filter = keyfield eq ${keyFilter}`, {
                     success: function (oData) {
                         that._oBusyDialog.close();
                         const oModel = new JSONModel(oData.results);
@@ -134,8 +137,10 @@ sap.ui.define([
 
         readATypeProp:function(){
             const that = this;
-            this._oBusyDialog.open()
-            that._oModel.read(`/ATypePropertiesSet`, {
+            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'ATYPEPROPERTIES');
+            this._oBusyDialog.open();
+            that._oModel.read(`/ATypePropertiesSet?$filter = keyfield eq ${keyFilter}`, {
+                //filters: [keyFilter],
                     success: function (oData) {
                         that._oBusyDialog.close();
                         const oModel = new JSONModel(oData.results);
@@ -169,8 +174,8 @@ sap.ui.define([
 
         readMarket: function(){
             const that = this;
-            
-            that._oModel.read(`/MarketSet`, {
+            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'AVAILABLECLASSIFICATION');
+            that._oModel.read(`/MarketSet?$filter = keyfield eq ${keyFilter}`, {
                     success: function (oData) {
                        
                         const oModel = new JSONModel(oData.results);
@@ -184,27 +189,27 @@ sap.ui.define([
                 });
         },
 
-        KeyTrainingProfessional: function(){
-            const that = this;
+        // KeyTrainingProfessional: function(){
+        //     const that = this;
             
-            that._oModel.read(`/KeyTrainingProfessionalSet`, {
-                    success: function (oData) {
+        //     that._oModel.read(`/KeyTrainingProfessionalSet`, {
+        //             success: function (oData) {
                        
-                        const oModel = new JSONModel(oData.results);
-                        that.getView().setModel(oModel, "keyTrainingModel")
-                        sap.ui.getCore().setModel(oModel, "keyTrainingModel");
-                    },
-                    error: function (oData) {
+        //                 const oModel = new JSONModel(oData.results);
+        //                 that.getView().setModel(oModel, "keyTrainingModel")
+        //                 sap.ui.getCore().setModel(oModel, "keyTrainingModel");
+        //             },
+        //             error: function (oData) {
                        
-                        MessageToast.show("Something went wrong with Service")
-                    }
-                });
-        },
+        //                 MessageToast.show("Something went wrong with Service")
+        //             }
+        //         });
+        // },
 
         readMetroStatArea: function(){
             const that = this;
-            
-            that._oModel.read(`/MetroStatAreaSet`, {
+            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'METROSTATAREA');
+            that._oModel.read(`/MetroStatAreaSet?$filter = keyfield eq ${keyFilter}`, {
                     success: function (oData) {
                        
                         const oModel = new JSONModel(oData.results);
@@ -220,8 +225,8 @@ sap.ui.define([
 
         readNeighborhood: function(){
             const that = this;
-            
-            that._oModel.read(`/NeighborhoodSet`, {
+            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'NEIGHBORHOOD');
+            that._oModel.read(`/NeighborhoodSet?$filter = keyfield eq ${keyFilter}`, {
                     success: function (oData) {
                        
                         const oModel = new JSONModel(oData.results);
@@ -237,8 +242,8 @@ sap.ui.define([
 
         readPSConsolidatedPropGroup: function(){
             const that = this;
-            
-            that._oModel.read(`/PSConsolidatedPropGroupSet`, {
+            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'PSCONSOLIDATEDPROPGROUP');
+            that._oModel.read(`/PSConsolidatedPropGroupSet?$filter = keyfield eq ${keyFilter}`, {
                     success: function (oData) {
                        
                         const oModel = new JSONModel(oData.results);

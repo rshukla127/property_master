@@ -40,7 +40,7 @@ sap.ui.define([
             this._oBusyDialog = new BusyDialog();
             this.readPropertyData(Plant, LegacyPropertyNumber);
             this.readMarket();
-            this.KeyTrainingProfessional();
+            //this.KeyTrainingProfessional();
 
         },
 

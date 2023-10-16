@@ -980,7 +980,7 @@ sap.ui.define([
                                                                 if (oAction === MessageBox.Action.YES) {
                                                                     // Handle the "Confirm" button action
                                                                     that.getView().getModel("plantsModel").setProperty("/property", that.getOwnerComponent().LegacyPropertyNumber);
-                                                                    that.getView().getModel("oVisModel").setProperty("/visibilityForPTypeBlock", false);
+                                                                    that.getView().getModel("oVisModel").setProperty("/visibilityForPTypeBlock", true);
                                                                    // that.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", true);
                                                                     that.getView().getModel("oVisModel").setProperty("/enabledForPlant", false);
                                                                     that.getView().getModel("oVisModel").setProperty("/enabledForProperty", false);
@@ -1024,6 +1024,7 @@ sap.ui.define([
                         const oModel = new JSONModel(oData.results);
                         that.getView().setModel(oModel, "profitCenterModel");
                         sap.ui.getCore().setModel(oModel, "profitCenterModel");
+                        that.getView().getModel("profitCenterModel").refresh();
                     },
                     error: function (oData) {
                         MessageToast.show("Something went wrong with Service")
@@ -1100,7 +1101,7 @@ sap.ui.define([
                 }
                 this._oModel.create(`/PropertyMasterSet`, payload,{
                     success: function(){
-                        MessageToast.show("Success");
+                       //MessageToast.show(`Property ${LegacyPropertyNumber} created successfully`);
                         that.readProfitCenters();
                     },
                     error: function (oData) {
@@ -1486,12 +1487,12 @@ sap.ui.define([
                             StoragePcToDate: sStoragePCValidTo,
                             StoragePcSegment: sStoragePCSegment,
                           
-                            StoragePc2: sStorage2PCPrctr,
-                            StoragePc2Ltext: sStorage2PCLongText,
-                            StoragePc2Cc: sStorage2PCBukrs,
-                            StoragePc2FromDate: sStorage2PCValidFrom,
-                            StoragePc2ToDate: sStorage2PCValidTo,
-                            StoragePc2Segment: sStorage2PCSegment,
+                            StorageCbtPc: sStorage2PCPrctr,
+                            StorageCbtPcLtext: sStorage2PCLongText,
+                            StorageCbtPcCc: sStorage2PCBukrs,
+                            StorageCbtPcFromDate: sStorage2PCValidFrom,
+                            StorageCbtPcToDate: sStorage2PCValidTo,
+                            StorageCbtPcSegment: sStorage2PCSegment,
 
                             CommercialPc: sCommPCPrctr,
                             CommercialPcLtext: sCommPCLongText,

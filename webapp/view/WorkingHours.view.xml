@@ -12,6 +12,12 @@
                <f:SimpleForm id="workingHours" editable="true" layout="ResponsiveGridLayout" title="{i18n>workingHours} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
                     <f:content>
                          <core:Title text="" visible="false"/>
+                         <Label text="Time Zone" />
+                              <!-- <TimePicker id="timezone" valueStateText="Value cannot be blank" valueState="{/sunOpenHR}" 
+                                   value="{parts: ['plantBasicDetailsModel>/TimeZone'], formatter: '.formatter.formatTime'}"
+                                   valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true"  placeholder="Choose Time.." /> -->
+
+                         <Input  value="{plantBasicDetailsModel>/TimeZone}" enabled="false"/>
                          <Label required="true" text="{i18n>officeSundayOpenHr}" />
                          <TimePicker id="sunOpen" valueStateText="Value cannot be blank" valueState="{/sunOpenHR}" 
                               value="{parts: ['plantBasicDetailsModel>/OfficeSundayOpenHr'], formatter: '.formatter.formatTime'}"
@@ -42,6 +48,8 @@
                          <Label required="true" text="{i18n>officeSaturdayOpenHr}" />
                          <TimePicker id="satOpen" valueStateText="Value cannot be blank" valueState="{/satOpenHR}"  value="{parts: ['plantBasicDetailsModel>/OfficeSaturdayOpenHr'], formatter: '.formatter.formatTime'}"
                               valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+
+                         <core:Title text="" />
                          <Label required="true" text="Day Light Saving Applicable" />
 					<Select id="daylight" valueStateText="Value cannot be blank" selectedKey="{plantBasicDetailsModel>/DayLightSavingsApplicable}">
 						<items>
@@ -50,9 +58,6 @@
 
 						</items>
 					</Select>
-
-                         <core:Title text="" />
-
                          <Label required="true" text="{i18n>officeSundayClosedHr}" />
                          <TimePicker id="sunClose" valueStateText="Value cannot be blank" valueState="{/sunCloseHR}"  value="{parts: ['plantBasicDetailsModel>/OfficeSundayCloseHr'], formatter: '.formatter.formatTimeSatandSunClose'}"
                           valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />

@@ -32,51 +32,45 @@ sap.ui.define([
 
         },
 
-        onPressSaveBuildingDetails: function(){
-            const that = this;
-            const sPlant = this.getOwnerComponent().plant
-            const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
-            const payload = {
-                BuildingNumber: this.getView().byId("num1").getValue(),
-                BuildingName1: this.getView().byId("name1").getValue(),
-                NumberOfStories1: this.getView().byId("stories1").getValue(),
-                BuildingNumber1: this.getView().byId("num2").getValue(),
-                BuildingName2: this.getView().byId("name2").getValue(),
-                NumberOfStories2: this.getView().byId("stories2").getValue(),
-                BuildingNumber2: this.getView().byId("num3").getValue(),
-                BuildingName3: this.getView().byId("name3").getValue(),
-                NumberOfStories3: this.getView().byId("stories3").getValue(),
-                BuildingNumber3: this.getView().byId("num4").getValue(),
-                BuildingName4: this.getView().byId("name4").getValue(),
-                NumberOfStories4: this.getView().byId("stories4").getValue(),
-                BuildingNumber4: this.getView().byId("num5").getValue(),
-                BuildingName5: this.getView().byId("name5").getValue(),
+        onAdd: function (oEvent) {        
+            // const oModel = this.getOwnerComponent().getModel("currencyModel").getData();
+            // const oNewModel = new JSONModel(oModel);
+            // this.getView().setModel(oNewModel, "currModel");
+            //                     //to add a new row
+            // // @ts-ignore
+            var oItem = new sap.m.ColumnListItem({
+            // @ts-ignore
+            cells: [ new sap.m.Input({change: [this.onChange, this]}), new sap.m.Input({change: [this.onChange, this]}),
+                new sap.m.Input({change: [this.onChange, this]}),
+                new sap.m.Input({change: [this.onChange, this]}),
+                new sap.m.Input({change: [this.onChange, this]}),
+                        new sap.m.Button({
+                            icon: "sap-icon://delete",
+                            type: "Reject",
+                            press: [this.remove, this]
+                        })
+           ]
+        });
 
-                NumberOfStories5: this.getView().byId("stories5").getValue(),
-                AppartmentNumber5: this.getView().byId("apart1").getValue(),
-                AppartmentName1: this.getView().byId("apartName1").getValue(),
-                NumberOfStories_1: this.getView().byId("apartstories1").getValue(),
-                NumberOfBedRoom1: this.getView().byId("bedroom2").getValue(),
-                NumberOfBathRoom1: this.getView().byId("bathroom1").getValue(),
-                AppartmentNumber2: this.getView().byId("apart2").getValue(),
-                AppartmentName2: this.getView().byId("apartName2").getValue(),
-                NumberOfStories_2: this.getView().byId("noOfStories2").getValue(),
-                NumberOfBedRoom2: this.getView().byId("bedroom2").getValue(),
-                NumberOfBathRoom2: this.getView().byId("bathroom2").getValue()
-            }
-           const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
-           this._oBusyDialog.open();
-            this._oModel.update(uri, payload, {
-                success: function (oData) {
-                    that._oBusyDialog.close()
-                   MessageToast.show("Saved Successfully");
-                },
-                error: function (oData) {
-                    that._oBusyDialog.close();
-                    MessageToast.show("Something went wrong with Service")
-                }
-            })
-
+        var oTable = this.getView().byId("idAttributestTab");
+        // @ts-ignore
+        oTable.addItem(oItem);
+        if(oTable.getItems().length > 0){
+            this.getView().byId("illusSection").setVisible(false);
+        } else {
+            this.getView().byId("illusSection").setVisible(true);
         }
+        },
+
+        remove: function (oEvent) {
+            var oTable = this.getView().byId("idAttributestTab");
+            oTable.removeItem(oEvent.getSource().getParent()).destroy();
+            if(oTable.getItems().length > 0){
+                this.getView().byId("illusSection").setVisible(false);
+               } else {
+                this.getView().byId("illusSection").setVisible(true);
+               }
+
+            }
 	});
 });

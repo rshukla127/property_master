@@ -135,11 +135,11 @@ sap.ui.define([
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             var bValidation = true;
             let sTime = "T00:00:00"
-            let sTollFreeNumber = this.getView().byId("tollFree").getValue();
+            //let sTollFreeNumber = this.getView().byId("tollFree").getValue();
             let sNetwork1IpAddress = this.getView().byId("network1").getValue();
             let sKioskProperty = this.getView().byId("kiskProp").getSelectedKey();
-            let sPublishedPhoneNo = this.getView().byId("pubPhone").getValue();
-            let sLocalPhoneNumber = this.getView().byId("localPh").getValue();
+            //let sPublishedPhoneNo = this.getView().byId("pubPhone").getValue();
+            //let sLocalPhoneNumber = this.getView().byId("localPh").getValue();
             let sNetwork2IpAddress =  this.getView().byId("network2").getValue();
             let kisokACtivDate = this.getView().byId("kisok").getValue().split(".").reverse().join("-");
             let sGeoCode = this.getView().byId("geo").getValue();
@@ -158,13 +158,13 @@ sap.ui.define([
                
             }
 
-            if (sTollFreeNumber === "") {
-                this.model.setProperty("/tollFreeNumber", "Error");
+            // if (sTollFreeNumber === "") {
+            //     this.model.setProperty("/tollFreeNumber", "Error");
                
-            } else {
-                this.model.setProperty("/tollFreeNumber", "None");
+            // } else {
+            //     this.model.setProperty("/tollFreeNumber", "None");
              
-            }
+            // }
 
             if (sNetwork1IpAddress === "") {
                 this.model.setProperty("/network1IpAddress", "Error");
@@ -190,19 +190,19 @@ sap.ui.define([
                
             }
 
-            if (sPublishedPhoneNo === "") {
-                this.model.setProperty("/publishedPhoneNo", "Error");
-            } else {
-                this.model.setProperty("/publishedPhoneNo", "None");
-            }
+            // if (sPublishedPhoneNo === "") {
+            //     this.model.setProperty("/publishedPhoneNo", "Error");
+            // } else {
+            //     this.model.setProperty("/publishedPhoneNo", "None");
+            // }
 
-            if (sLocalPhoneNumber === "") {
-                this.model.setProperty("/localPhoneNumber", "Error");
+            // if (sLocalPhoneNumber === "") {
+            //     this.model.setProperty("/localPhoneNumber", "Error");
               
-            } else {
-                this.model.setProperty("/localPhoneNumber", "None");
+            // } else {
+            //     this.model.setProperty("/localPhoneNumber", "None");
                
-            }
+            // }
 
             if (sGeoCode === "") {
                 this.model.setProperty("/GeoCode", "Error");
@@ -211,18 +211,18 @@ sap.ui.define([
                 this.model.setProperty("/GeoCode", "None");
             }
             
-            if (sTollFreeNumber === "" || sGeoCode === "" || sLocalPhoneNumber === "" || sPublishedPhoneNo === "" || kisokACtivDate === null
-            ||  sKioskProperty === "" || kisokACtivDate ==="" || sNetwork2IpAddress === "" || sNetwork1IpAddress === ""){
+            if (sGeoCode === "" || kisokACtivDate === null
+            ||  sKioskProperty === "" || kisokACtivDate ===""){
                 bValidation = true ;
             } else {
                 bValidation = false ;
             }
             if (bValidation === false){
             const payload = {
-                DirectPhoneNo: this.getView().byId("dirPhoneNo").getValue(),
-                FaxNumber: this.getView().byId("faxNo").getValue(),
-                TollFreeNumber: sTollFreeNumber,
-                Network1IpAddress: sNetwork1IpAddress,
+                //DirectPhoneNo: this.getView().byId("dirPhoneNo").getValue(),
+                //FaxNumber: this.getView().byId("faxNo").getValue(),
+                //TollFreeNumber: sTollFreeNumber,
+                //Network1IpAddress: sNetwork1IpAddress,
                 KioskActiveDate: kisokACtivDate,
                 KioskProperty: sKioskProperty,
                 BuddyPropertyNumber: this.getView().byId("budProp").getValue(),
@@ -230,10 +230,10 @@ sap.ui.define([
                 HistoricalProperty: this.getView().byId("histProp").getValue(),
                 PsaProperty: this.getView().byId("psaProp").getValue(),
                 TransferFrom: this.getView().byId("transF").getValue(),
-                PublishedPhoneNo: sPublishedPhoneNo,
+                //PublishedPhoneNo: sPublishedPhoneNo,
                 PropertyEmailAddress: this.getView().byId("email").getValue(),
-                LocalPhoneNumber: sLocalPhoneNumber,
-                Network2IpAddress: sNetwork2IpAddress,
+                //LocalPhoneNumber: sLocalPhoneNumber,
+                //Network2IpAddress: sNetwork2IpAddress,
                 OfficeSquareFootage: this.getView().byId("offSq").getValue(),
                 //DirectPhoneNo: this.getView().byId("").getValue(),
                 RetailStorageSize:this.getView().byId("retailST").getValue(),

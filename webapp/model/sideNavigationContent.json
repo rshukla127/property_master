@@ -19,6 +19,11 @@
 					"visible": false
 				},
 				{
+					"title": "Phone Numbers",
+					"key": "phone",
+					"visible": false
+				},
+				{
 					"title": "{i18n>sideNavSubItemBUDetails}",
 					"key": "buDetails",
 					"visible": false
@@ -74,13 +79,23 @@
 					"visible": false
 				},
 				{
-					"title": "{i18n>sideNavSubItemBuildingDetails}",
+					"title": "{i18n>sideNavSubItemApartmentDetails}",
+					"key": "apartDetails",
+					"visible": false
+				},
+				{
+					"title": "{i18n>sideNavSubItembuildingDetails}",
 					"key": "buildDetails",
 					"visible": false
 				},
 				{
 					"title": "{i18n>sideNavSubItemFeesDetails}",
 					"key": "feesDetails",
+					"visible": false
+				},
+				{
+					"title": "Internet",
+					"key": "internet",
 					"visible": false
 				}
 			]

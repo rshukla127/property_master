@@ -21,6 +21,15 @@ sap.ui.define(["sap/m/MessageToast",],
  
              },
 
+             getKeyTrainingProffesional: function(sValue){
+              if (sValue){
+               return sValue;
+              } else {
+               return "N";
+              }
+
+           },
+
              getSelectedKeyBlank: function(sValue){
                 if (sValue){
                  return sValue;

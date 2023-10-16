@@ -1,18 +1,18 @@
 <mvc:View controllerName="com.public.storage.pao.controller.MarketingDetails"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-   	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core">
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
     <ScrollContainer
 		height="100%"
 		width="100%"
 		vertical="true"
 		focusable="true">
-		
-	
 
-<VBox class="sapUiSmallMargin">
+
+
+		<VBox class="sapUiSmallMargin">
 		<f:SimpleForm id="basicDetails"
 			editable="true"
 			layout="ResponsiveGridLayout"
@@ -30,26 +30,26 @@
 			columnsL="2"
 			columnsM="2"
 			singleContainerFullSize="false" >
-			<f:content>
-				<core:Title text="" visible="false"/>
-				<Label required="true" text="{i18n>marketKey}" />
+				<f:content>
+					<core:Title text="" visible="false"/>
+					<Label required="true" text="{i18n>marketKey}" />
 				<Input id="markKey" valueStateText="Value cannot be blank" valueState="{/MarketKey}" showValueHelp="true" valueHelpRequest="_onValueHelpMarketKey" valueHelpOnly="true" value="{plantBasicDetailsModel>/MarketKey}" />
-				<Label required="true" text="{i18n>metroStatisticalArea}" />
+					<Label required="true" text="{i18n>metroStatisticalArea}" />
 				<Input id="metroStats" valueStateText="Value cannot be blank" valueState="{/MetroStatisicalArea}" showValueHelp="true" valueHelpRequest="_onValueHelpMetroStats" valueHelpOnly="true" value="{plantBasicDetailsModel>/MetroStatisicalArea}" />
-				
-				<Label required="true" text="{i18n>neighbourhood}" />
+
+					<Label required="true" text="{i18n>neighbourhood}" />
 				<Input id="neighbourwood" valueStateText="Value cannot be blank" valueState="{/Neighborwood}" showValueHelp="true" valueHelpRequest="_onValueHelpNeigbour" valueHelpOnly="true" value="{plantBasicDetailsModel>/Neighborwood}" />
-				
-				<Label required="true" text="{i18n>psConsolidatedPropGroup}" />
+
+					<Label required="true" text="{i18n>psConsolidatedPropGroup}" />
                 <Input id="psCons" valueStateText="Value cannot be blank" valueState="{/PsConsolidatedPropertygroup}" showValueHelp="true" valueHelpRequest="_onValueHelpConslidated" valueHelpOnly="true" value="{plantBasicDetailsModel>/PsConsolidatedPropertygroup}" />
 				
-			</f:content>
-		</f:SimpleForm>
-		<VBox alignContent="End" alignItems="End">
-			<Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveMarketingDetails"></Button>
+				</f:content>
+			</f:SimpleForm>
+			<VBox alignContent="End" alignItems="End">
+				<Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveMarketingDetails"></Button>
+			</VBox>
 		</VBox>
-        </VBox>
 
-		
-        </ScrollContainer>
+
+	</ScrollContainer>
 </mvc:View>

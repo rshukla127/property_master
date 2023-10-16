@@ -13,17 +13,16 @@
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label required="true" text="{i18n>active}" />
-                    <!-- <Input id="active" valueStateText="Value cannot be blank" valueState="{/Active}" valueHelpRequest="_onValueHelpActive" 
-                    valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" /> -->
-                        <Select id="active" valueState="{/Active}" valueStateText="Value cannot be blank" selectedKey="{plantBasicDetailsModel>/Active}">
-                            <items>
-                                <core:Item text="" key="B"/>
-                                <core:Item text="Active" key="A"/>
-                                <core:Item text="Not visual to web champ" key="V"/>
-                                <core:Item text="No posting allowed" key="N"/>
-    
-                            </items>
-                        </Select>
+                    <!-- <Input id="active" valueStateText="Value cannot be blank" valueState="{/Active}" valueHelpRequest="_onValueHelpActive" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/Active}" /> -->
+                    <Select id="active" valueState="{/Active}" valueStateText="Value cannot be blank" selectedKey="{plantBasicDetailsModel>/Active}">
+                        <items>
+                            <core:Item text="" key="B"/>
+                            <core:Item text="Active" key="A"/>
+                            <core:Item text="Not visual to web champ" key="V"/>
+                            <core:Item text="No posting allowed" key="N"/>
+
+                        </items>
+                    </Select>
                     <Label required="true" text="{i18n>businessUnitType}" />
                     <Input id="bType" valueStateText="Value cannot be blank" valueState="{/BusinessUnitType}" valueHelpRequest="_onValueHelpBUnit" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/BusinessUnitType}" />
 
@@ -47,7 +46,7 @@
 
                     <Label required="true" text="{i18n>atypeProp}" />
                     <Input id="atypeProp" valueStateText="Value cannot be blank" valueState="{/ATypeProperty}" valueHelpRequest="_onValueHelpComATypeProp" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
-                    
+
                     <core:Title text="" />
                     <Label  text="{i18n>billboard}" />
                     <Select id="bill" selectedKey="{parts: ['plantBasicDetailsModel>/BillBoard'], formatter: '.formatter.getSelectedKeyBlank'}">
@@ -63,7 +62,7 @@
                     <Select id="comm" selectedKey="{parts: ['plantBasicDetailsModel>/Comercial'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <!-- {parts: ['plantBasicDetailsModel>/KioskProperty'], formatter: '.formatter.getSelectedKeyNo'} -->
                         <items>
-                            
+
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
                             <core:Item text="" key="B"/>
