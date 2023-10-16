@@ -136,11 +136,11 @@ sap.ui.define([
             var bValidation = true;
             let sTime = "T00:00:00"
             //let sTollFreeNumber = this.getView().byId("tollFree").getValue();
-            let sNetwork1IpAddress = this.getView().byId("network1").getValue();
+            //let sNetwork1IpAddress = this.getView().byId("network1").getValue();
             let sKioskProperty = this.getView().byId("kiskProp").getSelectedKey();
             //let sPublishedPhoneNo = this.getView().byId("pubPhone").getValue();
             //let sLocalPhoneNumber = this.getView().byId("localPh").getValue();
-            let sNetwork2IpAddress =  this.getView().byId("network2").getValue();
+            //let sNetwork2IpAddress =  this.getView().byId("network2").getValue();
             let kisokACtivDate = this.getView().byId("kisok").getValue().split(".").reverse().join("-");
             let sGeoCode = this.getView().byId("geo").getValue();
             if (kisokACtivDate !== ""){

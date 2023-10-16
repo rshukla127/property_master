@@ -190,7 +190,8 @@ sap.ui.define([
             let sMarketKey = this.byId("markKey").getValue();
             let sMetroStatus = this.byId("metroStats").getValue();
             let sNeighbourhood = this.byId("neighbourwood").getValue();
-            let sConslidatedGroup = this.byId("psCons").getValue();
+            let rankProp = this.byId("rankProp").getSelectedKey();
+        
 
             let bValidation = true;
 
@@ -230,7 +231,8 @@ sap.ui.define([
                 MarketKey: sMarketKey,
                 MetroStatisicalArea: sMetroStatus,
                 Neighborwood: sNeighbourhood,
-                PsConsolidatedPropertygroup: sConslidatedGroup
+                PsConsolidatedPropertygroup: sConslidatedGroup,
+                Rank: rankProp
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
            this._oBusyDialog.open();

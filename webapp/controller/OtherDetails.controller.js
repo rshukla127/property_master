@@ -121,7 +121,7 @@ sap.ui.define([
             const that = this;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
-            let sKeyTraining = this.byId("keyTrain").getValue();
+            let sKeyTraining = this.byId("keyTrain").getSelectedKey();
             let sMarketClass = this.byId("mClass").getValue();
 
             let bValidation = true;
