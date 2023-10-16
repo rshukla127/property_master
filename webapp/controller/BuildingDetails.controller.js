@@ -40,10 +40,10 @@ sap.ui.define([
             // // @ts-ignore
             var oItem = new sap.m.ColumnListItem({
             // @ts-ignore
-            cells: [ new sap.m.Input({change: [this.onChange, this]}), new sap.m.Input({change: [this.onChange, this]}),
-                new sap.m.Input({change: [this.onChange, this]}),
-                new sap.m.Input({change: [this.onChange, this]}),
-                new sap.m.Input({change: [this.onChange, this]}),
+            cells: [ new sap.m.Input({change: [this.onChange, this], maxLength: 10}), new sap.m.Input({change: [this.onChange, this], maxLength: 30}),
+                new sap.m.Input({change: [this.onChange, this], maxLength: 30}),
+                new sap.m.Input({change: [this.onChange, this],  maxLength: 50}),
+                new sap.m.Input({change: [this.onChange, this],  maxLength: 50}),
                         new sap.m.Button({
                             icon: "sap-icon://delete",
                             type: "Reject",

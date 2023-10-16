@@ -48,8 +48,8 @@ sap.ui.define([
             const that = this;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
-            let n1ip = this.byId("n1ip").getValue();
-            let n2ip = this.byId("n2ip").getValue();
+            let n1ip = this.byId("net1IpAdd").getValue();
+            let n2ip = this.byId("net2IpAdd").getValue();
             let ntype = this.byId("ntype").getValue();
             let nvendor = this.byId("nvendor").getValue();
             let nrouteradd = this.byId("nrouteradd").getValue();

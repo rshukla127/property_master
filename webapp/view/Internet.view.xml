@@ -15,10 +15,10 @@
 
 
                     <Label required="true" text="Network 1 IP address" />
-                    <Input id="n1ip" valueStateText="Value cannot be blank" valueState="{/n1ip}" maxLength="30" value="{plantBasicDetailsModel>/FinrepNum7}" />
+                    <Input id="net1IpAdd" valueStateText="Value cannot be blank" valueState="{/n1ip}" maxLength="30" value="{plantBasicDetailsModel>/Network1IpAddress}" />
 
                     <Label required="true" text="Network 2 IP address" />
-                    <Input id="n2ip" valueStateText="Value cannot be blank" valueState="{/n2ip}" maxLength="30" value="{plantBasicDetailsModel>/FinrepNum7}" />
+                    <Input id="net2IpAdd" valueStateText="Value cannot be blank" valueState="{/n2ip}" maxLength="30" value="{plantBasicDetailsModel>/Network2IpAddress}" />
 
                     <Label text="Network Type" />
                     <Input id="ntype" maxLength="30" value="{plantBasicDetailsModel>/NetworkType}" />

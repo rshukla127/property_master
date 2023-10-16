@@ -14,11 +14,11 @@
                     <core:Title text="" visible="false"/>
 
 
-                    <Label required="true" text="{i18n>direPhoneNo}" />
-                    <Input id="direPhoneNo" valueStateText="Value cannot be blank" valueState="{/direPhoneNo}" maxLength="30" value="{plantBasicDetailsModel>/DirectPhoneNo}" />
+                    <Label  text="{i18n>direPhoneNo}" />
+                    <Input id="direPhoneNo" enabled="false"  value="{plantBasicDetailsModel>/DirectPhoneNo}" />
 
-                    <Label required="true" text="{i18n>faxNumber}" />
-                    <Input id="faxNumber" valueStateText="Value cannot be blank" valueState="{/faxNumber}" maxLength="30" value="{plantBasicDetailsModel>/FaxNumber}" />
+                    <Label text="{i18n>faxNumber}"/>
+                    <Input id="faxNumber" enabled="false" maxLength="30" value="{plantBasicDetailsModel>/FaxNumber}" />
 
                     <Label required="true" text="{i18n>publishedPhNo}"/>
                     <Input id="publishedPhNo1" valueStateText="Value cannot be blank" valueState="{/publishedPhNo}" maxLength="30" value="{plantBasicDetailsModel>/PublishedPhoneNo}" />
