@@ -95,7 +95,7 @@
                     <Input id="noOfBuild" value="{plantBasicDetailsModel>/NumberOfBuildings}" />
 
                     <Label text="{i18n>constructionCode}" />
-                    <Input id="constCode" showValueHelp="true" value="{plantBasicDetailsModel>/ConstructionCode}" />
+                    <Input id="constCode" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpConstructionCode" value="{plantBasicDetailsModel>/ConstructionCode}" />
 
                     <Label text="{i18n>noOfStories}" />
                     <Input id="noOfStories" value="{plantBasicDetailsModel>/NumberOfStories}" />

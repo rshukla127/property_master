@@ -2,7 +2,7 @@
 	<SelectDialog class="sapUiSizeCompact"
 		id="market"
 		title="Market Class"
-		items="{marketSetModel>/}"
+		items="{marketClassSetModel>/}"
 		search="onValueHelpDialogSearchPlant"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
@@ -10,7 +10,7 @@
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{marketSetModel>Code}"
-			description="{marketSetModel>Description}"/>
+			title="{marketClassSetModel>Code}"
+			description="{marketClassSetModel>Description}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

@@ -3,13 +3,15 @@ sap.ui.define([
     "sap/m/BusyDialog",
     "sap/m/MessageToast",
     "sap/ui/model/json/JSONModel",
-    "com/public/storage/pao/utils/formatter"
+    "com/public/storage/pao/utils/formatter",
+    "sap/ui/core/Fragment"
 ], function(
 	BaseController,
     BusyDialog,
     MessageToast,
     JSONModel,
-    formatter
+    formatter,
+    Fragment
 ) {
 	"use strict";
     var _oController;
@@ -49,9 +51,87 @@ sap.ui.define([
             const Plant = this.getOwnerComponent().plant;
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
+            this.readPropertyChurnStatus();
+            this.readClimateControl();
             this.readPropertyData(Plant, LegacyPropertyNumber)
 
         },
+
+        _onValueHelpChurnStatus: function(oEvent){
+            const that =this;
+            //var sInputValue = oEvent.getSource().getValue(),
+              const oView = this.getView();
+
+            if (!this._pValueHelpChurnStatus) {
+                this._pValueHelpChurnStatus = Fragment.load({
+                    id: oView.getId(),
+                    name: "com.public.storage.pao.fragments.WebDetails.ChurnStatus",
+                    controller: this
+                }).then(function (oDialog) {
+                    oView.addDependent(oDialog);
+                    return oDialog;
+                });
+            }
+            this._oBusyDialog.open()
+            this._pValueHelpChurnStatus.then(function (oDialog) {
+                //that.readPropertyMasterData();
+                that._oBusyDialog.close();
+                // Create a filter for the binding
+                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
+                // Open ValueHelpDialog filtered by the input's value
+                oDialog.open();
+            });
+
+        },
+
+        _onValueHelpClimateControl: function(oEvent){
+            const that =this;
+            //var sInputValue = oEvent.getSource().getValue(),
+              const oView = this.getView();
+
+            if (!this._pValueHelpClimateControl) {
+                this._pValueHelpClimateControl = Fragment.load({
+                    id: oView.getId(),
+                    name: "com.public.storage.pao.fragments.WebDetails.ClimateControl",
+                    controller: this
+                }).then(function (oDialog) {
+                    oView.addDependent(oDialog);
+                    return oDialog;
+                });
+            }
+            this._oBusyDialog.open()
+            this._pValueHelpClimateControl.then(function (oDialog) {
+                //that.readPropertyMasterData();
+                that._oBusyDialog.close();
+                // Create a filter for the binding
+                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
+                // Open ValueHelpDialog filtered by the input's value
+                oDialog.open();
+            });
+
+        },
+
+        onValueHelpDialogClose: function (oEvent) {
+			let	oSelectedItem = oEvent.getParameter("selectedItem");
+            let sTitle = oEvent.getSource().getTitle();
+            oEvent.getSource().getBinding("items").filter([]);
+            if (!oSelectedItem) {
+				return;
+			}
+            let sDescription = oSelectedItem.getDescription();
+            let sCode =  oSelectedItem.getTitle();
+            if (sTitle === "Property Churn Status"){
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/PropertyChurnStatus", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/churnStatusDesc", `${sDescription}`);
+            
+            } else if(sTitle === "Climate Control"){
+                // this.byId("cCode").setValue(sDescription);
+                // this._custCode = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/ClimateControl", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/climateControlDesc", `${sDescription}`);
+            }
+              
+		},
 
         onPressSaveWebDetails: function(){
             const that = this;
@@ -198,7 +278,7 @@ sap.ui.define([
                 PropertyAdminFee: PropertyAdminFee,
                 AdminFeeEffectiveDate: adminFeeEffectiveDate,
                 PropertyChurnStatus: this.getView().byId("propChurn").getValue(),
-                ClimateControl: this.getView().byId("climControl").getSelectedKey(),
+                ClimateControl: this.getView().byId("climControl").getValue(),
                 PropertyWebsiteReservations: PropertyWebsiteReservations,
                 WebsiteEnabledDate: websiteEnabledDate,
                 PropertyCallCenterReservati: PropertyCallCenterReservati,

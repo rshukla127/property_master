@@ -1,16 +1,16 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="com.public.storage.pao.controller.MarketingDetails" >
 	<SelectDialog class="sapUiSizeCompact"
-		id="mkey"
-		title="Market Key"
-		items="{markeykeyModel>/}"
+		id="churnProp"
+		title="Property Churn Status"
+		items="{churnStatusModel>/}"
 		search="onValueHelpDialogSearchPlant"
 		confirm="onValueHelpDialogClose"
-		cancel="onValueHelpDialogClose">
+		cancel="onValueHelpDialogClosePlant">
 		<StandardListItem
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{markeykeyModel>Code}"
-			description="{markeykeyModel>Description}"/>
+			title="{churnStatusModel>Code}"
+			description="{churnStatusModel>Description}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

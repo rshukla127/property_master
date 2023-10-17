@@ -21,7 +21,7 @@
                         </Select>
 
                     <Label text="{i18n>marketClass}" />
-                    <Input id="mClass" showValueHelp="true" valueHelpRequest="_onValueHelpMarketClass" valueHelpOnly="true" value="{plantBasicDetailsModel>/MarketKey}" />
+                    <Input id="mClass" showValueHelp="true" valueHelpRequest="_onValueHelpMarketClass" valueHelpOnly="true" value="{plantBasicDetailsModel>/MartketClass}" />
 
                 </f:content>
             </f:SimpleForm>

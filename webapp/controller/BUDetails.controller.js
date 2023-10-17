@@ -50,7 +50,8 @@ sap.ui.define([
             that.readCustomerCode();
             that.readEntityType();
             that.readATypeProp();
-            that.readAvailable3rdpDistribution();
+            that.readAquiredDeveloperTP();
+            //that.readAvailable3rdpDistribution();
 
         },
 
@@ -291,6 +292,10 @@ sap.ui.define([
             let sEntityType = this.byId("entityType").getValue();
             let combinedServ = this.byId("combinedServ").getValue();
             let aTypeProp = this.byId("atypeProp").getValue();
+            let bType = this.byId("bType").getValue();
+            let aquiredFromTP = this.byId("aquiredFromTP").getValue();
+
+            
             if (sActive === "") {
                 this.model.setProperty("/Active", "Error");
                
@@ -336,7 +341,7 @@ sap.ui.define([
             if(bValidation === false){
             const payload = {
                 Active: sActive,
-                BusinessUnitType: sActive,
+                BusinessUnitType: bType,
                 CustomerCode: custCode,
                 EntityType: sEntityType,
                 CombinedSurvivingNumber: combinedServ,
@@ -349,7 +354,7 @@ sap.ui.define([
                 CellTower: this.getView().byId("cell").getSelectedKey(),
                 Solar: this.getView().byId("solar").getSelectedKey(),
                 AcquiredFrom: this.getView().byId("aquiredFrom").getValue(),
-                AcquiredDevelopedThirdP:this._aquiredTP, 
+                AcquiredDevelopedThirdP: aquiredFromTP, 
                 Psd:this.getView().byId("psd").getValue()
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`

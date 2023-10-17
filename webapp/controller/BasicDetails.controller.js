@@ -166,21 +166,21 @@ sap.ui.define([
              
             // }
 
-            if (sNetwork1IpAddress === "") {
-                this.model.setProperty("/network1IpAddress", "Error");
+            // if (sNetwork1IpAddress === "") {
+            //     this.model.setProperty("/network1IpAddress", "Error");
                
-            } else {
-                this.model.setProperty("/network1IpAddress", "None");
+            // } else {
+            //     this.model.setProperty("/network1IpAddress", "None");
              
-            }
+            // }
 
-            if (sNetwork2IpAddress === "") {
-                this.model.setProperty("/network2IpAddress", "Error");
+            // if (sNetwork2IpAddress === "") {
+            //     this.model.setProperty("/network2IpAddress", "Error");
                
-            } else {
-                this.model.setProperty("/network2IpAddress", "None");
+            // } else {
+            //     this.model.setProperty("/network2IpAddress", "None");
               
-            }
+            // }
 
             if (sKioskProperty === "") {
                 this.model.setProperty("/KioskProperty", "Error");

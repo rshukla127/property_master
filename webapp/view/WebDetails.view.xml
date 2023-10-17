@@ -29,17 +29,18 @@
                       }" valueFormat="yyyy-MM-dd" />
 
                     <Label text="{i18n>propChurn}" />
-                    <Input id="propChurn" showValueHelp="true" value="{plantBasicDetailsModel>/PropertyChurnStatus}" />
+                    <Input id="propChurn" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpChurnStatus" value="{plantBasicDetailsModel>/PropertyChurnStatus}" />
 
                     <Label text="{i18n>climateControl}" />
-                    <Select id="climControl" selectedKey="{parts: ['plantBasicDetailsModel>/ClimateControl'], formatter: '.formatter.getSelectedKeyBlank'}">
+                        <Input id="climControl" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpClimateControl" value="{plantBasicDetailsModel>/ClimateControl}" />
+                    <!-- <Select id="climControl" selectedKey="{parts: ['plantBasicDetailsModel>/ClimateControl'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
                             <core:Item text="" key="B"/>
 
                         </items>
-                    </Select>
+                    </Select> -->
 
                     <Label required="true" text="{i18n>propWebReservation}" />
                     <Select id="propWeb" valueStateText="Value cannot be blank" selectedKey="{parts: ['plantBasicDetailsModel>/PropertyWebsiteReservations'], formatter: '.formatter.getSelectedKeyBlank'}"

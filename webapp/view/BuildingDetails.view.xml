@@ -5,13 +5,13 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
     <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
-        <VBox class="sapUiSmallMargin">
-            <Title title="{i18n>buildingDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})"/>
-        </VBox>
+        <!-- <VBox class="sapUiSmallMargin">
+            <Title title=""/>
+        </VBox> -->
         <Table  id="idAttributestTab" items="{path: 'actionModel>/'}" width="100%" noDataText="" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true">
             <headerToolbar>
                 <OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
-                    <Title headerLevel="H3"  titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false" />
+                    <Title title="{i18n>buildingDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" headerLevel="H3"  titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false" />
                     <ToolbarSpacer />
                     <Button text="Add" icon="sap-icon://add" type="Emphasized" width="auto" visible="true" iconDensityAware="false" press="onAdd" />
                 </OverflowToolbar>
@@ -52,7 +52,7 @@
 
            
             <VBox alignContent="End" alignItems="End">
-                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSavePhoneDetails"></Button>
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBuldingDetails"></Button>
             </VBox>
 
 

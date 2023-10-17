@@ -76,17 +76,17 @@ sap.ui.define([
 
             let bValidation = true;
 
-            if (direPhoneNo === "") {
-                this.model.setProperty("/direPhoneNo", "Error");
-            } else {
-                this.model.setProperty("/direPhoneNo", "None");
-            }
+            // if (direPhoneNo === "") {
+            //     this.model.setProperty("/direPhoneNo", "Error");
+            // } else {
+            //     this.model.setProperty("/direPhoneNo", "None");
+            // }
 
-            if (faxNumber === "") {
-                this.model.setProperty("/faxNumber", "Error");
-            } else {
-                this.model.setProperty("/faxNumber", "None");
-            }
+            // if (faxNumber === "") {
+            //     this.model.setProperty("/faxNumber", "Error");
+            // } else {
+            //     this.model.setProperty("/faxNumber", "None");
+            // }
 
             if (publishedPhNo === "") {
                 this.model.setProperty("/publishedPhNo", "Error");
@@ -106,7 +106,7 @@ sap.ui.define([
                 this.model.setProperty("/localPhoneNo", "None");
             }
 
-            if (direPhoneNo === "" || faxNumber === "" || publishedPhNo === "" || tollfreeNo === "" || localPhoneNo === ""){
+            if (publishedPhNo === "" || tollfreeNo === "" || localPhoneNo === ""){
                 bValidation = true ;
             } else {
                 bValidation = false ;

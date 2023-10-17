@@ -80,9 +80,10 @@ sap.ui.define([
 
         readBUType:function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'BUTYPE');
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'BUTYPE');
             this._oBusyDialog.open()
-            that._oModel.read(`/ButypeSet?$filter = keyfield eq ${keyFilter}`, {
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
                     success: function (oData) {
                         that._oBusyDialog.close();
                         const oModel = new JSONModel(oData.results);
@@ -97,11 +98,32 @@ sap.ui.define([
 
         },
 
+        readAquiredDeveloperTP:function(){
+            const that = this;
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'ACQUIREDDEVELOPEDTHIRDPARTY');
+            this._oBusyDialog.open();
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
+                    success: function (oData) {
+                        that._oBusyDialog.close();
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "aquiredTpModel")
+                        sap.ui.getCore().setModel(oModel, "aquiredTpModel");
+                    },
+                    error: function (oData) {
+                        that._oBusyDialog.close();
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+
+        },
+
         readCustomerCode:function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'CUSTCODES');
-            this._oBusyDialog.open()
-            that._oModel.read(`/CustCodesSet?$filter = keyfield eq ${keyFilter}`, {
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'CUSTCODES');
+            this._oBusyDialog.open();
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
                     success: function (oData) {
                         that._oBusyDialog.close();
                         const oModel = new JSONModel(oData.results);
@@ -118,9 +140,10 @@ sap.ui.define([
 
         readEntityType:function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'ENTITYTYPES');
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'ENTITYTYPES');
             this._oBusyDialog.open();
-            that._oModel.read(`/EntityTypesSet?$filter = keyfield eq ${keyFilter}`, {
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
                     success: function (oData) {
                         that._oBusyDialog.close();
                         const oModel = new JSONModel(oData.results);
@@ -137,10 +160,10 @@ sap.ui.define([
 
         readATypeProp:function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'ATYPEPROPERTIES');
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'ATYPEPROPERTIES');
             this._oBusyDialog.open();
-            that._oModel.read(`/ATypePropertiesSet?$filter = keyfield eq ${keyFilter}`, {
-                //filters: [keyFilter],
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
                     success: function (oData) {
                         that._oBusyDialog.close();
                         const oModel = new JSONModel(oData.results);
@@ -172,15 +195,34 @@ sap.ui.define([
                 });
         },
 
-        readMarket: function(){
+        readMarketClass: function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'AVAILABLECLASSIFICATION');
-            that._oModel.read(`/MarketSet?$filter = keyfield eq ${keyFilter}`, {
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'MARKETCLASS');
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
                     success: function (oData) {
                        
                         const oModel = new JSONModel(oData.results);
-                        that.getView().setModel(oModel, "marketSetModel")
-                        sap.ui.getCore().setModel(oModel, "marketSetModel");
+                        that.getView().setModel(oModel, "marketClassSetModel")
+                        sap.ui.getCore().setModel(oModel, "marketClassSetModel");
+                    },
+                    error: function (oData) {
+                       
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+        },
+
+        readMarketKey: function(){
+            const that = this;
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'MARKET');
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
+                    success: function (oData) {
+                       
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "markeykeyModel")
+                        sap.ui.getCore().setModel(oModel, "markeykeyModel");
                     },
                     error: function (oData) {
                        
@@ -208,8 +250,9 @@ sap.ui.define([
 
         readMetroStatArea: function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'METROSTATAREA');
-            that._oModel.read(`/MetroStatAreaSet?$filter = keyfield eq ${keyFilter}`, {
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'METROSTATAREA');
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
                     success: function (oData) {
                        
                         const oModel = new JSONModel(oData.results);
@@ -225,8 +268,9 @@ sap.ui.define([
 
         readNeighborhood: function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'NEIGHBORHOOD');
-            that._oModel.read(`/NeighborhoodSet?$filter = keyfield eq ${keyFilter}`, {
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'NEIGHBORHOOD');
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
                     success: function (oData) {
                        
                         const oModel = new JSONModel(oData.results);
@@ -240,10 +284,63 @@ sap.ui.define([
                 });
         },
 
+        readPropertyChurnStatus: function(){
+            const that = this;
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'PROPERTYCHURNSTATUS');
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
+                    success: function (oData) {
+                       
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "churnStatusModel")
+                        sap.ui.getCore().setModel(oModel, "churnStatusModel");
+                    },
+                    error: function (oData) {
+                       
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+        },
+
+        readClimateControl: function(){
+            const that = this;
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'CLIMATECONTROL');
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
+                    success: function (oData) {
+                       
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "climateControlModel")
+                        sap.ui.getCore().setModel(oModel, "climateControlModel");
+                    },
+                    error: function (oData) {
+                       
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+        },
+
+        readConstructionCode: function(){
+            const that = this;
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'CONSTRUCTIONCODE');
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
+                    success: function (oData) {
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "ccodeModel")
+                        sap.ui.getCore().setModel(oModel, "ccodeModel");
+                    },
+                    error: function (oData) {
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+        },
+
         readPSConsolidatedPropGroup: function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('keyfield', 'EQ', 'PSCONSOLIDATEDPROPGROUP');
-            that._oModel.read(`/PSConsolidatedPropGroupSet?$filter = keyfield eq ${keyFilter}`, {
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'PSCONSOLIDATED');
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
                     success: function (oData) {
                        
                         const oModel = new JSONModel(oData.results);

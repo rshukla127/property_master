@@ -39,7 +39,7 @@ sap.ui.define([
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this._oBusyDialog = new BusyDialog();
             this.readPropertyData(Plant, LegacyPropertyNumber);
-            this.readMarket();
+            this.readMarketClass();
             //this.KeyTrainingProfessional();
 
         },
@@ -108,7 +108,7 @@ sap.ui.define([
             if (sTitle === "Market Class"){
                 // this.byId("mClass").setValue(sDescription);
                 // this._mClass = sCode
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/MarketKey", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/MartketClass", `(${sCode}) ${sDescription}`);
             } else if(sTitle === "Training Proffesionals"){
                 // this.byId("keyTrain").setValue(sDescription);
                 // this._trainingProff = sCode
@@ -135,7 +135,7 @@ sap.ui.define([
             }
             if (bValidation === false){
             const payload = {
-                MarketKey: sMarketClass,
+                MartketClass: sMarketClass,
                 KeyTraniningProfessional: sKeyTraining
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`

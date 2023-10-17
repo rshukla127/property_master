@@ -3,13 +3,15 @@ sap.ui.define([
     "sap/m/BusyDialog",
     "sap/m/MessageToast",
     "sap/ui/model/json/JSONModel",
-    "com/public/storage/pao/utils/formatter"
+    "com/public/storage/pao/utils/formatter",
+    "sap/ui/core/Fragment"
 ], function(
 	BaseController,
     BusyDialog,
     MessageToast,
     JSONModel,
-    formatter
+    formatter,
+    Fragment
 ) {
 	"use strict";
     var _oController;
@@ -38,9 +40,59 @@ sap.ui.define([
             const Plant = this.getOwnerComponent().plant;
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
+            this.readConstructionCode();
             this.readPropertyData(Plant, LegacyPropertyNumber)
 
         },
+
+        _onValueHelpConstructionCode: function(oEvent){
+            const that =this;
+            //var sInputValue = oEvent.getSource().getValue(),
+              const oView = this.getView();
+
+            if (!this._pValueHelpClimateControl) {
+                this._pValueHelpClimateControl = Fragment.load({
+                    id: oView.getId(),
+                    name: "com.public.storage.pao.fragments.Supplemental.ConstructionCode",
+                    controller: this
+                }).then(function (oDialog) {
+                    oView.addDependent(oDialog);
+                    return oDialog;
+                });
+            }
+            this._oBusyDialog.open()
+            this._pValueHelpClimateControl.then(function (oDialog) {
+                //that.readPropertyMasterData();
+                that._oBusyDialog.close();
+                // Create a filter for the binding
+                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
+                // Open ValueHelpDialog filtered by the input's value
+                oDialog.open();
+            });
+
+        },
+
+        onValueHelpDialogClose: function (oEvent) {
+			let	oSelectedItem = oEvent.getParameter("selectedItem");
+            let sTitle = oEvent.getSource().getTitle();
+            oEvent.getSource().getBinding("items").filter([]);
+            if (!oSelectedItem) {
+				return;
+			}
+            let sDescription = oSelectedItem.getDescription();
+            let sCode =  oSelectedItem.getTitle();
+            if (sTitle === "Construction Code"){
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/ConstructionCode", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/cccodeDesc", `${sDescription}`);
+            
+            } else if(sTitle === "Climate Control"){
+                // this.byId("cCode").setValue(sDescription);
+                // this._custCode = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/ClimateControl", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/climateControlDesc", `${sDescription}`);
+            }
+              
+		},
 
         onPressSaveSuppDetails: function(){
             const sPlant = this.getOwnerComponent().plant

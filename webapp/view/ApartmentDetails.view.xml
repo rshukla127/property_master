@@ -53,7 +53,7 @@
                     <Input id="stories5" value="{plantBasicDetailsModel>/NumberOfStories5}" /> -->
 
                     <Label text="{i18n>apartMentNo1}" />
-                    <Input id="apart1" showValueHelp="true" value="{plantBasicDetailsModel>/AppartmentNumber5}" />
+                    <Input id="apart1" showValueHelp="true" value="{plantBasicDetailsModel>/AppartmentNumber1}" />
 
                     <Label text="{i18n>apartName1}" />
                     <Input id="apartName1" value="{plantBasicDetailsModel>/AppartmentName1}" />

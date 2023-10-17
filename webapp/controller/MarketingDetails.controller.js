@@ -41,7 +41,7 @@ sap.ui.define([
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber);
-            this.readMarket();
+            this.readMarketKey();
             this.readMetroStatArea();
             this.readNeighborhood();
             this.readPSConsolidatedPropGroup();
@@ -191,6 +191,8 @@ sap.ui.define([
             let sMetroStatus = this.byId("metroStats").getValue();
             let sNeighbourhood = this.byId("neighbourwood").getValue();
             let rankProp = this.byId("rankProp").getSelectedKey();
+            let sConslidatedGroup = this.byId("psCons").getValue();
+
         
 
             let bValidation = true;

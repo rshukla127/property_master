@@ -2,7 +2,7 @@
 	<SelectDialog class="sapUiSizeCompact"
 		id="thirdPartProp"
 		title="Aquired Third Party"
-		items="{availableDistModel>/}"
+		items="{aquiredTpModel>/}"
 		search="onValueHelpDialogSearchPlant"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
@@ -10,7 +10,7 @@
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{availableDistModel>Code}"
-			description="{availableDistModel>Description}"/>
+			title="{aquiredTpModel>Code}"
+			description="{aquiredTpModel>Description}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

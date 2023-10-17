@@ -71,6 +71,57 @@ sap.ui.define([
                 this.getView().byId("illusSection").setVisible(true);
                }
 
-            }
+            },
+
+            onPressSaveBuldingDetails: function(oEvent){
+                const aODataPayload = [];
+                let Plant = this.getOwnerComponent().plant;
+                let LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
+                const oTable = this.byId("idAttributestTab").getItems();
+
+                oTable.forEach(function(item) {
+                    var oEntry = {};
+                    //var oPayload = {
+                        oEntry.Plant = Plant,
+                        oEntry.Property = LegacyPropertyNumber,
+                        oEntry.keyId = "Building",
+                        oEntry.Code = item.getCells()[0].getValue(),
+                        oEntry.Value1 = item.getCells()[1].getValue(),
+                        oEntry.Value2 = item.getCells()[2].getValue(),
+                        oEntry.Description1 = item.getCells()[3].getValue(),
+                        oEntry.Description2 = item.getCells()[4].getValue()
+                    //};
+                   // aODataPayload.push(oPayload);
+
+                    var oJModel = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZMM_PROPERTY_MASTER_SRV",true);
+                    aODataPayload.push(oJModel.createBatchOperation("/PropertyAddOnSet", "POST", oEntry, null));
+                  });
+
+                  oJModel.addBatchChangeOperations(aODataPayload); 
+			      oJModel.setUseBatch(true);
+			      oJModel.submitBatch(function(oData, oResponse){
+				
+			   /* if (oRespone.Msg = 'S'){*/
+				  MessageToast.show("Saved Successfully");
+				},
+				function(oError)
+                {
+                MessageToast.show("Something went wrong with the server");
+                });
+
+            },
+
+            generateRandomGuid: function(){
+                var lastGeneratedNumber = 0;
+                lastGeneratedNumber++;
+                return this.padNumber(lastGeneratedNumber, 3);
+               
+            },
+
+            padNumber: function(number, width) {
+                var numberString = number + '';
+                return numberString.length >= width ? numberString : new Array(width - numberString.length + 1).join('0') + numberString;
+              }
+            
 	});
 });
