@@ -181,6 +181,107 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       }
     },
 
+    formatAmount1: function (sValue) {
+      if (sValue === "") {
+        return 500;
+      } else if (sValue === "0000"){
+        return 500;
+      }else {
+        return sValue;
+      }
+    },
+
+    formatAmount2: function (sValue) {
+      if (sValue === "") {
+        return 250;
+      } else if (sValue === "0000"){
+        return 250;
+      }else {
+        return sValue;
+      }
+    },
+
+    formatAmount3: function (sValue) {
+      if (sValue === "") {
+        return 75;
+      } else if (sValue === "0000"){
+        return 75;
+      }else {
+        return sValue;
+      }
+    },
+
+    formatAmount4: function (sValue) {
+      if (sValue === "") {
+        return 75;
+      } else if (sValue === "0000"){
+        return 75;
+      }else {
+        return sValue;
+      }
+    },
+
+    formatAmount5: function (sValue) {
+      if (sValue === "") {
+        return 75;
+      } else if (sValue === "0000"){
+        return 75;
+      }else {
+        return sValue;
+      }
+    },
+
+    formatAmount6: function (sValue) {
+      if (sValue === "") {
+        return sValue;
+      } else if (sValue === "0000"){
+        return sValue = "";
+      }else {
+        return sValue;
+      }
+    },
+
+    formatAmount7: function (sValue) {
+      if (sValue === "") {
+        return sValue;
+      } else if (sValue === "0000"){
+        return sValue = "";
+      }else {
+        return sValue;
+      }
+    },
+
+    formatAmount8: function (sValue) {
+      if (sValue === "") {
+        return sValue;
+      } else if (sValue === "0000"){
+        return sValue = "";
+      }else {
+        return sValue;
+      }
+    },
+
+    formatAmount9: function (sValue) {
+      if (sValue === "") {
+        return sValue;
+      } else if (sValue === "0000"){
+        return sValue = "";
+      }else {
+        return sValue;
+      }
+    },
+
+    formatAmount10: function (sValue) {
+      if (sValue === "") {
+        return sValue;
+      } else if (sValue === "0000"){
+        return sValue = "";
+      }else {
+        return sValue;
+      }
+    },
+
+
     removeLeadingZeros: function (sValue) {
       return parseInt(sValue);
     },

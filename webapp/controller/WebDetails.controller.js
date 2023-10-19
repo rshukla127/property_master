@@ -20,6 +20,7 @@ sap.ui.define([
     .extend("com.public.storage.pao.controller.WebDetails", {
         formatter: formatter,
         onInit: function () {
+            this.getOwnerComponent.hasChanges = false;
             _oController = this;
             const oRouter = this.getRouter();
             oRouter.getRoute("webDetails").attachMatched(this._onRouteMatched, this);
@@ -189,13 +190,13 @@ sap.ui.define([
                 this.model.setProperty("/PropertyAdminFee", "None");
             }
 
-            if (PropertyWebsiteReservations === "") {
+            if (PropertyWebsiteReservations === "" || PropertyWebsiteReservations === "B") {
                 this.model.setProperty("/PropertyWebsiteReservations", "Error");
             } else {
                 this.model.setProperty("/PropertyWebsiteReservations", "None");
             }
 
-            if (PropertyCallCenterReservati === "") {
+            if (PropertyCallCenterReservati === "" || PropertyCallCenterReservati === "B") {
                 this.model.setProperty("/PropertyCallCenterReservati", "Error");
             } else {
               this.model.setProperty("/PropertyCallCenterReservati", "None"); 
@@ -264,7 +265,7 @@ sap.ui.define([
 
             if (PropertyLatitude === "" || PropertyLongitude === "" || PropertyAdminFee === "" || PropertyWebsiteReservations === "" || PropertyCallCenterReservati === ""
             || PropertyNfsFee === "" || MaxReservationDays === "" || PropertyNfsAchFee === "" || PropertyInsuranceFrozen === "" || PropertyInsuranceCancelDay === "" || PreReservationDays === ""
-            || websiteEnabledDate === null || websiteEnabledDate === "" || callCentDate === null || callCentDate === ""){
+            || websiteEnabledDate === null || websiteEnabledDate === "" || callCentDate === null || callCentDate === "" || adminFeeEffectiveDate === null || adminFeeEffectiveDate === ""){
                 bValidation = true ;
             } else {
                 bValidation = false ;

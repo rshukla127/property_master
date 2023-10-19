@@ -199,6 +199,11 @@
           "name": "phone",
           "pattern": "phone",
           "target": ["phone"]
+        },
+        {
+          "name": "misc",
+          "pattern": "misc",
+          "target": ["misc"]
         }
       ],
       "targets": {
@@ -291,6 +296,11 @@
           "viewType": "XML",
           "viewId": "phone",
           "viewName": "Phone"
+        },
+        "misc": {
+          "viewType": "XML",
+          "viewId": "misc",
+          "viewName": "Miscellaneous"
         }
         
       }

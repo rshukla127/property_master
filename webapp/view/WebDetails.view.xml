@@ -23,7 +23,7 @@
                     value="{parts: ['plantBasicDetailsModel>/PropertyAdminFee'], formatter: '.formatter.removeLeadingZeros'}"/>
 
                     <Label required="true" text="{i18n>adminFeeEff}" />
-                    <DatePicker id="effDate" valueStateText="Value cannot be blank" valueState="{/tollFreeNumber}" placeholder="Choose Date..." value="{ 
+                    <DatePicker id="effDate" valueStateText="Value cannot be blank" valueState="{/AdminFeeEffectiveDate}" placeholder="Choose Date..." value="{ 
                         path: 'plantBasicDetailsModel>/AdminFeeEffectiveDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" />

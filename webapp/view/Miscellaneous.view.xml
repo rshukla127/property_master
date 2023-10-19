@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.public.storage.pao.controller.BuildingDetails"
+<mvc:View controllerName="com.public.storage.pao.controller.Miscellaneous"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
@@ -8,10 +8,10 @@
         <!-- <VBox class="sapUiSmallMargin">
             <Title title=""/>
         </VBox> -->
-        <Table headerText="" id="idAttributestTab" items="{path: 'actionModel>/'}" width="100%" noDataText="" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true">
+        <Table headerText="" id="isMiscTab" items="{path: 'actionModel>/'}" width="100%" noDataText="" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true">
             <headerToolbar>
                 <OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
-                    <Title text="{i18n>buildingDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})"  titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false" />
+                    <Title text="{i18n>miscDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})"  titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false" />
                     <ToolbarSpacer />
                     <Button text="Add" icon="sap-icon://add" type="Emphasized" width="auto" visible="true" iconDensityAware="false" press="onAdd" />
                 </OverflowToolbar>
@@ -46,8 +46,8 @@
                 
             </IllustratedMessage>
         </Table>
-        <VBox id="illusSection">
-        <core:Fragment fragmentName="com.public.storage.pao.fragments.BuildingDetails.IllustrativeMessage" type="XML"/>
+        <VBox id="illusSectionMisc">
+        <core:Fragment fragmentName="com.public.storage.pao.fragments.MiscDetails.IllustrativeMessage" type="XML"/>
         </VBox>
 
            

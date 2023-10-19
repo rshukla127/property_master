@@ -53,37 +53,37 @@
                     <Input id="stories5" value="{plantBasicDetailsModel>/NumberOfStories5}" /> -->
 
                     <Label text="{i18n>apartMentNo1}" />
-                    <Input id="apart1" showValueHelp="true" value="{plantBasicDetailsModel>/AppartmentNumber1}" />
+                    <Input maxLength="3" id="apart1"  value="{plantBasicDetailsModel>/AppartmentNumber1}" />
 
                     <Label text="{i18n>apartName1}" />
-                    <Input id="apartName1" value="{plantBasicDetailsModel>/AppartmentName1}" />
+                    <Input maxLength="30" id="apartName1" value="{plantBasicDetailsModel>/AppartmentName1}" />
 
                     <Label text="{i18n>noOfAprtStories1}" />
-                    <Input id="apartstories1" value="{plantBasicDetailsModel>/NumberOfStories_1}" />
+                    <Input maxLength="3" id="apartstories1" value="{plantBasicDetailsModel>/NumberOfStories_1}" />
                     <Label text="{i18n>noOfBedRoom1}" />
-                    <Input id="bedroom1" value="{plantBasicDetailsModel>/NumberOfBedRoom1}" />
+                    <Input maxLength="2" id="bedroom1" value="{plantBasicDetailsModel>/NumberOfBedRoom1}" />
                     <Label text="{i18n>nofOfBathRoom1}" />
-                    <Input id="bathroom1" value="{plantBasicDetailsModel>/NumberOfBathRoom1}" />
+                    <Input id="bathroom1" maxLength="2" value="{plantBasicDetailsModel>/NumberOfBathRoom1}" />
 
                     <Label text="{i18n>apartMentNo2}" />
-                    <Input id="apart2" showValueHelp="true" value="{plantBasicDetailsModel>/AppartmentNumber2}" />
+                    <Input id="apart2" maxLength="3" value="{plantBasicDetailsModel>/AppartmentNumber2}" />
 
                     <Label text="{i18n>apartName2}" />
-                    <Input id="apartName2" value="{plantBasicDetailsModel>/AppartmentName2}" />
+                    <Input id="apartName2" maxLength="30" value="{plantBasicDetailsModel>/AppartmentName2}" />
 
                     <Label text="{i18n>noOfAprtStories2}" />
-                    <Input id="noOfStories2" value="{plantBasicDetailsModel>/NumberOfStories_2}" />
+                    <Input id="noOfStories2" maxLength="3" value="{plantBasicDetailsModel>/NumberOfStories_2}" />
                     <Label text="{i18n>noOfBedRoom2}" />
-                    <Input id="bedroom2" value="{plantBasicDetailsModel>/NumberOfBedRoom2}" />
+                    <Input id="bedroom2" maxLength="2" value="{plantBasicDetailsModel>/NumberOfBedRoom2}" />
                     <Label text="{i18n>nofOfBathRoom2}" />
-                    <Input id="bathroom2" value="{plantBasicDetailsModel>/NumberOfBathRoom2}" />
+                    <Input id="bathroom2" maxLength="2" value="{plantBasicDetailsModel>/NumberOfBathRoom2}" />
 
 
 
                 </f:content>
             </f:SimpleForm>
             <VBox alignContent="End" alignItems="End">
-                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBuildingDetails"></Button>
+                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveApartmentDetails"></Button>
             </VBox>
         </VBox>
 

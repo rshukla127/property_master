@@ -3,7 +3,8 @@
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
     <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
 
 
@@ -13,85 +14,85 @@
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label text="{i18n>feeType1}" />
-                    <Input id="ftype1" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType1}" />
-                    <Label text="{i18n>feeDes1}" />
-                    <Input id="fDes1" value="{plantBasicDetailsModel>/FeesDescription1}" />
+                    <Input id="ftype1" app:fieldName="ftype1" showValueHelp="true"  valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true"  value="{plantBasicDetailsModel>/FeesType1}" />
+                    <!-- <Label text="{i18n>feeDes1}" />
+                    <Input id="fDes1" value="{plantBasicDetailsModel>/FeesDescription1}" /> -->
 
                     <Label text="{i18n>amount1}" />
-                    <Input id="am1" value="{plantBasicDetailsModel>/Amount1}" />
+                    <Input id="am1" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount1'], formatter: '.formatter.formatAmount1'}"/>
 
                     <Label text="{i18n>feeType2}" />
-                    <Input id="type2" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType2}" />
-                    <Label text="{i18n>feeDes2}" />
-                    <Input id="fDes2" value="{plantBasicDetailsModel>/FeesDescription2}" />
+                    <Input id="type2" app:fieldName="ftype2" showValueHelp="true"  valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true"  value="{plantBasicDetailsModel>/FeesType2}" />
+                    <!-- <Label text="{i18n>feeDes2}" />
+                    <Input id="fDes2" value="{plantBasicDetailsModel>/FeesDescription2}" /> -->
 
                     <Label text="{i18n>amount2}" />
-                    <Input id="am2" value="{plantBasicDetailsModel>/Amount2}" />
+                    <Input id="am2" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount2'], formatter: '.formatter.formatAmount2'}" />
 
                     <Label text="{i18n>feeType3}" />
-                    <Input id="ftype3" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType3}" />
-                    <Label text="{i18n>feeDes3}" />
-                    <Input id="fDes3" value="{plantBasicDetailsModel>/FeesDescription3}" />
+                    <Input id="ftype3" app:fieldName="ftype3" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true" value="{plantBasicDetailsModel>/FeesType3}" />
+                    <!-- <Label text="{i18n>feeDes3}" />
+                    <Input id="fDes3" value="{plantBasicDetailsModel>/FeesDescription3}" /> -->
 
                     <Label text="{i18n>amount3}" />
-                    <Input id="am3" value="{plantBasicDetailsModel>/Amount3}" />
+                    <Input id="am3" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount3'], formatter: '.formatter.formatAmount3'}" />
 
 
                     <Label text="{i18n>feeType4}" />
-                    <Input id="ftype4" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType3}" />
-                    <Label text="{i18n>feeDes4}" />
-                    <Input id="fDes4" value="{plantBasicDetailsModel>/FeesDescription3}" />
+                    <Input id="ftype4" app:fieldName="ftype4" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true" value="{plantBasicDetailsModel>/FeesType4}" />
+                    <!-- <Label text="{i18n>feeDes4}" />
+                    <Input id="fDes4" value="{plantBasicDetailsModel>/FeesDescription3}" /> -->
 
                     <Label text="{i18n>amount4}" />
-                    <Input id="am4" value="{plantBasicDetailsModel>/Amount4}" />
+                    <Input id="am4" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount4'], formatter: '.formatter.formatAmount4'}" />
 
                     <Label text="{i18n>feeType5}" />
-                    <Input id="ftype5" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType5}" />
-                    <Label text="{i18n>feeDes5}" />
-                    <Input id="fDes5" value="{plantBasicDetailsModel>/FeesDescription5}" />
+                    <Input id="ftype5" app:fieldName="ftype5" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true" value="{plantBasicDetailsModel>/FeesType5}" />
+                    <!-- <Label text="{i18n>feeDes5}" />
+                    <Input id="fDes5" value="{plantBasicDetailsModel>/FeesDescription5}" /> -->
 
                     <Label text="{i18n>amount5}" />
-                    <Input id="am5" value="{plantBasicDetailsModel>/Amount5}" />
+                    <Input id="am5" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount5'], formatter: '.formatter.formatAmount5'}" />
 
                     <core:Title text="" />
                     <Label text="{i18n>feeType6}" />
-                    <Input id="ftype6" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType6}" />
-                    <Label text="{i18n>feeDes5}" />
-                    <Input id="fDes6" value="{plantBasicDetailsModel>/FeesDescription6}" />
+                    <Input id="ftype6" app:fieldName="ftype6" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true" value="{plantBasicDetailsModel>/FeesType6}" />
+                    <!-- <Label text="{i18n>feeDes5}" />
+                    <Input id="fDes6" value="{plantBasicDetailsModel>/FeesDescription6}" /> -->
 
                     <Label text="{i18n>amount6}" />
-                    <Input id="am6" value="{plantBasicDetailsModel>/Amount6}" />
+                    <Input id="am6" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount6'], formatter: '.formatter.formatAmount6'}" />
 
                     <Label text="{i18n>feeType7}" />
-                    <Input id="ftype7" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType7}" />
-                    <Label text="{i18n>feeDes7}" />
-                    <Input id="fDes7" value="{plantBasicDetailsModel>/FeesDescription7}" />
+                    <Input id="ftype7" app:fieldName="ftype7" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true" value="{plantBasicDetailsModel>/FeesType7}" />
+                    <!-- <Label text="{i18n>feeDes7}" />
+                    <Input id="fDes7" value="{plantBasicDetailsModel>/FeesDescription7}" /> -->
 
                     <Label text="{i18n>amount7}" />
-                    <Input id="am7" value="{plantBasicDetailsModel>/Amount7}" />
+                    <Input id="am7" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount7'], formatter: '.formatter.formatAmount7'}" />
 
                     <Label text="{i18n>feeType8}" />
-                    <Input id="ftype8" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType8}" />
-                    <Label text="{i18n>feeDes8}" />
-                    <Input id="fDes8" value="{plantBasicDetailsModel>/FeesDescription8}" />
+                    <Input id="ftype8" app:fieldName="ftype8" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true"  value="{plantBasicDetailsModel>/FeesType8}" />
+                    <!-- <Label text="{i18n>feeDes8}" />
+                    <Input id="fDes8" value="{plantBasicDetailsModel>/FeesDescription8}" /> -->
 
                     <Label text="{i18n>amount8}" />
-                    <Input id="am8" value="{plantBasicDetailsModel>/Amount8}" />
+                    <Input id="am8" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount8'], formatter: '.formatter.formatAmount8'}" />
 
                     <Label text="{i18n>feeType9}" />
-                    <Input id="ftype9" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType9}" />
-                    <Label text="{i18n>feeDes9}" />
-                    <Input id="fDes9" value="{plantBasicDetailsModel>/FeesDescription9}" />
+                    <Input id="ftype9" app:fieldName="ftype9" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true"  value="{plantBasicDetailsModel>/FeesType9}" />
+                    <!-- <Label text="{i18n>feeDes9}" />
+                    <Input id="fDes9" value="{plantBasicDetailsModel>/FeesDescription9}" /> -->
 
                     <Label text="{i18n>amount9}" />
-                    <Input id="am9" value="{plantBasicDetailsModel>/Amount9}" />
+                    <Input id="am9" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount9'], formatter: '.formatter.formatAmount9'}" />
                     <Label text="{i18n>feeType10}" />
-                    <Input id="ftype10" showValueHelp="true" value="{plantBasicDetailsModel>/FeesType10}" />
-                    <Label text="{i18n>feeDes10}" />
-                    <Input id="fDes10" value="{plantBasicDetailsModel>/FeesDescription10}" />
+                    <Input id="ftype10" app:fieldName="ftype10" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true" value="{plantBasicDetailsModel>/FeesType10}" />
+                    <!-- <Label text="{i18n>feeDes10}" />
+                    <Input id="fDes10" value="{plantBasicDetailsModel>/FeesDescription10}" /> -->
 
                     <Label text="{i18n>amount10}" />
-                    <Input id="am10" value="{plantBasicDetailsModel>/Amount10}" />
+                    <Input id="am10" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount10'], formatter: '.formatter.formatAmount10'}" />
 
 
 

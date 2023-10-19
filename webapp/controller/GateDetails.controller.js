@@ -28,6 +28,7 @@ sap.ui.define([
         },
 
         _onRouteMatched: function(oEvent){
+            this.getOwnerComponent.hasChanges = false;
             const Plant = this.getOwnerComponent().plant;
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber;
             this._oModel = sap.ui.getCore().getModel("mainModel");
@@ -37,6 +38,7 @@ sap.ui.define([
 
 
         onPressSaveGateDetails: function(){
+            this._oBusyDialog.open();
             const that = this;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
@@ -127,7 +129,7 @@ sap.ui.define([
                 GateAccessZone10: this.getView().byId("gateac10").getValue(),
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
-           this._oBusyDialog.open();
+          
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                     that._oBusyDialog.close();

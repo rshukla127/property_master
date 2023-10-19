@@ -994,7 +994,7 @@ sap.ui.define([
                                                                         
                                                                         //that.getView().getModel("oVisModel").setProperty("/visibliltyForThirdParty", true);
                                                                     }
-                                                                    that.createNewProperty();
+                                                                    that.readProfitCenters();
                                                                 } else {
                                                                     // Handle the "Cancel" button action or do nothing if canceled
                                                                 }
@@ -1091,6 +1091,261 @@ sap.ui.define([
                 
             },
 
+            savePCTableData:function(){
+                this.BusyDialog.open();
+                const that = this;
+                let payload;
+                let propType;
+                const groupedData = {};
+                let ungroupedData = [];
+                //let bValidation = false;
+                // const oRouter = this.getRouter();
+                // //oRouter.navTo("basicDetails");
+                // oRouter.navTo("basicDetails", {
+                //     plant: this.getOwnerComponent().plant
+                // });
+                let sTime = "T00:00:00";
+                const oModel = this.getOwnerComponent().getModel("plantsModel").getData();
+                const sProperty = this.getOwnerComponent().getModel("plantsModel").getProperty("/plant");
+                const sFIlterModel = oModel.filter((item)=> item.Werks === sProperty)
+                const sOrt01 = sFIlterModel[0].Ort01
+                const sLand = sFIlterModel[0].Land1
+                const sName1 = sFIlterModel[0].Name1;
+                const sName2 = sFIlterModel[0].Name2;
+                const sRegion = sFIlterModel[0].Regio;
+                const sPin = sFIlterModel[0].Pstlz;
+
+                let sRadioButtonSelectedOwn = this.byId("rb1").getSelected();
+                //let sRadioButtonSelectedTP = this.byId("rb2").getSelected();
+                
+
+
+                if (sRadioButtonSelectedOwn === true) {
+                    propType = "O"
+                } else {
+                    propType = "T"
+                }
+
+                
+
+                // let formattedRetail = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateRetailPc)) + sTime;
+                // let formattedStorage = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateStoragePc)) + sTime;
+                // let formattedTenant = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateTenantPc)) + sTime;
+                // let formattedComm = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateCommPc)) + sTime;
+                // let formattedReatilTp = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateRetailPcTp)) + sTime;
+                // let formattedStorageTp = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateStoragePcTp)) + sTime;
+                // let formattedTenantPc = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateTenantPcTp)) + sTime;
+                // let formattedMgmtPc = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateMgmtPcTp)) + sTime;
+                
+
+                // sDateRetailPc = formattedRetail === "T00:00:00" ? null : formattedRetail ;
+                // sDateStoragePc = formattedStorage === "T00:00:00" ? null : formattedStorage ;
+                // sDateTenantPc = formattedTenant === "T00:00:00" ? null : formattedTenant ;
+                // sDateCommPc = formattedComm === "T00:00:00" ? null : formattedComm ;
+                // sDateRetailPcTp = formattedReatilTp === "T00:00:00" ? null : formattedReatilTp ;
+                // sDateStoragePcTp = formattedStorageTp === "T00:00:00" ? null : formattedStorageTp ;
+                // sDateTenantPcTp = formattedTenantPc === "T00:00:00" ? null : formattedTenantPc ;
+                // sDateMgmtPcTp = formattedMgmtPc === "T00:00:00" ? null : formattedMgmtPc ;
+
+                    //const sSelectedRBButton = this.getView().byId("rbg1").getSelectedButton().getText();
+                    const sPlant = this.getOwnerComponent().plant
+                    const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
+                    var bValidation = true;
+                    const oModelPC = this.byId("idPCTable").getModel("profitCenterModel");
+                    if (oModelPC){
+                    const oModelData = oModelPC.getData();
+                    //var regex = '/\d/g';
+                    oModelData.forEach((item) => {
+                        // Extract the suffix from the Prctr value
+                        const suffix = item.Prctr.slice(-1);
+
+                        if (/\d/.test(suffix)) {
+                            bValidation = false
+                            ungroupedData.push(item)
+                        } else {
+                            //bValidation = true
+                        }
+                        
+                        // Check if the suffix key exists in groupedData, if not, create it
+                        if (!groupedData[suffix]) {
+                          groupedData[suffix] = [];
+                        }
+                        
+                        // Push the item into the corresponding suffix group
+                        groupedData[suffix].push(item);
+                      });
+
+
+                      if (groupedData.R === undefined && bValidation === true){
+                        this.BusyDialog.close();
+                        return MessageToast.show("Missing Storage Profit Center");
+                      }  else {
+                      if (groupedData.R){
+                        var sStoragePCPrctr = groupedData.R[0].Prctr;
+                        var sStoragePCLongText = groupedData.R[0].LongText;
+                        var sStoragePCBukrs = groupedData.R[0].Bukrs;
+                        var sStoragePCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.R[0].Datab)) + sTime;
+                        var sStoragePCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.R[0].Datbi)) + sTime;
+                        var sStoragePCSegment = groupedData.R[0].Segment;
+
+                        if (groupedData.R.length > 1){
+                            var sStorage2PCPrctr = groupedData.R[1].Prctr;
+                            var sStorage2PCLongText = groupedData.R[1].LongText;
+                            var sStorage2PCBukrs = groupedData.R[1].Bukrs;
+                            var sStorage2PCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.R[0].Datab)) + sTime;
+                            var sStorage2PCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.R[0].Datbi)) + sTime;
+                            var sStorage2PCSegment = groupedData.R[1].Segment;
+                            
+                          }
+                        
+                      }
+
+                      if (ungroupedData.length){
+                        var sStorage2PCPrctr = ungroupedData[0].Prctr;
+                        var sStorage2PCLongText = ungroupedData[0].LongText;
+                        var sStorage2PCBukrs = ungroupedData[0].Bukrs;
+                        var sStorage2PCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(ungroupedData[0].Datab)) + sTime;
+                        var sStorage2PCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(ungroupedData[0].Datbi)) + sTime;
+                        var sStorage2PCSegment = ungroupedData[0].Segment;
+                        
+                      }
+
+                      if (groupedData.T){
+                        var sTennentPCPrctr = groupedData.T[0].Prctr;
+                        var sTennentPCLongText = groupedData.T[0].LongText;
+                        var sTennentPCBukrs = groupedData.T[0].Bukrs;
+                        var sTennentPCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.T[0].Datab)) + sTime;
+                        var sTennentPCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.T[0].Datbi)) + sTime;
+                        var sTennentPCSegment = groupedData.T[0].Segment;
+                        
+                      }
+                      if (groupedData.A){
+                        var sRetailPCPrctr = groupedData.A[0].Prctr;
+                        var sRetailPCLongText = groupedData.A[0].LongText;
+                        var sRetailPCBukrs = groupedData.A[0].Bukrs;
+                        var sRetailPCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.A[0].Datab)) + sTime;
+                        var sRetailPCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.A[0].Datbi)) + sTime;
+                        var sRetailPCSegment = groupedData.A[0].Segment;
+                        
+                      }
+
+
+                      if (groupedData.E){
+                        var sSolarPCPrctr = groupedData.E[0].Prctr;
+                        var sSolarPCLongText = groupedData.E[0].LongText;
+                        var sSolarPCBukrs = groupedData.E[0].Bukrs;
+                        var sSolarPCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.E[0].Datab)) + sTime;
+                        var sSolarPCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.E[0].Datbi)) + sTime;
+                        var sSolarPCSegment = groupedData.E[0].Segment;
+                        
+                      }
+
+                      if (groupedData.M){
+                        var sMgmtPCPrctr = groupedData.M[0].Prctr;
+                        var sMgmtPCLongText = groupedData.M[0].LongText;
+                        var sMgmtPCBukrs = groupedData.M[0].Bukrs;
+                        var sMgmtPCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.M[0].Datab)) + sTime;
+                        var sMgmtPCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.M[0].Datbi)) + sTime;
+                        var sMgmtPCSegment = groupedData.M[0].Segment;
+                        
+                      }
+                      if (groupedData.C){
+                        var sCommPCPrctr = groupedData.C[0].Prctr;
+                        var sCommPCLongText = groupedData.C[0].LongText;
+                        var sCommPCBukrs = groupedData.C[0].Bukrs;
+                        var sCommPCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.C[0].Datab)) + sTime;
+                        var sCommPCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.C[0].Datbi)) + sTime;
+                        var sCommPCSegment = groupedData.C[0].Segment;
+                      }
+                      
+
+                    //   const resultArray = Object.values(groupedData);
+                    //   const flattenedResultArray = resultArray.flat();
+
+                  
+                        payload = {
+                            RetailPc: sRetailPCPrctr,
+                            RetailPcLtext:  sRetailPCLongText,
+                            RetailPcCc: sRetailPCBukrs,
+                            RetailPcFromDate: sRetailPCValidFrom,
+                            RetailPcToDate : sRetailPCValidTo,
+                            RetailPcSegment : sRetailPCSegment,
+
+                            StoragePc : sStoragePCPrctr,
+                            StoragePcLtext : sStoragePCLongText,
+                            StoragePcCc: sStoragePCBukrs,
+                            StoragePcFromDate: sStoragePCValidFrom,
+                            StoragePcToDate: sStoragePCValidTo,
+                            StoragePcSegment: sStoragePCSegment,
+                          
+                            StorageCbtPc: sStorage2PCPrctr,
+                            StorageCbtPcLtext: sStorage2PCLongText,
+                            StorageCbtPcCc: sStorage2PCBukrs,
+                            StorageCbtPcFromDate: sStorage2PCValidFrom,
+                            StorageCbtPcToDate: sStorage2PCValidTo,
+                            StorageCbtPcSegment: sStorage2PCSegment,
+
+                            CommercialPc: sCommPCPrctr,
+                            CommercialPcLtext: sCommPCLongText,
+                            CommercialPcCc: sCommPCBukrs,
+                            CommercialPcFromDate: sCommPCValidFrom,
+                            CommercialPcToDate: sCommPCValidTo,
+                            CommercialPcSegment: sCommPCSegment,
+
+                            TennentInsPc: sTennentPCPrctr,
+                            TennentInsPcLtext: sTennentPCLongText,
+                            TennentInsPcCc: sTennentPCBukrs,
+                            TennentInsPcFromDate: sTennentPCValidFrom,
+                            TennentInsPcToDate: sTennentPCValidTo,
+                            TennentInsPcSegment: sTennentPCSegment,
+
+                            ManagmentPc: sMgmtPCPrctr,
+                            ManagmentPcLtext: sMgmtPCLongText,
+                            ManagmentPcCc: sMgmtPCBukrs,
+                            ManagmentPcFromDate: sMgmtPCValidFrom,
+                            ManagmentPcToDate: sMgmtPCValidTo,
+                            ManagmentPcSegment: sMgmtPCSegment,
+
+                            SolarEnergyPc: sSolarPCPrctr,
+                            SolarEnergyPcLtext: sSolarPCLongText,
+                            SolarEnergyPcCc: sSolarPCBukrs,
+                            SolarEnergyPcFromDate: sSolarPCValidFrom,
+                            SolarEnergyPcToDate: sSolarPCValidTo,
+                            SolarEnergyPcSegment: sSolarPCSegment,
+
+                            City: sOrt01,
+                            Street: sLand,
+                            MailingName: sName1,
+                            MailingName2: sName2,
+                            Country: sRegion,
+                            PostalCode: sPin,
+                            PropertyType: propType
+
+                        }
+                      
+
+                   const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
+        
+                    this._oModel.update(uri, payload, {
+                        success: function (oData) {
+                            that.BusyDialog.close();
+                           MessageToast.show("Saved Successfully");
+                        },
+                        error: function (error) {
+                            that.BusyDialog.close();
+                            MessageToast.show("Something went wrong with Service")
+                        }
+                    })
+                } 
+            } else {
+                MessageToast.show("Nothing to save");
+            }
+            },
+
+            onPressSave: function(){
+
+                this.createNewProperty();
+            },
             createNewProperty: function(){
                 const that = this;
                 const sPlant = this.getOwnerComponent().plant
@@ -1101,8 +1356,7 @@ sap.ui.define([
                 }
                 this._oModel.create(`/PropertyMasterSet`, payload,{
                     success: function(){
-                       //MessageToast.show(`Property ${LegacyPropertyNumber} created successfully`);
-                        that.readProfitCenters();
+                       that.savePCTableData();
                     },
                     error: function (oData) {
                         MessageToast.show("Something went wrong with Service")
@@ -1112,18 +1366,6 @@ sap.ui.define([
 
             },
 
-            // onSelectTP: function (oEvent) {
-            //     this.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", false);
-            //     this.getView().getModel("oVisModel").setProperty("/visibliltyForThirdParty", true);
-            // },
-
-            // onSelectOwner: function (oEvent) {
-            //     this.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", true);
-            //     this.getView().getModel("oVisModel").setProperty("/visibliltyForThirdParty", false);
-            // },
-            // onValueHelpDialogCloseRetailPC: function(){
-            //     this.getView().byId("retailPC").close();
-            // },
 
             onValueHelpDialogClosePlant: function (oEvent) {
                 const that = this;
@@ -1292,299 +1534,6 @@ sap.ui.define([
                
  
 
-            },
-
-
-            onPressSave:function(){
-                let payload;
-                let propType;
-                const groupedData = {};
-                let ungroupedData = [];
-                //let bValidation = false;
-                // const oRouter = this.getRouter();
-                // //oRouter.navTo("basicDetails");
-                // oRouter.navTo("basicDetails", {
-                //     plant: this.getOwnerComponent().plant
-                // });
-                let sTime = "T00:00:00";
-                const oModel = this.getOwnerComponent().getModel("plantsModel").getData();
-                const sProperty = this.getOwnerComponent().getModel("plantsModel").getProperty("/plant");
-                const sFIlterModel = oModel.filter((item)=> item.Werks === sProperty)
-                const sOrt01 = sFIlterModel[0].Ort01
-                const sLand = sFIlterModel[0].Land1
-                const sName1 = sFIlterModel[0].Name1;
-                const sName2 = sFIlterModel[0].Name2;
-                const sRegion = sFIlterModel[0].Regio;
-                const sPin = sFIlterModel[0].Pstlz;
-
-                let sRadioButtonSelectedOwn = this.byId("rb1").getSelected();
-                //let sRadioButtonSelectedTP = this.byId("rb2").getSelected();
-                
-
-
-                if (sRadioButtonSelectedOwn === true) {
-                    propType = "O"
-                } else {
-                    propType = "T"
-                }
-
-                // let sDateRetailPc = this.byId("startdate").getValue();
-                // let sDateStoragePc = this.byId("startdate1").getValue();
-                // let sDateTenantPc = this.byId("startdate2").getValue();
-                // let sDateCommPc = this.byId("startdate3").getValue();
-
-                // let sDateRetailPcTp = this.byId("startdatereatilPcTp").getValue();
-                // let sDateStoragePcTp = this.byId("startdateStoragePcTp").getValue();
-                // let sDateTenantPcTp = this.byId("startdateTanentPcTp").getValue();
-                // let sDateMgmtPcTp = this.byId("startdateMgmtPcTp").getValue();
-
-                // let formattedRetail = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateRetailPc)) + sTime;
-                // let formattedStorage = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateStoragePc)) + sTime;
-                // let formattedTenant = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateTenantPc)) + sTime;
-                // let formattedComm = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateCommPc)) + sTime;
-                // let formattedReatilTp = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateRetailPcTp)) + sTime;
-                // let formattedStorageTp = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateStoragePcTp)) + sTime;
-                // let formattedTenantPc = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateTenantPcTp)) + sTime;
-                // let formattedMgmtPc = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sDateMgmtPcTp)) + sTime;
-                
-
-                // sDateRetailPc = formattedRetail === "T00:00:00" ? null : formattedRetail ;
-                // sDateStoragePc = formattedStorage === "T00:00:00" ? null : formattedStorage ;
-                // sDateTenantPc = formattedTenant === "T00:00:00" ? null : formattedTenant ;
-                // sDateCommPc = formattedComm === "T00:00:00" ? null : formattedComm ;
-                // sDateRetailPcTp = formattedReatilTp === "T00:00:00" ? null : formattedReatilTp ;
-                // sDateStoragePcTp = formattedStorageTp === "T00:00:00" ? null : formattedStorageTp ;
-                // sDateTenantPcTp = formattedTenantPc === "T00:00:00" ? null : formattedTenantPc ;
-                // sDateMgmtPcTp = formattedMgmtPc === "T00:00:00" ? null : formattedMgmtPc ;
-
-                    //const sSelectedRBButton = this.getView().byId("rbg1").getSelectedButton().getText();
-                    const sPlant = this.getOwnerComponent().plant
-                    const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
-                    var bValidation = true;
-                    const oModelPC = this.byId("idPCTable").getModel("profitCenterModel");
-                    if (oModelPC){
-                    const oModelData = oModelPC.getData();
-                    //var regex = '/\d/g';
-                    oModelData.forEach((item) => {
-                        // Extract the suffix from the Prctr value
-                        const suffix = item.Prctr.slice(-1);
-
-                        if (/\d/.test(suffix)) {
-                            bValidation = false
-                            ungroupedData.push(item)
-                        } else {
-                            //bValidation = true
-                        }
-                        
-                        // Check if the suffix key exists in groupedData, if not, create it
-                        if (!groupedData[suffix]) {
-                          groupedData[suffix] = [];
-                        }
-                        
-                        // Push the item into the corresponding suffix group
-                        groupedData[suffix].push(item);
-                      });
-
-
-                      if (groupedData.R === undefined && bValidation === true){
-                        return MessageToast.show("Missing Storage Profit Center");
-                      }  else {
-                      if (groupedData.R){
-                        var sStoragePCPrctr = groupedData.R[0].Prctr;
-                        var sStoragePCLongText = groupedData.R[0].LongText;
-                        var sStoragePCBukrs = groupedData.R[0].Bukrs;
-                        var sStoragePCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.R[0].Datab)) + sTime;
-                        var sStoragePCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.R[0].Datbi)) + sTime;
-                        var sStoragePCSegment = groupedData.R[0].Segment;
-
-                        if (groupedData.R.length > 1){
-                            var sStorage2PCPrctr = groupedData.R[1].Prctr;
-                            var sStorage2PCLongText = groupedData.R[1].LongText;
-                            var sStorage2PCBukrs = groupedData.R[1].Bukrs;
-                            var sStorage2PCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.R[0].Datab)) + sTime;
-                            var sStorage2PCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.R[0].Datbi)) + sTime;
-                            var sStorage2PCSegment = groupedData.R[1].Segment;
-                            
-                          }
-                        
-                      }
-
-                      if (ungroupedData.length){
-                        var sStorage2PCPrctr = ungroupedData[0].Prctr;
-                        var sStorage2PCLongText = ungroupedData[0].LongText;
-                        var sStorage2PCBukrs = ungroupedData[0].Bukrs;
-                        var sStorage2PCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(ungroupedData[0].Datab)) + sTime;
-                        var sStorage2PCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(ungroupedData[0].Datbi)) + sTime;
-                        var sStorage2PCSegment = ungroupedData[0].Segment;
-                        
-                      }
-
-                      if (groupedData.T){
-                        var sTennentPCPrctr = groupedData.T[0].Prctr;
-                        var sTennentPCLongText = groupedData.T[0].LongText;
-                        var sTennentPCBukrs = groupedData.T[0].Bukrs;
-                        var sTennentPCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.T[0].Datab)) + sTime;
-                        var sTennentPCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.T[0].Datbi)) + sTime;
-                        var sTennentPCSegment = groupedData.T[0].Segment;
-                        
-                      }
-                      if (groupedData.A){
-                        var sRetailPCPrctr = groupedData.A[0].Prctr;
-                        var sRetailPCLongText = groupedData.A[0].LongText;
-                        var sRetailPCBukrs = groupedData.A[0].Bukrs;
-                        var sRetailPCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.A[0].Datab)) + sTime;
-                        var sRetailPCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.A[0].Datbi)) + sTime;
-                        var sRetailPCSegment = groupedData.A[0].Segment;
-                        
-                      }
-
-
-                      if (groupedData.E){
-                        var sSolarPCPrctr = groupedData.E[0].Prctr;
-                        var sSolarPCLongText = groupedData.E[0].LongText;
-                        var sSolarPCBukrs = groupedData.E[0].Bukrs;
-                        var sSolarPCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.E[0].Datab)) + sTime;
-                        var sSolarPCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.E[0].Datbi)) + sTime;
-                        var sSolarPCSegment = groupedData.E[0].Segment;
-                        
-                      }
-
-                      if (groupedData.M){
-                        var sMgmtPCPrctr = groupedData.M[0].Prctr;
-                        var sMgmtPCLongText = groupedData.M[0].LongText;
-                        var sMgmtPCBukrs = groupedData.M[0].Bukrs;
-                        var sMgmtPCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.M[0].Datab)) + sTime;
-                        var sMgmtPCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.M[0].Datbi)) + sTime;
-                        var sMgmtPCSegment = groupedData.M[0].Segment;
-                        
-                      }
-                      if (groupedData.C){
-                        var sCommPCPrctr = groupedData.C[0].Prctr;
-                        var sCommPCLongText = groupedData.C[0].LongText;
-                        var sCommPCBukrs = groupedData.C[0].Bukrs;
-                        var sCommPCValidFrom = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.C[0].Datab)) + sTime;
-                        var sCommPCValidTo = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(groupedData.C[0].Datbi)) + sTime;
-                        var sCommPCSegment = groupedData.C[0].Segment;
-                      }
-                      
-
-                    //   const resultArray = Object.values(groupedData);
-                    //   const flattenedResultArray = resultArray.flat();
-
-                  
-                        payload = {
-                            RetailPc: sRetailPCPrctr,
-                            RetailPcLtext:  sRetailPCLongText,
-                            RetailPcCc: sRetailPCBukrs,
-                            RetailPcFromDate: sRetailPCValidFrom,
-                            RetailPcToDate : sRetailPCValidTo,
-                            RetailPcSegment : sRetailPCSegment,
-
-                            StoragePc : sStoragePCPrctr,
-                            StoragePcLtext : sStoragePCLongText,
-                            StoragePcCc: sStoragePCBukrs,
-                            StoragePcFromDate: sStoragePCValidFrom,
-                            StoragePcToDate: sStoragePCValidTo,
-                            StoragePcSegment: sStoragePCSegment,
-                          
-                            StorageCbtPc: sStorage2PCPrctr,
-                            StorageCbtPcLtext: sStorage2PCLongText,
-                            StorageCbtPcCc: sStorage2PCBukrs,
-                            StorageCbtPcFromDate: sStorage2PCValidFrom,
-                            StorageCbtPcToDate: sStorage2PCValidTo,
-                            StorageCbtPcSegment: sStorage2PCSegment,
-
-                            CommercialPc: sCommPCPrctr,
-                            CommercialPcLtext: sCommPCLongText,
-                            CommercialPcCc: sCommPCBukrs,
-                            CommercialPcFromDate: sCommPCValidFrom,
-                            CommercialPcToDate: sCommPCValidTo,
-                            CommercialPcSegment: sCommPCSegment,
-
-                            TennentInsPc: sTennentPCPrctr,
-                            TennentInsPcLtext: sTennentPCLongText,
-                            TennentInsPcCc: sTennentPCBukrs,
-                            TennentInsPcFromDate: sTennentPCValidFrom,
-                            TennentInsPcToDate: sTennentPCValidTo,
-                            TennentInsPcSegment: sTennentPCSegment,
-
-                            ManagmentPc: sMgmtPCPrctr,
-                            ManagmentPcLtext: sMgmtPCLongText,
-                            ManagmentPcCc: sMgmtPCBukrs,
-                            ManagmentPcFromDate: sMgmtPCValidFrom,
-                            ManagmentPcToDate: sMgmtPCValidTo,
-                            ManagmentPcSegment: sMgmtPCSegment,
-
-                            SolarEnergyPc: sSolarPCPrctr,
-                            SolarEnergyPcLtext: sSolarPCLongText,
-                            SolarEnergyPcCc: sSolarPCBukrs,
-                            SolarEnergyPcFromDate: sSolarPCValidFrom,
-                            SolarEnergyPcToDate: sSolarPCValidTo,
-                            SolarEnergyPcSegment: sSolarPCSegment,
-
-                            City: sOrt01,
-                            Street: sLand,
-                            MailingName: sName1,
-                            MailingName2: sName2,
-                            Country: sRegion,
-                            PostalCode: sPin,
-                            PropertyType: propType
-
-                        }
-                        // if (this.byId("retailPc").getValue() === "" || this.byId("storagePc").getValue() === ""){
-                        //     return MessageToast.show("Please fill all mandatory fields");
-                        // }
-                        // if (this.byId("retailPc").getValueState() === "Error" || this.byId("storagePc").getValueState() === "Error"
-                        // || this.byId("tenPc").getValueState() === "Error" || this.byId("commPc").getValueState() === "Error" ){
-                        //     return MessageToast.show("Please Enter valid value's for PC's");
-                        // }
-
-                    //} 
-                    // else {
-                    //     payload = {
-                    //         RetailPc: this.byId("retailPcTP").getValue(),
-                    //         StoragePc:  this.byId("storagePcTP").getValue(),
-                    //         TennentInsPc: this.byId("tenPcTP").getValue(),
-                    //         ManagmentPc: this.byId("mgmtPcTP").getValue(),
-                    //         CompanyCode1 : this.byId("ccCodePcTp").getValue(),
-                    //         CompanyCode2 : this.byId("ccCodeStTp").getValue(),
-                    //         CompanyCode3 : this.byId("ccCodeTenTp").getValue(),
-                    //         CompanyCode5 : this.byId("ccCodeMgTp").getValue(),
-                    //         PropertyType: "T",
-                    //         City: sOrt01,
-                    //         Street: sLand,
-                    //         MailingName: sName1,
-                    //         MailingName2: sName2,
-                    //         Country: sRegion,
-                    //         PostalCode: sPin,
-                    //         RetailPCAdate: sDateRetailPcTp,
-                    //         StoragePcAdate: sDateStoragePcTp,
-                    //         TennentinPcAdate: sDateTenantPcTp,
-                    //         ManagementPcAdate: sDateMgmtPcTp
-                    //     }
-                    //     if (this.byId("retailPcTP").getValue() === "" || this.byId("storagePcTP").getValue() === ""){
-                    //         return MessageToast.show("Please fill all mandatory fields");
-                    //     }
-                    //     if (this.byId("retailPcTP").getValueState() === "Error" || this.byId("storagePcTP").getValueState() === "Error"
-                    //     || this.byId("tenPcTP").getValueState() === "Error" || this.byId("mgmtPcTP").getValueState() === "Error" ){
-                    //         return MessageToast.show("Please Enter valid value's for PC's");
-                    //     }
-                    // }
-
-                   const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
-        
-                    this._oModel.update(uri, payload, {
-                        success: function (oData) {
-                           MessageToast.show("Saved Successfully");
-                        },
-                        error: function (error) {
-                            MessageToast.show("Something went wrong with Service")
-                        }
-                    })
-                } 
-            } else {
-                MessageToast.show("Nothing to save");
-            }
             }
 
         });

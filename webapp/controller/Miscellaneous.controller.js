@@ -13,12 +13,12 @@ sap.ui.define([
     var _oController;
 
 	return 	BaseController
-    .extend("com.public.storage.pao.controller.BuildingDetails", {
+    .extend("com.public.storage.pao.controller.Miscellaneous", {
         formatter: formatter,
         onInit: function () {
             _oController = this;
             const oRouter = this.getRouter();
-            oRouter.getRoute("buildDetails").attachMatched(this._onRouteMatched, this);
+            oRouter.getRoute("misc").attachMatched(this._onRouteMatched, this);
             this._oBusyDialog = new BusyDialog();
 			this.getView().addDependent(this._oBusyDialog);
 
@@ -54,23 +54,23 @@ sap.ui.define([
            ]
         });
 
-        var oTable = this.getView().byId("idAttributestTab");
+        var oTable = this.getView().byId("isMiscTab");
         // @ts-ignore
         oTable.addItem(oItem);
         if(oTable.getItems().length > 0){
-            this.getView().byId("illusSection").setVisible(false);
+            this.getView().byId("illusSectionMisc").setVisible(false);
         } else {
-            this.getView().byId("illusSection").setVisible(true);
+            this.getView().byId("illusSectionMisc").setVisible(true);
         }
         },
 
         remove: function (oEvent) {
-            var oTable = this.getView().byId("idAttributestTab");
+            var oTable = this.getView().byId("isMiscTab");
             oTable.removeItem(oEvent.getSource().getParent()).destroy();
             if(oTable.getItems().length > 0){
-                this.getView().byId("illusSection").setVisible(false);
+                this.getView().byId("illusSectionMisc").setVisible(false);
                } else {
-                this.getView().byId("illusSection").setVisible(true);
+                this.getView().byId("illusSectionMisc").setVisible(true);
                }
 
             },
@@ -94,7 +94,7 @@ sap.ui.define([
                         var updatedEntity = {
                                     Plant : Plant,
                                     Property : LegacyPropertyNumber,
-                                    KeyId : "BUILDING",
+                                    KeyId : "MISC",
                                     Code : oTable[m].getCells()[0].getValue(),
                                     Value1 : oTable[m].getCells()[1].getValue(),
                                     Value2 : oTable[m].getCells()[2].getValue(),

@@ -34,6 +34,7 @@ sap.ui.define([
         },
 
         _onRouteMatched: function(oEvent){
+            this.getOwnerComponent.hasChanges = false;
             const Plant = this.getOwnerComponent().plant;
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");

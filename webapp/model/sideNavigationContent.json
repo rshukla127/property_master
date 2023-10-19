@@ -97,6 +97,11 @@
 					"title": "Internet",
 					"key": "internet",
 					"visible": false
+				},
+				{
+					"title": "Miscellaneous",
+					"key": "misc",
+					"visible": false
 				}
 			]
 		}

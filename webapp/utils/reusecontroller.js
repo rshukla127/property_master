@@ -56,6 +56,26 @@ sap.ui.define([
 
         },
 
+        readBuldingDetails: function(Plant, LegacyPropertyNumber){
+            const that = this;
+            const uri= `/PropertyAddOnSet?$filter=Plant eq '${Plant}' and Property eq '${LegacyPropertyNumber}' and KeyId eq 'BUILDING'`
+            // this._oBusyDialog.open()
+            this._oModel.read(uri, {
+                success: function (oData) {
+                    // that._oBusyDialog.close();
+                    const oModel = new JSONModel(oData);
+                    that.getView().setModel(oModel, "buildingModel")
+                    sap.ui.getCore().setModel(oModel, "buildingModel");
+                    that.getView().getModel("buildingModel").refresh();
+                },
+                error: function (oData) {
+                    // that._oBusyDialog.close();
+                    MessageToast.show("Something went wrong with Service")
+                }
+            })
+
+        },
+
         // readPropertyMasterData: function(Plant, LegacyPropertyNumber){
         //     const that = this;
         //     // var FilterPlant = new sap.ui.model.Filter('Werks', 'EQ', Plant);
@@ -97,6 +117,34 @@ sap.ui.define([
                 });
 
         },
+
+        readFeeType:function(){
+            const that = this;
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'FEEDETAIL');
+            this._oBusyDialog.open()
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
+                    success: function (oData) {
+                        if (oData.results){
+                        that._oBusyDialog.close();
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "feeTypeModel")
+                        sap.ui.getCore().setModel(oModel, "feeTypeModel");
+                        that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType1", `(${oData.results[0].Code}) ${oData.results[0].Description}`);
+                        that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType2", `(${oData.results[1].Code}) ${oData.results[1].Description}`);
+                        that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType3", `(${oData.results[2].Code}) ${oData.results[2].Description}`);
+                        that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType4", `(${oData.results[3].Code}) ${oData.results[3].Description}`);
+                        that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType5", `(${oData.results[4].Code}) ${oData.results[4].Description}`);
+                        }
+                    },
+                    error: function (oData) {
+                        that._oBusyDialog.close();
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+
+        },
+
 
         readAquiredDeveloperTP:function(){
             const that = this;
@@ -506,7 +554,11 @@ sap.ui.define([
                         MessageToast.show("Something went wrong with Service")
                     }
                 });
-        }
+        },
+
+        // detectChanges: function(){
+        //     this.getOwnerComponent.hasChanges = true;
+        // }
 
         // Tax detail tab finished
 	});

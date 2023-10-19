@@ -24,7 +24,7 @@
 					<Input maxLength="30" id="network1" valueStateText="Value cannot be blank" valueState="{/network1IpAddress}" value="{plantBasicDetailsModel>/Network1IpAddress}"/> -->
 
 					<Label required="true" text="{i18n>kioskProp}" />
-					<Select id="kiskProp" valueStateText="Value cannot be blank" valueState="{/KioskProperty}" selectedKey="{parts: ['plantBasicDetailsModel>/KioskProperty'], formatter: '.formatter.getSelectedKeyNo'}">
+					<Select change="onDetectChange" id="kiskProp" valueStateText="Value cannot be blank" valueState="{/KioskProperty}" selectedKey="{parts: ['plantBasicDetailsModel>/KioskProperty'], formatter: '.formatter.getSelectedKeyNo'}">
 						<items>																								
 							<core:Item text="Yes" key="Y" />
 							<core:Item text="No" key="N"/>
@@ -33,23 +33,23 @@
 					</Select>
 
 					<Label text="{i18n>budPropNumber}" />
-					<Input maxLength="7" id="budProp" value="{plantBasicDetailsModel>/BuddyPropertyNumber}" showValueHelp="true" valueHelpRequest="_onValueHelpRequestProperty" valueHelpOnly="true"/>
+					<Input change="onDetectChange" maxLength="7" id="budProp" value="{plantBasicDetailsModel>/BuddyPropertyNumber}" showValueHelp="true" valueHelpRequest="_onValueHelpRequestProperty" valueHelpOnly="true"/>
 					<Label text="{i18n>retailSqFootage}" />
-					<Input maxLength="5" id="retailStoreSq" value="{plantBasicDetailsModel>/RetailStoreSquareFootage}" />
+					<Input change="onDetectChange" maxLength="5" id="retailStoreSq" value="{plantBasicDetailsModel>/RetailStoreSquareFootage}" />
 
 					<Label text="{i18n>historicalProp}" />
-					<Input maxLength="10" id="histProp" value="{plantBasicDetailsModel>/HistoricalProperty}" type="Url" />
+					<Input change="onDetectChange" maxLength="10" id="histProp" value="{plantBasicDetailsModel>/HistoricalProperty}" type="Url" />
 					<Label text="{i18n>psaProp}" />
-					<Input maxLength="10" id="psaProp" value="{plantBasicDetailsModel>/PsaProperty}" />
+					<Input change="onDetectChange" maxLength="10" id="psaProp" value="{plantBasicDetailsModel>/PsaProperty}" />
 					<Label text="{i18n>transForm}" />
-					<Input maxLength="10" id="transF" value="{plantBasicDetailsModel>/TransferFrom}" />
+					<Input change="onDetectChange" maxLength="10" id="transF" value="{plantBasicDetailsModel>/TransferFrom}" />
 
 					<core:Title text="" />
 
 					<!-- <Label required="true" text="{i18n>publishedPhoneNo}" />
 					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/publishedPhoneNo}" id="pubPhone" value="{plantBasicDetailsModel>/PublishedPhoneNo}" /> -->
 					<Label text="{i18n>propEmailAdd}" />
-					<Input id="email" enabled="false" value="{plantsModel>/Email}" />
+					<Input change="onDetectChange" id="email" enabled="false" value="{plantsModel>/Email}" />
 
 					<!-- <Label text="{i18n>localPhoneNo}" />
 					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/localPhoneNumber}" required="true" id="localPh" value="{plantBasicDetailsModel>/LocalPhoneNumber}" type="Url" /> -->
@@ -57,20 +57,20 @@
 					<Input id="network2" valueStateText="Value cannot be blank" valueState="{/network2IpAddress}" value="{plantBasicDetailsModel>/Network2IpAddress}" /> -->
 
 					<Label text="{i18n>kisokActivDate}" labelFor="kisok" />
-					<DatePicker valueStateText="Value cannot be blank" valueState="{/KioskActiveDate}" change="onDateChange" required="true" id="kisok" value="{ 
+					<DatePicker valueStateText="Value cannot be blank" valueState="{/KioskActiveDate}" change="onDetectChange" required="true" id="kisok" value="{ 
 					path: 'plantBasicDetailsModel>/KioskActiveDate',
 					type: 'sap.ui.model.type.Date'  
 				  }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 					<Label text="{i18n>offSqFoootage}" />
-					<Input id="offSq" value="{plantBasicDetailsModel>/RetailStorageSize}" />
+					<Input change="onDetectChange" id="offSq" value="{plantBasicDetailsModel>/RetailStorageSize}" />
 					<Label text="{i18n>retailSqSize}" />
-					<Input id="retailST" value="{plantBasicDetailsModel>/RetailStorageSize}" />
+					<Input change="onDetectChange" id="retailST" value="{plantBasicDetailsModel>/RetailStorageSize}" />
 					<Label text="{i18n>histOwner}" />
-					<Input maxLength="10" id="histOwner" value="{plantBasicDetailsModel>/HistoricalOwner}" />
+					<Input change="onDetectChange" maxLength="10" id="histOwner" value="{plantBasicDetailsModel>/HistoricalOwner}" />
 					<Label text="{i18n>psaOwner}" />
-					<Input maxLength="10" id="PsaOwner" value="{plantBasicDetailsModel>/PsaOwner}" />
+					<Input change="onDetectChange" maxLength="10" id="PsaOwner" value="{plantBasicDetailsModel>/PsaOwner}" />
 					<Label required="true" text="{i18n>geoCode}" />
-					<Input maxLength="10" valueStateText="Value cannot be blank" valueState="{/GeoCode}" id="geo" value="{plantBasicDetailsModel>/GeoCode}" />
+					<Input change="onDetectChange" maxLength="10" valueStateText="Value cannot be blank" valueState="{/GeoCode}" id="geo" value="{plantBasicDetailsModel>/GeoCode}" />
 
 				</f:content>
 			</f:SimpleForm>

@@ -140,6 +140,7 @@ sap.ui.define(["com/public/storage/pao/utils/reusecontroller",
          * @param {sap.ui.base.Event} oEvent The item select event
          */
         onItemSelect: function (oEvent) {
+            const that = this;
             sap.ui.getCore().AppContext = {
                 Source_NAME: "",
                 Target_NAME: "",
@@ -166,6 +167,20 @@ sap.ui.define(["com/public/storage/pao/utils/reusecontroller",
                         }
                     }
                     );
+                } else if (this.getOwnerComponent.hasChanges){
+                    return MessageBox.confirm("You have unsaved changes. Do you want to Procced?",
+                    {
+                        title: "Confirmation",
+                        actions: [MessageBox.Action.YES, MessageBox.Action.CANCEL],
+                        emphasizedAction: MessageBox.Action.YES,
+                        onClose: function (oAction) {
+                            if (oAction === MessageBox.Action.YES) {
+                                that.getRouter().navTo(sKey);
+                            }                           
+                        }
+                    }
+                    );
+
                 } else {
                 this.getRouter().navTo(sKey);
                 oEvent.getSource().getItem().getItems().filter(item => item.setExpanded(false));
