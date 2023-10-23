@@ -25,8 +25,12 @@ sap.ui.define([
         },
 
         _onRouteMatched: function(oEvent){
+            const oRouter = this.getRouter();
             this.getOwnerComponent.hasChanges = false;
             const Plant = this.getOwnerComponent().plant;
+            if (Plant === undefined) {
+              return  oRouter.navTo("home");
+            }
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber);
@@ -42,7 +46,7 @@ sap.ui.define([
             // // @ts-ignore
             var oItem = new sap.m.ColumnListItem({
             // @ts-ignore
-            cells: [ new sap.m.Input({change: [this.onChange, this], maxLength: 10}), new sap.m.Input({change: [this.onChange, this], maxLength: 30}),
+            cells: [ new sap.m.Input({change: [this.onChange, this],  maxLength: 10}), new sap.m.Input({change: [this.onChange, this], maxLength: 30}),
                 new sap.m.Input({change: [this.onChange, this], maxLength: 30}),
                 new sap.m.Input({change: [this.onChange, this],  maxLength: 50}),
                 new sap.m.Input({change: [this.onChange, this],  maxLength: 50}),
@@ -76,6 +80,8 @@ sap.ui.define([
             },
 
             onPressSaveBuldingDetails: function(oEvent){
+                const that = this;
+                this._oBusyDialog.open();
                 const aODataPayload = [];
                 let Plant = this.getOwnerComponent().plant;
                 let LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
@@ -101,15 +107,25 @@ sap.ui.define([
                                     Description1 : oTable[m].getCells()[3].getValue(),
                                     Description2 : oTable[m].getCells()[4].getValue()
                           };
+
+                          if (oTable[m].getCells()[0].getValue() === ""){
+                            this._oBusyDialog.close();
+                            return MessageToast.show("Building number cannot be blank");
+                          }
                         var oChangeSet = tmpModel.createBatchOperation(requestPath, "POST", updatedEntity);
                         aBatchRequests.push(oChangeSet);
                       }
                         tmpModel.addBatchChangeOperations(aBatchRequests);
                         tmpModel.submitBatch(function(oData, oResponse){
+                            that._oBusyDialog.close();
+                            if(oResponse.statusCode === 202){
+                           
                                MessageToast.show("Saved Successfully");
+                            }
                              },
                              function(oError)
                              {
+                                that._oBusyDialog.close();
                                 MessageToast.show("Something went wrong with the service");
                              });
 

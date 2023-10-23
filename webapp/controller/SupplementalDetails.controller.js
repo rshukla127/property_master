@@ -37,8 +37,12 @@ sap.ui.define([
         },
 
         _onRouteMatched: function(oEvent){
+            const oRouter = this.getRouter();
             this.getOwnerComponent.hasChanges = false;
             const Plant = this.getOwnerComponent().plant;
+            if (Plant === undefined) {
+                return  oRouter.navTo("home");
+              }
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readConstructionCode();
@@ -92,11 +96,44 @@ sap.ui.define([
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/ClimateControl", `(${sCode}) ${sDescription}`);
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/climateControlDesc", `${sDescription}`);
             }
+            else if(sTitle === "Year Built"){
+                // this.byId("cCode").setValue(sDescription);
+                // this._custCode = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/YearBuilt", `${sCode}`);
+            }
               
 		},
 
+        _onValueHelpYearBuild: function(oEvent){
+            const that =this;
+            //var sInputValue = oEvent.getSource().getValue(),
+              const oView = this.getView();
+
+            if (!this._pValueHelpYearBuilt) {
+                this._pValueHelpYearBuilt = Fragment.load({
+                    id: oView.getId(),
+                    name: "com.public.storage.pao.fragments.Supplemental.YearBuilt",
+                    controller: this
+                }).then(function (oDialog) {
+                    oView.addDependent(oDialog);
+                    return oDialog;
+                });
+            }
+            this._oBusyDialog.open()
+            this._pValueHelpYearBuilt.then(function (oDialog) {
+                //that.readPropertyMasterData();
+                that._oBusyDialog.close();
+                // Create a filter for the binding
+                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
+                // Open ValueHelpDialog filtered by the input's value
+                oDialog.open();
+            });
+        },
+
         onPressSaveSuppDetails: function(){
+            this._oBusyDialog.open();
             const sPlant = this.getOwnerComponent().plant
+            const that = this;
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
             var bValidation = true;
 
@@ -105,6 +142,7 @@ sap.ui.define([
             let DrivingDirections = this.getView().byId("driDirection").getValue();
             let SpecialNotes = this.getView().byId("spNotes").getValue();
             let Apartments =  this.getView().byId("apart").getSelectedKey();
+            let yearbuild = this.byId("year").getValue();
 
             if (PropertyFeatures === "") {
                 this.model.setProperty("/PropertyFeatures", "Error");
@@ -147,7 +185,7 @@ sap.ui.define([
                 Basement: this.getView().byId("base").getSelectedKey(),
                 HandTrucks: this.getView().byId("hand").getSelectedKey(),
                 Carts: this.getView().byId("cart").getSelectedKey(),
-                YearBuilt: "1976",
+                YearBuilt: yearbuild,
                 CapIndexRisk: this.getView().byId("capIndex").getValue(),
                 NumberOfBuildings: this.getView().byId("noOfBuild").getValue(),
                 ConstructionCode: this.getView().byId("constCode").getValue(),
@@ -156,7 +194,7 @@ sap.ui.define([
                 LotSize: this.getView().byId("lotSize").getValue(),
                 BuildingClassification: this.getView().byId("buildClass").getValue(),
                 GrossSquareFootage: this.getView().byId("grossSQFoot").getValue(),
-                FloodZone: this.getView().byId("floodzone").getValue(),
+                FloodZone: this.getView().byId("floodzone").getSelectedKey(),
                 MilesOfCostalWater25: this.getView().byId("tfmilesCoastWater").getValue(),
                 Sprinkler: this.getView().byId("sprink").getSelectedKey(),
                 SprinklerRemark: this.getView().byId("sprinkRem").getValue(),
@@ -173,13 +211,16 @@ sap.ui.define([
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
             this._oModel.update(uri, payload, {
                 success: function (oData) {
+                    that._oBusyDialog.close();
                    MessageToast.show("Saved Successfully");
                 },
-                error: function (oData) {
+                error: function (error) {
+                    that._oBusyDialog.close();
                     MessageToast.show("Something went wrong with Service")
                 }
             })
         } else {
+            this._oBusyDialog.close();
             MessageToast.show("Please Fill all mandatory fields");
         }
         }

@@ -8,7 +8,7 @@
         <!-- <VBox class="sapUiSmallMargin">
             <Title title=""/>
         </VBox> -->
-        <Table headerText="" id="isMiscTab" items="{path: 'actionModel>/'}" width="100%" noDataText="" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true">
+        <Table headerText="" id="isMiscTab" items="{path: 'miscModel>/'}" width="100%" noDataText="" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true">
             <headerToolbar>
                 <OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
                     <Title text="{i18n>miscDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})"  titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false" />
@@ -18,13 +18,13 @@
             </headerToolbar>
             <columns>
                 <Column minScreenWidth="Desktop" width="10em" importance="High"  demandPopin="true" popinDisplay="Inline">
-                    <Label design="Bold" text="Building Number" wrapping="true" />
+                    <Label design="Bold" text="Code" wrapping="true" />
                 </Column>
                 <Column minScreenWidth="Desktop" width="13em" importance="High" demandPopin="true" popinDisplay="Inline">
-                    <Label design="Bold" text="Building Name" wrapping="true" />
+                    <Label design="Bold" text="Value 1" wrapping="true" />
                 </Column>
                 <Column minScreenWidth="Desktop" width="13em" importance="High" demandPopin="true" popinDisplay="Inline">
-                    <Label design="Bold" text="No. of Storeys" />
+                    <Label design="Bold" text="Value 2" />
                 </Column>
                 <Column minScreenWidth="Desktop" width="18em" importance="High" demandPopin="true" popinDisplay="Inline">
                     <Label design="Bold" text="Description 1" wrapping="true" />
@@ -42,9 +42,6 @@
                     <cells />
                 </ColumnListItem>
             </items>
-            <IllustratedMessage id="illustratedMessageTab" visible="true" title="dummy" description="check" illustrationType="sapIllus-ErrorScreen">
-                
-            </IllustratedMessage>
         </Table>
         <VBox id="illusSectionMisc">
         <core:Fragment fragmentName="com.public.storage.pao.fragments.MiscDetails.IllustrativeMessage" type="XML"/>

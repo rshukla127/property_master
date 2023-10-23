@@ -8,7 +8,7 @@
         <!-- <VBox class="sapUiSmallMargin">
             <Title title=""/>
         </VBox> -->
-        <Table headerText="" id="idAttributestTab" items="{path: 'actionModel>/'}" width="100%" noDataText="" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true">
+        <Table headerText="" id="idAttributestTab" items="{path: 'buildingModel>/'}" width="100%" noDataText="" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true">
             <headerToolbar>
                 <OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
                     <Title text="{i18n>buildingDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})"  titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false" />
@@ -42,9 +42,9 @@
                     <cells />
                 </ColumnListItem>
             </items>
-            <IllustratedMessage id="illustratedMessageTab" visible="true" title="dummy" description="check" illustrationType="sapIllus-ErrorScreen">
+            <!-- <IllustratedMessage id="illustratedMessageTab" visible="true" title="dummy" description="check" illustrationType="sapIllus-ErrorScreen">
                 
-            </IllustratedMessage>
+            </IllustratedMessage> -->
         </Table>
         <VBox id="illusSection">
         <core:Fragment fragmentName="com.public.storage.pao.fragments.BuildingDetails.IllustrativeMessage" type="XML"/>

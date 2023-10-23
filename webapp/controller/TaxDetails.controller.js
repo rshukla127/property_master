@@ -32,24 +32,29 @@ sap.ui.define([
                 LegalOwner: "None",
                 LegalOwnerFein: "None",
                 OwnerOfRecord: "None",
-                TaxFilingEntity: "None",
+                solarEntity: "None",
 			});
             this.getView().setModel(this.model);
 
         },
 
         _onRouteMatched: function(oEvent){
+            const oRouter = this.getRouter();
             this.getOwnerComponent.hasChanges = false;
             const Plant = this.getOwnerComponent().plant;
+            if (Plant === undefined) {
+                return  oRouter.navTo("home");
+              }
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber);
             this.readTaxOwner();
-            this.readTaxOwnerFein();
+            //this.readTaxOwnerFein();
             this.readLegalOwner();
-            this.readLegalOwnerFein();
-            this.readOwnerOfRecord();
-            this.readTaxFillingEntity();
+            //this.readLegalOwnerFein();
+            //this.readOwnerOfRecord();
+            //this.readTaxFillingEntity();
+            this.readLegalOwner();
         },
 
         _onValueHelpTaxOwner: function(oEvent){
@@ -213,72 +218,69 @@ sap.ui.define([
 			}
             let sDescription = oSelectedItem.getDescription();
             let sCode =  oSelectedItem.getTitle();
+            let info = oSelectedItem.getInfo();
 
             if (sTitle === "Tax Owner"){
-                this.byId("taxOwner").setValue(sDescription);
-                this.taxOwner = sCode
-            } else if(sTitle === "Tax Owner FEIN"){
-                this.byId("taxOwnerFein").setValue(sDescription);
-                this.taxOwnerFein = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/TaxOwner", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/TaxOwnerFein", `${info}`);
             } else if(sTitle === "Legal Owner"){
-                this.byId("legalOwner").setValue(sDescription);
-                this.legalOwner = sCode
-            } else if(sTitle === "Legal Owner FEIN"){
-                this.byId("legalOwnerFein").setValue(sDescription);
-                this.legalOwnerFein = sCode
-            } else if(sTitle === "Owner of Record"){
-                this.byId("ownerRecord").setValue(sDescription);
-                this.ownerRecord = sCode
-            } else if(sTitle === "Tax Filling Entity"){
-                this.byId("taxFiling").setValue(sDescription);
-                this.taxFiling = sCode
-            }
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/LegalOwner", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/LegalOwnerFein", `${info}`);
+            } 
 		},
 
         onPressSaveTaxDetails: function(){
+            const that = this;
+            this._oBusyDialog.open();
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
+            const taxOwner = this.byId("taxOwner").getValue();
+            const taxOwnerFein = this.byId("taxOwnerFein").getValue();
+            const LegalOwner = this.byId("legalOwner").getValue();
+            const LegalOwnerFein = this.byId("legalOwnerFein").getValue();
+            const ownerofRecord = this.byId("ownerRecord").getValue();
+            const solarEntity = this.byId("solarenitity").getValue();
 
             let bValidation = true;
 
-            if (this.taxOwner === "" || this.taxOwner === undefined ) {
+            if (taxOwner === "" || taxOwner === undefined ) {
                 this.model.setProperty("/TaxOwner", "Error");
             } else {
                 this.model.setProperty("/TaxOwner", "None");
             }
 
-            if (this.taxOwnerFein === "" || this.taxOwnerFein === undefined ) {
-                this.model.setProperty("/TaxOwnerFein", "Error");
-            } else {
-                this.model.setProperty("/TaxOwnerFein", "None");
-            }
+            // if (this.taxOwnerFein === "" || this.taxOwnerFein === undefined ) {
+            //     this.model.setProperty("/TaxOwnerFein", "Error");
+            // } else {
+            //     this.model.setProperty("/TaxOwnerFein", "None");
+            // }
 
-            if (this.legalOwner === "" || this.legalOwner === undefined ) {
+            if (LegalOwner === "" || LegalOwner === undefined ) {
                 this.model.setProperty("/LegalOwner", "Error");
             } else {
                 this.model.setProperty("/LegalOwner", "None");
             }
 
-            if (this.legalOwnerFein === "" || this.legalOwnerFein === undefined ) {
-                this.model.setProperty("/LegalOwnerFein", "Error");
-            } else {
-                this.model.setProperty("/LegalOwnerFein", "None");
-            }
+            // if (this.legalOwnerFein === "" || this.legalOwnerFein === undefined ) {
+            //     this.model.setProperty("/LegalOwnerFein", "Error");
+            // } else {
+            //     this.model.setProperty("/LegalOwnerFein", "None");
+            // }
 
-            if (this.ownerRecord === "" || this.ownerRecord === undefined ) {
+            if (ownerofRecord === "" || ownerofRecord === undefined ) {
                 this.model.setProperty("/OwnerOfRecord", "Error");
             } else {
                 this.model.setProperty("/OwnerOfRecord", "None");
             }
 
-            if (this.taxFiling === "" || this.taxFiling === undefined) {
-                this.model.setProperty("/TaxFilingEntity", "Error");
+            if (solarEntity === "" || solarEntity === undefined) {
+                this.model.setProperty("/solarEntity", "Error");
             } else {
-                this.model.setProperty("/TaxFilingEntity", "None");
+                this.model.setProperty("/solarEntity", "None");
             }
 
-            if (this.taxOwner === "" || this.taxOwnerFein === "" || this.legalOwner === "" || this.legalOwnerFein === "" || this.ownerRecord === "" || this.ownerRecord === undefined ||
-            this.taxOwner === undefined || this.taxOwnerFein === undefined || this.legalOwner === undefined || this.legalOwnerFein === undefined || this.taxFiling === "" || this.taxFiling === undefined){
+            if (taxOwner === "" ||  LegalOwner === "" ||  ownerofRecord === "" || ownerofRecord === undefined ||
+            taxOwner === undefined  || LegalOwner === undefined || solarEntity === "" || solarEntity === undefined){
                 bValidation = true ;
             } else {
                 bValidation = false ;
@@ -286,24 +288,27 @@ sap.ui.define([
 
             if (bValidation === false){
             const payload = {
-                TaxOwner: this.taxOwner,
-                TaxOwnerFein: this.legalOwner,
-                LegalOwner: this.legalOwner,
-                LegalOwnerFein: this.legalOwnerFein,
-                OwnerOfRecord: this.ownerRecord,
-                TaxFilingEntity: this.taxFiling, 
+                TaxOwner: taxOwner,
+                TaxOwnerFein: taxOwnerFein,
+                LegalOwner: LegalOwner,
+                LegalOwnerFein: LegalOwnerFein,
+                OwnerOfRecord: ownerofRecord,
+                SolarEntity: solarEntity, 
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
 
             this._oModel.update(uri, payload, {
                 success: function (oData) {
+                    that._oBusyDialog.close();
                    MessageToast.show("Saved Successfully");
                 },
-                error: function (oData) {
+                error: function (error) {
+                    that._oBusyDialog.close();
                     MessageToast.show("Something went wrong with Service")
                 }
             })
         } else {
+            this._oBusyDialog.close();
             MessageToast.show("Please Fill all mandatory fields");
         }
         }

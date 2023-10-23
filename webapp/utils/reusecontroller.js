@@ -57,16 +57,46 @@ sap.ui.define([
         },
 
         readBuldingDetails: function(Plant, LegacyPropertyNumber){
+            const oTable = this.byId("idAttributestTab");
             const that = this;
-            const uri= `/PropertyAddOnSet?$filter=Plant eq '${Plant}' and Property eq '${LegacyPropertyNumber}' and KeyId eq 'BUILDING'`
+            let plant = new sap.ui.model.Filter('Plant', 'EQ', Plant);
+            let property = new sap.ui.model.Filter('Property', 'EQ', LegacyPropertyNumber);
+            let keyId = new sap.ui.model.Filter('KeyId', 'EQ', 'BUILDING');
+            //const uri= `/PropertyAddOnSet?$filter=Plant eq '${Plant}' and Property eq '${LegacyPropertyNumber}' and KeyId eq 'BUILDING'`
             // this._oBusyDialog.open()
-            this._oModel.read(uri, {
+            this._oModel.read(`/PropertyAddOnSet`, {
+                filters: [plant, property, keyId],
                 success: function (oData) {
                     // that._oBusyDialog.close();
-                    const oModel = new JSONModel(oData);
+                    const oModel = new JSONModel(oData.results);
                     that.getView().setModel(oModel, "buildingModel")
                     sap.ui.getCore().setModel(oModel, "buildingModel");
                     that.getView().getModel("buildingModel").refresh();
+                    oTable.bindAggregation("items", {
+                        path: "buildingModel>/", // Replace with the actual path to your data
+                        template: new sap.m.ColumnListItem({
+                          cells: [
+                            new sap.m.Input({ value: "{buildingModel>Code}" }),
+                            new sap.m.Input({ value: "{buildingModel>Value1}" }),
+                            new sap.m.Input({ value: "{buildingModel>Value2}" }),
+                            new sap.m.Input({ value: "{buildingModel>Description1}" }),
+                            new sap.m.Input({ value: "{buildingModel>Description2}" }),
+                            new sap.m.Button({
+                                icon: "sap-icon://delete",
+                                type: "Reject",
+                                press: that.removeBuilding
+                            })
+                            // Add similar lines for other properties
+                          ],
+                        }),
+                      });
+                    if(oData.results.length){
+                        that.getView().byId("illusSection").setVisible(false);
+                        
+                    } 
+                    else {
+                        that.getView().byId("illusSection").setVisible(true);
+                    }
                 },
                 error: function (oData) {
                     // that._oBusyDialog.close();
@@ -74,6 +104,90 @@ sap.ui.define([
                 }
             })
 
+        },
+
+        MiscBuildingDetails: function(Plant, LegacyPropertyNumber){
+            const oTable = this.byId("isMiscTab");
+            const that = this;
+            let plant = new sap.ui.model.Filter('Plant', 'EQ', Plant);
+            let property = new sap.ui.model.Filter('Property', 'EQ', LegacyPropertyNumber);
+            let keyId = new sap.ui.model.Filter('KeyId', 'EQ', 'MISC');
+            this._oModel.read(`/PropertyAddOnSet`, {
+                filters: [plant, property, keyId],
+                success: function (oData) {
+                    // that._oBusyDialog.close();
+                    const oModel = new JSONModel(oData.results);
+                    that.getView().setModel(oModel, "miscModel")
+                    sap.ui.getCore().setModel(oModel, "miscModel");
+                    that.getView().getModel("miscModel").refresh();
+                    oTable.bindAggregation("items", {
+                        path: "miscModel>/", // Replace with the actual path to your data
+                        template: new sap.m.ColumnListItem({
+                          cells: [
+                            new sap.m.Input({ value: "{miscModel>Code}" }),
+                            new sap.m.Input({ value: "{miscModel>Value1}" }),
+                            new sap.m.Input({ value: "{miscModel>Value2}" }),
+                            new sap.m.Input({ value: "{miscModel>Description1}" }),
+                            new sap.m.Input({ value: "{miscModel>Description2}" }),
+                            new sap.m.Button({
+                                icon: "sap-icon://delete",
+                                type: "Reject",
+                                press: that.removeMiscBuilding
+                            })
+                            // Add similar lines for other properties
+                          ],
+                        }),
+                      });
+                    if(oData.results.length){
+                        that.getView().byId("illusSectionMisc").setVisible(false);
+                    } else {
+                        that.getView().byId("illusSectionMisc").setVisible(true);
+                    }
+                   
+                },
+                error: function (oData) {
+                    // that._oBusyDialog.close();
+                    MessageToast.show("Something went wrong with Service")
+                }
+            })
+
+        },
+
+        removeBuilding: function(oEvent){
+            this._oModel = sap.ui.getCore().getModel("mainModel");
+            const that = this;
+            const oData = oEvent.getSource().getBindingContext("buildingModel").getObject();
+            const uri= `/PropertyAddOnSet(Plant='${oData.Plant}',Property='${oData.Property}',KeyId='${oData.KeyId}',Code='${oData.Code}')`
+            this._oModel.remove(uri, {
+                method: "DELETE",
+                success: function(data) {
+                 MessageToast.show("Deleted Successfully");
+                 sap.ui.getCore().getModel("buildingModel").refresh();
+                 that.readBuldingDetails(oData.Plant, oData.Property)
+                 //that.byId("idAttributestTab").getBindings("items").refresh();
+                },
+                error: function(e) {
+                MessageToast.show("Something went wrong with the Service");
+                }
+               });
+        },
+
+        removeMiscBuilding: function(oEvent){
+            const that = this;
+            this._oModel = sap.ui.getCore().getModel("mainModel");
+            const oData = oEvent.getSource().getBindingContext("miscModel").getObject();
+            const uri= `/PropertyAddOnSet(Plant='${oData.Plant}',Property='${oData.Property}',KeyId='${oData.KeyId}',Code='${oData.Code}')`
+            this._oModel.remove(uri, {
+                method: "DELETE",
+                success: function(data) {
+                 MessageToast.show("Deleted Successfully");
+                 sap.ui.getCore().getModel("miscModel").refresh();
+                 //that.byId("isMiscTab").getBindings("items").refresh();
+                },
+                error: function(e) {
+                MessageToast.show("Something went wrong with the Service");
+                }
+               });
         },
 
         // readPropertyMasterData: function(Plant, LegacyPropertyNumber){
@@ -144,6 +258,52 @@ sap.ui.define([
                 });
 
         },
+
+
+        readTaxOwner: function(){
+            const that = this;
+            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'TA');
+            this._oBusyDialog.open()
+            that._oModel.read(`/CompanyDetailSet`, {
+                filters: [keyFilter],
+                    success: function (oData) {
+                        if (oData.results){
+                        that._oBusyDialog.close();
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "feeTypeModel")
+                        sap.ui.getCore().setModel(oModel, "feeTypeModel");
+                        }
+                    },
+                    error: function (oData) {
+                        that._oBusyDialog.close();
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+
+        },
+
+        readLegalOwner: function(){
+            const that = this;
+            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'LE');
+            this._oBusyDialog.open();
+            that._oModel.read(`/CompanyDetailSet`, {
+                filters: [keyFilter],
+                    success: function (oData) {
+                        if (oData.results){
+                        that._oBusyDialog.close();
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "feeTypeModel")
+                        sap.ui.getCore().setModel(oModel, "feeTypeModel");
+                        }
+                    },
+                    error: function (oData) {
+                        that._oBusyDialog.close();
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+
+        },
+
 
 
         readAquiredDeveloperTP:function(){
@@ -456,71 +616,75 @@ sap.ui.define([
         // Tax detail tab started
         readTaxOwner: function(){
             const that = this;
-            
-            that._oModel.read(`/TaxOwnerSet`, {
+            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'TA');
+            this._oBusyDialog.open();
+            that._oModel.read(`/CompanyDetailSet`, {
+                filters: [keyFilter],
                     success: function (oData) {
-                       
+                        that._oBusyDialog.close();
                         const oModel = new JSONModel(oData.results);
                         that.getView().setModel(oModel, "taxOwnerModel")
                         sap.ui.getCore().setModel(oModel, "taxOwnerModel");
                     },
                     error: function (oData) {
-                       
+                        that._oBusyDialog.close();
                         MessageToast.show("Something went wrong with Service")
                     }
                 });
         },
 
-        readTaxOwnerFein: function(){
-            const that = this;
+        // readTaxOwnerFein: function(){
+        //     const that = this;
             
-            that._oModel.read(`/SrDistrictSet`, {
-                    success: function (oData) {
+        //     that._oModel.read(`/SrDistrictSet`, {
+        //             success: function (oData) {
                        
-                        const oModel = new JSONModel(oData.results);
-                        that.getView().setModel(oModel, "SrDistrictSetModel")
-                        sap.ui.getCore().setModel(oModel, "SrDistrictSetModel");
-                    },
-                    error: function (oData) {
+        //                 const oModel = new JSONModel(oData.results);
+        //                 that.getView().setModel(oModel, "SrDistrictSetModel")
+        //                 sap.ui.getCore().setModel(oModel, "SrDistrictSetModel");
+        //             },
+        //             error: function (oData) {
                        
-                        MessageToast.show("Something went wrong with Service")
-                    }
-                });
-        },
+        //                 MessageToast.show("Something went wrong with Service")
+        //             }
+        //         });
+        // },
 
         readLegalOwner: function(){
             const that = this;
-            
-            that._oModel.read(`/LegalOwnerSet`, {
+            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'LE');
+            this._oBusyDialog.open();
+            that._oModel.read(`/CompanyDetailSet`, {
+                filters: [keyFilter],
                     success: function (oData) {
-                       
+                        that._oBusyDialog.close();
                         const oModel = new JSONModel(oData.results);
                         that.getView().setModel(oModel, "LegalOwnerModel")
                         sap.ui.getCore().setModel(oModel, "LegalOwnerModel");
                     },
                     error: function (oData) {
-                       
-                        MessageToast.show("Something went wrong with Service")
+                        that._oBusyDialog.close();
+                        MessageToast.show("Something went wrong with Service");
                     }
                 });
         },
 
-        readLegalOwnerFein: function(){
-            const that = this;
+        // readLegalOwnerFein: function(){
+        //     const that = this;
             
-            that._oModel.read(`/SrDistrictSet`, {
-                    success: function (oData) {
+        //     that._oModel.read(`/SrDistrictSet`, {
+        //             success: function (oData) {
                        
-                        const oModel = new JSONModel(oData.results);
-                        that.getView().setModel(oModel, "SrDistrictSetModel")
-                        sap.ui.getCore().setModel(oModel, "SrDistrictSetModel");
-                    },
-                    error: function (oData) {
+        //                 const oModel = new JSONModel(oData.results);
+        //                 that.getView().setModel(oModel, "SrDistrictSetModel")
+        //                 sap.ui.getCore().setModel(oModel, "SrDistrictSetModel");
+        //             },
+        //             error: function (oData) {
                        
-                        MessageToast.show("Something went wrong with Service")
-                    }
-                });
-        },
+        //                 MessageToast.show("Something went wrong with Service")
+        //             }
+        //         });
+        // },
 
         readOwnerOfRecord: function(){
             const that = this;

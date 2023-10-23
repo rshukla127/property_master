@@ -49,12 +49,16 @@ sap.ui.define([
         },
 
         _onRouteMatched: function(oEvent){
+            const oRouter = this.getRouter();
             const Plant = this.getOwnerComponent().plant;
+            if (Plant === undefined) {
+                return  oRouter.navTo("home");
+              }
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyChurnStatus();
             this.readClimateControl();
-            this.readPropertyData(Plant, LegacyPropertyNumber)
+            this.readPropertyData(Plant, LegacyPropertyNumber);
 
         },
 
@@ -135,6 +139,7 @@ sap.ui.define([
 		},
 
         onPressSaveWebDetails: function(){
+            this._oBusyDialog.open();
             const that = this;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
@@ -263,7 +268,7 @@ sap.ui.define([
                 this.model.setProperty("/CallCenterEnabledDate", "None"); 
             }
 
-            if (PropertyLatitude === "" || PropertyLongitude === "" || PropertyAdminFee === "" || PropertyWebsiteReservations === "" || PropertyCallCenterReservati === ""
+            if (PropertyLatitude === "" || PropertyLongitude === "" || PropertyAdminFee === "" || PropertyWebsiteReservations === "" || PropertyWebsiteReservations === "B" || PropertyCallCenterReservati === "" || PropertyCallCenterReservati === "B"
             || PropertyNfsFee === "" || MaxReservationDays === "" || PropertyNfsAchFee === "" || PropertyInsuranceFrozen === "" || PropertyInsuranceCancelDay === "" || PreReservationDays === ""
             || websiteEnabledDate === null || websiteEnabledDate === "" || callCentDate === null || callCentDate === "" || adminFeeEffectiveDate === null || adminFeeEffectiveDate === ""){
                 bValidation = true ;
@@ -294,7 +299,7 @@ sap.ui.define([
                 PreReservationDays: PreReservationDays
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
-           this._oBusyDialog.open();
+          
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                    MessageToast.show("Saved Successfully");
@@ -306,6 +311,7 @@ sap.ui.define([
                 }
             })
         } else {
+            this._oBusyDialog.close();
             MessageToast.show("Please Fill all mandatory fields");
         }
 

@@ -14,12 +14,12 @@
                   
                     <core:Title text="" visible="false"/>
                     <Label required="true" text="{i18n>propLat}" />
-                    <Input id="propLat" valueStateText="Value cannot be blank" valueState="{/PropertyLatitude}" value="{plantBasicDetailsModel>/PropertyLatitude}" />
+                    <Input id="propLat" maxLength="9" valueStateText="Value cannot be blank" valueState="{/PropertyLatitude}" value="{plantBasicDetailsModel>/PropertyLatitude}" />
                     <Label required="true" text="{i18n>propLong}" />
-                    <Input id="propLong" valueStateText="Value cannot be blank" valueState="{/PropertyLongitude}" value="{plantBasicDetailsModel>/PropertyLongitude}" />
+                    <Input id="propLong" maxLength="9" valueStateText="Value cannot be blank" valueState="{/PropertyLongitude}" value="{plantBasicDetailsModel>/PropertyLongitude}" />
 
                     <Label required="true" text="{i18n>propAdminFee}" />
-                    <Input id="propAdmin" valueStateText="Value cannot be blank" valueState="{/PropertyAdminFee}" type="Number" 
+                    <Input id="propAdmin" maxLength="16" valueStateText="Value cannot be blank" valueState="{/PropertyAdminFee}" type="Number" 
                     value="{parts: ['plantBasicDetailsModel>/PropertyAdminFee'], formatter: '.formatter.removeLeadingZeros'}"/>
 
                     <Label required="true" text="{i18n>adminFeeEff}" />
@@ -83,7 +83,8 @@
                      value="{parts: ['plantBasicDetailsModel>/PropertyNfsFee'], formatter: '.formatter.removeLeadingZeros'}"/>
 
                     <Label required="true" text="{i18n>maxResDays}" />
-                    <Input id="maxRes" valueStateText="Value cannot be blank" type="Number" maxLength="3" valueState="{/MaxReservationDays}" value="{plantBasicDetailsModel>/MaxReservationDays}" />
+                    <Input id="maxRes" valueStateText="Value cannot be blank" type="Number" maxLength="3" valueState="{/MaxReservationDays}" 
+                    value="{parts: ['plantBasicDetailsModel>/MaxReservationDays'], formatter: '.formatter.removeLeadingZeros'}" />
                     <Label text="{i18n>nsfFeeEff}" />
                     <DatePicker id="nsfFeeEff" placeholder="Choose Date..." 
                     value="{ 
@@ -111,10 +112,12 @@
                     </Select>
 
                     <Label required="true" text="{i18n>propInsCancel}" />
-                    <Input id="propIns" valueStateText="Value cannot be blank" valueState="{/PropertyInsuranceCancelDay}" value="{plantBasicDetailsModel>/PropertyInsuranceCancelDay}" />
+                    <Input id="propIns" type="Number" maxLength="3" valueStateText="Value cannot be blank" valueState="{/PropertyInsuranceCancelDay}" 
+                    value="{parts: ['plantBasicDetailsModel>/PropertyInsuranceCancelDay'], formatter: '.formatter.removeLeadingZeros'}}"/>
 
                     <Label required="true" text="{i18n>preResDay}" />
-                    <Input id="propResDay" valueStateText="Value cannot be blank" valueState="{/PreReservationDays}" value="{plantBasicDetailsModel>/PreReservationDays}" />
+                    <Input id="propResDay" type="Number" maxLength="3" valueStateText="Value cannot be blank" valueState="{/PreReservationDays}"
+                     value="{parts: ['plantBasicDetailsModel>/PreReservationDays'], formatter: '.formatter.removeLeadingZeros'}" />
                 </f:content>
             </f:SimpleForm>
             <VBox alignContent="End" alignItems="End">

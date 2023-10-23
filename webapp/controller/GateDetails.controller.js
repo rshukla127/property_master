@@ -28,8 +28,12 @@ sap.ui.define([
         },
 
         _onRouteMatched: function(oEvent){
+            const oRouter = this.getRouter();
             this.getOwnerComponent.hasChanges = false;
             const Plant = this.getOwnerComponent().plant;
+            if (Plant === undefined) {
+                return  oRouter.navTo("home");
+              }
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber;
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber);

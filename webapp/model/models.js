@@ -23,9 +23,9 @@ sap.ui.define([
                 return new JSONModel(oData);
 
             },
-            createRequestModel: function(){
+            createYearModel: function(){
                 var oModel = new JSONModel();
-                    oModel.loadData("model/mockdata.json");
+                    oModel.loadData("model/yearbuilt.json");
                     return oModel;
     
             },

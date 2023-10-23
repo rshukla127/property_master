@@ -10,7 +10,8 @@
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{LegalOwnerModel>Code}"
+			info="{LegalOwnerModel>Fein}"
+			title="{LegalOwnerModel>Company}"
 			description="{LegalOwnerModel>Description}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

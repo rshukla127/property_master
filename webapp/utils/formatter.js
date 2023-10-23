@@ -187,7 +187,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       } else if (sValue === "0000"){
         return 500;
       }else {
-        return sValue;
+        return parseInt(sValue);;
       }
     },
 
@@ -197,7 +197,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       } else if (sValue === "0000"){
         return 250;
       }else {
-        return sValue;
+        return parseInt(sValue);;
       }
     },
 
@@ -207,7 +207,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       } else if (sValue === "0000"){
         return 75;
       }else {
-        return sValue;
+        return parseInt(sValue);;
       }
     },
 
@@ -217,7 +217,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       } else if (sValue === "0000"){
         return 75;
       }else {
-        return sValue;
+        return parseInt(sValue);;
       }
     },
 
@@ -227,7 +227,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       } else if (sValue === "0000"){
         return 75;
       }else {
-        return sValue;
+        return parseInt(sValue);;
       }
     },
 
@@ -237,7 +237,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       } else if (sValue === "0000"){
         return sValue = "";
       }else {
-        return sValue;
+        return parseInt(sValue);;
       }
     },
 
@@ -247,7 +247,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       } else if (sValue === "0000"){
         return sValue = "";
       }else {
-        return sValue;
+        return parseInt(sValue);;
       }
     },
 
@@ -257,7 +257,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       } else if (sValue === "0000"){
         return sValue = "";
       }else {
-        return sValue;
+        return parseInt(sValue);;
       }
     },
 
@@ -267,7 +267,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       } else if (sValue === "0000"){
         return sValue = "";
       }else {
-        return sValue;
+        return parseInt(sValue);;
       }
     },
 
@@ -277,7 +277,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       } else if (sValue === "0000"){
         return sValue = "";
       }else {
-        return sValue;
+        return parseInt(sValue);
       }
     },
 

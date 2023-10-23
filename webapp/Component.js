@@ -31,6 +31,7 @@ sap.ui.define([
                 this.setModel(models.createDeviceModel(), "device");
                 const oModel = this.getModel("mainModel");
                 sap.ui.getCore().setModel(oModel, "mainModel");
+                sap.ui.getCore().setModel(models.createYearModel(), "viewTicketModel");
                 var oRootPath = jQuery.sap.getModulePath("com.public.storage.pao"); // your resource root
 		
                 var oImageModel = new sap.ui.model.json.JSONModel({

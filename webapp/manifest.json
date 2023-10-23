@@ -82,6 +82,11 @@
 				"uri": "model/sideNavigationContent.json",
 				"preload": true
 			},
+      "yearModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/yearbuilt.json",
+				"preload": true
+			},
       "plantModel":{
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/mockdata.json",

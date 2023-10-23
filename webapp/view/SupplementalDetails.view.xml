@@ -13,12 +13,12 @@
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label required="true" text="{i18n>propDeatures}" />
-                    <Input valueStateText="Value cannot be blank" valueState="{/PropertyFeatures}" id="propFeature" value="{plantBasicDetailsModel>/PropertyFeatures}" />
+                    <Input valueStateText="Value cannot be blank" maxLength="500" valueState="{/PropertyFeatures}" id="propFeature" value="{plantBasicDetailsModel>/PropertyFeatures}" />
                     <Label required="true" text="{i18n>drivingDirection}" />
-                    <Input valueStateText="Value cannot be blank" valueState="{/DrivingDirections}" id="driDirection" value="{plantBasicDetailsModel>/DrivingDirections}" />
+                    <Input valueStateText="Value cannot be blank" maxLength="500" valueState="{/DrivingDirections}" id="driDirection" value="{plantBasicDetailsModel>/DrivingDirections}" />
 
                     <Label required="true" text="{i18n>specialNotes}" />
-                    <Input valueStateText="Value cannot be blank" valueState="{/SpecialNotes}" id="spNotes" value="{plantBasicDetailsModel>/SpecialNotes}" />
+                    <Input valueStateText="Value cannot be blank" maxLength="500" valueState="{/SpecialNotes}" id="spNotes" value="{plantBasicDetailsModel>/SpecialNotes}" />
 
                     <Label text="{i18n>lockers}" />
                     <Select id="lock" selectedKey="{parts: ['plantBasicDetailsModel>/Lockers'], formatter: '.formatter.getSelectedKeyBlank'}">
@@ -79,42 +79,49 @@
                         </items>
                     </Select>
                     <Label text="{i18n>yearBuild}" />
-                    <Select id="year" selectedKey="{plantBasicDetailsModel>/YearBuilt}">
+                    <!-- <Select id="year" selectedKey="{plantBasicDetailsModel>/YearBuilt}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
                             <core:Item text="" key="B"/>
 
                         </items>
-                    </Select>
+                    </Select> -->
+                    <Input id="year" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpYearBuild" value="{plantBasicDetailsModel>/YearBuilt}" />
 
-                    <Label required="true" text="{i18n>capIndexRisk}" />
-                    <Input id="capIndex" value="{plantBasicDetailsModel>/CapIndexRisk}" />
+                    <Label text="{i18n>capIndexRisk}" />
+                    <Input id="capIndex" maxLength="4" value="{plantBasicDetailsModel>/CapIndexRisk}" />
 
                     <Label text="{i18n>numberofBuilding}" />
-                    <Input id="noOfBuild" value="{plantBasicDetailsModel>/NumberOfBuildings}" />
+                    <Input id="noOfBuild" maxLength="3" value="{plantBasicDetailsModel>/NumberOfBuildings}" />
 
                     <Label text="{i18n>constructionCode}" />
                     <Input id="constCode" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpConstructionCode" value="{plantBasicDetailsModel>/ConstructionCode}" />
 
                     <Label text="{i18n>noOfStories}" />
-                    <Input id="noOfStories" value="{plantBasicDetailsModel>/NumberOfStories}" />
+                    <Input id="noOfStories" maxLength="3" value="{plantBasicDetailsModel>/NumberOfStories}" />
 
                     <Label text="{i18n>constructionCode2}" />
-                    <Input id="constCode2" showValueHelp="true" value="{plantBasicDetailsModel>/ConstructionCode2}" />
+                    <Input id="constCode2" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpConstructionCode" value="{plantBasicDetailsModel>/ConstructionCode2}" />
                     <core:Title text="" visible="false"/>
                     <Label text="{i18n>lotSize}" />
-                    <Input id="lotSize" value="{plantBasicDetailsModel>/LotSize}" />
+                    <Input id="lotSize" maxLength="9" value="{plantBasicDetailsModel>/LotSize}" />
 
                     <Label text="{i18n>buildingClassification}" />
                     <Input id="buildClass" showValueHelp="true" value="{plantBasicDetailsModel>/BuildingClassification}" />
 
                     <Label text="{i18n>grossSquareFootage}" />
-                    <Input id="grossSQFoot" value="{plantBasicDetailsModel>/GrossSquareFootage}" />
+                    <Input id="grossSQFoot" maxLength="7" value="{plantBasicDetailsModel>/GrossSquareFootage}" />
                     <Label text="{i18n>floodZone}" />
-                    <Input id="floodzone" showValueHelp="true" value="{plantBasicDetailsModel>/FloodZone}" />
+                    <!-- <Input id="floodzone" showValueHelp="true" value="{plantBasicDetailsModel>/FloodZone}" /> -->
+                        <Select id="floodzone" selectedKey="{plantBasicDetailsModel>/FloodZone}">
+                            <items>
+                                <core:Item text="Yes" key="Y"/>
+                                <core:Item text="No" key="N"/>
+                            </items>
+                        </Select>
                     <Label text="{i18n>tfmilesCoastWater}" />
-                    <Input id="tfmilesCoastWater" value="{plantBasicDetailsModel>/MilesOfCostalWater25}" />
+                    <Input id="tfmilesCoastWater" maxLength="10" value="{plantBasicDetailsModel>/MilesOfCostalWater25}" />
                     <Label text="{i18n>sprinkler}" />
                     <Select id="sprink" selectedKey="{plantBasicDetailsModel>/Sprinkler}">
                         <items>
@@ -123,7 +130,7 @@
                         </items>
                     </Select>
                     <Label text="{i18n>sprinklerRemark}" />
-                    <Input id="sprinkRem" value="{plantBasicDetailsModel>/SprinklerRemark}" />
+                    <Input id="sprinkRem" maxLength="30" value="{plantBasicDetailsModel>/SprinklerRemark}" />
                     <Label text="{i18n>fireAlarm}" />
                         <Select id="fireAlarm" selectedKey="{plantBasicDetailsModel>/FireAlarm}">
                             <items>
@@ -134,7 +141,7 @@
                         </Select>
                    
                     <Label text="{i18n>fireAlarmRemark}" />
-                    <Input id="fireAlarmRemark" showValueHelp="true" value="{plantBasicDetailsModel>/FireAlarmRemarks}" />
+                    <Input id="fireAlarmRemark" maxLength="30" value="{plantBasicDetailsModel>/FireAlarmRemarks}" />
                         
                     <Label text="{i18n>bugerAlarm}" />
                         <Select id="bugalarm" selectedKey="{plantBasicDetailsModel>/BuglerAlarm}">
@@ -145,7 +152,7 @@
                             </items>
                         </Select>
                     <Label text="{i18n>bugerAlarmRemark}" />
-                    <Input id="bugAlarmRemark" value="{plantBasicDetailsModel>/Network1IpBuglerAlarmRemarksAddress}" />
+                    <Input id="bugAlarmRemark" maxLength="30" value="{plantBasicDetailsModel>/Network1IpBuglerAlarmRemarksAddress}" />
 
                     <Label text="{i18n>parkingSpaces}" />
                     <Select id="park" selectedKey="{plantBasicDetailsModel>/ParkingSpaces}">
@@ -182,7 +189,7 @@
                         </items>
                     </Select>
                     <Label text="{i18n>survillanceCamRemarks}" />
-                    <Input id="surCamRemarks" value="{plantBasicDetailsModel>/SurvellianceCameraRemarks}" />
+                    <Input id="surCamRemarks" maxLength="30" value="{plantBasicDetailsModel>/SurvellianceCameraRemarks}" />
 
                 </f:content>
             </f:SimpleForm>

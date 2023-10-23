@@ -37,8 +37,12 @@ sap.ui.define([
         },
 
         _onRouteMatched: function(oEvent){
+            const oRouter = this.getRouter();
             this.getOwnerComponent.hasChanges = false;
             const Plant = this.getOwnerComponent().plant;
+            if (Plant === undefined) {
+                return  oRouter.navTo("home");
+              }
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber);
@@ -185,6 +189,7 @@ sap.ui.define([
 		},
 
         onPressSaveMarketingDetails: function(){
+            this._oBusyDialog.open();
             const that = this;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
@@ -238,7 +243,7 @@ sap.ui.define([
                 Rank: rankProp
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
-           this._oBusyDialog.open();
+           
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                     that._oBusyDialog.close();
@@ -250,6 +255,7 @@ sap.ui.define([
                 }
             })
         } else {
+            this._oBusyDialog.close();
             MessageToast.show("Please Fill all mandatory fields");
         }
         }
