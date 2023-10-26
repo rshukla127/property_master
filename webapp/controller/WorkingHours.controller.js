@@ -81,9 +81,6 @@ sap.ui.define([
             const that = this;
             var bValidation = true;
             const sPlant = this.getOwnerComponent().plant
-            if (Plant === undefined) {
-                return  oRouter.navTo("home");
-              }
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             // let sTime = "T00:00:00";
             let sunOpenN = this.byId("sunOpen").getValue();

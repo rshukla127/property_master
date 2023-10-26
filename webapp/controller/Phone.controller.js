@@ -48,7 +48,32 @@ sap.ui.define([
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber);
+            this.readPlantData(Plant);
 
+        },
+
+        readPlantData: function(Plant){
+            const that = this;
+            const uri= `/PlantMasterSet`
+            this._oBusyDialog.open();
+            this._oModel.read(uri, {
+                success: function (oData) {
+                    that._oBusyDialog.close();
+                    const oModel = new JSONModel(oData.results);
+                    const FilterData = oModel.getData().filter( item => item.Werks === Plant);
+                    that.getOwnerComponent().getModel("plantsModel").setProperty("/Address", FilterData[0].Address);
+                    //that.getOwnerComponent().getModel("plantsModel").setProperty("/Email", FilterData[0].Email);
+                    that.getOwnerComponent().getModel("plantsModel").setProperty("/Faxnumber", FilterData[0].Faxnumber);
+                    that.getOwnerComponent().getModel("plantsModel").setProperty("/Telnumber", FilterData[0].Telnumber);
+                    // that.getView().setModel(oModel, "plantModelNew")
+                    // sap.ui.getCore().setModel(oModel, "plantModelNew");
+                    // that.getView().getModel("plantModelNew").refresh();
+                },
+                error: function (oData) {
+                    that._oBusyDialog.close();
+                    MessageToast.show("Something went wrong with Service")
+                }
+            })
         },
 
         onPressSavePhoneDetails: function(){

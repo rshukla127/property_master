@@ -152,7 +152,7 @@
                             </items>
                         </Select>
                     <Label text="{i18n>bugerAlarmRemark}" />
-                    <Input id="bugAlarmRemark" maxLength="30" value="{plantBasicDetailsModel>/Network1IpBuglerAlarmRemarksAddress}" />
+                    <Input id="bugAlarmRemark" maxLength="30" value="{plantBasicDetailsModel>/BuglerAlarmRemarks}" />
 
                     <Label text="{i18n>parkingSpaces}" />
                     <Select id="park" selectedKey="{plantBasicDetailsModel>/ParkingSpaces}">

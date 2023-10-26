@@ -121,6 +121,7 @@ sap.ui.define([
                 GateChristmasCloseHr: finalgateChrisClosed,
                 GateNewyearOpenHr: finalgateNewYearOpen,
                 GateNewyearCloseHr: finalNewYearClosed,
+                GateAccessZone00: this.getView().byId("gateac0").getValue(),
                 GateAccessZone01: this.getView().byId("gateac1").getValue(),
                 GateAccessZone02: this.getView().byId("gateac2").getValue(),
                 GateAccessZone03: this.getView().byId("gateac3").getValue(),

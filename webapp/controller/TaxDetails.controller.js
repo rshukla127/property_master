@@ -58,6 +58,7 @@ sap.ui.define([
         },
 
         _onValueHelpTaxOwner: function(oEvent){
+            this.selectedField = oEvent.getSource().getCustomData()[0].getValue();
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -112,6 +113,7 @@ sap.ui.define([
         },
 
         _onValueHelpLegalOwner: function(oEvent){
+            
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -220,12 +222,15 @@ sap.ui.define([
             let sCode =  oSelectedItem.getTitle();
             let info = oSelectedItem.getInfo();
 
-            if (sTitle === "Tax Owner"){
+            if (sTitle === "Tax Owner" && this.selectedField === "taxOwner"){
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/TaxOwner", `(${sCode}) ${sDescription}`);
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/TaxOwnerFein", `${info}`);
-            } else if(sTitle === "Legal Owner"){
+            } if(sTitle === "Legal Owner"){
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/LegalOwner", `(${sCode}) ${sDescription}`);
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/LegalOwnerFein", `${info}`);
+            } if(this.selectedField === "sentity" && sTitle === "Tax Owner"){
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/SolarEntity", `(${sCode}) ${sDescription}`);
+                //this.getView().getModel("plantBasicDetailsModel").setProperty("/LegalOwnerFein", `${info}`);
             } 
 		},
 
