@@ -1188,11 +1188,13 @@ sap.ui.define([
                 const sProperty = this.getOwnerComponent().getModel("plantsModel").getProperty("/plant");
                 const sFIlterModel = oModel.filter((item)=> item.Werks === sProperty)
                 const sOrt01 = sFIlterModel[0].Ort01
-                const sLand = sFIlterModel[0].Land1
+                const sCountry = sFIlterModel[0].Land1
                 const sName1 = sFIlterModel[0].Name1;
                 const sName2 = sFIlterModel[0].Name2;
-                const sRegion = sFIlterModel[0].Regio;
+                const sState = sFIlterModel[0].Regio;
                 const sPin = sFIlterModel[0].Pstlz;
+                const sCounty = sFIlterModel[0].Counc;
+                const sStreet = sFIlterModel[0].Stras;
 
                 let sRadioButtonSelectedOwn = this.byId("rb1").getSelected();
                 //let sRadioButtonSelectedTP = this.byId("rb2").getSelected();
@@ -1360,11 +1362,14 @@ sap.ui.define([
                           SolarEnergyPcSegment: sSolarPCSegment,
 
                           City: sOrt01,
-                          Street: sLand,
+                          Street: sStreet,
+                          Description: sName1,
                           MailingName: sName1,
                           MailingName2: sName2,
-                          Country: sRegion,
+                          Country: sCountry,
+                          County: sCounty,
                           PostalCode: sPin,
+                          State: sState,
                           PropertyType: propType
 
                       }

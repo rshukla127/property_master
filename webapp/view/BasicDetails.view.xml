@@ -56,8 +56,8 @@
 					<!-- <Label required="true" text="{i18n>network2Ip}" />
 					<Input id="network2" valueStateText="Value cannot be blank" valueState="{/network2IpAddress}" value="{plantBasicDetailsModel>/Network2IpAddress}" /> -->
 
-					<Label text="{i18n>kisokActivDate}" labelFor="kisok" />
-					<DatePicker valueStateText="Value cannot be blank" valueState="{/KioskActiveDate}" change="onDetectChange" required="true" id="kisok" value="{ 
+					<Label  text="{i18n>kisokActivDate}" labelFor="kisok" />
+					<DatePicker  change="onDetectChange"  id="kisok" value="{ 
 					path: 'plantBasicDetailsModel>/KioskActiveDate',
 					type: 'sap.ui.model.type.Date'  
 				  }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>

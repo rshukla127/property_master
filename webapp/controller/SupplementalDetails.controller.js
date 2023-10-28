@@ -51,6 +51,7 @@ sap.ui.define([
         },
 
         _onValueHelpConstructionCode: function(oEvent){
+            this.selectedField = oEvent.getSource().getCustomData()[0].getValue();
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -86,17 +87,23 @@ sap.ui.define([
 			}
             let sDescription = oSelectedItem.getDescription();
             let sCode =  oSelectedItem.getTitle();
-            if (sTitle === "Construction Code"){
+            if (sTitle === "Construction Code" && this.selectedField === "constCode"){
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/ConstructionCode", `(${sCode}) ${sDescription}`);
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/cccodeDesc", `${sDescription}`);
+                //this.getView().getModel("plantBasicDetailsModel").setProperty("/cccodeDesc", `${sDescription}`);
             
-            } else if(sTitle === "Climate Control"){
+            } 
+            if(sTitle === "Construction Code" && this.selectedField === "constCode2"){
+                // this.byId("cCode").setValue(sDescription);
+                // this._custCode = sCode
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/ConstructionCode2", `(${sCode}) ${sDescription}`);
+                //this.getView().getModel("plantBasicDetailsModel").setProperty("/cccodeDesc", `${sDescription}`);
+            } if(sTitle === "Climate Control"){
                 // this.byId("cCode").setValue(sDescription);
                 // this._custCode = sCode
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/ClimateControl", `(${sCode}) ${sDescription}`);
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/climateControlDesc", `${sDescription}`);
+                //this.getView().getModel("plantBasicDetailsModel").setProperty("/climateControlDesc", `${sDescription}`);
             }
-            else if(sTitle === "Year Built"){
+            if(sTitle === "Year Built"){
                 // this.byId("cCode").setValue(sDescription);
                 // this._custCode = sCode
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/YearBuilt", `${sCode}`);

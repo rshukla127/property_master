@@ -3,7 +3,8 @@
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
     <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
 
 
@@ -96,13 +97,13 @@
                     <Input id="noOfBuild" maxLength="3" value="{plantBasicDetailsModel>/NumberOfBuildings}" />
 
                     <Label text="{i18n>constructionCode}" />
-                    <Input id="constCode" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpConstructionCode" value="{plantBasicDetailsModel>/ConstructionCode}" />
+                    <Input id="constCode" showValueHelp="true" app:fieldName="constCode" valueHelpOnly="true" valueHelpRequest="_onValueHelpConstructionCode" value="{plantBasicDetailsModel>/ConstructionCode}" />
 
                     <Label text="{i18n>noOfStories}" />
                     <Input id="noOfStories" maxLength="3" value="{plantBasicDetailsModel>/NumberOfStories}" />
 
                     <Label text="{i18n>constructionCode2}" />
-                    <Input id="constCode2" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpConstructionCode" value="{plantBasicDetailsModel>/ConstructionCode2}" />
+                    <Input id="constCode2" showValueHelp="true" app:fieldName="constCode2" valueHelpOnly="true" valueHelpRequest="_onValueHelpConstructionCode" value="{plantBasicDetailsModel>/ConstructionCode2}" />
                     <core:Title text="" visible="false"/>
                     <Label text="{i18n>lotSize}" />
                     <Input id="lotSize" maxLength="9" value="{plantBasicDetailsModel>/LotSize}" />

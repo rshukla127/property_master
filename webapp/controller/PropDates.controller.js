@@ -72,44 +72,44 @@ sap.ui.define([
             valbucreatedate = finalbucreatedate === "T00:00:00" ? null : finalbucreatedate ;
 
 
-            if (valResstartdate === null || valResstartdate === "") {
-                this.model.setProperty("/ReStartDate", "Error");
-            } else {
-                this.model.setProperty("/ReStartDate", "None");
-            }
+            // if (valResstartdate === null || valResstartdate === "") {
+            //     this.model.setProperty("/ReStartDate", "Error");
+            // } else {
+            //     this.model.setProperty("/ReStartDate", "None");
+            // }
 
-            if (valnewOwnerdate === null || valnewOwnerdate === "" ) {
-                this.model.setProperty("/NewOwnershipDate", "Error");
-            } else {
-                this.model.setProperty("/NewOwnershipDate", "None");
-            }
+            // if (valnewOwnerdate === null || valnewOwnerdate === "" ) {
+            //     this.model.setProperty("/NewOwnershipDate", "Error");
+            // } else {
+            //     this.model.setProperty("/NewOwnershipDate", "None");
+            // }
 
-            if (valorstartdate === null || valorstartdate === "") {
-                this.model.setProperty("/OriginalStartDate", "Error");
-            } else {
-                this.model.setProperty("/OriginalStartDate", "None");
-            }
+            // if (valorstartdate === null || valorstartdate === "") {
+            //     this.model.setProperty("/OriginalStartDate", "Error");
+            // } else {
+            //     this.model.setProperty("/OriginalStartDate", "None");
+            // }
 
-            if (valterminationdate === null || valterminationdate === "") {
-                this.model.setProperty("/TerminationDate", "Error");
-            } else {
-                this.model.setProperty("/TerminationDate", "None");
-            }
+            // if (valterminationdate === null || valterminationdate === "") {
+            //     this.model.setProperty("/TerminationDate", "Error");
+            // } else {
+            //     this.model.setProperty("/TerminationDate", "None");
+            // }
 
-            if (valbucreatedate === null || valbucreatedate === "") {
-                this.model.setProperty("/BuCreateDate", "Error");
-            } else {
-                this.model.setProperty("/BuCreateDate", "None");
-            }
+            // if (valbucreatedate === null || valbucreatedate === "") {
+            //     this.model.setProperty("/BuCreateDate", "Error");
+            // } else {
+            //     this.model.setProperty("/BuCreateDate", "None");
+            // }
 
-            if (valResstartdate === null || valnewOwnerdate === null  || valorstartdate === null
-            || valterminationdate === null || valbucreatedate === null){
-                bValidation = true ;
-            } else {
-                bValidation = false ;
-            }
+            // if (valResstartdate === null || valnewOwnerdate === null  || valorstartdate === null
+            // || valterminationdate === null || valbucreatedate === null){
+            //     bValidation = true ;
+            // } else {
+            //     bValidation = false ;
+            // }
 
-            if(bValidation === false){
+            // if(bValidation === false){
             const payload = {
                 ReStartDate: valResstartdate,
                 NewOwnershipDate: valnewOwnerdate,
@@ -129,11 +129,12 @@ sap.ui.define([
                     MessageToast.show("Something went wrong with Service")
                 }
             })
-        } else {
-            this._oBusyDialog.close();
-            MessageToast.show("Please Fill all mandatory fields");
-        }
-        }
+        } 
+        // else {
+        //     this._oBusyDialog.close();
+        //     MessageToast.show("Please Fill all mandatory fields");
+        // }
+        //}
 
 	});
 });

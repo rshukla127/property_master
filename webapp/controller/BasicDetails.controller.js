@@ -53,7 +53,12 @@ sap.ui.define([
         },
 
         // onDetectChange: function(oEvent){
-        //     this.detectChanges();
+        //    const sValue = oEvent.getSource().getSelectedKey();
+        //    if (sValue === "Y"){
+        //     this.byId("acdateLable").setRequired(true);
+        //    } else {
+        //     this.byId("acdateLable").setRequired(false)
+        //    }
         // },
 
         readPlantData: function(Plant){
@@ -157,16 +162,23 @@ sap.ui.define([
                 let fromattedDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(kisokACtivDate)) + sTime;
                 kisokACtivDate = fromattedDate === "T00:00:00" ? null : fromattedDate ;
             } else {
+                kisokACtivDate = null
+            }
+
+            if (sKioskProperty ==="Y" && (kisokACtivDate === "" || kisokACtivDate == null)){
+                this._oBusyDialog.close();
+                return MessageToast.show("Kiosk Active Date cannot be blank");
+            } else {
 
             }
             
-            if (kisokACtivDate === "" || kisokACtivDate == null) {
-                this.model.setProperty("/KioskActiveDate", "Error");
+            // if (kisokACtivDate === "" || kisokACtivDate == null) {
+            //     this.model.setProperty("/KioskActiveDate", "Error");
                
-            } else {
-                this.model.setProperty("/KioskActiveDate", "None");
+            // } else {
+            //     this.model.setProperty("/KioskActiveDate", "None");
                
-            }
+            // }
 
             // if (sTollFreeNumber === "") {
             //     this.model.setProperty("/tollFreeNumber", "Error");
@@ -221,8 +233,7 @@ sap.ui.define([
                 this.model.setProperty("/GeoCode", "None");
             }
             
-            if (sGeoCode === "" || kisokACtivDate === null
-            ||  sKioskProperty === "" || kisokACtivDate ===""){
+            if (sGeoCode === "" ||  sKioskProperty === ""){
                 bValidation = true ;
             } else {
                 bValidation = false ;
