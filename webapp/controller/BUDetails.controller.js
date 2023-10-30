@@ -88,6 +88,7 @@ sap.ui.define([
         },
 
         _onValueHelpBUnit: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -115,6 +116,7 @@ sap.ui.define([
         },
 
         _onValueHelpCustCode: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -139,6 +141,7 @@ sap.ui.define([
         },
 
         _onValueHelpEntityType: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -166,6 +169,7 @@ sap.ui.define([
         },
 
         _onValueHelpComSurvNumber: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -190,6 +194,7 @@ sap.ui.define([
         },
 
         _onValueHelpComATypeProp: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -214,6 +219,7 @@ sap.ui.define([
         },
 
         _onValueHelpComThirdParty: function(){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -285,9 +291,9 @@ sap.ui.define([
             
 		},
 
-        // onDetectChange: function(oEvent){
-        //     this.detectChanges();
-        // },
+        onDetectChange: function(oEvent){
+            this.detectChanges();
+        },
 
 
         onPressSaveBUDetails: function(){
@@ -373,6 +379,7 @@ sap.ui.define([
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                     that._oBusyDialog.close();
+                    that.getOwnerComponent.hasChanges = false;
                    MessageToast.show("Saved Successfully");
                 },
                 error: function (error) {

@@ -24,7 +24,7 @@
 					<Input id="psCons" valueStateText="Value cannot be blank" valueState="{/PsConsolidatedPropertygroup}" showValueHelp="true" valueHelpRequest="_onValueHelpConslidated" valueHelpOnly="true" value="{plantBasicDetailsModel>/PsConsolidatedPropertygroup}" />
 
 					<Label text="{i18n>rankProp}" />
-						<Select id="rankProp" selectedKey="{parts: ['plantBasicDetailsModel>/Rank'], formatter: '.formatter.getSelectedRankProp'}">
+						<Select change="onDetectChange" id="rankProp" selectedKey="{parts: ['plantBasicDetailsModel>/Rank'], formatter: '.formatter.getSelectedRankProp'}">
 							<items>																								
 								<core:Item text="Yes" key="Y" />
 								<core:Item text="No" key="N"/>

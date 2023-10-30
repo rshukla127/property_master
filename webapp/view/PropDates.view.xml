@@ -11,31 +11,31 @@
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label  text="{i18n>restrtdate}" />
-                    <DatePicker id="restrtdate" value="{ 
+                    <DatePicker change="onDetectChange" id="restrtdate" value="{ 
                         path: 'plantBasicDetailsModel>/ReStartDate',
                         type: 'sap.ui.model.type.Date'
                       }" valueFormat="yyyy-MM-dd"  placeholder="Choose Date.."/>
 
                     <Label  text="{i18n>newOwnerdate}" />
-                    <DatePicker id="newOwnerdate" value="{ 
+                    <DatePicker change="onDetectChange" id="newOwnerdate" value="{ 
                         path: 'plantBasicDetailsModel>/NewOwnershipDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"  placeholder="Choose Date.." />
 
                     <Label text="{i18n>orstartdate}" />
-                    <DatePicker id="orstartdate" value="{ 
+                    <DatePicker change="onDetectChange" id="orstartdate" value="{ 
                         path: 'plantBasicDetailsModel>/OriginalStartDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" valueStateText="Value cannot be blank" valueState="{/OriginalStartDate}" placeholder="Choose Date.." />
 
                     <Label  text="{i18n>terminationdate}" />
-                    <DatePicker id="terminationdate" value="{ 
+                    <DatePicker change="onDetectChange" id="terminationdate" value="{ 
                         path: 'plantBasicDetailsModel>/TerminationDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"  placeholder="Choose Date.." />
 
                     <Label text="{i18n>buCreate}" />
-                    <DatePicker id="bucreatedate" value="{ 
+                    <DatePicker change="onDetectChange" id="bucreatedate" value="{ 
                         path: 'plantBasicDetailsModel>/BuCreateDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"  placeholder="Choose Date.." />

@@ -24,16 +24,16 @@
                         </items>
                     </Select>
                     <Label required="true" text="{i18n>businessUnitType}" />
-                    <Input change="onDetectChange" id="bType" valueStateText="Value cannot be blank" valueState="{/BusinessUnitType}" valueHelpRequest="_onValueHelpBUnit" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/BusinessUnitType}" />
+                    <Input id="bType" valueStateText="Value cannot be blank" valueState="{/BusinessUnitType}" valueHelpRequest="_onValueHelpBUnit" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/BusinessUnitType}" />
 
                     <Label required="true" text="{i18n>customerCode}" />
-                    <Input change="onDetectChange" id="cCode" valueStateText="Value cannot be blank" valueState="{/CustomerCode}" valueHelpRequest="_onValueHelpCustCode" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/CustomerCode}" />
+                    <Input id="cCode" valueStateText="Value cannot be blank" valueState="{/CustomerCode}" valueHelpRequest="_onValueHelpCustCode" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/CustomerCode}" />
 
                     <Label required="true" text="{i18n>entityType}" />
-                    <Input change="onDetectChange" id="entityType" valueStateText="Value cannot be blank" valueState="{/EntityType}" valueHelpRequest="_onValueHelpEntityType" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/EntityType}" />
+                    <Input  id="entityType" valueStateText="Value cannot be blank" valueState="{/EntityType}" valueHelpRequest="_onValueHelpEntityType" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/EntityType}" />
 
                     <Label required="true" text="{i18n>combinedServNumber}" />
-                    <Input change="onDetectChange" id="combinedServ" valueStateText="Value cannot be blank" valueState="{/CombinedSurvivingNumber}" valueHelpRequest="_onValueHelpComSurvNumber" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
+                    <Input  id="combinedServ" valueStateText="Value cannot be blank" valueState="{/CombinedSurvivingNumber}" valueHelpRequest="_onValueHelpComSurvNumber" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/CombinedSurvivingNumber}" />
 
                     <Label text="{i18n>Note1}" />
                     <Input change="onDetectChange" id="note1" maxLength="30" value="{plantBasicDetailsModel>/Note1}" />
@@ -45,7 +45,7 @@
                     <Input change="onDetectChange" id="note3" maxLength="30" value="{plantBasicDetailsModel>/Note3}" />
 
                     <Label required="true" text="{i18n>atypeProp}" />
-                    <Input change="onDetectChange" id="atypeProp" valueStateText="Value cannot be blank" valueState="{/ATypeProperty}" valueHelpRequest="_onValueHelpComATypeProp" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
+                    <Input  id="atypeProp" valueStateText="Value cannot be blank" valueState="{/ATypeProperty}" valueHelpRequest="_onValueHelpComATypeProp" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/ATypeProperty}" />
 
                     <core:Title text="" />
                     <Label  text="{i18n>billboard}" />
@@ -93,7 +93,7 @@
                     <Input change="onDetectChange" id="aquiredFrom" maxLength="50" value="{plantBasicDetailsModel>/AcquiredFrom}" />
 
                     <Label text="{i18n>aquiredevlop}" />
-                    <Input change="onDetectChange" id="aquiredFromTP" valueHelpRequest="_onValueHelpComThirdParty" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
+                    <Input id="aquiredFromTP" valueHelpRequest="_onValueHelpComThirdParty" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
                     <Label  text="{i18n>psd}" />
                     <Input change="onDetectChange" id="psd" maxLength="12" value="{plantBasicDetailsModel>/Psd}" />
 

@@ -35,6 +35,10 @@ sap.ui.define([
 
         },
 
+        onDetectChange: function(oEvent){
+            this.detectChanges();
+        },
+
         _onRouteMatched: function(oEvent){
             const oRouter = this.getRouter();
             this.getOwnerComponent.hasChanges = false;
@@ -91,6 +95,7 @@ sap.ui.define([
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                     that._oBusyDialog.close();
+                    that.getOwnerComponent.hasChanges = false;
                    MessageToast.show("Saved Successfully");
                 },
                 error: function (error) {

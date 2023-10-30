@@ -33,7 +33,7 @@
 					</Select>
 
 					<Label text="{i18n>budPropNumber}" />
-					<Input change="onDetectChange" maxLength="7" id="budProp" value="{plantBasicDetailsModel>/BuddyPropertyNumber}" showValueHelp="true" valueHelpRequest="_onValueHelpRequestProperty" valueHelpOnly="true"/>
+					<Input maxLength="7" id="budProp" value="{plantBasicDetailsModel>/BuddyPropertyNumber}" showValueHelp="true" valueHelpRequest="_onValueHelpRequestProperty" valueHelpOnly="true"/>
 					<Label text="{i18n>retailSqFootage}" />
 					<Input change="onDetectChange" maxLength="5" id="retailStoreSq" value="{plantBasicDetailsModel>/RetailStoreSquareFootage}" />
 

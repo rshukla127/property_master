@@ -15,18 +15,18 @@
 
 
                     <Label required="true" text="Network 1 IP address" />
-                    <Input id="net1IpAdd" valueStateText="Value cannot be blank" valueState="{/n1ip}" maxLength="30" value="{plantBasicDetailsModel>/Network1IpAddress}" />
+                    <Input change="onDetectChange" id="net1IpAdd" valueStateText="Value cannot be blank" valueState="{/n1ip}" maxLength="30" value="{plantBasicDetailsModel>/Network1IpAddress}" />
 
                     <Label required="true" text="Network 2 IP address" />
-                    <Input id="net2IpAdd" valueStateText="Value cannot be blank" valueState="{/n2ip}" maxLength="30" value="{plantBasicDetailsModel>/Network2IpAddress}" />
+                    <Input change="onDetectChange" id="net2IpAdd" valueStateText="Value cannot be blank" valueState="{/n2ip}" maxLength="30" value="{plantBasicDetailsModel>/Network2IpAddress}" />
 
                     <Label text="Network Type" />
-                    <Input id="ntype" maxLength="30" value="{plantBasicDetailsModel>/NetworkType}" />
+                    <Input change="onDetectChange" id="ntype" maxLength="30" value="{plantBasicDetailsModel>/NetworkType}" />
 
                     <Label text="Network Vendor" />
-                    <Input id="nvendor" maxLength="30" value="{plantBasicDetailsModel>/NetworkVendor}" />
+                    <Input change="onDetectChange" id="nvendor" maxLength="30" value="{plantBasicDetailsModel>/NetworkVendor}" />
                     <Label text="Network Router Address" />
-                    <Input id="nrouteradd" maxLength="30" value="{plantBasicDetailsModel>/NetworkRouterAddress}" />
+                    <Input change="onDetectChange" id="nrouteradd" maxLength="30" value="{plantBasicDetailsModel>/NetworkRouterAddress}" />
 
                 </f:content>
             </f:SimpleForm>

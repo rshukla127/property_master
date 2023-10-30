@@ -76,6 +76,10 @@ sap.ui.define([
             })
         },
 
+        onDetectChange: function(oEvent){
+            this.detectChanges();
+        },
+
         onPressSavePhoneDetails: function(){
             this._oBusyDialog.open();
             const that = this;
@@ -171,6 +175,7 @@ sap.ui.define([
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                     that._oBusyDialog.close();
+                    that.getOwnerComponent.hasChanges = false;
                    MessageToast.show("Saved Successfully");
                 },
                 error: function (error) {

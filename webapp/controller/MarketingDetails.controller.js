@@ -54,6 +54,7 @@ sap.ui.define([
         },
 
         _onValueHelpMarketKey: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -78,6 +79,7 @@ sap.ui.define([
         },
 
         _onValueHelpMetroStats: function(){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -105,6 +107,7 @@ sap.ui.define([
         },
 
         _onValueHelpNeigbour: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -132,6 +135,7 @@ sap.ui.define([
         },
 
         _onValueHelpConslidated: function(){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -156,6 +160,10 @@ sap.ui.define([
                 oDialog.open();
             });
 
+        },
+
+        onDetectChange: function(oEvent){
+            this.detectChanges();
         },
 
         onValueHelpDialogClose: function (oEvent) {
@@ -247,6 +255,7 @@ sap.ui.define([
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                     that._oBusyDialog.close();
+                    that.getOwnerComponent.hasChanges = false;
                    MessageToast.show("Saved Successfully");
                 },
                 error: function (error) {

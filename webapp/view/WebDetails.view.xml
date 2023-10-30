@@ -14,16 +14,16 @@
                   
                     <core:Title text="" visible="false"/>
                     <Label required="true" text="{i18n>propLat}" />
-                    <Input id="propLat" maxLength="9" valueStateText="Value cannot be blank" valueState="{/PropertyLatitude}" value="{plantBasicDetailsModel>/PropertyLatitude}" />
+                    <Input change="onDetectChange" id="propLat" maxLength="9" valueStateText="Value cannot be blank" valueState="{/PropertyLatitude}" value="{plantBasicDetailsModel>/PropertyLatitude}" />
                     <Label required="true" text="{i18n>propLong}" />
-                    <Input id="propLong" maxLength="9" valueStateText="Value cannot be blank" valueState="{/PropertyLongitude}" value="{plantBasicDetailsModel>/PropertyLongitude}" />
+                    <Input change="onDetectChange" id="propLong" maxLength="9" valueStateText="Value cannot be blank" valueState="{/PropertyLongitude}" value="{plantBasicDetailsModel>/PropertyLongitude}" />
 
                     <Label required="true" text="{i18n>propAdminFee}" />
-                    <Input id="propAdmin" maxLength="16" valueStateText="Value cannot be blank" valueState="{/PropertyAdminFee}" type="Number" 
+                    <Input change="onDetectChange" id="propAdmin" maxLength="16" valueStateText="Value cannot be blank" valueState="{/PropertyAdminFee}" type="Number" 
                     value="{parts: ['plantBasicDetailsModel>/PropertyAdminFee'], formatter: '.formatter.removeLeadingZeros'}"/>
 
                     <Label required="true" text="{i18n>adminFeeEff}" />
-                    <DatePicker id="effDate" valueStateText="Value cannot be blank" valueState="{/AdminFeeEffectiveDate}" placeholder="Choose Date..." value="{ 
+                    <DatePicker change="onDetectChange" id="effDate" valueStateText="Value cannot be blank" valueState="{/AdminFeeEffectiveDate}" placeholder="Choose Date..." value="{ 
                         path: 'plantBasicDetailsModel>/AdminFeeEffectiveDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" />
@@ -43,7 +43,7 @@
                     </Select> -->
 
                     <Label required="true" text="{i18n>propWebReservation}" />
-                    <Select id="propWeb" valueStateText="Value cannot be blank" selectedKey="{parts: ['plantBasicDetailsModel>/PropertyWebsiteReservations'], formatter: '.formatter.getSelectedKeyBlank'}"
+                    <Select change="onDetectChange" id="propWeb" valueStateText="Value cannot be blank" selectedKey="{parts: ['plantBasicDetailsModel>/PropertyWebsiteReservations'], formatter: '.formatter.getSelectedKeyBlank'}"
                     valueState="{/PropertyWebsiteReservations}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
@@ -54,14 +54,14 @@
                     </Select>
 
                     <Label required="true" text="{i18n>webEnabledDate}" />
-                    <DatePicker id="webenabled" valueStateText="Value cannot be blank" valueState="{/WebsiteEnabledDate}" placeholder="Choose Date..."
+                    <DatePicker change="onDetectChange" id="webenabled" valueStateText="Value cannot be blank" valueState="{/WebsiteEnabledDate}" placeholder="Choose Date..."
                     value="{ 
                         path: 'plantBasicDetailsModel>/WebsiteEnabledDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"/>
 
                     <Label required="true" text="{i18n>propCallCenter}" />
-                    <Select id="propCall" valueStateText="Value cannot be blank" selectedKey="{parts: ['plantBasicDetailsModel>/PropertyCallCenterReservati'], formatter: '.formatter.getSelectedKeyBlank'}"
+                    <Select change="onDetectChange" id="propCall" valueStateText="Value cannot be blank" selectedKey="{parts: ['plantBasicDetailsModel>/PropertyCallCenterReservati'], formatter: '.formatter.getSelectedKeyBlank'}"
                     valueState="{/PropertyCallCenterReservati}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
@@ -72,38 +72,38 @@
                     </Select>
                     <core:Title text="" />
                     <Label required="true" text="{i18n>callCenterEnabled}" />
-                    <DatePicker id="callCenter" valueStateText="Value cannot be blank" valueState="{/CallCenterEnabledDate}" placeholder="Choose Date..." 
+                    <DatePicker change="onDetectChange" id="callCenter" valueStateText="Value cannot be blank" valueState="{/CallCenterEnabledDate}" placeholder="Choose Date..." 
                     value="{ 
                         path: 'plantBasicDetailsModel>/CallCenterEnabledDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"/>
 
                     <Label required="true" text="{i18n>propNFSFee}" />
-                    <Input id="propNFS" type="Number" valueStateText="Value cannot be blank" valueState="{/PropertyNfsFee}"
+                    <Input change="onDetectChange" id="propNFS" type="Number" valueStateText="Value cannot be blank" valueState="{/PropertyNfsFee}"
                      value="{parts: ['plantBasicDetailsModel>/PropertyNfsFee'], formatter: '.formatter.removeLeadingZeros'}"/>
 
                     <Label required="true" text="{i18n>maxResDays}" />
-                    <Input id="maxRes" valueStateText="Value cannot be blank" type="Number" maxLength="3" valueState="{/MaxReservationDays}" 
+                    <Input change="onDetectChange" id="maxRes" valueStateText="Value cannot be blank" type="Number" maxLength="3" valueState="{/MaxReservationDays}" 
                     value="{parts: ['plantBasicDetailsModel>/MaxReservationDays'], formatter: '.formatter.removeLeadingZeros'}" />
                     <Label text="{i18n>nsfFeeEff}" />
-                    <DatePicker id="nsfFeeEff" placeholder="Choose Date..." 
+                    <DatePicker change="onDetectChange" id="nsfFeeEff" placeholder="Choose Date..." 
                     value="{ 
                         path: 'plantBasicDetailsModel>/NsfFeeEffectiveDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"/>
 
                     <Label required="true" text="{i18n>propNFS}" />
-                    <Input id="propNFSACH" valueStateText="Value cannot be blank" type="Number" valueState="{/PropertyNfsAchFee}" 
+                    <Input id="propNFSACH" change="onDetectChange" valueStateText="Value cannot be blank" type="Number" valueState="{/PropertyNfsAchFee}" 
                     value="{parts: ['plantBasicDetailsModel>/PropertyNfsAchFee'], formatter: '.formatter.removeLeadingZeros'}"/>
 
                     <Label text="{i18n>nfsachfeeEffective}" />
-                    <DatePicker id="nfsAshfeeeff" placeholder="Choose Date..." 
+                    <DatePicker change="onDetectChange" id="nfsAshfeeeff" placeholder="Choose Date..." 
                     value="{ 
                         path: 'plantBasicDetailsModel>/NfsAchFeeEffectiveDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"/>
                     <Label required="true" text="{i18n>propInsuranceFrozen}" />
-                    <Select id="propFrozen" valueStateText="Value cannot be blank" valueState="{/PropertyInsuranceFrozen}" selectedKey="{plantBasicDetailsModel>/PropertyInsuranceFrozen}">
+                    <Select change="onDetectChange" id="propFrozen" valueStateText="Value cannot be blank" valueState="{/PropertyInsuranceFrozen}" selectedKey="{plantBasicDetailsModel>/PropertyInsuranceFrozen}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
@@ -112,11 +112,11 @@
                     </Select>
 
                     <Label required="true" text="{i18n>propInsCancel}" />
-                    <Input id="propIns" type="Number" maxLength="3" valueStateText="Value cannot be blank" valueState="{/PropertyInsuranceCancelDay}" 
+                    <Input id="propIns" change="onDetectChange" type="Number" maxLength="3" valueStateText="Value cannot be blank" valueState="{/PropertyInsuranceCancelDay}" 
                     value="{parts: ['plantBasicDetailsModel>/PropertyInsuranceCancelDay'], formatter: '.formatter.removeLeadingZeros'}}"/>
 
                     <Label required="true" text="{i18n>preResDay}" />
-                    <Input id="propResDay" type="Number" maxLength="3" valueStateText="Value cannot be blank" valueState="{/PreReservationDays}"
+                    <Input id="propResDay" change="onDetectChange" type="Number" maxLength="3" valueStateText="Value cannot be blank" valueState="{/PreReservationDays}"
                      value="{parts: ['plantBasicDetailsModel>/PreReservationDays'], formatter: '.formatter.removeLeadingZeros'}" />
                 </f:content>
             </f:SimpleForm>

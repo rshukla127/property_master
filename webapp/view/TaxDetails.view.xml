@@ -14,7 +14,7 @@
                     <Label required="true" text="{i18n>taxOwner}" />
                     <Input id="taxOwner" app:fieldName="taxOwner" valueStateText="Value cannot be blank" valueState="{/TaxOwner}" valueHelpRequest="_onValueHelpTaxOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/TaxOwner}" />
 
-                    <Label  text="{i18n>taxOwnerFein}" />
+                    <Label text="{i18n>taxOwnerFein}" />
                     <Input id="taxOwnerFein" enabled="false" value="{plantBasicDetailsModel>/TaxOwnerFein}" />
 
                     <Label required="true" text="{i18n>legalOwner}" />
@@ -23,13 +23,13 @@
                     <Input id="legalOwnerFein"  enabled="false"  value="{plantBasicDetailsModel>/LegalOwnerFein}" />
 
                     <Label required="true" text="{i18n>ownerOfRec}" />
-                    <Input id="ownerRecord" valueStateText="Value cannot be blank" valueState="{/OwnerOfRecord}" maxLength="50" value="{plantBasicDetailsModel>/OwnerOfRecord}" />
+                    <Input change="onDetectChange" id="ownerRecord" valueStateText="Value cannot be blank" valueState="{/OwnerOfRecord}" maxLength="50" value="{plantBasicDetailsModel>/OwnerOfRecord}" />
 
                     <!-- <Label required="true" text="{i18n>taxFillingEntity}" />
                     <Input id="taxFiling" valueStateText="Value cannot be blank" valueState="{/TaxFilingEntity}" valueHelpRequest="_onValueHelpTaxFillingEntity" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/TaxFilingEntity}" /> -->
                    
                     <Label required="true" text="Solar Entity" />
-                    <Input id="solarenitity" app:fieldName="sentity" valueStateText="Value cannot be blank" valueState="{/solarEntity}" valueHelpRequest="_onValueHelpTaxOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/SolarEntity}" />
+                    <Input  id="solarenitity" app:fieldName="sentity" valueStateText="Value cannot be blank" valueState="{/solarEntity}" valueHelpRequest="_onValueHelpTaxOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/SolarEntity}" />
                     <!-- <TextArea id="solarenitity" valueStateText="Value cannot be blank" valueState="{/solarEntity}"  value="{plantBasicDetailsModel>/SolarEntity}" /> -->
 
                 </f:content>

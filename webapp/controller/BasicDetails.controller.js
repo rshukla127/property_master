@@ -52,14 +52,9 @@ sap.ui.define([
 
         },
 
-        // onDetectChange: function(oEvent){
-        //    const sValue = oEvent.getSource().getSelectedKey();
-        //    if (sValue === "Y"){
-        //     this.byId("acdateLable").setRequired(true);
-        //    } else {
-        //     this.byId("acdateLable").setRequired(false)
-        //    }
-        // },
+       onDetectChange: function(oEvent){
+            this.detectChanges();
+        },
 
         readPlantData: function(Plant){
             const that = this;
@@ -86,6 +81,7 @@ sap.ui.define([
         },
 
         _onValueHelpRequestProperty: function (oEvent) {
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             var sInputValue = oEvent.getSource().getValue(),
                 oView = this.getView();
@@ -109,12 +105,16 @@ sap.ui.define([
             });
         },
 
-        onValueHelpDialogCloseProperty: function (oEvent) {
+        onValueHelpDialogConfirmProperty: function (oEvent) {
             let oItem = oEvent.getParameter("selectedItem");
             let sProperty = oItem.getBindingContext("plantsBuddyModel").getObject().Name2
             this.getView().byId("budProp").setValue(sProperty);
 
         },
+
+        // onValueHelpDialogCloseProperty: function(){
+        //     this._pValueHelpDialogProp.close();
+        // },
 
         readPropertyMasterBuddyData: function () {
             const that = this;
@@ -272,6 +272,7 @@ sap.ui.define([
                 // },
                 success: function (oData) {
                    MessageToast.show("Saved Successfully");
+                   that.getOwnerComponent.hasChanges = false;
                    that._oBusyDialog.close();
                 },
                 error: function (error) {

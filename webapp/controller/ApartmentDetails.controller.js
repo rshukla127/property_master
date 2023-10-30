@@ -37,6 +37,10 @@ sap.ui.define([
 
         },
 
+        onDetectChange: function(oEvent){
+            this.detectChanges();
+        },
+
         onPressSaveApartmentDetails: function(){
             const that = this;
             const sPlant = this.getOwnerComponent().plant
@@ -74,6 +78,7 @@ sap.ui.define([
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                     that._oBusyDialog.close()
+                    that.getOwnerComponent.hasChanges = false;
                    MessageToast.show("Saved Successfully");
                 },
                 error: function (oData) {

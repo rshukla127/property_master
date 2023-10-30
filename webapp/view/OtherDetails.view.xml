@@ -12,7 +12,7 @@
                     <core:Title text="" visible="false"/>
                     <Label required="true" text="{i18n>keyTraining}" />
                     <!-- <Input id="keyTrain" valueStateText="Value cannot be blank" valueState="{/KeyTrainingProfessional}" showValueHelp="true" valueHelpRequest="_onValueHelpKeyTraining" valueHelpOnly="true" value="{plantBasicDetailsModel>/KeyTraniningProfessional}" /> -->
-                        <Select id="keyTrain" valueStateText="Value cannot be blank" valueState="{/KeyTrainingProfessional}" selectedKey="{parts: ['plantBasicDetailsModel>/KeyTraniningProfessional'], formatter: '.formatter.getKeyTrainingProffesional'}">
+                        <Select id="keyTrain" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/KeyTrainingProfessional}" selectedKey="{parts: ['plantBasicDetailsModel>/KeyTraniningProfessional'], formatter: '.formatter.getKeyTrainingProffesional'}">
                             <items>			
                                 <core:Item text="" key="N"/>																					
                                 <core:Item text="Y-KPT Center" key="Y" />

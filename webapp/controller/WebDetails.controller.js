@@ -20,7 +20,7 @@ sap.ui.define([
     .extend("com.public.storage.pao.controller.WebDetails", {
         formatter: formatter,
         onInit: function () {
-            this.getOwnerComponent.hasChanges = false;
+            
             _oController = this;
             const oRouter = this.getRouter();
             oRouter.getRoute("webDetails").attachMatched(this._onRouteMatched, this);
@@ -49,6 +49,7 @@ sap.ui.define([
         },
 
         _onRouteMatched: function(oEvent){
+            this.getOwnerComponent.hasChanges = false;
             const oRouter = this.getRouter();
             const Plant = this.getOwnerComponent().plant;
             if (Plant === undefined) {
@@ -63,6 +64,7 @@ sap.ui.define([
         },
 
         _onValueHelpChurnStatus: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -90,6 +92,7 @@ sap.ui.define([
         },
 
         _onValueHelpClimateControl: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -137,6 +140,9 @@ sap.ui.define([
             }
               
 		},
+        onDetectChange: function(oEvent){
+            this.detectChanges();
+        },
 
         onPressSaveWebDetails: function(){
             this._oBusyDialog.open();
@@ -302,6 +308,7 @@ sap.ui.define([
           
             this._oModel.update(uri, payload, {
                 success: function (oData) {
+                    that.getOwnerComponent.hasChanges = false;
                    MessageToast.show("Saved Successfully");
                    that._oBusyDialog.close();
                 },

@@ -84,7 +84,7 @@ sap.ui.define([
                             new sap.m.Button({
                                 icon: "sap-icon://delete",
                                 type: "Reject",
-                                press: that.removeBuilding
+                                press: that.removeBuilding.bind(that)
                             })
                             // Add similar lines for other properties
                           ],
@@ -132,7 +132,7 @@ sap.ui.define([
                             new sap.m.Button({
                                 icon: "sap-icon://delete",
                                 type: "Reject",
-                                press: that.removeMiscBuilding
+                                press: that.removeMiscBuilding.bind(that)
                             })
                             // Add similar lines for other properties
                           ],
@@ -182,6 +182,7 @@ sap.ui.define([
                 success: function(data) {
                  MessageToast.show("Deleted Successfully");
                  sap.ui.getCore().getModel("miscModel").refresh();
+                 that.MiscBuildingDetails(oData.Plant, oData.Property)
                  //that.byId("isMiscTab").getBindings("items").refresh();
                 },
                 error: function(e) {
@@ -720,9 +721,9 @@ sap.ui.define([
                 });
         },
 
-        // detectChanges: function(){
-        //     this.getOwnerComponent.hasChanges = true;
-        // }
+        detectChanges: function(){
+            this.getOwnerComponent.hasChanges = true;
+        }
 
         // Tax detail tab finished
 	});

@@ -21,62 +21,62 @@
                     <Input id="faxNumber" enabled="false" maxLength="30" value="{plantsModel>/Faxnumber}" />
 
                     <Label required="true" text="{i18n>publishedPhNo}"/>
-                    <Input  id="publishedPhNo1" valueStateText="Value cannot be blank" valueState="{/publishedPhNo}" maxLength="30" value="{plantBasicDetailsModel>/PublishedPhoneNo}" />
+                    <Input  id="publishedPhNo1" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/publishedPhNo}" maxLength="30" value="{plantBasicDetailsModel>/PublishedPhoneNo}" />
 
                     <Label required="true" text="{i18n>tollfreeNo}" />
-                    <Input  id="tollfreeNo" valueStateText="Value cannot be blank" valueState="{/tollfreeNo}" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber}" />
+                    <Input  id="tollfreeNo" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/tollfreeNo}" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber}" />
                     <Label required="true" text="{i18n>localPhoneNo}" />
-                    <Input  id="localPhoneNo" valueStateText="Value cannot be blank" valueState="{/localPhoneNo}" maxLength="30" value="{plantBasicDetailsModel>/LocalPhoneNumber}" />
+                    <Input  id="localPhoneNo" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/localPhoneNo}" maxLength="30" value="{plantBasicDetailsModel>/LocalPhoneNumber}" />
                     
                     <Label text="{i18n>tollfreeNumber2}" />
-                    <Input  id="tollfreeNumber2" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber2}" />
+                    <Input  id="tollfreeNumber2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber2}" />
 
                     <Label text="{i18n>tollfreeNumber3}" />
-                    <Input  id="tollfreeNumber3" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber3}" />
+                    <Input  id="tollfreeNumber3" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber3}" />
 
                     <Label text="{i18n>tollfreeNumber4}" />
-                    <Input id="tollfreeNumber4" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber4}" />
+                    <Input id="tollfreeNumber4" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber4}" />
 
                     <Label text="{i18n>alarmPhoneNo1}" />
-                    <Input  id="alarmPhoneNo1" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber1}" />
+                    <Input  id="alarmPhoneNo1" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber1}" />
 
                     <Label text="{i18n>alarmPhoneNo2}" />
-                    <Input  id="alarmPhoneNo2" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber2}" />
+                    <Input  id="alarmPhoneNo2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber2}" />
 
                     <Label text="{i18n>alarmPhoneNumber}" />
-                    <Input  id="alarmPhoneNumber" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber}" />
+                    <Input  id="alarmPhoneNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber}" />
                       
                     <core:Title text="" visible="false"/>
 
                     <Label text="{i18n>burglarPhoneNo}" />
-                    <Input  id="burglarPhoneNo" maxLength="30" value="{plantBasicDetailsModel>/BurgAlarmPhoneNumber}" />
+                    <Input  id="burglarPhoneNo" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/BurgAlarmPhoneNumber}" />
 
                     <Label text="{i18n>cellphoneNumber}" />
-                    <Input  id="cellphoneNumber" maxLength="30" value="{plantBasicDetailsModel>/CellPhoneNumber}" />
+                    <Input  id="cellphoneNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/CellPhoneNumber}" />
 
                     <Label text="{i18n>directphoneNumber2}" />
-                    <Input  id="directphoneNumber2" maxLength="30" value="{plantBasicDetailsModel>/DirectPhoneNo2}" />
+                    <Input  id="directphoneNumber2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/DirectPhoneNo2}" />
 
                     <Label text="{i18n>directphoneNumber3}" />
-                    <Input  id="directphoneNumber3" maxLength="30" value="{plantBasicDetailsModel>/DirectPhoneNo3}" />
+                    <Input  id="directphoneNumber3" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/DirectPhoneNo3}" />
 
                     <Label text="{i18n>elevatprNo1}" />
-                    <Input  id="elevatprNo1" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo1}" />
+                    <Input  id="elevatprNo1" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo1}" />
 
                     <Label text="{i18n>elevatprNo2}" />
-                    <Input  id="elevatprNo2" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo2}" />
+                    <Input  id="elevatprNo2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo2}" />
 
                     <Label text="{i18n>elevatprNo3}" />
-                    <Input  id="elevatprNo3" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo3}" />
+                    <Input  id="elevatprNo3" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo3}" />
 
                     <Label text="{i18n>extensionNumber}" />
-                    <Input  id="extensionNumber" maxLength="30" value="{plantBasicDetailsModel>/ExtensionNumber}" />
+                    <Input  id="extensionNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ExtensionNumber}" />
 
                     <Label text="{i18n>officePhoneNumber}" />
-                    <Input  id="officePhoneNumber" maxLength="30" value="{plantBasicDetailsModel>/OfficePhoneNumber}" />
+                    <Input  id="officePhoneNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/OfficePhoneNumber}" />
 
                     <Label text="{i18n>publishedPhoneNo}" />
-                    <Input  id="publishedPhoneNo2" maxLength="30" value="{plantBasicDetailsModel>/PublishedPhoneNo2}" />
+                    <Input  id="publishedPhoneNo2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/PublishedPhoneNo2}" />
 
                 </f:content>
             </f:SimpleForm>

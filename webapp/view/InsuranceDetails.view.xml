@@ -13,81 +13,81 @@
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label text="{i18n>finrepnum1}" />
-                    <Input id="finrep1" value="{plantBasicDetailsModel>/FinrepNum1}" />
+                    <Input change="onDetectChange" id="finrep1" value="{plantBasicDetailsModel>/FinrepNum1}" />
                     <Label text="{i18n>finrepnum2}" />
-                    <Input id="finrep2" value="{plantBasicDetailsModel>/FinerepNum2}" />
+                    <Input change="onDetectChange" id="finrep2" value="{plantBasicDetailsModel>/FinerepNum2}" />
 
                     <Label text="{i18n>insPrem2}" />
-                    <Input id="insprem2" valueStateText="Value cannot be blank" valueState="{/InsPrem2000}" value="{plantBasicDetailsModel>/InsPrem2000}" />
+                    <Input change="onDetectChange" id="insprem2" valueStateText="Value cannot be blank" valueState="{/InsPrem2000}" value="{plantBasicDetailsModel>/InsPrem2000}" />
 
                     <Label text="{i18n>insPrem3}" />
-                    <Input id="insprem3" valueStateText="Value cannot be blank" valueState="{/InsPrem3000}" value="{plantBasicDetailsModel>/InsPrem3000}" />
+                    <Input change="onDetectChange" id="insprem3" valueStateText="Value cannot be blank" valueState="{/InsPrem3000}" value="{plantBasicDetailsModel>/InsPrem3000}" />
 
                     <Label text="{i18n>insPrem4}" />
-                    <Input id="insprem4" valueStateText="Value cannot be blank" valueState="{/InsPrem4000}" value="{plantBasicDetailsModel>/InsPrem4000}" />
+                    <Input change="onDetectChange" id="insprem4" valueStateText="Value cannot be blank" valueState="{/InsPrem4000}" value="{plantBasicDetailsModel>/InsPrem4000}" />
 
                     <Label text="{i18n>insPrem5}" />
-                    <Input id="insprem5" valueStateText="Value cannot be blank" valueState="{/InsPrem5000}" value="{plantBasicDetailsModel>/InsPrem5000}" />
+                    <Input change="onDetectChange" id="insprem5" valueStateText="Value cannot be blank" valueState="{/InsPrem5000}" value="{plantBasicDetailsModel>/InsPrem5000}" />
 
                     <Label text="{i18n>finrepnum7}" />
-                    <Input id="finrep7" value="{plantBasicDetailsModel>/FinrepNum7}" />
+                    <Input change="onDetectChange" id="finrep7" value="{plantBasicDetailsModel>/FinrepNum7}" />
 
                     <Label text="{i18n>finrepnum8}" />
-                    <Input id="finrep8" value="{plantBasicDetailsModel>/FinrepNum8}" />
+                    <Input change="onDetectChange" id="finrep8" value="{plantBasicDetailsModel>/FinrepNum8}" />
 
                     <Label text="{i18n>finrepnum9}" />
-                    <Input id="finrep9" value="{plantBasicDetailsModel>/FinrepNum9}" />
+                    <Input change="onDetectChange" id="finrep9" value="{plantBasicDetailsModel>/FinrepNum9}" />
                     <Label required="true" text="{i18n>eRentalMax}" />
-                    <Input id="eRental" valueStateText="Value cannot be blank" valueState="{/ErentalMaxDays}" value="{plantBasicDetailsModel>/ErentalMaxDays}" />
+                    <Input change="onDetectChange" id="eRental" valueStateText="Value cannot be blank" valueState="{/ErentalMaxDays}" value="{plantBasicDetailsModel>/ErentalMaxDays}" />
 
                     <core:Title text="" />
 
                     <Label required="true"  text="{i18n>cddStartDate}" />
-                    <DatePicker id="startdate" placeholder="Choose Date.." valueStateText="Value cannot be blank" valueState="{/CddStartDate}" value="{ 
+                    <DatePicker change="onDetectChange" id="startdate" placeholder="Choose Date.." valueStateText="Value cannot be blank" valueState="{/CddStartDate}" value="{ 
                         path: 'plantBasicDetailsModel>/CddStartDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
 
                     <Label text="{i18n>finrepD3}" />
-                    <DatePicker id="finrepD3" placeholder="Choose Date.." value="{ 
+                    <DatePicker change="onDetectChange" id="finrepD3" placeholder="Choose Date.." value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate3',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"/>
 
                     <Label text="{i18n>finrepD4}" />
-                    <DatePicker id="finrepD4" placeholder="Choose Date.." value="{ 
+                    <DatePicker change="onDetectChange" id="finrepD4" placeholder="Choose Date.." value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate4',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" />
                     <Label text="{i18n>finrepD5}" />
-                    <DatePicker id="finrepD5" placeholder="Choose Date.." value="{ 
+                    <DatePicker change="onDetectChange" id="finrepD5" placeholder="Choose Date.." value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate5',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"/>
 
                     <Label text="{i18n>finrepD6}" />
-                    <DatePicker id="finrepD6" placeholder="Choose Date.." value="{ 
+                    <DatePicker change="onDetectChange" id="finrepD6" placeholder="Choose Date.." value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate6',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" />
 
                     <Label text="{i18n>finrepD7}" />
-                    <DatePicker id="finrepD7" placeholder="Choose Date.." value="{ 
+                    <DatePicker change="onDetectChange" id="finrepD7" placeholder="Choose Date.." value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate7',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" />
                     <Label text="{i18n>finrepD8}" />
-                    <DatePicker id="finrepD8" value="{ 
+                    <DatePicker change="onDetectChange" id="finrepD8" value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate8',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
                     <Label text="{i18n>finrepD9}" />
-                    <DatePicker id="finrepD9" value="{ 
+                    <DatePicker change="onDetectChange" id="finrepD9" value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate9',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.." />
                     <Label text="{i18n>finrepD10}" />
-                    <DatePicker id="finrepD10" value="{ 
+                    <DatePicker change="onDetectChange" id="finrepD10" value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate10',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>

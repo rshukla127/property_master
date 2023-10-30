@@ -14,15 +14,15 @@
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <Label required="true" text="{i18n>propDeatures}" />
-                    <Input valueStateText="Value cannot be blank" maxLength="500" valueState="{/PropertyFeatures}" id="propFeature" value="{plantBasicDetailsModel>/PropertyFeatures}" />
+                    <Input change="onDetectChange" valueStateText="Value cannot be blank" maxLength="500" valueState="{/PropertyFeatures}" id="propFeature" value="{plantBasicDetailsModel>/PropertyFeatures}" />
                     <Label required="true" text="{i18n>drivingDirection}" />
-                    <Input valueStateText="Value cannot be blank" maxLength="500" valueState="{/DrivingDirections}" id="driDirection" value="{plantBasicDetailsModel>/DrivingDirections}" />
+                    <Input change="onDetectChange" valueStateText="Value cannot be blank" maxLength="500" valueState="{/DrivingDirections}" id="driDirection" value="{plantBasicDetailsModel>/DrivingDirections}" />
 
                     <Label required="true" text="{i18n>specialNotes}" />
-                    <Input valueStateText="Value cannot be blank" maxLength="500" valueState="{/SpecialNotes}" id="spNotes" value="{plantBasicDetailsModel>/SpecialNotes}" />
+                    <Input change="onDetectChange" valueStateText="Value cannot be blank" maxLength="500" valueState="{/SpecialNotes}" id="spNotes" value="{plantBasicDetailsModel>/SpecialNotes}" />
 
                     <Label text="{i18n>lockers}" />
-                    <Select id="lock" selectedKey="{parts: ['plantBasicDetailsModel>/Lockers'], formatter: '.formatter.getSelectedKeyBlank'}">
+                    <Select change="onDetectChange" id="lock" selectedKey="{parts: ['plantBasicDetailsModel>/Lockers'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
@@ -32,7 +32,7 @@
                     </Select>
 
                     <Label text="{i18n>largeTruckAccess}" />
-                    <Select id="truck" selectedKey="{parts: ['plantBasicDetailsModel>/LargeTruckAccess'], formatter: '.formatter.getSelectedKeyBlank'}">
+                    <Select change="onDetectChange" id="truck" selectedKey="{parts: ['plantBasicDetailsModel>/LargeTruckAccess'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
@@ -42,7 +42,7 @@
                     </Select>
 
                     <Label text="{i18n>furnitureDollies}" />
-                    <Select id="furniture" selectedKey="{parts: ['plantBasicDetailsModel>/FurnitureDollies'], formatter: '.formatter.getSelectedKeyBlank'}">
+                    <Select change="onDetectChange" id="furniture" selectedKey="{parts: ['plantBasicDetailsModel>/FurnitureDollies'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
@@ -51,7 +51,7 @@
                         </items>
                     </Select>
                     <Label text="{i18n>basement}" />
-                    <Select id="base" selectedKey="{parts: ['plantBasicDetailsModel>/Basement'], formatter: '.formatter.getSelectedKeyBlank'}">
+                    <Select change="onDetectChange" id="base" selectedKey="{parts: ['plantBasicDetailsModel>/Basement'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
@@ -61,7 +61,7 @@
                     </Select>
 
                     <Label text="{i18n>handtrucks}" />
-                    <Select id="hand" selectedKey="{parts: ['plantBasicDetailsModel>/HandTrucks'], formatter: '.formatter.getSelectedKeyBlank'}">
+                    <Select change="onDetectChange" id="hand" selectedKey="{parts: ['plantBasicDetailsModel>/HandTrucks'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
@@ -71,7 +71,7 @@
                     </Select>
 
                     <Label text="{i18n>carts}" />
-                    <Select id="cart" selectedKey="{parts: ['plantBasicDetailsModel>/Carts'], formatter: '.formatter.getSelectedKeyBlank'}">
+                    <Select change="onDetectChange" id="cart" selectedKey="{parts: ['plantBasicDetailsModel>/Carts'], formatter: '.formatter.getSelectedKeyBlank'}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
@@ -88,52 +88,52 @@
 
                         </items>
                     </Select> -->
-                    <Input id="year" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpYearBuild" value="{plantBasicDetailsModel>/YearBuilt}" />
+                    <Input change="onDetectChange" id="year" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpYearBuild" value="{plantBasicDetailsModel>/YearBuilt}" />
 
                     <Label text="{i18n>capIndexRisk}" />
-                    <Input id="capIndex" maxLength="4" value="{plantBasicDetailsModel>/CapIndexRisk}" />
+                    <Input change="onDetectChange" id="capIndex" maxLength="4" value="{plantBasicDetailsModel>/CapIndexRisk}" />
 
                     <Label text="{i18n>numberofBuilding}" />
-                    <Input id="noOfBuild" maxLength="3" value="{plantBasicDetailsModel>/NumberOfBuildings}" />
+                    <Input change="onDetectChange" id="noOfBuild" maxLength="3" value="{plantBasicDetailsModel>/NumberOfBuildings}" />
 
                     <Label text="{i18n>constructionCode}" />
-                    <Input id="constCode" showValueHelp="true" app:fieldName="constCode" valueHelpOnly="true" valueHelpRequest="_onValueHelpConstructionCode" value="{plantBasicDetailsModel>/ConstructionCode}" />
+                    <Input change="onDetectChange" id="constCode" showValueHelp="true" app:fieldName="constCode" valueHelpOnly="true" valueHelpRequest="_onValueHelpConstructionCode" value="{plantBasicDetailsModel>/ConstructionCode}" />
 
                     <Label text="{i18n>noOfStories}" />
-                    <Input id="noOfStories" maxLength="3" value="{plantBasicDetailsModel>/NumberOfStories}" />
+                    <Input change="onDetectChange" id="noOfStories" maxLength="3" value="{plantBasicDetailsModel>/NumberOfStories}" />
 
                     <Label text="{i18n>constructionCode2}" />
-                    <Input id="constCode2" showValueHelp="true" app:fieldName="constCode2" valueHelpOnly="true" valueHelpRequest="_onValueHelpConstructionCode" value="{plantBasicDetailsModel>/ConstructionCode2}" />
+                    <Input change="onDetectChange" id="constCode2" showValueHelp="true" app:fieldName="constCode2" valueHelpOnly="true" valueHelpRequest="_onValueHelpConstructionCode" value="{plantBasicDetailsModel>/ConstructionCode2}" />
                     <core:Title text="" visible="false"/>
                     <Label text="{i18n>lotSize}" />
-                    <Input id="lotSize" maxLength="9" value="{plantBasicDetailsModel>/LotSize}" />
+                    <Input change="onDetectChange" id="lotSize" maxLength="9" value="{plantBasicDetailsModel>/LotSize}" />
 
                     <Label text="{i18n>buildingClassification}" />
-                    <Input id="buildClass" showValueHelp="true" value="{plantBasicDetailsModel>/BuildingClassification}" />
+                    <Input change="onDetectChange" id="buildClass" showValueHelp="true" value="{plantBasicDetailsModel>/BuildingClassification}" />
 
                     <Label text="{i18n>grossSquareFootage}" />
-                    <Input id="grossSQFoot" maxLength="7" value="{plantBasicDetailsModel>/GrossSquareFootage}" />
+                    <Input change="onDetectChange" id="grossSQFoot" maxLength="7" value="{plantBasicDetailsModel>/GrossSquareFootage}" />
                     <Label text="{i18n>floodZone}" />
                     <!-- <Input id="floodzone" showValueHelp="true" value="{plantBasicDetailsModel>/FloodZone}" /> -->
-                        <Select id="floodzone" selectedKey="{plantBasicDetailsModel>/FloodZone}">
+                        <Select change="onDetectChange" id="floodzone" selectedKey="{plantBasicDetailsModel>/FloodZone}">
                             <items>
                                 <core:Item text="Yes" key="Y"/>
                                 <core:Item text="No" key="N"/>
                             </items>
                         </Select>
                     <Label text="{i18n>tfmilesCoastWater}" />
-                    <Input id="tfmilesCoastWater" maxLength="10" value="{plantBasicDetailsModel>/MilesOfCostalWater25}" />
+                    <Input change="onDetectChange" id="tfmilesCoastWater" maxLength="10" value="{plantBasicDetailsModel>/MilesOfCostalWater25}" />
                     <Label text="{i18n>sprinkler}" />
-                    <Select id="sprink" selectedKey="{plantBasicDetailsModel>/Sprinkler}">
+                    <Select change="onDetectChange" id="sprink" selectedKey="{plantBasicDetailsModel>/Sprinkler}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
                         </items>
                     </Select>
                     <Label text="{i18n>sprinklerRemark}" />
-                    <Input id="sprinkRem" maxLength="30" value="{plantBasicDetailsModel>/SprinklerRemark}" />
+                    <Input change="onDetectChange" id="sprinkRem" maxLength="30" value="{plantBasicDetailsModel>/SprinklerRemark}" />
                     <Label text="{i18n>fireAlarm}" />
-                        <Select id="fireAlarm" selectedKey="{plantBasicDetailsModel>/FireAlarm}">
+                        <Select change="onDetectChange" id="fireAlarm" selectedKey="{plantBasicDetailsModel>/FireAlarm}">
                             <items>
                                 <core:Item text="Yes" key="Y"/>
                                 <core:Item text="No" key="N"/>
@@ -142,10 +142,10 @@
                         </Select>
                    
                     <Label text="{i18n>fireAlarmRemark}" />
-                    <Input id="fireAlarmRemark" maxLength="30" value="{plantBasicDetailsModel>/FireAlarmRemarks}" />
+                    <Input change="onDetectChange" id="fireAlarmRemark" maxLength="30" value="{plantBasicDetailsModel>/FireAlarmRemarks}" />
                         
                     <Label text="{i18n>bugerAlarm}" />
-                        <Select id="bugalarm" selectedKey="{plantBasicDetailsModel>/BuglerAlarm}">
+                        <Select change="onDetectChange" id="bugalarm" selectedKey="{plantBasicDetailsModel>/BuglerAlarm}">
                             <items>
                                 <core:Item text="Yes" key="Y"/>
                                 <core:Item text="No" key="N"/>
@@ -153,10 +153,10 @@
                             </items>
                         </Select>
                     <Label text="{i18n>bugerAlarmRemark}" />
-                    <Input id="bugAlarmRemark" maxLength="30" value="{plantBasicDetailsModel>/BuglerAlarmRemarks}" />
+                    <Input change="onDetectChange" id="bugAlarmRemark" maxLength="30" value="{plantBasicDetailsModel>/BuglerAlarmRemarks}" />
 
                     <Label text="{i18n>parkingSpaces}" />
-                    <Select id="park" selectedKey="{plantBasicDetailsModel>/ParkingSpaces}">
+                    <Select change="onDetectChange" id="park" selectedKey="{plantBasicDetailsModel>/ParkingSpaces}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
@@ -165,7 +165,7 @@
                     </Select>
 
                     <Label text="{i18n>elevator}" />
-                    <Select id="elevater" selectedKey="{plantBasicDetailsModel>/Elevators}">
+                    <Select change="onDetectChange" id="elevater" selectedKey="{plantBasicDetailsModel>/Elevators}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
@@ -174,7 +174,7 @@
                     </Select>
 
                     <Label required="true" text="{i18n>apartment}" />
-                    <Select id="apart" valueStateText="Value cannot be blank" valueState="{/Apartments}" selectedKey="{plantBasicDetailsModel>/Apartments}">
+                    <Select change="onDetectChange" id="apart" valueStateText="Value cannot be blank" valueState="{/Apartments}" selectedKey="{plantBasicDetailsModel>/Apartments}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
@@ -182,7 +182,7 @@
                         </items>
                     </Select>
                     <Label text="{i18n>survillenceCamera}" />
-                    <Select id="camera" selectedKey="{plantBasicDetailsModel>/SurvellianceCamera}">
+                    <Select change="onDetectChange" id="camera" selectedKey="{plantBasicDetailsModel>/SurvellianceCamera}">
                         <items>
                             <core:Item text="Yes" key="Y"/>
                             <core:Item text="No" key="N"/>
@@ -190,7 +190,7 @@
                         </items>
                     </Select>
                     <Label text="{i18n>survillanceCamRemarks}" />
-                    <Input id="surCamRemarks" maxLength="30" value="{plantBasicDetailsModel>/SurvellianceCameraRemarks}" />
+                    <Input change="onDetectChange" id="surCamRemarks" maxLength="30" value="{plantBasicDetailsModel>/SurvellianceCameraRemarks}" />
 
                 </f:content>
             </f:SimpleForm>

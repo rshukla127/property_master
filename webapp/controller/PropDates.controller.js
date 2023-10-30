@@ -47,6 +47,9 @@ sap.ui.define([
             this.readPropertyData(Plant, LegacyPropertyNumber)
 
         },
+        onDetectChange: function(oEvent){
+            this.detectChanges();
+        },
 
         onPressSavePropDates: function(){
             this._oBusyDialog.open();
@@ -122,6 +125,7 @@ sap.ui.define([
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                     that._oBusyDialog.close();
+                    that.getOwnerComponent.hasChanges = false;
                    MessageToast.show("Saved Successfully");
                 },
                 error: function (oData) {

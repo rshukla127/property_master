@@ -58,6 +58,7 @@ sap.ui.define([
         },
 
         _onValueHelpTaxOwner: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
             this.selectedField = oEvent.getSource().getCustomData()[0].getValue();
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
@@ -113,7 +114,7 @@ sap.ui.define([
         },
 
         _onValueHelpLegalOwner: function(oEvent){
-            
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -212,6 +213,10 @@ sap.ui.define([
 
         },
 
+        onDetectChange: function(oEvent){
+            this.detectChanges();
+        },
+
         onValueHelpDialogClose: function (oEvent) {
 			let	oSelectedItem = oEvent.getParameter("selectedItem");
             let sTitle = oEvent.getSource().getTitle();
@@ -305,6 +310,7 @@ sap.ui.define([
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                     that._oBusyDialog.close();
+                    that.getOwnerComponent.hasChanges = false;
                    MessageToast.show("Saved Successfully");
                 },
                 error: function (error) {

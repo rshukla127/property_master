@@ -51,6 +51,7 @@ sap.ui.define([
         },
 
         _onValueHelpConstructionCode: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
             this.selectedField = oEvent.getSource().getCustomData()[0].getValue();
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
@@ -76,6 +77,9 @@ sap.ui.define([
                 oDialog.open();
             });
 
+        },
+        onDetectChange: function(oEvent){
+            this.detectChanges();
         },
 
         onValueHelpDialogClose: function (oEvent) {
@@ -112,6 +116,7 @@ sap.ui.define([
 		},
 
         _onValueHelpYearBuild: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -219,6 +224,7 @@ sap.ui.define([
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                     that._oBusyDialog.close();
+                    that.getOwnerComponent.hasChanges = false;
                    MessageToast.show("Saved Successfully");
                 },
                 error: function (error) {

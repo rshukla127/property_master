@@ -74,6 +74,7 @@ sap.ui.define([
         },
 
         _onValueHelpMarketClass: function(){
+            this.getOwnerComponent.hasChanges = true;
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -98,6 +99,9 @@ sap.ui.define([
                 oDialog.open();
             });
 
+        },
+        onDetectChange: function(oEvent){
+            this.detectChanges();
         },
 
         onValueHelpDialogClose: function (oEvent) {
@@ -150,6 +154,7 @@ sap.ui.define([
                 success: function (oData) {
                     that._oBusyDialog.close();
                    MessageToast.show("Saved Successfully");
+                   that.getOwnerComponent.hasChanges = false;
                 },
                 error: function (error) {
                     that._oBusyDialog.close();
