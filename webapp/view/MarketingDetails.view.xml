@@ -1,43 +1,98 @@
-<mvc:View controllerName="com.public.storage.pao.controller.MarketingDetails"
-	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+controllerName="com.public.storage.pao.controller.MarketingDetails"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
-	xmlns:f="sap.ui.layout.form"
-	xmlns="sap.m"
-	xmlns:core="sap.ui.core">
-	<ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+	xmlns:f="sap.ui.layout.form" height="100%">
 
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Marketing Details" wrapping="true" />
+				</expandedHeading>
 
+				<snappedHeading>
+					<m:HBox>
+						<m:VBox>
+							<m:Title text="Marketing Details" wrapping="true"/>
+							<m:Label text="Fill your marketing details"/>
+						</m:VBox>
+					</m:HBox>
+				</snappedHeading>
 
-		<VBox class="sapUiSmallMargin">
-			<f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>marketingDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
-				<f:content>
-					<core:Title text="" visible="false"/>
-					<Label required="true" text="{i18n>marketKey}" />
-					<Input id="markKey" valueStateText="Value cannot be blank" valueState="{/MarketKey}" showValueHelp="true" valueHelpRequest="_onValueHelpMarketKey" valueHelpOnly="true" value="{plantBasicDetailsModel>/MarketKey}" />
-					<Label required="true" text="{i18n>metroStatisticalArea}" />
-					<Input id="metroStats" valueStateText="Value cannot be blank" valueState="{/MetroStatisicalArea}" showValueHelp="true" valueHelpRequest="_onValueHelpMetroStats" valueHelpOnly="true" value="{plantBasicDetailsModel>/MetroStatisicalArea}" />
+				<expandedContent>
+					<m:Label text="Fill your marketing details"/>
+				</expandedContent>
 
-					<Label required="true" text="{i18n>neighbourhood}" />
-					<Input id="neighbourwood" valueStateText="Value cannot be blank" valueState="{/Neighborwood}" showValueHelp="true" valueHelpRequest="_onValueHelpNeigbour" valueHelpOnly="true" value="{plantBasicDetailsModel>/Neighborwood}" />
+				<snappedTitleOnMobile>
+					<m:Title text="Marketing Details"/>
+				</snappedTitleOnMobile>
 
-					<Label required="true" text="{i18n>psConsolidatedPropGroup}" />
-					<Input id="psCons" valueStateText="Value cannot be blank" valueState="{/PsConsolidatedPropertygroup}" showValueHelp="true" valueHelpRequest="_onValueHelpConslidated" valueHelpOnly="true" value="{plantBasicDetailsModel>/PsConsolidatedPropertygroup}" />
+				<actions>
+					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveMarketingDetails"></m:Button>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
 
-					<Label text="{i18n>rankProp}" />
-						<Select change="onDetectChange" id="rankProp" selectedKey="{parts: ['plantBasicDetailsModel>/Rank'], formatter: '.formatter.getSelectedRankProp'}">
-							<items>																								
-								<core:Item text="Yes" key="Y" />
-								<core:Item text="No" key="N"/>
-	
-							</items>
-						</Select>
-				</f:content>
-			</f:SimpleForm>
-			<VBox alignContent="End" alignItems="End">
-				<Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveMarketingDetails"></Button>
-			</VBox>
-		</VBox>
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true">
+				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
 
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">
+					</m:Title>
+					<m:Label text="{plantsModel>/plant}"/>
+				</m:VBox>
 
-	</ScrollContainer>
+				<m:VBox class="sapUiSmallMarginBottom sapUiLargeMarginEnd">
+					<m:Title level="H4" titleStyle="H4" text="Property" class="sapUiTinyMarginBottom" />
+					<m:Label text="{plantsModel>/property}"/>
+				</m:VBox>
+
+				<m:VBox class="sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Address" class="sapUiTinyMarginBottom" />
+					<m:Label wrapping="true" text="{plantsModel>/address}"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>
+
+		<sections>
+
+			<ObjectPageSection titleUppercase="false" id="personalSection" title="Marketing Details">
+				<subSections>
+					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
+						<blocks>
+							<f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+								<f:content>
+									
+									<m:Label required="true" text="{i18n>marketKey}" />
+									<m:Input id="markKey" valueStateText="Value cannot be blank" valueState="{/MarketKey}" showValueHelp="true" valueHelpRequest="_onValueHelpMarketKey" valueHelpOnly="true" value="{plantBasicDetailsModel>/MarketKey}" />
+									<m:Label required="true" text="{i18n>metroStatisticalArea}" />
+									<m:Input id="metroStats" valueStateText="Value cannot be blank" valueState="{/MetroStatisicalArea}" showValueHelp="true" valueHelpRequest="_onValueHelpMetroStats" valueHelpOnly="true" value="{plantBasicDetailsModel>/MetroStatisicalArea}" />
+				
+									<m:Label required="true" text="{i18n>neighbourhood}" />
+									<m:Input id="neighbourwood" valueStateText="Value cannot be blank" valueState="{/Neighborwood}" showValueHelp="true" valueHelpRequest="_onValueHelpNeigbour" valueHelpOnly="true" value="{plantBasicDetailsModel>/Neighborwood}" />
+				
+									<m:Label required="true" text="{i18n>psConsolidatedPropGroup}" />
+									<m:Input id="psCons" valueStateText="Value cannot be blank" valueState="{/PsConsolidatedPropertygroup}" showValueHelp="true" valueHelpRequest="_onValueHelpConslidated" valueHelpOnly="true" value="{plantBasicDetailsModel>/PsConsolidatedPropertygroup}" />
+				
+									<m:Label text="{i18n>rankProp}" />
+										<m:Select change="onDetectChange" id="rankProp" selectedKey="{parts: ['plantBasicDetailsModel>/Rank'], formatter: '.formatter.getSelectedRankProp'}">
+											<m:items>																								
+												<core:Item text="Yes" key="Y" />
+												<core:Item text="No" key="N"/>
+					
+											</m:items>
+										</m:Select>
+								</f:content>
+							</f:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+		</sections>
+	</ObjectPageLayout>
 </mvc:View>

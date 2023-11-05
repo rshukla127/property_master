@@ -469,8 +469,8 @@ sap.ui.define([
                 const sRegion = oItem.getBindingContext("plantsModel").getObject().Regio;
                 this.getView().byId("propertyInput").setValue(sName2);
                 const sPin = oItem.getBindingContext("plantsModel").getObject().Pstlz
-                const concatedAddress = `${sName1} ${sName2} ${sSelectedPlantStreet} ${sOrt01} ${sRegion} ${sPin}`
-                const titleAddress = `${sName1} ${sName2} ${sSelectedPlantStreet}`
+                const concatedAddress = `${sName1} ${sSelectedPlantStreet} ${sOrt01} ${sRegion} ${sPin}`
+                const titleAddress = `${sName1} ${sSelectedPlantStreet} ${sOrt01} ${sRegion} ${sPin}`
                 //const sProperty = oItem.getBindingContext("plantsModel").getObject().LegacyPropertyNumber;
                 this.getOwnerComponent().plant = oItem.getBindingContext("plantsModel").getObject().Werks;
                 const sProperty = oItem.getBindingContext("plantsModel").getObject().Name2;
@@ -515,8 +515,8 @@ sap.ui.define([
                 const sRegion = oItem.getBindingContext("plantsModel").getObject().Regio
                 const sPin = oItem.getBindingContext("plantsModel").getObject().Pstlz;
                 this.getView().byId("plantInput").setValue(sPlant);
-                const concatedAddress = `${sName1} ${sName2} ${sSelectedPlantStreet} ${sOrt01} ${sRegion} ${sPin}`
-                const titleAddress = `${sName1} ${sName2} ${sSelectedPlantStreet}`
+                const concatedAddress = `${sName1}  ${sSelectedPlantStreet} ${sOrt01} ${sRegion} ${sPin}`
+                const titleAddress = `${sName1} ${sSelectedPlantStreet} ${sOrt01} ${sRegion} ${sPin}`
                 //const sProperty = oItem.getBindingContext("plantsModel").getObject().LegacyPropertyNumber;
                 this.getOwnerComponent().plant = oItem.getBindingContext("plantsModel").getObject().Werks;
                 const sProperty = oItem.getBindingContext("plantsModel").getObject().Name2;
@@ -1414,8 +1414,8 @@ sap.ui.define([
                 const sName2 = oItem.getBindingContext("plantsModel").getObject().Name2;
                 const sRegion = oItem.getBindingContext("plantsModel").getObject().Regio
                 const sPin = oItem.getBindingContext("plantsModel").getObject().Pstlz
-                const concatedAddress = `${sName1} ${sName2} ${sSelectedPlantStreet} ${sOrt01} ${sRegion} ${sPin}`;
-                const titleAddress = `${sName1} ${sName2} ${sSelectedPlantStreet}`;
+                const concatedAddress = `${sName1} ${sSelectedPlantStreet} ${sOrt01} ${sRegion} ${sPin}`;
+                const titleAddress = `${sName1} ${sSelectedPlantStreet} ${sOrt01} ${sRegion} ${sPin}`;
                 
                 //const sProperty = oItem.getBindingContext("plantsModel").getObject().LegacyPropertyNumber;
                 this.getOwnerComponent().plant = oItem.getBindingContext("plantsModel").getObject().Werks;
@@ -1480,8 +1480,8 @@ sap.ui.define([
                 const sName2 = oItem.getBindingContext("plantsModel").getObject().Name2;
                 const sRegion = oItem.getBindingContext("plantsModel").getObject().Regio
                 const sPin = oItem.getBindingContext("plantsModel").getObject().Pstlz
-                const concatedAddress = `${sName1} ${sName2} ${sSelectedPlantStreet} ${sOrt01} ${sRegion} ${sPin}`
-                const titleAddress = `${sName1} ${sName2} ${sSelectedPlantStreet}`
+                const concatedAddress = `${sName1} ${sSelectedPlantStreet} ${sOrt01} ${sRegion} ${sPin}`
+                const titleAddress = `${sName1} ${sSelectedPlantStreet} ${sOrt01} ${sRegion} ${sPin}`
                 //const sProperty = oItem.getBindingContext("plantsModel").getObject().LegacyPropertyNumber;
                 this.getOwnerComponent().plant = oItem.getBindingContext("plantsModel").getObject().Werks;
                 const sPlant = oItem.getBindingContext("plantsModel").getObject().Werks;

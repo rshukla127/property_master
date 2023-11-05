@@ -98,6 +98,11 @@
 					"title": "Miscellaneous",
 					"key": "misc",
 					"visible": false
+				},
+				{
+					"title": "Operating Model",
+					"key": "opmodel",
+					"visible": false
 				}
 			]
 		}

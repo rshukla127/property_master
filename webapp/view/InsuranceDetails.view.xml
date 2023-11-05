@@ -1,104 +1,159 @@
-<mvc:View controllerName="com.public.storage.pao.controller.InsuranceDetails"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns:l="sap.ui.layout"
-    xmlns:f="sap.ui.layout.form"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+controllerName="com.public.storage.pao.controller.InsuranceDetails"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" height="100%">
 
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Insurance Details" wrapping="true" />
+				</expandedHeading>
 
+				<snappedHeading>
+					<m:HBox>
+						<m:VBox>
+							<m:Title text="Insurance Details" wrapping="true"/>
+							<m:Label text="Fill your insurance details"/>
+						</m:VBox>
+					</m:HBox>
+				</snappedHeading>
 
-        <VBox class="sapUiSmallMargin">
-            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>insDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+				<expandedContent>
+					<m:Label text="Fill your insurance details"/>
+				</expandedContent>
+
+				<snappedTitleOnMobile>
+					<m:Title text="Insurance Details"/>
+				</snappedTitleOnMobile>
+
+				<actions>
+					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveInsuranceDetails"></m:Button>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true">
+				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
+
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">
+					</m:Title>
+					<m:Label text="{plantsModel>/plant}"/>
+				</m:VBox>
+
+				<m:VBox class="sapUiSmallMarginBottom sapUiLargeMarginEnd">
+					<m:Title level="H4" titleStyle="H4" text="Property" class="sapUiTinyMarginBottom" />
+					<m:Label text="{plantsModel>/property}"/>
+				</m:VBox>
+
+				<m:VBox class="sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Address" class="sapUiTinyMarginBottom" />
+					<m:Label wrapping="true" text="{plantsModel>/address}"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>
+
+		<sections>
+
+			<ObjectPageSection titleUppercase="false" id="personalSection" title="Insurance Details">
+				<subSections>
+					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
+						<blocks>
+              <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
                 <f:content>
                     <core:Title text="" visible="false"/>
-                    <Label text="{i18n>finrepnum1}" />
-                    <Input change="onDetectChange" id="finrep1" value="{plantBasicDetailsModel>/FinrepNum1}" />
-                    <Label text="{i18n>finrepnum2}" />
-                    <Input change="onDetectChange" id="finrep2" value="{plantBasicDetailsModel>/FinerepNum2}" />
+                    <m:Label text="{i18n>finrepnum1}" />
+                    <m:Input change="onDetectChange" id="finrep1" value="{plantBasicDetailsModel>/FinrepNum1}" />
+                    <m:Label text="{i18n>finrepnum2}" />
+                    <m:Input change="onDetectChange" id="finrep2" value="{plantBasicDetailsModel>/FinerepNum2}" />
 
-                    <Label text="{i18n>insPrem2}" />
-                    <Input change="onDetectChange" id="insprem2" valueStateText="Value cannot be blank" valueState="{/InsPrem2000}" value="{plantBasicDetailsModel>/InsPrem2000}" />
+                    <m:Label text="{i18n>insPrem2}" />
+                    <m:Input change="onDetectChange" id="insprem2" valueStateText="Value cannot be blank" valueState="{/InsPrem2000}" value="{plantBasicDetailsModel>/InsPrem2000}" />
 
-                    <Label text="{i18n>insPrem3}" />
-                    <Input change="onDetectChange" id="insprem3" valueStateText="Value cannot be blank" valueState="{/InsPrem3000}" value="{plantBasicDetailsModel>/InsPrem3000}" />
+                    <m:Label text="{i18n>insPrem3}" />
+                    <m:Input change="onDetectChange" id="insprem3" valueStateText="Value cannot be blank" valueState="{/InsPrem3000}" value="{plantBasicDetailsModel>/InsPrem3000}" />
 
-                    <Label text="{i18n>insPrem4}" />
-                    <Input change="onDetectChange" id="insprem4" valueStateText="Value cannot be blank" valueState="{/InsPrem4000}" value="{plantBasicDetailsModel>/InsPrem4000}" />
+                    <m:Label text="{i18n>insPrem4}" />
+                    <m:Input change="onDetectChange" id="insprem4" valueStateText="Value cannot be blank" valueState="{/InsPrem4000}" value="{plantBasicDetailsModel>/InsPrem4000}" />
 
-                    <Label text="{i18n>insPrem5}" />
-                    <Input change="onDetectChange" id="insprem5" valueStateText="Value cannot be blank" valueState="{/InsPrem5000}" value="{plantBasicDetailsModel>/InsPrem5000}" />
+                    <m:Label text="{i18n>insPrem5}" />
+                    <m:Input change="onDetectChange" id="insprem5" valueStateText="Value cannot be blank" valueState="{/InsPrem5000}" value="{plantBasicDetailsModel>/InsPrem5000}" />
 
-                    <Label text="{i18n>finrepnum7}" />
-                    <Input change="onDetectChange" id="finrep7" value="{plantBasicDetailsModel>/FinrepNum7}" />
+                    <m:Label text="{i18n>finrepnum7}" />
+                    <m:Input change="onDetectChange" id="finrep7" value="{plantBasicDetailsModel>/FinrepNum7}" />
 
-                    <Label text="{i18n>finrepnum8}" />
-                    <Input change="onDetectChange" id="finrep8" value="{plantBasicDetailsModel>/FinrepNum8}" />
+                    <m:Label text="{i18n>finrepnum8}" />
+                    <m:Input change="onDetectChange" id="finrep8" value="{plantBasicDetailsModel>/FinrepNum8}" />
 
-                    <Label text="{i18n>finrepnum9}" />
-                    <Input change="onDetectChange" id="finrep9" value="{plantBasicDetailsModel>/FinrepNum9}" />
-                    <Label required="true" text="{i18n>eRentalMax}" />
-                    <Input change="onDetectChange" id="eRental" valueStateText="Value cannot be blank" valueState="{/ErentalMaxDays}" value="{plantBasicDetailsModel>/ErentalMaxDays}" />
+                    <m:Label text="{i18n>finrepnum9}" />
+                    <m:Input change="onDetectChange" id="finrep9" value="{plantBasicDetailsModel>/FinrepNum9}" />
+                    <m:Label required="true" text="{i18n>eRentalMax}" />
+                    <m:Input change="onDetectChange" id="eRental" valueStateText="Value cannot be blank" valueState="{/ErentalMaxDays}" value="{plantBasicDetailsModel>/ErentalMaxDays}" />
 
                     <core:Title text="" />
 
-                    <Label required="true"  text="{i18n>cddStartDate}" />
-                    <DatePicker change="onDetectChange" id="startdate" placeholder="Choose Date.." valueStateText="Value cannot be blank" valueState="{/CddStartDate}" value="{ 
+                    <m:Label required="true"  text="{i18n>cddStartDate}" />
+                    <m:DatePicker change="onDetectChange" id="startdate" placeholder="Choose Date.." valueStateText="Value cannot be blank" valueState="{/CddStartDate}" value="{ 
                         path: 'plantBasicDetailsModel>/CddStartDate',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
 
-                    <Label text="{i18n>finrepD3}" />
-                    <DatePicker change="onDetectChange" id="finrepD3" placeholder="Choose Date.." value="{ 
+                    <m:Label text="{i18n>finrepD3}" />
+                    <m:DatePicker change="onDetectChange" id="finrepD3" placeholder="Choose Date.." value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate3',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"/>
 
-                    <Label text="{i18n>finrepD4}" />
-                    <DatePicker change="onDetectChange" id="finrepD4" placeholder="Choose Date.." value="{ 
+                    <m:Label text="{i18n>finrepD4}" />
+                    <m:DatePicker change="onDetectChange" id="finrepD4" placeholder="Choose Date.." value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate4',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" />
-                    <Label text="{i18n>finrepD5}" />
-                    <DatePicker change="onDetectChange" id="finrepD5" placeholder="Choose Date.." value="{ 
+                    <m:Label text="{i18n>finrepD5}" />
+                    <m:DatePicker change="onDetectChange" id="finrepD5" placeholder="Choose Date.." value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate5',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"/>
 
-                    <Label text="{i18n>finrepD6}" />
-                    <DatePicker change="onDetectChange" id="finrepD6" placeholder="Choose Date.." value="{ 
+                    <m:Label text="{i18n>finrepD6}" />
+                    <m:DatePicker change="onDetectChange" id="finrepD6" placeholder="Choose Date.." value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate6',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" />
 
-                    <Label text="{i18n>finrepD7}" />
-                    <DatePicker change="onDetectChange" id="finrepD7" placeholder="Choose Date.." value="{ 
+                    <m:Label text="{i18n>finrepD7}" />
+                    <m:DatePicker change="onDetectChange" id="finrepD7" placeholder="Choose Date.." value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate7',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" />
-                    <Label text="{i18n>finrepD8}" />
-                    <DatePicker change="onDetectChange" id="finrepD8" value="{ 
+                    <m:Label text="{i18n>finrepD8}" />
+                    <m:DatePicker change="onDetectChange" id="finrepD8" value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate8',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
-                    <Label text="{i18n>finrepD9}" />
-                    <DatePicker change="onDetectChange" id="finrepD9" value="{ 
+                    <m:Label text="{i18n>finrepD9}" />
+                    <m:DatePicker change="onDetectChange" id="finrepD9" value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate9',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.." />
-                    <Label text="{i18n>finrepD10}" />
-                    <DatePicker change="onDetectChange" id="finrepD10" value="{ 
+                    <m:Label text="{i18n>finrepD10}" />
+                    <m:DatePicker change="onDetectChange" id="finrepD10" value="{ 
                         path: 'plantBasicDetailsModel>/FinrepDate10',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 
                 </f:content>
             </f:SimpleForm>
-            <VBox alignContent="End" alignItems="End">
-                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveInsuranceDetails"></Button>
-            </VBox>
-        </VBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
 
-
-    </ScrollContainer>
+		</sections>
+	</ObjectPageLayout>
 </mvc:View>

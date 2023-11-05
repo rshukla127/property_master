@@ -79,7 +79,7 @@ sap.ui.define([
 
             },
 
-            onPressSaveBuldingDetails: function(oEvent){
+            onPressSaveMiscDetails: function(oEvent){
                 const that = this;
                 this._oBusyDialog.open();
                 const aODataPayload = [];
@@ -95,6 +95,7 @@ sap.ui.define([
                     this.getView().setModel(tmpModel, "tmpModel");
                     var aBatchRequests = [];
                     var groupId = "foo";
+                    if (oTable.length){
                     for (var m = 0; m < oTable.length; m++) {
                         var requestPath = `/PropertyAddOnSet`;
                         var updatedEntity = {
@@ -127,7 +128,11 @@ sap.ui.define([
                                 MessageToast.show("Something went wrong with the service");
                              });
 
+            } else {
+                MessageToast.show("Nothing to save");
             }
+        }
+            
             
 	});
 });

@@ -1,82 +1,120 @@
-<mvc:View controllerName="com.public.storage.pao.controller.BasicDetails"
-	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+controllerName="com.public.storage.pao.controller.BasicDetails"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
-	xmlns:f="sap.ui.layout.form"
-	xmlns="sap.m"
-	xmlns:core="sap.ui.core">
-	<ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+	xmlns:f="sap.ui.layout.form" height="100%">
 
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Basic Details" wrapping="true" />
+				</expandedHeading>
 
+				<snappedHeading>
+					<m:HBox>
+						<m:VBox>
+							<m:Title text="Basic Details" wrapping="true"/>
+							<m:Label text="Fill your basic details"/>
+						</m:VBox>
+					</m:HBox>
+				</snappedHeading>
 
-		<VBox class="sapUiSmallMargin">
-			<f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>propBasDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
-				<f:content>
-					<core:Title text="" visible="false"/>
-					<!-- <Label text="{i18n>direPhoneNo}" />
-					<Input maxLength="30" id="dirPhoneNo" value="{plantsModel>/Telnumber}" enabled="false" />
-					<Label text="{i18n>faxNumber}" />
-					<Input maxLength="30" id="faxNo" enabled="false" value="{plantsModel>/Faxnumber}" />
+				<expandedContent>
+					<m:Label text="Fill your basic details"/>
+				</expandedContent>
 
-					<Label required="true" text="{i18n>tollfreeNo}" />
-					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/tollFreeNumber}" id="tollFree" value="{plantBasicDetailsModel>/TollFreeNumber}"/> -->
+				<snappedTitleOnMobile>
+					<m:Title text="Basic Details"/>
+				</snappedTitleOnMobile>
 
-					<!-- <Label required="true" text="{i18n>netIpAddress}" />
-					<Input maxLength="30" id="network1" valueStateText="Value cannot be blank" valueState="{/network1IpAddress}" value="{plantBasicDetailsModel>/Network1IpAddress}"/> -->
+				<actions>
+					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></m:Button>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
 
-					<Label required="true" text="{i18n>kioskProp}" />
-					<Select change="onDetectChange" id="kiskProp" valueStateText="Value cannot be blank" valueState="{/KioskProperty}" selectedKey="{parts: ['plantBasicDetailsModel>/KioskProperty'], formatter: '.formatter.getSelectedKeyNo'}">
-						<items>																								
-							<core:Item text="Yes" key="Y" />
-							<core:Item text="No" key="N"/>
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true">
+				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
 
-						</items>
-					</Select>
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">
+					</m:Title>
+					<m:Label text="{plantsModel>/plant}"/>
+				</m:VBox>
 
-					<Label text="{i18n>budPropNumber}" />
-					<Input maxLength="7" id="budProp" value="{plantBasicDetailsModel>/BuddyPropertyNumber}" showValueHelp="true" valueHelpRequest="_onValueHelpRequestProperty" valueHelpOnly="true"/>
-					<Label text="{i18n>retailSqFootage}" />
-					<Input change="onDetectChange" maxLength="5" id="retailStoreSq" value="{plantBasicDetailsModel>/RetailStoreSquareFootage}" />
+				<m:VBox class="sapUiSmallMarginBottom sapUiLargeMarginEnd">
+					<m:Title level="H4" titleStyle="H4" text="Property" class="sapUiTinyMarginBottom" />
+					<m:Label text="{plantsModel>/property}"/>
+				</m:VBox>
 
-					<Label text="{i18n>historicalProp}" />
-					<Input change="onDetectChange" maxLength="10" id="histProp" value="{plantBasicDetailsModel>/HistoricalProperty}" type="Url" />
-					<Label text="{i18n>psaProp}" />
-					<Input change="onDetectChange" maxLength="10" id="psaProp" value="{plantBasicDetailsModel>/PsaProperty}" />
-					<Label text="{i18n>transForm}" />
-					<Input change="onDetectChange" maxLength="10" id="transF" value="{plantBasicDetailsModel>/TransferFrom}" />
+				<m:VBox class="sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Address" class="sapUiTinyMarginBottom" />
+					<m:Label wrapping="true" text="{plantsModel>/address}"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>
 
-					<core:Title text="" />
+		<sections>
 
-					<!-- <Label required="true" text="{i18n>publishedPhoneNo}" />
-					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/publishedPhoneNo}" id="pubPhone" value="{plantBasicDetailsModel>/PublishedPhoneNo}" /> -->
-					<Label text="{i18n>propEmailAdd}" />
-					<Input change="onDetectChange" id="email" enabled="false" value="{plantsModel>/Email}" />
+			<ObjectPageSection titleUppercase="false" id="personalSection" title="Basic Details">
+				<subSections>
+					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
+						<blocks>
+							<f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout"  labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+								<f:content>
+									<core:Title text=""/>
+									<m:Label required="true" text="{i18n>kioskProp}" />
+									<m:Select change="onDetectChange" id="kiskProp" valueStateText="Value cannot be blank" valueState="{/KioskProperty}" selectedKey="{parts: ['plantBasicDetailsModel>/KioskProperty'], formatter: '.formatter.getSelectedKeyNo'}">
+										<m:items>
+											<core:Item text="Yes" key="Y" />
+											<core:Item text="No" key="N"/>
 
-					<!-- <Label text="{i18n>localPhoneNo}" />
-					<Input maxLength="30" valueStateText="Value cannot be blank" valueState="{/localPhoneNumber}" required="true" id="localPh" value="{plantBasicDetailsModel>/LocalPhoneNumber}" type="Url" /> -->
-					<!-- <Label required="true" text="{i18n>network2Ip}" />
-					<Input id="network2" valueStateText="Value cannot be blank" valueState="{/network2IpAddress}" value="{plantBasicDetailsModel>/Network2IpAddress}" /> -->
+										</m:items>
+									</m:Select>
 
-					<Label  text="{i18n>kisokActivDate}" labelFor="kisok" />
-					<DatePicker  change="onDetectChange"  id="kisok" value="{ 
+									<m:Label text="{i18n>budPropNumber}" />
+									<m:Input maxLength="7" id="budProp" value="{plantBasicDetailsModel>/BuddyPropertyNumber}" showValueHelp="true" valueHelpRequest="_onValueHelpRequestProperty" valueHelpOnly="true"/>
+									<m:Label text="{i18n>retailSqFootage}" />
+									<m:Input change="onDetectChange" maxLength="5" id="retailStoreSq" value="{plantBasicDetailsModel>/RetailStoreSquareFootage}" />
+
+									<m:Label text="{i18n>historicalProp}" />
+									<m:Input change="onDetectChange" maxLength="10" id="histProp" value="{plantBasicDetailsModel>/HistoricalProperty}" type="Url" />
+									<m:Label text="{i18n>psaProp}" />
+									<m:Input change="onDetectChange" maxLength="10" id="psaProp" value="{plantBasicDetailsModel>/PsaProperty}" />
+									<m:Label text="{i18n>transForm}" />
+									<m:Input change="onDetectChange" maxLength="10" id="transF" value="{plantBasicDetailsModel>/TransferFrom}" />
+
+									<core:Title text="" />
+									<m:Label text="{i18n>propEmailAdd}" />
+									<m:Input change="onDetectChange" id="email" enabled="false" value="{plantsModel>/Email}" />
+
+									<m:Label text="{i18n>kisokActivDate}" />
+									<m:DatePicker change="onDetectChange" id="kisok" value="{ 
 					path: 'plantBasicDetailsModel>/KioskActiveDate',
 					type: 'sap.ui.model.type.Date'  
 				  }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
-					<Label text="{i18n>offSqFoootage}" />
-					<Input change="onDetectChange" id="offSq" value="{plantBasicDetailsModel>/RetailStorageSize}" />
-					<Label text="{i18n>retailSqSize}" />
-					<Input change="onDetectChange" id="retailST" value="{plantBasicDetailsModel>/RetailStorageSize}" />
-					<Label text="{i18n>histOwner}" />
-					<Input change="onDetectChange" maxLength="10" id="histOwner" value="{plantBasicDetailsModel>/HistoricalOwner}" />
-					<Label text="{i18n>psaOwner}" />
-					<Input change="onDetectChange" maxLength="10" id="PsaOwner" value="{plantBasicDetailsModel>/PsaOwner}" />
-					<Label required="true" text="{i18n>geoCode}" />
-					<Input change="onDetectChange" maxLength="10" valueStateText="Value cannot be blank" valueState="{/GeoCode}" id="geo" value="{plantBasicDetailsModel>/GeoCode}" />
+									<m:Label text="{i18n>offSqFoootage}" />
+									<m:Input change="onDetectChange" id="offSq" value="{plantBasicDetailsModel>/RetailStorageSize}" />
+									<m:Label text="{i18n>retailSqSize}" />
+									<m:Input change="onDetectChange" id="retailST" value="{plantBasicDetailsModel>/RetailStorageSize}" />
+									<m:Label text="{i18n>histOwner}" />
+									<m:Input change="onDetectChange" maxLength="10" id="histOwner" value="{plantBasicDetailsModel>/HistoricalOwner}" />
+									<m:Label text="{i18n>psaOwner}" />
+									<m:Input change="onDetectChange" maxLength="10" id="PsaOwner" value="{plantBasicDetailsModel>/PsaOwner}" />
+									<m:Label required="true" text="{i18n>geoCode}" />
+									<m:Input change="onDetectChange" maxLength="10" valueStateText="Value cannot be blank" valueState="{/GeoCode}" id="geo" value="{plantBasicDetailsModel>/GeoCode}" />
 
-				</f:content>
-			</f:SimpleForm>
-			<VBox alignContent="End" alignItems="End">
-				<Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></Button>
-			</VBox>
-		</VBox>
-	</ScrollContainer>
+								</f:content>
+							</f:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+		</sections>
+	</ObjectPageLayout>
 </mvc:View>

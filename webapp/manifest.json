@@ -209,6 +209,11 @@
           "name": "misc",
           "pattern": "misc",
           "target": ["misc"]
+        },
+        {
+          "name": "opmodel",
+          "pattern": "opmodel",
+          "target": ["opmodel"]
         }
       ],
       "targets": {
@@ -306,6 +311,11 @@
           "viewType": "XML",
           "viewId": "misc",
           "viewName": "Miscellaneous"
+        },
+        "opmodel": {
+          "viewType": "XML",
+          "viewId": "opmodel",
+          "viewName": "OperatingModel"
         }
         
       }

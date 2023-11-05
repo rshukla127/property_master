@@ -1,44 +1,102 @@
-<mvc:View controllerName="com.public.storage.pao.controller.TaxDetails"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns:l="sap.ui.layout"
-    xmlns:f="sap.ui.layout.form"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
-        <VBox class="sapUiSmallMargin">
-            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>taxDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
-                <f:content>
-                    <core:Title text="" visible="false"/>
-                    
-                    <Label required="true" text="{i18n>taxOwner}" />
-                    <Input id="taxOwner" app:fieldName="taxOwner" valueStateText="Value cannot be blank" valueState="{/TaxOwner}" valueHelpRequest="_onValueHelpTaxOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/TaxOwner}" />
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+controllerName="com.public.storage.pao.controller.TaxDetails"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:f="sap.ui.layout.form" height="100%">
 
-                    <Label text="{i18n>taxOwnerFein}" />
-                    <Input id="taxOwnerFein" enabled="false" value="{plantBasicDetailsModel>/TaxOwnerFein}" />
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Tax Details" wrapping="true" />
+				</expandedHeading>
 
-                    <Label required="true" text="{i18n>legalOwner}" />
-                    <Input id="legalOwner" app:fieldName="legalOwner" valueStateText="Value cannot be blank" valueState="{/LegalOwner}" valueHelpRequest="_onValueHelpLegalOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/LegalOwner}" />
-                    <Label text="{i18n>legalOwnerDein}" />
-                    <Input id="legalOwnerFein"  enabled="false"  value="{plantBasicDetailsModel>/LegalOwnerFein}" />
+				<snappedHeading>
+					<m:HBox>
+						<m:VBox>
+							<m:Title text="Tax Details" wrapping="true"/>
+							<m:Label text="Fill your tax details"/>
+						</m:VBox>
+					</m:HBox>
+				</snappedHeading>
 
-                    <Label required="true" text="{i18n>ownerOfRec}" />
-                    <Input change="onDetectChange" id="ownerRecord" valueStateText="Value cannot be blank" valueState="{/OwnerOfRecord}" maxLength="50" value="{plantBasicDetailsModel>/OwnerOfRecord}" />
+				<expandedContent>
+					<m:Label text="Fill your tax details"/>
+				</expandedContent>
 
-                    <!-- <Label required="true" text="{i18n>taxFillingEntity}" />
-                    <Input id="taxFiling" valueStateText="Value cannot be blank" valueState="{/TaxFilingEntity}" valueHelpRequest="_onValueHelpTaxFillingEntity" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/TaxFilingEntity}" /> -->
-                   
-                    <Label required="true" text="Solar Entity" />
-                    <Input  id="solarenitity" app:fieldName="sentity" valueStateText="Value cannot be blank" valueState="{/solarEntity}" valueHelpRequest="_onValueHelpTaxOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/SolarEntity}" />
-                    <!-- <TextArea id="solarenitity" valueStateText="Value cannot be blank" valueState="{/solarEntity}"  value="{plantBasicDetailsModel>/SolarEntity}" /> -->
+				<snappedTitleOnMobile>
+					<m:Title text="Tax Details"/>
+				</snappedTitleOnMobile>
 
-                </f:content>
-            </f:SimpleForm>
-            <VBox alignContent="End" alignItems="End">
-                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveTaxDetails"></Button>
-            </VBox>
-        </VBox>
+				<actions>
+					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveTaxDetails"></m:Button>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
 
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true">
+				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
 
-    </ScrollContainer>
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">
+					</m:Title>
+					<m:Label text="{plantsModel>/plant}"/>
+				</m:VBox>
+
+				<m:VBox class="sapUiSmallMarginBottom sapUiLargeMarginEnd">
+					<m:Title level="H4" titleStyle="H4" text="Property" class="sapUiTinyMarginBottom" />
+					<m:Label text="{plantsModel>/property}"/>
+				</m:VBox>
+
+				<m:VBox class="sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Address" class="sapUiTinyMarginBottom" />
+					<m:Label wrapping="true" text="{plantsModel>/address}"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>
+
+		<sections>
+
+			<ObjectPageSection titleUppercase="false" id="personalSection" title="Tax Details">
+				<subSections>
+					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
+						<blocks>
+                            <f:SimpleForm id="taxDetails" editable="true" layout="ResponsiveGridLayout"  labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                                <f:content>
+                                    
+                                    
+                                    <m:Label required="true" text="{i18n>taxOwner}" />
+                                    <m:Input id="taxOwner" app:fieldName="taxOwner" valueStateText="Value cannot be blank" valueState="{/TaxOwner}" valueHelpRequest="_onValueHelpTaxOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/TaxOwner}" />
+                
+                                    <m:Label text="{i18n>taxOwnerFein}" />
+                                    <m:Input id="taxOwnerFein" enabled="false" value="{plantBasicDetailsModel>/TaxOwnerFein}" />
+                
+                                    <m:Label required="true" text="{i18n>legalOwner}" />
+                                    <m:Input id="legalOwner" app:fieldName="legalOwner" valueStateText="Value cannot be blank" valueState="{/LegalOwner}" valueHelpRequest="_onValueHelpLegalOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/LegalOwner}" />
+                                    <m:Label text="{i18n>legalOwnerDein}" />
+                                    <m:Input id="legalOwnerFein"  enabled="false"  value="{plantBasicDetailsModel>/LegalOwnerFein}" />
+                
+                                    <m:Label required="true" text="{i18n>ownerOfRec}" />
+                                    <m:Input change="onDetectChange" id="ownerRecord" valueStateText="Value cannot be blank" valueState="{/OwnerOfRecord}" maxLength="50" value="{plantBasicDetailsModel>/OwnerOfRecord}" />
+                
+                                    <!-- <m:Label required="true" text="{i18n>taxFillingEntity}" />
+                                    <m:Input id="taxFiling" valueStateText="Value cannot be blank" valueState="{/TaxFilingEntity}" valueHelpRequest="_onValueHelpTaxFillingEntity" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/TaxFilingEntity}" /> -->
+                                   
+                                    <m:Label required="true" text="Solar Entity" />
+                                    <m:Input  id="solarenitity" app:fieldName="sentity" valueStateText="Value cannot be blank" valueState="{/solarEntity}" valueHelpRequest="_onValueHelpTaxOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/SolarEntity}" />
+                                    <!-- <TextArea id="solarenitity" valueStateText="Value cannot be blank" valueState="{/solarEntity}"  value="{plantBasicDetailsModel>/SolarEntity}" /> -->
+                
+                                </f:content>
+                            </f:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+		</sections>
+	</ObjectPageLayout>
 </mvc:View>

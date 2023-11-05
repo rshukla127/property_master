@@ -1,130 +1,186 @@
-<mvc:View controllerName="com.public.storage.pao.controller.WebDetails"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns:l="sap.ui.layout"
-    xmlns:f="sap.ui.layout.form"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+controllerName="com.public.storage.pao.controller.WebDetails"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" height="100%">
 
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Web Details" wrapping="true" />
+				</expandedHeading>
 
+				<snappedHeading>
+					<m:HBox>
+						<m:VBox>
+							<m:Title text="Web Details" wrapping="true"/>
+							<m:Label text="Fill your web details"/>
+						</m:VBox>
+					</m:HBox>
+				</snappedHeading>
 
-        <VBox class="sapUiSmallMargin">
-            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="{i18n>webDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
-                <f:content>
-                  
-                    <core:Title text="" visible="false"/>
-                    <Label required="true" text="{i18n>propLat}" />
-                    <Input change="onDetectChange" id="propLat" maxLength="9" valueStateText="Value cannot be blank" valueState="{/PropertyLatitude}" value="{plantBasicDetailsModel>/PropertyLatitude}" />
-                    <Label required="true" text="{i18n>propLong}" />
-                    <Input change="onDetectChange" id="propLong" maxLength="9" valueStateText="Value cannot be blank" valueState="{/PropertyLongitude}" value="{plantBasicDetailsModel>/PropertyLongitude}" />
+				<expandedContent>
+					<m:Label text="Fill your web details"/>
+				</expandedContent>
 
-                    <Label required="true" text="{i18n>propAdminFee}" />
-                    <Input change="onDetectChange" id="propAdmin" maxLength="16" valueStateText="Value cannot be blank" valueState="{/PropertyAdminFee}" type="Number" 
-                    value="{parts: ['plantBasicDetailsModel>/PropertyAdminFee'], formatter: '.formatter.removeLeadingZeros'}"/>
+				<snappedTitleOnMobile>
+					<m:Title text="Web Details"/>
+				</snappedTitleOnMobile>
 
-                    <Label required="true" text="{i18n>adminFeeEff}" />
-                    <DatePicker change="onDetectChange" id="effDate" valueStateText="Value cannot be blank" valueState="{/AdminFeeEffectiveDate}" placeholder="Choose Date..." value="{ 
-                        path: 'plantBasicDetailsModel>/AdminFeeEffectiveDate',
-                        type: 'sap.ui.model.type.Date'  
-                      }" valueFormat="yyyy-MM-dd" />
+				<actions>
+					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveWebDetails"></m:Button>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
 
-                    <Label text="{i18n>propChurn}" />
-                    <Input id="propChurn" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpChurnStatus" value="{plantBasicDetailsModel>/PropertyChurnStatus}" />
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true">
+				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
 
-                    <Label text="{i18n>climateControl}" />
-                        <Input id="climControl" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpClimateControl" value="{plantBasicDetailsModel>/ClimateControl}" />
-                    <!-- <Select id="climControl" selectedKey="{parts: ['plantBasicDetailsModel>/ClimateControl'], formatter: '.formatter.getSelectedKeyBlank'}">
-                        <items>
-                            <core:Item text="Yes" key="Y"/>
-                            <core:Item text="No" key="N"/>
-                            <core:Item text="" key="B"/>
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">
+					</m:Title>
+					<m:Label text="{plantsModel>/plant}"/>
+				</m:VBox>
 
-                        </items>
-                    </Select> -->
+				<m:VBox class="sapUiSmallMarginBottom sapUiLargeMarginEnd">
+					<m:Title level="H4" titleStyle="H4" text="Property" class="sapUiTinyMarginBottom" />
+					<m:Label text="{plantsModel>/property}"/>
+				</m:VBox>
 
-                    <Label required="true" text="{i18n>propWebReservation}" />
-                    <Select change="onDetectChange" id="propWeb" valueStateText="Value cannot be blank" selectedKey="{parts: ['plantBasicDetailsModel>/PropertyWebsiteReservations'], formatter: '.formatter.getSelectedKeyBlank'}"
-                    valueState="{/PropertyWebsiteReservations}">
-                        <items>
-                            <core:Item text="Yes" key="Y"/>
-                            <core:Item text="No" key="N"/>
-                            <core:Item text="" key="B"/>
+				<m:VBox class="sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Address" class="sapUiTinyMarginBottom" />
+					<m:Label wrapping="true" text="{plantsModel>/address}"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>
 
-                        </items>
-                    </Select>
+		<sections>
 
-                    <Label required="true" text="{i18n>webEnabledDate}" />
-                    <DatePicker change="onDetectChange" id="webenabled" valueStateText="Value cannot be blank" valueState="{/WebsiteEnabledDate}" placeholder="Choose Date..."
-                    value="{ 
-                        path: 'plantBasicDetailsModel>/WebsiteEnabledDate',
-                        type: 'sap.ui.model.type.Date'  
-                      }" valueFormat="yyyy-MM-dd"/>
+			<ObjectPageSection titleUppercase="false" id="personalSection" title="Web Details">
+				<subSections>
+					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
+						<blocks>
+                            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                                <f:content>
+                                  
+                                    <core:Title text="" visible="false"/>
+                                    <m:Label required="true" text="{i18n>propLat}" />
+                                    <m:Input change="onDetectChange" id="propLat" maxLength="9" valueStateText="Value cannot be blank" valueState="{/PropertyLatitude}" value="{plantBasicDetailsModel>/PropertyLatitude}" />
+                                    <m:Label required="true" text="{i18n>propLong}" />
+                                    <m:Input change="onDetectChange" id="propLong" maxLength="9" valueStateText="Value cannot be blank" valueState="{/PropertyLongitude}" value="{plantBasicDetailsModel>/PropertyLongitude}" />
+                
+                                    <m:Label required="true" text="{i18n>propAdminFee}" />
+                                    <m:Input change="onDetectChange" id="propAdmin" maxLength="16" valueStateText="Value cannot be blank" valueState="{/PropertyAdminFee}" type="Number" 
+                                    value="{parts: ['plantBasicDetailsModel>/PropertyAdminFee'], formatter: '.formatter.removeLeadingZeros'}"/>
+                
+                                    <m:Label required="true" text="{i18n>adminFeeEff}" />
+                                    <m:DatePicker change="onDetectChange" id="effDate" valueStateText="Value cannot be blank" valueState="{/AdminFeeEffectiveDate}" placeholder="Choose Date..." value="{ 
+                                        path: 'plantBasicDetailsModel>/AdminFeeEffectiveDate',
+                                        type: 'sap.ui.model.type.Date'  
+                                      }" valueFormat="yyyy-MM-dd" />
+                
+                                    <m:Label text="{i18n>propChurn}" />
+                                    <m:Input id="propChurn" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpChurnStatus" value="{plantBasicDetailsModel>/PropertyChurnStatus}" />
+                
+                                    <m:Label text="{i18n>climateControl}" />
+                                        <m:Input id="climControl" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="_onValueHelpClimateControl" value="{plantBasicDetailsModel>/ClimateControl}" />
+                                    <!-- <m:Select id="climControl" selectedKey="{parts: ['plantBasicDetailsModel>/ClimateControl'], formatter: '.formatter.getSelectedKeyBlank'}">
+                                        <m:items>
+                                            <core:Item text="Yes" key="Y"/>
+                                            <core:Item text="No" key="N"/>
+                                            <core:Item text="" key="B"/>
+                
+                                        </m:items>
+                                    </m:Select> -->
+                
+                                    <m:Label required="true" text="{i18n>propWebReservation}" />
+                                    <m:Select change="onDetectChange" id="propWeb" valueStateText="Value cannot be blank" selectedKey="{parts: ['plantBasicDetailsModel>/PropertyWebsiteReservations'], formatter: '.formatter.getSelectedKeyBlank'}"
+                                    valueState="{/PropertyWebsiteReservations}">
+                                        <m:items>
+                                            <core:Item text="Yes" key="Y"/>
+                                            <core:Item text="No" key="N"/>
+                                            <core:Item text="" key="B"/>
+                
+                                        </m:items>
+                                    </m:Select>
+                
+                                    <m:Label required="true" text="{i18n>webEnabledDate}" />
+                                    <m:DatePicker change="onDetectChange" id="webenabled" valueStateText="Value cannot be blank" valueState="{/WebsiteEnabledDate}" placeholder="Choose Date..."
+                                    value="{ 
+                                        path: 'plantBasicDetailsModel>/WebsiteEnabledDate',
+                                        type: 'sap.ui.model.type.Date'  
+                                      }" valueFormat="yyyy-MM-dd"/>
+                
+                                    <m:Label required="true" text="{i18n>propCallCenter}" />
+                                    <m:Select change="onDetectChange" id="propCall" valueStateText="Value cannot be blank" selectedKey="{parts: ['plantBasicDetailsModel>/PropertyCallCenterReservati'], formatter: '.formatter.getSelectedKeyBlank'}"
+                                    valueState="{/PropertyCallCenterReservati}">
+                                        <m:items>
+                                            <core:Item text="Yes" key="Y"/>
+                                            <core:Item text="No" key="N"/>
+                                            <core:Item text="" key="B"/>
+                
+                                        </m:items>
+                                    </m:Select>
+                                    <core:Title text="" />
+                                    <m:Label required="true" text="{i18n>callCenterEnabled}" />
+                                    <m:DatePicker change="onDetectChange" id="callCenter" valueStateText="Value cannot be blank" valueState="{/CallCenterEnabledDate}" placeholder="Choose Date..." 
+                                    value="{ 
+                                        path: 'plantBasicDetailsModel>/CallCenterEnabledDate',
+                                        type: 'sap.ui.model.type.Date'  
+                                      }" valueFormat="yyyy-MM-dd"/>
+                
+                                    <m:Label required="true" text="{i18n>propNFSFee}" />
+                                    <m:Input change="onDetectChange" id="propNFS" type="Number" valueStateText="Value cannot be blank" valueState="{/PropertyNfsFee}"
+                                     value="{parts: ['plantBasicDetailsModel>/PropertyNfsFee'], formatter: '.formatter.removeLeadingZeros'}"/>
+                
+                                    <m:Label required="true" text="{i18n>maxResDays}" />
+                                    <m:Input change="onDetectChange" id="maxRes" valueStateText="Value cannot be blank" type="Number" maxLength="3" valueState="{/MaxReservationDays}" 
+                                    value="{parts: ['plantBasicDetailsModel>/MaxReservationDays'], formatter: '.formatter.removeLeadingZeros'}" />
+                                    <m:Label text="{i18n>nsfFeeEff}" />
+                                    <m:DatePicker change="onDetectChange" id="nsfFeeEff" placeholder="Choose Date..." 
+                                    value="{ 
+                                        path: 'plantBasicDetailsModel>/NsfFeeEffectiveDate',
+                                        type: 'sap.ui.model.type.Date'  
+                                      }" valueFormat="yyyy-MM-dd"/>
+                
+                                    <m:Label required="true" text="{i18n>propNFS}" />
+                                    <m:Input id="propNFSACH" change="onDetectChange" valueStateText="Value cannot be blank" type="Number" valueState="{/PropertyNfsAchFee}" 
+                                    value="{parts: ['plantBasicDetailsModel>/PropertyNfsAchFee'], formatter: '.formatter.removeLeadingZeros'}"/>
+                
+                                    <m:Label text="{i18n>nfsachfeeEffective}" />
+                                    <m:DatePicker change="onDetectChange" id="nfsAshfeeeff" placeholder="Choose Date..." 
+                                    value="{ 
+                                        path: 'plantBasicDetailsModel>/NfsAchFeeEffectiveDate',
+                                        type: 'sap.ui.model.type.Date'  
+                                      }" valueFormat="yyyy-MM-dd"/>
+                                    <m:Label required="true" text="{i18n>propInsuranceFrozen}" />
+                                    <m:Select change="onDetectChange" id="propFrozen" valueStateText="Value cannot be blank" valueState="{/PropertyInsuranceFrozen}" selectedKey="{plantBasicDetailsModel>/PropertyInsuranceFrozen}">
+                                        <m:items>
+                                            <core:Item text="Yes" key="Y"/>
+                                            <core:Item text="No" key="N"/>
+                
+                                        </m:items>
+                                    </m:Select>
+                
+                                    <m:Label required="true" text="{i18n>propInsCancel}" />
+                                    <m:Input id="propIns" change="onDetectChange" type="Number" maxLength="3" valueStateText="Value cannot be blank" valueState="{/PropertyInsuranceCancelDay}" 
+                                    value="{parts: ['plantBasicDetailsModel>/PropertyInsuranceCancelDay'], formatter: '.formatter.removeLeadingZeros'}}"/>
+                
+                                    <m:Label required="true" text="{i18n>preResDay}" />
+                                    <m:Input id="propResDay" change="onDetectChange" type="Number" maxLength="3" valueStateText="Value cannot be blank" valueState="{/PreReservationDays}"
+                                     value="{parts: ['plantBasicDetailsModel>/PreReservationDays'], formatter: '.formatter.removeLeadingZeros'}" />
+                                </f:content>
+                            </f:SimpleForm>
+                    
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
 
-                    <Label required="true" text="{i18n>propCallCenter}" />
-                    <Select change="onDetectChange" id="propCall" valueStateText="Value cannot be blank" selectedKey="{parts: ['plantBasicDetailsModel>/PropertyCallCenterReservati'], formatter: '.formatter.getSelectedKeyBlank'}"
-                    valueState="{/PropertyCallCenterReservati}">
-                        <items>
-                            <core:Item text="Yes" key="Y"/>
-                            <core:Item text="No" key="N"/>
-                            <core:Item text="" key="B"/>
-
-                        </items>
-                    </Select>
-                    <core:Title text="" />
-                    <Label required="true" text="{i18n>callCenterEnabled}" />
-                    <DatePicker change="onDetectChange" id="callCenter" valueStateText="Value cannot be blank" valueState="{/CallCenterEnabledDate}" placeholder="Choose Date..." 
-                    value="{ 
-                        path: 'plantBasicDetailsModel>/CallCenterEnabledDate',
-                        type: 'sap.ui.model.type.Date'  
-                      }" valueFormat="yyyy-MM-dd"/>
-
-                    <Label required="true" text="{i18n>propNFSFee}" />
-                    <Input change="onDetectChange" id="propNFS" type="Number" valueStateText="Value cannot be blank" valueState="{/PropertyNfsFee}"
-                     value="{parts: ['plantBasicDetailsModel>/PropertyNfsFee'], formatter: '.formatter.removeLeadingZeros'}"/>
-
-                    <Label required="true" text="{i18n>maxResDays}" />
-                    <Input change="onDetectChange" id="maxRes" valueStateText="Value cannot be blank" type="Number" maxLength="3" valueState="{/MaxReservationDays}" 
-                    value="{parts: ['plantBasicDetailsModel>/MaxReservationDays'], formatter: '.formatter.removeLeadingZeros'}" />
-                    <Label text="{i18n>nsfFeeEff}" />
-                    <DatePicker change="onDetectChange" id="nsfFeeEff" placeholder="Choose Date..." 
-                    value="{ 
-                        path: 'plantBasicDetailsModel>/NsfFeeEffectiveDate',
-                        type: 'sap.ui.model.type.Date'  
-                      }" valueFormat="yyyy-MM-dd"/>
-
-                    <Label required="true" text="{i18n>propNFS}" />
-                    <Input id="propNFSACH" change="onDetectChange" valueStateText="Value cannot be blank" type="Number" valueState="{/PropertyNfsAchFee}" 
-                    value="{parts: ['plantBasicDetailsModel>/PropertyNfsAchFee'], formatter: '.formatter.removeLeadingZeros'}"/>
-
-                    <Label text="{i18n>nfsachfeeEffective}" />
-                    <DatePicker change="onDetectChange" id="nfsAshfeeeff" placeholder="Choose Date..." 
-                    value="{ 
-                        path: 'plantBasicDetailsModel>/NfsAchFeeEffectiveDate',
-                        type: 'sap.ui.model.type.Date'  
-                      }" valueFormat="yyyy-MM-dd"/>
-                    <Label required="true" text="{i18n>propInsuranceFrozen}" />
-                    <Select change="onDetectChange" id="propFrozen" valueStateText="Value cannot be blank" valueState="{/PropertyInsuranceFrozen}" selectedKey="{plantBasicDetailsModel>/PropertyInsuranceFrozen}">
-                        <items>
-                            <core:Item text="Yes" key="Y"/>
-                            <core:Item text="No" key="N"/>
-
-                        </items>
-                    </Select>
-
-                    <Label required="true" text="{i18n>propInsCancel}" />
-                    <Input id="propIns" change="onDetectChange" type="Number" maxLength="3" valueStateText="Value cannot be blank" valueState="{/PropertyInsuranceCancelDay}" 
-                    value="{parts: ['plantBasicDetailsModel>/PropertyInsuranceCancelDay'], formatter: '.formatter.removeLeadingZeros'}}"/>
-
-                    <Label required="true" text="{i18n>preResDay}" />
-                    <Input id="propResDay" change="onDetectChange" type="Number" maxLength="3" valueStateText="Value cannot be blank" valueState="{/PreReservationDays}"
-                     value="{parts: ['plantBasicDetailsModel>/PreReservationDays'], formatter: '.formatter.removeLeadingZeros'}" />
-                </f:content>
-            </f:SimpleForm>
-            <VBox alignContent="End" alignItems="End">
-                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveWebDetails"></Button>
-            </VBox>
-        </VBox>
-
-
-    </ScrollContainer>
+		</sections>
+	</ObjectPageLayout>
 </mvc:View>

@@ -1,108 +1,165 @@
-<mvc:View controllerName="com.public.storage.pao.controller.GateDetails"
-     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-     xmlns:l="sap.ui.layout"
-     xmlns:f="sap.ui.layout.form"
-     xmlns="sap.m"
-     xmlns:core="sap.ui.core">
-     <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+controllerName="com.public.storage.pao.controller.GateDetails"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" height="100%">
 
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Gate Details" wrapping="true" />
+				</expandedHeading>
 
+				<snappedHeading>
+					<m:HBox>
+						<m:VBox>
+							<m:Title text="Gate Details" wrapping="true"/>
+							<m:Label text="Fill your gate details"/>
+						</m:VBox>
+					</m:HBox>
+				</snappedHeading>
 
-          <VBox class="sapUiSmallMargin">
-               <f:SimpleForm id="workingHours" editable="true" layout="ResponsiveGridLayout" title="{i18n>gateDetails} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} &amp; Address - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
-                    <f:content>
-                         <core:Title text="" visible="false"/>
-                         <Label required="true" text="{i18n>gateSundayOpenHr}" />
-                         <TimePicker change="onDetectChange" id="gateSunOpen" value="{parts: ['plantBasicDetailsModel>/GateSundayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-                         <Label required="true" text="{i18n>gateMondayOpenHr}" />
-                         <TimePicker change="onDetectChange" id="gateMonOpen" value="{parts: ['plantBasicDetailsModel>/GateMondayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-                         <Label required="true" text="{i18n>gateTuesdayOpenHr}" />
-                         <TimePicker change="onDetectChange" id="gateTueOpen" value="{parts: ['plantBasicDetailsModel>/GateTuesdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+				<expandedContent>
+					<m:Label text="Fill your gate details"/>
+				</expandedContent>
 
-                         <Label required="true" text="{i18n>gateWednesdayOpenHr}" />
-                         <TimePicker change="onDetectChange" id="gateWedOpen" value="{parts: ['plantBasicDetailsModel>/GateWednessdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+				<snappedTitleOnMobile>
+					<m:Title text="Gate Details"/>
+				</snappedTitleOnMobile>
 
+				<actions>
+					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveGateDetails"></m:Button>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
 
-                         <Label required="true" text="{i18n>gateThursdayOpenHr}" />
-                         <TimePicker change="onDetectChange" id="gateThuOpen" value="{parts: ['plantBasicDetailsModel>/GateThursdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true">
+				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
 
-                         <Label required="true" text="{i18n>gateFriadayOpenHr}" />
-                         <TimePicker change="onDetectChange" id="gateFriOpen" value="{parts: ['plantBasicDetailsModel>/GateFridayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-                         <Label required="true" text="{i18n>gateSaturdayOpenHr}" />
-                         <TimePicker change="onDetectChange" id="gateSatOpen" value="{parts: ['plantBasicDetailsModel>/GateSaturdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-                         <Label required="true" text="{i18n>gateThanksGivingOpenHr}" />
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">
+					</m:Title>
+					<m:Label text="{plantsModel>/plant}"/>
+				</m:VBox>
 
-                         <TimePicker change="onDetectChange" id="gateThanksOpen" value="{parts: ['plantBasicDetailsModel>/GateThanksgivingOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+				<m:VBox class="sapUiSmallMarginBottom sapUiLargeMarginEnd">
+					<m:Title level="H4" titleStyle="H4" text="Property" class="sapUiTinyMarginBottom" />
+					<m:Label text="{plantsModel>/property}"/>
+				</m:VBox>
 
-                         <Label required="true" text="{i18n>gateChristmasOpenHr}" />
-                         <TimePicker change="onDetectChange" id="gateChrisOpen" value="{parts: ['plantBasicDetailsModel>/GateChristmasOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+				<m:VBox class="sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Address" class="sapUiTinyMarginBottom" />
+					<m:Label wrapping="true" text="{plantsModel>/address}"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>
 
-                         <Label required="true" text="{i18n>gateNewYearOpenHr}" />
-                         <TimePicker change="onDetectChange" id="gateNewYearOpen" value="{parts: ['plantBasicDetailsModel>/GateNewyearOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+		<sections>
 
-                         <Label  text="{i18n>gateAccessZone0}" />
-                         <Input id="gateac0" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone00'], formatter: '.formatter.formatGetAccess0'}" />
+			<ObjectPageSection titleUppercase="false" id="personalSection" title="Gate Details">
+				<subSections>
+					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
+						<blocks>
+                                   <f:SimpleForm id="workingHours" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                                        <f:content>
+                                             <core:Title text="" visible="false"/>
+                                             <m:Label required="true" text="{i18n>gateSundayOpenHr}" />
+                                             <m:TimePicker change="onDetectChange" id="gateSunOpen" value="{parts: ['plantBasicDetailsModel>/GateSundayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                                             <m:Label required="true" text="{i18n>gateMondayOpenHr}" />
+                                             <m:TimePicker change="onDetectChange" id="gateMonOpen" value="{parts: ['plantBasicDetailsModel>/GateMondayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                                             <m:Label required="true" text="{i18n>gateTuesdayOpenHr}" />
+                                             <m:TimePicker change="onDetectChange" id="gateTueOpen" value="{parts: ['plantBasicDetailsModel>/GateTuesdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                    
+                                             <m:Label required="true" text="{i18n>gateWednesdayOpenHr}" />
+                                             <m:TimePicker change="onDetectChange" id="gateWedOpen" value="{parts: ['plantBasicDetailsModel>/GateWednessdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                    
+                    
+                                             <m:Label required="true" text="{i18n>gateThursdayOpenHr}" />
+                                             <m:TimePicker change="onDetectChange" id="gateThuOpen" value="{parts: ['plantBasicDetailsModel>/GateThursdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                    
+                                             <m:Label required="true" text="{i18n>gateFriadayOpenHr}" />
+                                             <m:TimePicker change="onDetectChange" id="gateFriOpen" value="{parts: ['plantBasicDetailsModel>/GateFridayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                                             <m:Label required="true" text="{i18n>gateSaturdayOpenHr}" />
+                                             <m:TimePicker change="onDetectChange" id="gateSatOpen" value="{parts: ['plantBasicDetailsModel>/GateSaturdayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                                             <m:Label required="true" text="{i18n>gateThanksGivingOpenHr}" />
+                    
+                                             <m:TimePicker change="onDetectChange" id="gateThanksOpen" value="{parts: ['plantBasicDetailsModel>/GateThanksgivingOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                    
+                                             <m:Label required="true" text="{i18n>gateChristmasOpenHr}" />
+                                             <m:TimePicker change="onDetectChange" id="gateChrisOpen" value="{parts: ['plantBasicDetailsModel>/GateChristmasOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                    
+                                             <m:Label required="true" text="{i18n>gateNewYearOpenHr}" />
+                                             <m:TimePicker change="onDetectChange" id="gateNewYearOpen" value="{parts: ['plantBasicDetailsModel>/GateNewyearOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                    
+                                             <m:Label  text="{i18n>gateAccessZone0}" />
+                                             <m:Input id="gateac0" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone00'], formatter: '.formatter.formatGetAccess0'}" />
+                    
+                                             <m:Label  text="{i18n>gateAccessZone1}" />
+                                             <m:Input id="gateac1" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone01'], formatter: '.formatter.formatGetAccess1'}" />
+                                             <m:Label  text="{i18n>gateAccessZone2}" />
+                                             <m:Input id="gateac2" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone02'], formatter: '.formatter.formatGetAccess2'}" />
+                                             <m:Label  text="{i18n>gateAccessZone3}" />
+                                             <m:Input id="gateac3" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone03'], formatter: '.formatter.formatGetAccess3'}" />
+                                             <m:Label  text="{i18n>gateAccessZone4}" />
+                                             <m:Input id="gateac4" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone04'], formatter: '.formatter.formatGetAccess4'}" />
+                    
+                                             <core:Title text="" />
+                    
+                                             <m:Label required="true" text="{i18n>gateSundayClosedHr}" />
+                                             <m:TimePicker id="gateSunClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateSundayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                                             <m:Label required="true" text="{i18n>gateMondayClosedHr}" />
+                                             <m:TimePicker id="gateMonClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateMondayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                    
+                                             <m:Label required="true" text="{i18n>gateTuesdayClosedHr}" />
+                                             <m:TimePicker id="gateTueClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateTuesdayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                                             <m:Label required="true" text="{i18n>gateWednesdayClosedHr}" />
+                                             <m:TimePicker id="gateWedClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateWednessdayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                                             <m:Label required="true" text="{i18n>gateThursdayClosedHr}" />
+                                             <m:TimePicker id="gateThuClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateThursdayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                                             <m:Label required="true" text="{i18n>gateFriadayClosedHr}" />
+                                             <m:TimePicker id="gateFriClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateFridayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                                             <m:Label required="true" text="{i18n>gateSaturdayClosedHr}" />
+                                             <m:TimePicker id="gateSatClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateSaturdayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                    
+                                             <m:Label required="true" text="{i18n>gateThanksGivingClosedHr}" />
+                                             <m:TimePicker id="gateThanksClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateThanksgivingCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                    
+                                             <m:Label required="true" text="{i18n>gateChristmasClosedHr}" />
+                                             <m:TimePicker id="gateChrisClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateChristmasCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                    
+                                             <m:Label required="true" text="{i18n>gateNewYearClosedHr}" />
+                                             <m:TimePicker id="gateNewYearClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateNewyearCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                    
+                                             <m:Label  text="{i18n>gateAccessZone5}" />
+                                             <m:Input id="gateac5" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone05'], formatter: '.formatter.formatGetAccess5'}" />
+                    
+                                             <m:Label  text="{i18n>gateAccessZone6}" />
+                                             <m:Input id="gateac6" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone06'], formatter: '.formatter.formatGetAccess6'}" />
+                    
+                                             <m:Label  text="{i18n>gateAccessZone7}" />
+                                             <m:Input id="gateac7" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone07'], formatter: '.formatter.formatGetAccess7'}" />
+                    
+                                             <m:Label text="{i18n>gateAccessZone8}" />
+                                             <m:Input id="gateac8" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone07'], formatter: '.formatter.formatGetAccess8'}" />
+                    
+                                             <m:Label  text="{i18n>gateAccessZone9}" />
+                                             <m:Input id="gateac9" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone09'], formatter: '.formatter.formatGetAccess9'}" />
+                    
+                                             <m:Label  text="{i18n>gateAccessZone10}" />
+                                             <m:Input id="gateac10" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone10'], formatter: '.formatter.formatGetAcces10'}" />
+                    
+                                        </f:content>
+                                   </f:SimpleForm>
+                    
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
 
-                         <Label  text="{i18n>gateAccessZone1}" />
-                         <Input id="gateac1" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone01'], formatter: '.formatter.formatGetAccess1'}" />
-                         <Label  text="{i18n>gateAccessZone2}" />
-                         <Input id="gateac2" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone02'], formatter: '.formatter.formatGetAccess2'}" />
-                         <Label  text="{i18n>gateAccessZone3}" />
-                         <Input id="gateac3" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone03'], formatter: '.formatter.formatGetAccess3'}" />
-                         <Label  text="{i18n>gateAccessZone4}" />
-                         <Input id="gateac4" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone04'], formatter: '.formatter.formatGetAccess4'}" />
-
-                         <core:Title text="" />
-
-                         <Label required="true" text="{i18n>gateSundayClosedHr}" />
-                         <TimePicker id="gateSunClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateSundayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-                         <Label required="true" text="{i18n>gateMondayClosedHr}" />
-                         <TimePicker id="gateMonClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateMondayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-
-                         <Label required="true" text="{i18n>gateTuesdayClosedHr}" />
-                         <TimePicker id="gateTueClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateTuesdayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-                         <Label required="true" text="{i18n>gateWednesdayClosedHr}" />
-                         <TimePicker id="gateWedClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateWednessdayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-                         <Label required="true" text="{i18n>gateThursdayClosedHr}" />
-                         <TimePicker id="gateThuClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateThursdayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-                         <Label required="true" text="{i18n>gateFriadayClosedHr}" />
-                         <TimePicker id="gateFriClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateFridayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-                         <Label required="true" text="{i18n>gateSaturdayClosedHr}" />
-                         <TimePicker id="gateSatClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateSaturdayCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-
-                         <Label required="true" text="{i18n>gateThanksGivingClosedHr}" />
-                         <TimePicker id="gateThanksClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateThanksgivingCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-
-                         <Label required="true" text="{i18n>gateChristmasClosedHr}" />
-                         <TimePicker id="gateChrisClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateChristmasCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-
-                         <Label required="true" text="{i18n>gateNewYearClosedHr}" />
-                         <TimePicker id="gateNewYearClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateNewyearCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
-
-                         <Label  text="{i18n>gateAccessZone5}" />
-                         <Input id="gateac5" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone05'], formatter: '.formatter.formatGetAccess5'}" />
-
-                         <Label  text="{i18n>gateAccessZone6}" />
-                         <Input id="gateac6" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone06'], formatter: '.formatter.formatGetAccess6'}" />
-
-                         <Label  text="{i18n>gateAccessZone7}" />
-                         <Input id="gateac7" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone07'], formatter: '.formatter.formatGetAccess7'}" />
-
-                         <Label text="{i18n>gateAccessZone8}" />
-                         <Input id="gateac8" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone07'], formatter: '.formatter.formatGetAccess8'}" />
-
-                         <Label  text="{i18n>gateAccessZone9}" />
-                         <Input id="gateac9" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone09'], formatter: '.formatter.formatGetAccess9'}" />
-
-                         <Label  text="{i18n>gateAccessZone10}" />
-                         <Input id="gateac10" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone10'], formatter: '.formatter.formatGetAcces10'}" />
-
-                    </f:content>
-               </f:SimpleForm>
-
-               <VBox alignContent="End" alignItems="End">
-                    <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveGateDetails"></Button>
-               </VBox>
-          </VBox>
-     </ScrollContainer>
+		</sections>
+	</ObjectPageLayout>
 </mvc:View>

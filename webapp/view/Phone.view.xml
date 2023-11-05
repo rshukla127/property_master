@@ -1,90 +1,145 @@
-<mvc:View controllerName="com.public.storage.pao.controller.Phone"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns:l="sap.ui.layout"
-    xmlns:f="sap.ui.layout.form"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+controllerName="com.public.storage.pao.controller.Phone"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" height="100%">
 
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Phone Number Details" wrapping="true" />
+				</expandedHeading>
 
+				<snappedHeading>
+					<m:HBox>
+						<m:VBox>
+							<m:Title text="Phone Number Details" wrapping="true"/>
+							<m:Label text="Fill your phone details"/>
+						</m:VBox>
+					</m:HBox>
+				</snappedHeading>
 
-        <VBox class="sapUiSmallMargin">
-            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" title="Phone (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
-                <f:content>
-                    <core:Title text="" visible="false"/>
+				<expandedContent>
+					<m:Label text="Fill your phone details"/>
+				</expandedContent>
 
+				<snappedTitleOnMobile>
+					<m:Title text="Phone Number Details"/>
+				</snappedTitleOnMobile>
 
-                    <Label  text="{i18n>direPhoneNo}" />
-                    <Input id="direPhoneNo" enabled="false"  value="{plantsModel>/Telnumber}" />
+				<actions>
+					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSavePhoneDetails"></m:Button>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
 
-                    <Label text="{i18n>faxNumber}"/>
-                    <Input id="faxNumber" enabled="false" maxLength="30" value="{plantsModel>/Faxnumber}" />
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true">
+				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
 
-                    <Label required="true" text="{i18n>publishedPhNo}"/>
-                    <Input  id="publishedPhNo1" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/publishedPhNo}" maxLength="30" value="{plantBasicDetailsModel>/PublishedPhoneNo}" />
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">
+					</m:Title>
+					<m:Label text="{plantsModel>/plant}"/>
+				</m:VBox>
 
-                    <Label required="true" text="{i18n>tollfreeNo}" />
-                    <Input  id="tollfreeNo" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/tollfreeNo}" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber}" />
-                    <Label required="true" text="{i18n>localPhoneNo}" />
-                    <Input  id="localPhoneNo" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/localPhoneNo}" maxLength="30" value="{plantBasicDetailsModel>/LocalPhoneNumber}" />
-                    
-                    <Label text="{i18n>tollfreeNumber2}" />
-                    <Input  id="tollfreeNumber2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber2}" />
+				<m:VBox class="sapUiSmallMarginBottom sapUiLargeMarginEnd">
+					<m:Title level="H4" titleStyle="H4" text="Property" class="sapUiTinyMarginBottom" />
+					<m:Label text="{plantsModel>/property}"/>
+				</m:VBox>
 
-                    <Label text="{i18n>tollfreeNumber3}" />
-                    <Input  id="tollfreeNumber3" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber3}" />
+				<m:VBox class="sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Address" class="sapUiTinyMarginBottom" />
+					<m:Label wrapping="true" text="{plantsModel>/address}"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>
 
-                    <Label text="{i18n>tollfreeNumber4}" />
-                    <Input id="tollfreeNumber4" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber4}" />
+		<sections>
 
-                    <Label text="{i18n>alarmPhoneNo1}" />
-                    <Input  id="alarmPhoneNo1" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber1}" />
+			<ObjectPageSection titleUppercase="false" id="personalSection" title="Phone Number Details">
+				<subSections>
+					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
+						<blocks>
+                            <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                                <f:content>
+                                    <core:Title text="" visible="false"/>
+                
+                
+                                    <m:Label  text="{i18n>direPhoneNo}" />
+                                    <m:Input id="direPhoneNo" enabled="false"  value="{plantsModel>/Telnumber}" />
+                
+                                    <m:Label text="{i18n>faxNumber}"/>
+                                    <m:Input id="faxNumber" enabled="false" maxLength="30" value="{plantsModel>/Faxnumber}" />
+                
+                                    <m:Label required="true" text="{i18n>publishedPhNo}"/>
+                                    <m:Input  id="publishedPhNo1" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/publishedPhNo}" maxLength="30" value="{plantBasicDetailsModel>/PublishedPhoneNo}" />
+                
+                                    <m:Label required="true" text="{i18n>tollfreeNo}" />
+                                    <m:Input  id="tollfreeNo" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/tollfreeNo}" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber}" />
+                                    <m:Label required="true" text="{i18n>localPhoneNo}" />
+                                    <m:Input  id="localPhoneNo" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/localPhoneNo}" maxLength="30" value="{plantBasicDetailsModel>/LocalPhoneNumber}" />
+                                    
+                                    <m:Label text="{i18n>tollfreeNumber2}" />
+                                    <m:Input  id="tollfreeNumber2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber2}" />
+                
+                                    <m:Label text="{i18n>tollfreeNumber3}" />
+                                    <m:Input  id="tollfreeNumber3" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber3}" />
+                
+                                    <m:Label text="{i18n>tollfreeNumber4}" />
+                                    <m:Input id="tollfreeNumber4" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber4}" />
+                
+                                    <m:Label text="{i18n>alarmPhoneNo1}" />
+                                    <m:Input  id="alarmPhoneNo1" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber1}" />
+                
+                                    <m:Label text="{i18n>alarmPhoneNo2}" />
+                                    <m:Input  id="alarmPhoneNo2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber2}" />
+                
+                                    <m:Label text="{i18n>alarmPhoneNumber}" />
+                                    <m:Input  id="alarmPhoneNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber}" />
+                                      
+                                    <core:Title text="" visible="false"/>
+                
+                                    <m:Label text="{i18n>burglarPhoneNo}" />
+                                    <m:Input  id="burglarPhoneNo" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/BurgAlarmPhoneNumber}" />
+                
+                                    <m:Label text="{i18n>cellphoneNumber}" />
+                                    <m:Input  id="cellphoneNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/CellPhoneNumber}" />
+                
+                                    <m:Label text="{i18n>directphoneNumber2}" />
+                                    <m:Input  id="directphoneNumber2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/DirectPhoneNo2}" />
+                
+                                    <m:Label text="{i18n>directphoneNumber3}" />
+                                    <m:Input  id="directphoneNumber3" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/DirectPhoneNo3}" />
+                
+                                    <m:Label text="{i18n>elevatprNo1}" />
+                                    <m:Input  id="elevatprNo1" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo1}" />
+                
+                                    <m:Label text="{i18n>elevatprNo2}" />
+                                    <m:Input  id="elevatprNo2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo2}" />
+                
+                                    <m:Label text="{i18n>elevatprNo3}" />
+                                    <m:Input  id="elevatprNo3" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo3}" />
+                
+                                    <m:Label text="{i18n>extensionNumber}" />
+                                    <m:Input  id="extensionNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ExtensionNumber}" />
+                
+                                    <m:Label text="{i18n>officePhoneNumber}" />
+                                    <m:Input  id="officePhoneNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/OfficePhoneNumber}" />
+                
+                                    <m:Label text="{i18n>publishedPhoneNo}" />
+                                    <m:Input  id="publishedPhoneNo2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/PublishedPhoneNo2}" />
+                
+                                </f:content>
+                            </f:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
 
-                    <Label text="{i18n>alarmPhoneNo2}" />
-                    <Input  id="alarmPhoneNo2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber2}" />
-
-                    <Label text="{i18n>alarmPhoneNumber}" />
-                    <Input  id="alarmPhoneNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber}" />
-                      
-                    <core:Title text="" visible="false"/>
-
-                    <Label text="{i18n>burglarPhoneNo}" />
-                    <Input  id="burglarPhoneNo" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/BurgAlarmPhoneNumber}" />
-
-                    <Label text="{i18n>cellphoneNumber}" />
-                    <Input  id="cellphoneNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/CellPhoneNumber}" />
-
-                    <Label text="{i18n>directphoneNumber2}" />
-                    <Input  id="directphoneNumber2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/DirectPhoneNo2}" />
-
-                    <Label text="{i18n>directphoneNumber3}" />
-                    <Input  id="directphoneNumber3" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/DirectPhoneNo3}" />
-
-                    <Label text="{i18n>elevatprNo1}" />
-                    <Input  id="elevatprNo1" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo1}" />
-
-                    <Label text="{i18n>elevatprNo2}" />
-                    <Input  id="elevatprNo2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo2}" />
-
-                    <Label text="{i18n>elevatprNo3}" />
-                    <Input  id="elevatprNo3" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo3}" />
-
-                    <Label text="{i18n>extensionNumber}" />
-                    <Input  id="extensionNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ExtensionNumber}" />
-
-                    <Label text="{i18n>officePhoneNumber}" />
-                    <Input  id="officePhoneNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/OfficePhoneNumber}" />
-
-                    <Label text="{i18n>publishedPhoneNo}" />
-                    <Input  id="publishedPhoneNo2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/PublishedPhoneNo2}" />
-
-                </f:content>
-            </f:SimpleForm>
-            <VBox alignContent="End" alignItems="End">
-                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSavePhoneDetails"></Button>
-            </VBox>
-        </VBox>
-
-
-    </ScrollContainer>
+		</sections>
+	</ObjectPageLayout>
 </mvc:View>

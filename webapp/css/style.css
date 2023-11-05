@@ -11,3 +11,7 @@
 .marginBtn {
     margin-left: 54rem !important;
 }
+
+.sapUxAPObjectPageContainerNoBar>.sapUxAPObjectPageSection:first-child:not(.sapUxAPObjectPageSectionNoTitle) {
+    margin-top: 0px !important;
+}
