@@ -1,5 +1,4 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc"
-controllerName="com.public.storage.pao.controller.OtherDetails"
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.public.storage.pao.controller.OtherDetails"
 	xmlns="sap.uxap"
 	xmlns:m="sap.m"
 	xmlns:core="sap.ui.core"
@@ -62,26 +61,73 @@ controllerName="com.public.storage.pao.controller.OtherDetails"
 
 			<ObjectPageSection titleUppercase="false" id="personalSection" title="Property Other Details">
 				<subSections>
-					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
+					<ObjectPageSubSection id="personalSectionSS1" titleUppercase="false">
 						<blocks>
-                            <f:SimpleForm id="otherDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
-                                <f:content>
-                                   
-                                    <m:Label required="true" text="{i18n>keyTraining}" />
-                                    <!-- <m:Input id="keyTrain" valueStateText="Value cannot be blank" valueState="{/KeyTrainingProfessional}" showValueHelp="true" valueHelpRequest="_onValueHelpKeyTraining" valueHelpOnly="true" value="{plantBasicDetailsModel>/KeyTraniningProfessional}" /> -->
-                                        <m:Select id="keyTrain" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/KeyTrainingProfessional}" selectedKey="{parts: ['plantBasicDetailsModel>/KeyTraniningProfessional'], formatter: '.formatter.getKeyTrainingProffesional'}">
-                                            <m:items>			
-                                                <core:Item text="" key="N"/>																					
-                                                <core:Item text="Y-KPT Center" key="Y" />
-                                            
-                                            </m:items>
-                                        </m:Select>
-                
-                                    <m:Label text="{i18n>marketClass}" />
-                                    <m:Input id="mClass" showValueHelp="true" valueHelpRequest="_onValueHelpMarketClass" valueHelpOnly="true" value="{plantBasicDetailsModel>/MartketClass}" />
-                
-                                </f:content>
-                            </f:SimpleForm>
+							<f:SimpleForm id="otherDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+								<f:content>
+
+									<m:Label required="true" text="{i18n>keyTraining}" />
+									<!-- <m:Input id="keyTrain" valueStateText="Value cannot be blank" valueState="{/KeyTrainingProfessional}" showValueHelp="true" valueHelpRequest="_onValueHelpKeyTraining" valueHelpOnly="true" value="{plantBasicDetailsModel>/KeyTraniningProfessional}" /> -->
+									<m:Select id="keyTrain" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/KeyTrainingProfessional}" selectedKey="{parts: ['plantBasicDetailsModel>/KeyTraniningProfessional'], formatter: '.formatter.getKeyTrainingProffesional'}">
+										<m:items>
+											<core:Item text="" key="N"/>
+											<core:Item text="Y-KPT Center" key="Y" />
+
+										</m:items>
+									</m:Select>
+
+									<m:Label text="{i18n>marketClass}" />
+									<m:Input id="mClass" showValueHelp="true" valueHelpRequest="_onValueHelpMarketClass" valueHelpOnly="true" value="{plantBasicDetailsModel>/MartketClass}" />
+									<m:Label text="{i18n>riskScore}" />
+									<m:Select id="riskScore" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/RiskScore}">
+										<m:items>
+											<core:Item text="1" key="On"/>
+											<core:Item text="2" key="Tw" />
+											<core:Item text="3" key="Th"/>
+											<core:Item text="4" key="Fo" />
+											<core:Item text="5" key="Fi"/>
+
+
+										</m:items>
+									</m:Select>
+
+									<m:Label text="{i18n>riskRating}" />
+									<m:Select id="riskRating" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/RiskRating}">
+										<m:items>
+											
+											<core:Item text="Low" key="L"/>
+											<core:Item text="Medium" key="M" />
+											<core:Item text="HIgh" key="H"/>
+										</m:items>
+									</m:Select>
+
+									<m:Label text="{i18n>cas}" />
+									<m:Select id="cas" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/Cas}">
+										<m:items>
+											
+											<core:Item text="Yes" key="Y"/>
+											<core:Item text="No" key="N" />
+
+										</m:items>
+									</m:Select>
+
+									<m:Label text="{i18n>majorAquisition}" />
+									<m:TextArea rows="2" id="majorAquisition" maxLength="50" />
+
+									<m:Label text="{i18n>lifecycleStage}" />
+									<m:Select id="lifecycleStage" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/Cas}">
+										<m:items>
+											
+											<core:Item text="Future Open" key="100"/>
+											<core:Item text="Current Open" key="101"/>
+											<core:Item text="Temp Closed" key="102" />
+											<core:Item text="Perm Closed" key="103" />
+
+										</m:items>
+									</m:Select>
+
+								</f:content>
+							</f:SimpleForm>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>

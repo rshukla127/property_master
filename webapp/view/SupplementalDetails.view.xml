@@ -159,6 +159,10 @@ controllerName="com.public.storage.pao.controller.SupplementalDetails"
                 
                                     <m:Label text="{i18n>constructionCode2}" />
                                     <m:Input change="onDetectChange" id="constCode2" showValueHelp="true" app:fieldName="constCode2" valueHelpOnly="true" valueHelpRequest="_onValueHelpConstructionCode" value="{plantBasicDetailsModel>/ConstructionCode2}" />
+                                    
+                                    <m:Label text="{i18n>officeCount}" />
+                                    <m:Input change="onDetectChange" id="officeCount" type="Number" maxLength="2" value="{plantBasicDetailsModel>/OfficeCount}" />
+                                    
                                     <core:Title text="" visible="false"/>
                                     <m:Label text="{i18n>lotSize}" />
                                     <m:Input change="onDetectChange" id="lotSize" maxLength="9" value="{plantBasicDetailsModel>/LotSize}" />
@@ -246,7 +250,9 @@ controllerName="com.public.storage.pao.controller.SupplementalDetails"
                                     </m:Select>
                                     <m:Label text="{i18n>survillanceCamRemarks}" />
                                     <m:Input change="onDetectChange" id="surCamRemarks" maxLength="30" value="{plantBasicDetailsModel>/SurvellianceCameraRemarks}" />
-                
+                                    
+                                    <m:Label text="{i18n>restRoomCount}" />
+                                    <m:Input change="onDetectChange" id="restRoomCount" type="Number" maxLength="2" value="{plantBasicDetailsModel>/RestroomCount}" />
                                 </f:content>
                             </f:SimpleForm>
 						</blocks>

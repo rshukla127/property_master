@@ -151,6 +151,15 @@ controllerName="com.public.storage.pao.controller.BUDetails"
                                     <m:Input id="aquiredFromTP" valueHelpRequest="_onValueHelpComThirdParty" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/AcquiredDevelopedThirdP}" />
                                     <m:Label  text="{i18n>psd}" />
                                     <m:Input change="onDetectChange" id="psd" maxLength="12" value="{plantBasicDetailsModel>/Psd}" />
+
+                                    <m:Label  text="{i18n>trafficMonitoring}" />
+                                        <m:Select change="onDetectChange" id="trafficMonitoring" selectedKey="{plantBasicDetailsModel>/TrafticMonitoring}">
+                                            <m:items>
+                                                <core:Item text="Yes" key="Y"/>
+                                                <core:Item text="No" key="N"/>
+                    
+                                            </m:items>
+                                        </m:Select>
                 
                                 </f:content>
                             </f:SimpleForm>

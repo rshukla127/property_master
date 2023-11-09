@@ -155,6 +155,8 @@ sap.ui.define([
             let SpecialNotes = this.getView().byId("spNotes").getValue();
             let Apartments =  this.getView().byId("apart").getSelectedKey();
             let yearbuild = this.byId("year").getValue();
+            let officeCount = this.byId("officeCount").getValue();
+            let restRoomCount = this.byId("restRoomCount").getValue();
 
             if (PropertyFeatures === "") {
                 this.model.setProperty("/PropertyFeatures", "Error");
@@ -218,7 +220,9 @@ sap.ui.define([
                 Elevators:this.getView().byId("elevater").getSelectedKey(),
                 Apartments:Apartments,
                 SurvellianceCamera:this.getView().byId("camera").getSelectedKey(),
-                SurvellianceCameraRemarks:this.getView().byId("surCamRemarks").getValue()
+                SurvellianceCameraRemarks:this.getView().byId("surCamRemarks").getValue(),
+                OfficeCount: officeCount,
+                RestroomCount: restRoomCount
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
             this._oModel.update(uri, payload, {

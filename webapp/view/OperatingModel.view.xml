@@ -30,7 +30,7 @@
                 </snappedTitleOnMobile>
 
                 <actions>
-                    <m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveOtherDetails"></m:Button>
+                    <m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveOperatingModelDetails"></m:Button>
                 </actions>
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
@@ -67,7 +67,7 @@
                                 <f:content>
                                     <core:Title text=""/>
                                     <m:Label text="{i18n>kioskmodel}" />
-                                    <m:Select id="kioskmodel" change="onDetectChange">
+                                    <m:Select id="kioskmodel" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/KioskModel}">
                                         <m:items>
                                             <core:Item text="Yes" key="Y"/>
                                             <core:Item text="No" key="N" />
@@ -76,12 +76,12 @@
 
                                     <m:Label text="{i18n>kioskDate}" />
                                     <m:DatePicker change="onDetectChange" id="kioskDate" value="{ 
-                                        path: 'plantBasicDetailsModel>/KioskActiveDat',
+                                        path: 'plantBasicDetailsModel>/KioskDate',
                                         type: 'sap.ui.model.type.Date'  
                                     }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 
                                     <m:Label text="{i18n>cddModel}" />
-                                    <m:Select id="cddModel" change="onDetectChange">
+                                    <m:Select id="cddModel" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/CddModel}">
                                         <m:items>
                                             <core:Item text="Yes" key="Y"/>
                                             <core:Item text="No" key="N" />
@@ -90,12 +90,12 @@
 
                                     <m:Label text="{i18n>cddDate}" />
                                     <m:DatePicker change="onDetectChange" id="cddDate" value="{ 
-                                    path: 'plantBasicDetailsModel>/KioskActiveDa',
+                                    path: 'plantBasicDetailsModel>/CddDate',
                                     type: 'sap.ui.model.type.Date'  
                                 }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 
                                     <m:Label text="{i18n>satelliteModel}" />
-                                    <m:Select id="satelliteModel" change="onDetectChange">
+                                    <m:Select id="satelliteModel" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/SatelliteModel}">
                                         <m:items>
                                             <core:Item text="Yes" key="Y"/>
                                             <core:Item text="No" key="N" />
@@ -104,17 +104,15 @@
                                     </m:Select>
 
                                     <m:Label text="{i18n>satelliteDate}" />
-                                    <m:Select id="satelliteDate" change="onDetectChange">
-                                        <m:items>
-                                            <core:Item text="Yes" key="Y"/>
-                                            <core:Item text="No" key="N" />
-                                        </m:items>
-                                    </m:Select>
+                                        <m:DatePicker change="onDetectChange" id="satelliteDate" value="{ 
+                                            path: 'plantBasicDetailsModel>/SatelliteDate',
+                                            type: 'sap.ui.model.type.Date'  
+                                        }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
                                     <m:Label text="{i18n>satelliteHub}" />
-                                    <m:Input id="satelliteHub" maxLength="5" />
+                                    <m:Input id="satelliteHub" maxLength="5" value="{plantBasicDetailsModel>/SatelliteHub}"/>
 
                                     <m:Label text="{i18n>connectCareModel}" />
-                                        <m:Select id="connectCareModel" change="onDetectChange">
+                                        <m:Select id="connectCareModel" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/ConnectcareModel}">
                                             <m:items>
                                                 <core:Item text="Yes" key="Y"/>
                                                 <core:Item text="No" key="N" />
@@ -125,28 +123,28 @@
                                     <core:Title text=""/>
 
                                     <m:Label text="{i18n>kioskGp}" />
-                                    <m:TextArea rows="2" id="kioskGp" maxLength="50" />
+                                    <m:TextArea rows="2" id="kioskGp" maxLength="50" value="{plantBasicDetailsModel>/KioskGroup}"/>
 
                                     <m:Label text="{i18n>connectCareBuddy}" />
-                                    <m:Input id="connectCareBuddy" maxLength="5" />
+                                    <m:Input id="connectCareBuddy" maxLength="5" value="{plantBasicDetailsModel>/ConnectcareBuddy}"/>
 
                                     <m:Label text="{i18n>kioskBuddy}" />
-                                    <m:Input id="kioskBuddy" maxLength="5" />
+                                    <m:Input id="kioskBuddy" maxLength="5" value="{plantBasicDetailsModel>/KioskBuddy}"/>
 
                                     <m:Label text="{i18n>cddGroup}" />
-                                    <m:TextArea id="cddGroup" rows="2" maxLength="50" />
+                                    <m:TextArea id="cddGroup" rows="2" maxLength="50" value="{plantBasicDetailsModel>/CddGroup}"/>
 
                                     <m:Label text="{i18n>satelliteGroup}" />
-                                    <m:TextArea rows="2" id="satelliteGroup" maxLength="50" />
+                                    <m:TextArea rows="2" id="satelliteGroup" maxLength="50" value="{plantBasicDetailsModel>/SatelliteGroup}"/>
 
                                     <m:Label text="{i18n>connectCareDate}" />
                                     <m:DatePicker change="onDetectChange" id="connectCareDate" value="{ 
-                                    path: 'plantBasicDetailsModel>/',
+                                    path: 'plantBasicDetailsModel>/ConnectcareDate',
                                     type: 'sap.ui.model.type.Date'  
                                     }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 
                                     <m:Label text="{i18n>connectCareGroup}" />
-                                    <m:TextArea id="connectCareGroup" rows="2" maxLength="50" />
+                                    <m:TextArea id="connectCareGroup" rows="2" maxLength="50" value="{plantBasicDetailsModel>/ConnectcareGroup}"/>
 
                                     
 

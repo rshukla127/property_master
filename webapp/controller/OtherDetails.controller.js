@@ -133,6 +133,11 @@ sap.ui.define([
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             let sKeyTraining = this.byId("keyTrain").getSelectedKey();
             let sMarketClass = this.byId("mClass").getValue();
+            let sriskScore = this.byId("riskScore").getSelectedItem().getText();
+            let sriskRating = this.byId("riskRating").getSelectedItem().getText();
+            let sCas = this.byId("cas").getSelectedKey() === "Y" ? true : false;
+            let sMajorAquisition = this.byId("majorAquisition").getValue();
+            let sLifecycleStage = this.byId("lifecycleStage").getSelectedKey();
 
             let bValidation = true;
 
@@ -143,10 +148,16 @@ sap.ui.define([
                 this.model.setProperty("/KeyTrainingProfessional", "None");
                 bValidation = false;
             }
+
             if (bValidation === false){
             const payload = {
                 MartketClass: sMarketClass,
-                KeyTraniningProfessional: sKeyTraining
+                KeyTraniningProfessional: sKeyTraining,
+                RiskScore: sriskScore,
+                RiskRating: sriskRating,
+                Cas: sCas,
+                MajorAcqisitions: sMajorAquisition,
+                LifecycleStage: sLifecycleStage
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
            

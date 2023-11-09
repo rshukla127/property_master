@@ -311,6 +311,7 @@ sap.ui.define([
             let aTypeProp = this.byId("atypeProp").getValue();
             let bType = this.byId("bType").getValue();
             let aquiredFromTP = this.byId("aquiredFromTP").getValue();
+            let trafficMoni = this.getView().byId("trafficMonitoring").getSelectedKey() === "Y" ? true : false;
 
             
             if (sActive === "") {
@@ -372,7 +373,8 @@ sap.ui.define([
                 Solar: this.getView().byId("solar").getSelectedKey(),
                 AcquiredFrom: this.getView().byId("aquiredFrom").getValue(),
                 AcquiredDevelopedThirdP: aquiredFromTP, 
-                Psd:this.getView().byId("psd").getValue()
+                Psd:this.getView().byId("psd").getValue(),
+                TrafticMonitoring: trafficMoni
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
            
