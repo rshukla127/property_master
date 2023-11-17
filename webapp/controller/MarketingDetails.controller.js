@@ -4,14 +4,20 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/ui/core/Fragment",
     "sap/ui/model/json/JSONModel",
-    "com/public/storage/pao/utils/formatter"
+    "com/public/storage/pao/utils/formatter",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/FilterType"
 ], function(
 	BaseController,
     BusyDialog,
     MessageToast,
     Fragment,
     JSONModel,
-    formatter
+    formatter,
+    Filter,
+    FilterOperator,
+    FilterType
 ) {
 	"use strict";
     var _oController;
@@ -52,6 +58,35 @@ sap.ui.define([
             this.readPSConsolidatedPropGroup();
 
         },
+
+        onValueHelpDialogSearchConsGp:function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+			oEvent.getSource().getBinding("items").filter([oFilter]);
+
+        },
+
+        onValueHelpDialogSearchMarketKey:function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+			oEvent.getSource().getBinding("items").filter([oFilter]);
+
+        },
+
+        onValueHelpDialogSearchMetroStats:function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+			oEvent.getSource().getBinding("items").filter([oFilter]);
+
+        },
+
+        onValueHelpDialogSearchNeighbour:function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+			oEvent.getSource().getBinding("items").filter([oFilter]);
+
+        },
+
 
         _onValueHelpMarketKey: function(oEvent){
             this.getOwnerComponent.hasChanges = true;
@@ -206,6 +241,7 @@ sap.ui.define([
             let sNeighbourhood = this.byId("neighbourwood").getValue();
             let rankProp = this.byId("rankProp").getSelectedKey();
             let sConslidatedGroup = this.byId("psCons").getValue();
+            let sCommType = this.byId("commType").getSelectedItem().getText();
 
         
 
@@ -248,7 +284,8 @@ sap.ui.define([
                 MetroStatisicalArea: sMetroStatus,
                 Neighborwood: sNeighbourhood,
                 PsConsolidatedPropertygroup: sConslidatedGroup,
-                Rank: rankProp
+                Rank: rankProp,
+                CommunityType:sCommType
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
            

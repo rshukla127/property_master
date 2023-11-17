@@ -3,7 +3,7 @@
 		id="txFillingEntity"
 		title="Tax Filling Entity"
 		items="{taxFilingModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchSolarENtity"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
 		<StandardListItem

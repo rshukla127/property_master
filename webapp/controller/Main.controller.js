@@ -250,6 +250,20 @@ sap.ui.define([
                 });
             },
 
+            onPlantSuggest: function(oEvent){
+                const sInputValue = oEvent.getSource().getValue();
+                const sFIlter = new Filter("Werks", FilterOperator.Contains, sInputValue);
+                oEvent.getSource().getBinding("suggestionRows").filter(sFIlter);
+                
+            },
+
+            onPropertySuggest: function(oEvent){
+                const sInputValue = oEvent.getSource().getValue();
+                const sFIlter = new Filter("Name2", FilterOperator.Contains, sInputValue);
+                oEvent.getSource().getBinding("suggestionRows").filter(sFIlter);
+            },
+
+
             _onValueHelpMarketClass: function (oEvent) {
                 const that =this;
                 var sInputValue = oEvent.getSource().getValue(),
@@ -954,6 +968,7 @@ sap.ui.define([
                                                                 that.getView().getModel("oVisModel").setProperty("/enabledForPlant", false);
                                                                 that.getView().getModel("oVisModel").setProperty("/enabledForProperty", false);
                                                                 that.getView().byId("idReset").setEnabled(true);
+                                                                that.getView().byId("savandcontmain").setEnabled(false);
                                                                 if (that.getOwnerComponent().plant.includes("A") || that.getOwnerComponent().plant.includes("a")){
                                                                     that.byId("rb1").setSelected(true);
                                                                     //that.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", true);
@@ -985,6 +1000,7 @@ sap.ui.define([
                                                                     that.getView().getModel("oVisModel").setProperty("/enabledForPlant", false);
                                                                     that.getView().getModel("oVisModel").setProperty("/enabledForProperty", false);
                                                                     that.getView().byId("idReset").setEnabled(true);
+                                                                    that.getView().byId("savandcontmain").setEnabled(true);
                                                                     if (that.getOwnerComponent().plant.includes("A") || that.getOwnerComponent().plant.includes("a")){
                                                                         that.byId("rb1").setSelected(true);
                                                                         //that.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", true);

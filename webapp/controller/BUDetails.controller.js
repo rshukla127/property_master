@@ -4,14 +4,20 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/ui/core/Fragment",
     "sap/ui/model/json/JSONModel",
-    "com/public/storage/pao/utils/formatter"
+    "com/public/storage/pao/utils/formatter",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/FilterType"
 ], function(
 	BaseController,
     BusyDialog,
     MessageToast,
     Fragment,
     JSONModel,
-    formatter
+    formatter,
+    Filter,
+    FilterOperator,
+    FilterType
 ) {
 	"use strict";
     var _oController;
@@ -84,6 +90,51 @@ sap.ui.define([
                 // Open ValueHelpDialog filtered by the input's value
                 oDialog.open();
             });
+
+        },
+
+        onValueHelpDialogSearchBuType: function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+
+			oEvent.getSource().getBinding("items").filter([oFilter]);
+
+        },
+
+        onValueHelpDialogSearchCCcode:function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+
+			oEvent.getSource().getBinding("items").filter([oFilter]);
+
+        },
+
+        onValueHelpDialogSearchEntityType:function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+
+			oEvent.getSource().getBinding("items").filter([oFilter]);
+
+        },
+
+        onValueHelpDialogSearchCombinedSno:function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+			oEvent.getSource().getBinding("items").filter([oFilter]);
+
+        },
+
+        onValueHelpDialogSearchAtypeProp:function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+			oEvent.getSource().getBinding("items").filter([oFilter]);
+
+        },
+
+        onValueHelpDialogSearchAquiredTp:function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+			oEvent.getSource().getBinding("items").filter([oFilter]);
 
         },
 

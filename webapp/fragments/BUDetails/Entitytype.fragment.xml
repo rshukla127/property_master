@@ -3,7 +3,7 @@
 		id="entitytype"
 		title="Entity Type"
 		items="{entityTypeModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchEntityType"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
 		<StandardListItem

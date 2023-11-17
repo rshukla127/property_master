@@ -86,6 +86,19 @@ controllerName="com.public.storage.pao.controller.MarketingDetails"
 					
 											</m:items>
 										</m:Select>
+
+										<m:Label text="{i18n>commType}" />
+										<m:Select change="onDetectChange" id="commType" selectedKey="{parts: ['plantBasicDetailsModel>/CommunityType'], formatter: '.formatter.getCommType'}">
+											
+											<m:items>																								
+												<core:Item text="Not Assigned" key="NA" />
+												<core:Item text="Urban Centers" key="UC"/>
+												<core:Item text="Urban Suburbs" key="US" />
+												<core:Item text="Middle Suburbs" key="MS"/>
+												<core:Item text="Exurbs" key="EX" />
+					
+											</m:items>
+										</m:Select>
 								</f:content>
 							</f:SimpleForm>
 						</blocks>

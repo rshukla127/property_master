@@ -64,6 +64,8 @@ controllerName="com.public.storage.pao.controller.Miscellaneous"
 				<subSections>
 					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
 						<blocks>
+						<m:VBox>
+						 <m:VBox>
                             <m:Table headerText="" id="isMiscTab" items="{path: 'miscModel>/'}" width="100%" noDataText="" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true">
                                 <m:headerToolbar>
                                     <m:OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
@@ -99,9 +101,12 @@ controllerName="com.public.storage.pao.controller.Miscellaneous"
                                     </m:ColumnListItem>
                                 </m:items>
                             </m:Table>
+							</m:VBox>
+						 
                             <m:VBox id="illusSectionMisc">
                             <core:Fragment fragmentName="com.public.storage.pao.fragments.MiscDetails.IllustrativeMessage" type="XML"/>
                             </m:VBox>
+							</m:VBox>
                     
 						</blocks>
 					</ObjectPageSubSection>

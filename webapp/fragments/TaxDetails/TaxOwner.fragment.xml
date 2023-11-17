@@ -3,7 +3,7 @@
 		id="txOwner"
 		title="Tax Owner"
 		items="{taxOwnerModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchTaxOwner"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
 		<StandardListItem

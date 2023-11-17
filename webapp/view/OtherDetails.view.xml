@@ -79,7 +79,7 @@
 									<m:Label text="{i18n>marketClass}" />
 									<m:Input id="mClass" showValueHelp="true" valueHelpRequest="_onValueHelpMarketClass" valueHelpOnly="true" value="{plantBasicDetailsModel>/MartketClass}" />
 									<m:Label text="{i18n>riskScore}" />
-									<m:Select id="riskScore" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/RiskScore}">
+									<m:Select id="riskScore" change="onDetectChange" selectedKey="{parts: ['plantBasicDetailsModel>/RiskScore'], formatter: '.formatter.formatRiskScore'}">
 										<m:items>
 											<core:Item text="1" key="On"/>
 											<core:Item text="2" key="Tw" />
@@ -92,17 +92,17 @@
 									</m:Select>
 
 									<m:Label text="{i18n>riskRating}" />
-									<m:Select id="riskRating" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/RiskRating}">
+									<m:Select id="riskRating" change="onDetectChange" selectedKey="{parts: ['plantBasicDetailsModel>/RiskRating'], formatter: '.formatter.formatRiskRating'}">
 										<m:items>
 											
 											<core:Item text="Low" key="L"/>
 											<core:Item text="Medium" key="M" />
-											<core:Item text="HIgh" key="H"/>
+											<core:Item text="High" key="H"/>
 										</m:items>
 									</m:Select>
 
 									<m:Label text="{i18n>cas}" />
-									<m:Select id="cas" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/Cas}">
+									<m:Select id="cas" change="onDetectChange" selectedKey="{parts: ['plantBasicDetailsModel>/Cas'], formatter: '.formatter.formatCas'}">
 										<m:items>
 											
 											<core:Item text="Yes" key="Y"/>
@@ -115,7 +115,7 @@
 									<m:TextArea rows="2" id="majorAquisition" maxLength="50" />
 
 									<m:Label text="{i18n>lifecycleStage}" />
-									<m:Select id="lifecycleStage" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/Cas}">
+									<m:Select id="lifecycleStage" change="onDetectChange" selectedKey="{parts: ['plantBasicDetailsModel>/LifecycleStage'], formatter: '.formatter.formatFCstage'}">
 										<m:items>
 											
 											<core:Item text="Future Open" key="100"/>

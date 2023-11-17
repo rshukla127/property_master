@@ -3,7 +3,7 @@
 	<TableSelectDialog id="propertyFragment" noDataText="No Property Found" title="Select Property" search="onValueHelpDialogSearchProperty" confirm="onValueHelpDialogCloseProperty" cancel="onValueHelpDialogCloseProperty" items="{
 			path : 'plantsModel>/',
 			sorter : {
-				path : 'Name1',
+				path : 'Werks',
 				descending : false
 			}
 		}">

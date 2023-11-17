@@ -3,7 +3,7 @@
 		id="cumsurnum"
 		title="Combined Surviving Number"
 		items="{plantsModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchCombinedSno"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
 		<StandardListItem

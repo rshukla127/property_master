@@ -67,7 +67,7 @@
                                 <f:content>
                                     <core:Title text=""/>
                                     <m:Label text="{i18n>kioskmodel}" />
-                                    <m:Select id="kioskmodel" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/KioskModel}">
+                                    <m:Select id="kioskmodel" change="onDetectChange" selectedKey="{parts: ['plantBasicDetailsModel>/KioskModel'], formatter: '.formatter.formatKiskModel'}">
                                         <m:items>
                                             <core:Item text="Yes" key="Y"/>
                                             <core:Item text="No" key="N" />
@@ -81,7 +81,7 @@
                                     }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 
                                     <m:Label text="{i18n>cddModel}" />
-                                    <m:Select id="cddModel" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/CddModel}">
+                                    <m:Select id="cddModel" change="onDetectChange" selectedKey="{parts: ['plantBasicDetailsModel>/CddModel'], formatter: '.formatter.formatCDDModel'}">
                                         <m:items>
                                             <core:Item text="Yes" key="Y"/>
                                             <core:Item text="No" key="N" />
@@ -95,7 +95,7 @@
                                 }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 
                                     <m:Label text="{i18n>satelliteModel}" />
-                                    <m:Select id="satelliteModel" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/SatelliteModel}">
+                                    <m:Select id="satelliteModel" change="onDetectChange" selectedKey="{parts: ['plantBasicDetailsModel>/SatelliteModel'], formatter: '.formatter.formatSatelliteModel'}">
                                         <m:items>
                                             <core:Item text="Yes" key="Y"/>
                                             <core:Item text="No" key="N" />
@@ -112,7 +112,7 @@
                                     <m:Input id="satelliteHub" maxLength="5" value="{plantBasicDetailsModel>/SatelliteHub}"/>
 
                                     <m:Label text="{i18n>connectCareModel}" />
-                                        <m:Select id="connectCareModel" change="onDetectChange" selectedKey="{plantBasicDetailsModel>/ConnectcareModel}">
+                                        <m:Select id="connectCareModel" change="onDetectChange" selectedKey="{parts: ['plantBasicDetailsModel>/SatelliteModel'], formatter: '.formatter.formatSatModel'}">
                                             <m:items>
                                                 <core:Item text="Yes" key="Y"/>
                                                 <core:Item text="No" key="N" />

@@ -3,7 +3,7 @@
 		id="neighbour"
 		title="Neighbourhood"
 		items="{NeighborhoodModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchNeighbour"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
 		<StandardListItem

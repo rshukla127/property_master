@@ -3,7 +3,7 @@
 		id="mstatsArea"
 		title="Metro Statistical Area"
 		items="{metroStatModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchMetroStats"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
 		<StandardListItem

@@ -3,7 +3,7 @@
 		id="mkey"
 		title="Market Key"
 		items="{markeykeyModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchMarketKey"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
 		<StandardListItem

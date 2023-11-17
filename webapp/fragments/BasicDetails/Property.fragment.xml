@@ -1,9 +1,9 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="com.public.storage.pao.controller.Main" >
 	
-	<TableSelectDialog id="propertyFragment" noDataText="No Property Found" title="Select Buddy Property" search="onValueHelpDialogSearchProperty" confirm="onValueHelpDialogConfirmProperty" cancel="onValueHelpDialogCloseProperty" items="{
+	<TableSelectDialog id="propertyFragmentBuddy" noDataText="No Property Found" title="Select Buddy Property" search="onValueHelpDialogSearchProperty" confirm="onValueHelpDialogConfirmProperty" cancel="onValueHelpDialogCloseProperty" items="{
 			path : 'plantsBuddyModel>/',
 			sorter : {
-				path : 'Name1',
+				path : 'Werks',
 				descending : false
 			}
 		}">

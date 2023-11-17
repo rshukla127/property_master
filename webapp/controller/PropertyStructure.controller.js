@@ -36,26 +36,13 @@ sap.ui.define([
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber)
-            //this.readFieldSupName();
-            //this.readFieldSuppOfficeName();
-            //this.readFiledSupMobile();
-            //this.readSupFax();
-            this.readSupEmailAddress();
-            this.readRegion();
-            this.readSeniorDistrict();
-            this.readDistrict();
-            this.readDelinquentTennentSpecialist();
-            this.readpmWageZone();
-            this.readFieldOfficeOverhead();
-            this.readVPFacilities();
-            this.readSeniorRegionFacDir();
-            this.readRegionFacDir();
-            this.readSeniorFacMgr();
+            this.readOrgStructure();
+            this.readHierarachy();
             this.readFacMgr();
 
         },
 
-        _onValueHelpFieldSupName: function(oEvent){
+        _onValueHelpOrgStruc: function(oEvent){
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -63,7 +50,7 @@ sap.ui.define([
             if (!this._pValueHelpFieldSup) {
                 this._pValueHelpFieldSup = Fragment.load({
                     id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.FieldSupervisorName",
+                    name: "com.public.storage.pao.fragments.PropertyStructure.OrgStructure",
                     controller: this
                 }).then(function (oDialog) {
                     oView.addDependent(oDialog);
@@ -82,7 +69,7 @@ sap.ui.define([
 
         },
 
-        _onValueHelpFieldSupOffice: function(){
+        _onValueHelpHier: function(){
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
               const oView = this.getView();
@@ -90,7 +77,7 @@ sap.ui.define([
             if (!this._pValueHelpSupOff) {
                 this._pValueHelpSupOff = Fragment.load({
                     id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.FiledSupOffice",
+                    name: "com.public.storage.pao.fragments.PropertyStructure.Hierarchy",
                     controller: this
                 }).then(function (oDialog) {
                     oView.addDependent(oDialog);
@@ -99,11 +86,7 @@ sap.ui.define([
             }
             this._oBusyDialog.open()
             this._pValueHelpSupOff.then(function (oDialog) {
-                //that.readPropertyMasterData();
                 that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
                 oDialog.open();
             });
 

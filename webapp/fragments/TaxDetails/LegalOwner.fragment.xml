@@ -3,7 +3,7 @@
 		id="legalOwnerN"
 		title="Legal Owner"
 		items="{LegalOwnerModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchLegalOwner"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
 		<StandardListItem

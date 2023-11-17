@@ -1,72 +1,85 @@
-<mvc:View controllerName="com.public.storage.pao.controller.PropertyStructure"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns:l="sap.ui.layout"
-    xmlns:f="sap.ui.layout.form"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+controllerName="com.public.storage.pao.controller.PropertyStructure"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" height="100%">
 
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Property Structure Details" wrapping="true" />
+				</expandedHeading>
 
+				<snappedHeading>
+					<m:HBox>
+						<m:VBox>
+							<m:Title text="Property Structure Details" wrapping="true"/>
+							<m:Label text="Structure Details"/>
+						</m:VBox>
+					</m:HBox>
+				</snappedHeading>
 
-        <VBox class="sapUiSmallMargin">
-            <f:SimpleForm id="propStructure" editable="true" layout="ResponsiveGridLayout" title="{i18n>propBUDetail} (Plant - {plantsModel>/plant} &amp; Property - {plantBasicDetailsModel>/LegacyPropertyNumber} - {plantsModel>/address})" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+				<expandedContent>
+					<m:Label text="Structure Details"/>
+				</expandedContent>
+
+				<snappedTitleOnMobile>
+					<m:Title text="Property Structure Details"/>
+				</snappedTitleOnMobile>
+
+				<!-- <actions>
+					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSavePropDates"></m:Button>
+				</actions> -->
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true">
+				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
+
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">
+					</m:Title>
+					<m:Label text="{plantsModel>/plant}"/>
+				</m:VBox>
+
+				<m:VBox class="sapUiSmallMarginBottom sapUiLargeMarginEnd">
+					<m:Title level="H4" titleStyle="H4" text="Property" class="sapUiTinyMarginBottom" />
+					<m:Label text="{plantsModel>/property}"/>
+				</m:VBox>
+
+				<m:VBox class="sapUiSmallMarginBottom">
+					<m:Title level="H4" titleStyle="H4" text="Address" class="sapUiTinyMarginBottom" />
+					<m:Label wrapping="true" text="{plantsModel>/address}"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>
+
+		<sections>
+
+			<ObjectPageSection titleUppercase="false" id="personalSection" title="Property Structure Details">
+				<subSections>
+					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
+						<blocks>
+              <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
                 <f:content>
-                    <core:Title text="" visible="false"/>
-                    <Label required="true" text="{i18n>fieldSupervisorName}" />
-                    <Input id="fSuperName" valueHelpRequest="_onValueHelpFieldSupName" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/DirectPhoneNo}" />
-                    <Label required="true" text="{i18n>filedSupOfficeName}" />
-                    <Input id="fSupOffice" valueHelpRequest="_onValueHelpFieldSupOffice" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/FaxNumber}" />
-
-                    <Label required="true" text="{i18n>fieldSupMobile}" />
-                    <Input id="fSupMobile" valueHelpRequest="_onValueHelpSupMobile" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/TollFreeNumber}" />
-
-                    <Label required="true" text="{i18n>fieldSupFax}" />
-                    <Input id="fSupMax" valueHelpRequest="_onValueHelpFieldSubFax" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-
-                    <Label required="true" text="{i18n>fieldSupEmail}" />
-                    <Input id="fSupervisorEmail" valueHelpRequest="_onValueHelpFieldSubEmail" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/TollFreeNumber}" />
-
-                    <Label text="{i18n>evpZone}" />
-                    <Input id="evpZone" value="{basicDetailsModel>/0/Network1IpAddress}" />
-
-                    <Label text="{i18n>division}" />
-                    <Input id="div" value="{basicDetailsModel>/0/Network1IpAddress}" />
-
-                    <Label text="{i18n>seniorRegion}" />
-                    <Input id="seniorReg" value="{basicDetailsModel>/0/Network1IpAddress}" />
-
-                    <Label text="{i18n>region}" />
-                    <Input id="region" valueHelpRequest="_onValueHelpRegion" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-
-                    <Label text="{i18n>seniorDistrict}" />
-                    <Input id="senDist" valueHelpRequest="_onValueHelpSeniorReg" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-                    <core:Title text="" />
-                    <Label text="{i18n>district}" />
-                    <Input id="district" valueHelpRequest="_onValueHelpDist" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-                    <Label text="{i18n>deliTennent}" />
-                    <Input id="dtSpec" valueHelpRequest="_onValueHelpDeTeSpecialist" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-                    <Label text="{i18n>pmwage}" />
-                    <Input id="pmwage" valueHelpRequest="_onValueHelpPmwageZone" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-                    <Label text="{i18n>fieldOffice}" />
-                    <Input id="fOffOverhead" valueHelpRequest="_onValueHelpFieldOffOverhead" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-                    <Label text="{i18n>vpFacilities}" />
-                    <Input id="vpFacilities" valueHelpRequest="_onValueHelpVpFacilities" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-                    <Label text="{i18n>seniorReegion}" />
-                    <Input id="seniorRegFacility" valueHelpRequest="_onValueHelpSenRegionFac" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-                    <Label text="{i18n>regionFacility}" />
-                    <Input id="regionFacDir" valueHelpRequest="_onValueHelpRegFac" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-                    <Label  text="{i18n>seniorFacility}" />
-                    <Input id="seniorFacMgr" valueHelpRequest="_onValueHelpSeniorFac" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-                    <Label text="{i18n>facility}" />
-                    <Input id="facilityMgr" valueHelpRequest="_onValueHelpFacilityMgr" valueHelpOnly="true" showValueHelp="true" value="{basicDetailsModel>/0/Network1IpAddress}" />
-
-                </f:content>
+                    <core:Title text=""/>
+                    <m:Label  text="Org Structures" />
+                        <m:Input id="orgStructure" valueHelpRequest="_onValueHelpOrgStruc" valueHelpOnly="true" showValueHelp="true" value="" />
+                    </f:content>
+                    <core:Title text=""/>
+                    <m:Label  text="Hierarchy" />
+                    <m:Input id="hier"  valueHelpRequest="_onValueHelpHier" valueHelpOnly="true" showValueHelp="true" value="" />
+                   
             </f:SimpleForm>
-            <VBox alignContent="End" alignItems="End">
-                <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></Button>
-            </VBox>
-        </VBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
 
-
-    </ScrollContainer>
+		</sections>
+	</ObjectPageLayout>
 </mvc:View>

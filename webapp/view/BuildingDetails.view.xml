@@ -64,6 +64,8 @@ controllerName="com.public.storage.pao.controller.BuildingDetails"
 				<subSections>
 					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
 						<blocks>
+						<m:VBox>
+						 <m:VBox>
                             <m:Table headerText="" id="idAttributestTab" items="{path: 'buildingModel>/'}" width="100%" noDataText="" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true">
                                 <m:headerToolbar>
                                     <m:OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
@@ -100,9 +102,12 @@ controllerName="com.public.storage.pao.controller.BuildingDetails"
                                 </m:items>
                                
                             </m:Table>
+							 </m:VBox>
+							 
                             <m:VBox id="illusSection">
                             <core:Fragment fragmentName="com.public.storage.pao.fragments.MiscDetails.IllustrativeMessage" type="XML"/>
                             </m:VBox>
+							</m:VBox>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>

@@ -3,7 +3,7 @@
 		id="custcode"
 		title="Customer Code"
 		items="{custCodeModel>/}"
-		search="onValueHelpDialogSearch"
+		search="onValueHelpDialogSearchCCcode"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
 		<StandardListItem

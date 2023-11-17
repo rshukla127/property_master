@@ -33,6 +33,96 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       }
     },
 
+    formatRiskScore: function (sValue) {
+     
+      if (sValue === "1") {
+        return "On";
+      } else if (sValue === "2"){
+        return "Tw";
+      } else if (sValue === "3"){
+        return "Th";
+      } else if (sValue === "4"){
+        return "Fo";
+      }else {
+        return "Fi";
+      }
+    },
+
+    formatRiskRating: function (sValue) {
+      if (sValue === "Low") {
+        return 'L';
+      } else if (sValue === "Medium") {
+        return 'M';
+      } else {
+        return 'H';
+      }
+    },
+
+    formatCas: function (sValue) {
+      if (sValue === true) {
+        return 'Y';
+      } else {
+        return 'N';
+      }
+    },
+
+    formatFCstage: function (sValue) {
+
+      if (sValue) {
+        return sValue;
+      } else {
+        return "N";
+      }
+    },
+
+    getCommType: function (sValue) {
+
+      if (sValue === "Not Assigned") {
+        return "NA";
+      } else if (sValue === "Urban Centers"){
+        return "UC";
+      } else if (sValue === "Urban Suburbs"){
+        return "US";
+      } else if (sValue === "Middle Suburbs"){
+        return "MS";
+      }else {
+        return "EX";
+      }
+    },
+
+    formatSatelliteModel: function (sValue) {
+      if (sValue) {
+        return sValue;
+      } else {
+        return "N";
+      }
+    },
+
+    formatSatModel: function (sValue) {
+      if (sValue) {
+        return sValue;
+      } else {
+        return "N";
+      }
+    },
+
+    formatCDDModel: function (sValue) {
+      if (sValue) {
+        return sValue;
+      } else {
+        return "Not Assigned";
+      }
+    },
+
+
+    formatKiskModel: function (sValue) {
+      if (sValue) {
+        return sValue;
+      } else {
+        return "N";
+      }
+    },
+
     formatGetAccess0: function (sValue) {
       if (sValue) {
         return sValue;

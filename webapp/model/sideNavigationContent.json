@@ -45,6 +45,11 @@
 					"visible": false
 				},
 				{
+					"title": "{i18n>sideNavSubItemPropStructure}",
+					"key": "propStructure",
+					"visible": false
+				},
+				{
 					"title": "{i18n>sideNavSubItemTaxDetails}",
 					"key": "taxDetails",
 					"visible": false

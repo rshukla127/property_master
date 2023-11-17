@@ -6,7 +6,7 @@
 	<TableSelectDialog id="plantFragment" noDataText="No Plant Found" title="Select Plant" search="onValueHelpDialogSearchPlant" confirm="onValueHelpDialogClosePlant" cancel="onValueHelpDialogClosePlant" items="{
 			path : 'plantsModel>/',
 			sorter : {
-				path : 'Name1',
+				path : 'Werks',
 				descending : false
 			}
 		}">

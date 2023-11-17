@@ -3,7 +3,7 @@
 		id="market"
 		title="Market Class"
 		items="{marketClassSetModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchMarketClass"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
 		<StandardListItem

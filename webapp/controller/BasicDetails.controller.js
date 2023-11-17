@@ -105,6 +105,14 @@ sap.ui.define([
             });
         },
 
+        onValueHelpDialogSearchProperty: function(oEvent){
+            var sValue = oEvent.getParameter("value");
+			var oFilterPlant = new Filter("Werks", FilterOperator.Contains, sValue);
+            // var oFilterProp = new Filter("Name1", FilterOperator.Contains, sValue);
+
+			oEvent.getSource().getBinding("items").filter([oFilterPlant]);
+        },
+
         onValueHelpDialogConfirmProperty: function (oEvent) {
             let oItem = oEvent.getParameter("selectedItem");
             let sProperty = oItem.getBindingContext("plantsBuddyModel").getObject().Name2

@@ -3,7 +3,7 @@
 		id="thirdPartProp"
 		title="Aquired Third Party"
 		items="{aquiredTpModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchAquiredTp"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
 		<StandardListItem

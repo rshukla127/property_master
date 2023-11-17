@@ -3,7 +3,7 @@
 		id="consGroup"
 		title="Consolidated Property Group"
 		items="{psConsildatePropGroupModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchConsGp"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
 		<StandardListItem

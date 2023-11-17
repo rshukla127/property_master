@@ -3,7 +3,7 @@
 		id="bunit"
 		title="Business Unit"
 		items="{bTypeModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchBuType"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClosePlant">
 		<StandardListItem

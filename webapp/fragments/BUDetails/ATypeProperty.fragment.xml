@@ -3,7 +3,7 @@
 		id="aTypeProp"
 		title="Property Type Model"
 		items="{aTypePropModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchAtypeProp"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClosePlant">
 		<StandardListItem

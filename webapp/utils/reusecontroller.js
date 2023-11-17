@@ -7,6 +7,7 @@ sap.ui.define([
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "sap/ui/model/FilterType",
+    "sap/m/MessageBox"
 ], function(
     Controller,
     UIComponent,
@@ -15,7 +16,8 @@ sap.ui.define([
 	JSONModel,
     Filter,
     FilterOperator,
-    FilterType
+    FilterType,
+    MessageBox
 
 ) {
 	"use strict";
@@ -37,6 +39,7 @@ sap.ui.define([
 		},
 
 		readPropertyData: function(Plant, LegacyPropertyNumber){
+            const oRouter = this.getRouter();
             const that = this;
             const uri= `/PropertyMasterSet(Plant='${Plant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
             // this._oBusyDialog.open()
@@ -48,10 +51,24 @@ sap.ui.define([
                     sap.ui.getCore().setModel(oModel, "plantBasicDetailsModel");
                     that.getView().getModel("plantBasicDetailsModel").refresh();
                 },
-                error: function (oData) {
+                error: function (error) {
                     // that._oBusyDialog.close();
-                    MessageToast.show("Something went wrong with Service")
+                    const parseError = JSON.parse(error.responseText).error.message.value;
+                    if (parseError.includes("Resource not found for segment")){
+                        MessageBox.error("Please Save Plant and Property details to procced further.",
+                    {
+                        title: "Error",
+                        actions: [MessageBox.Action.OK],
+                        onClose: function (oAction) {
+                            oRouter.navTo("home");
+                        }
+                    }
+                    );
+                    
+                } else {
+                    MessageToast.show("Something went wrong with the service");
                 }
+            }
             })
 
         },
@@ -224,6 +241,46 @@ sap.ui.define([
                         const oModel = new JSONModel(oData.results);
                         that.getView().setModel(oModel, "bTypeModel")
                         sap.ui.getCore().setModel(oModel, "bTypeModel");
+                    },
+                    error: function (oData) {
+                        that._oBusyDialog.close();
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+
+        },
+
+        readOrgStructure:function(){
+            const that = this;
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'ORGSTRUCT');
+            this._oBusyDialog.open()
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
+                    success: function (oData) {
+                        that._oBusyDialog.close();
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "orgStructureModel")
+                        sap.ui.getCore().setModel(oModel, "orgStructureModel");
+                    },
+                    error: function (oData) {
+                        that._oBusyDialog.close();
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+
+        },
+
+        readHierarachy:function(){
+            const that = this;
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'HIERCODE');
+            this._oBusyDialog.open()
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
+                    success: function (oData) {
+                        that._oBusyDialog.close();
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "hierModel")
+                        sap.ui.getCore().setModel(oModel, "hierModel");
                     },
                     error: function (oData) {
                         that._oBusyDialog.close();
@@ -563,22 +620,6 @@ sap.ui.define([
                 });
         },
 
-        readFacMgr: function(){
-            const that = this;
-            
-            that._oModel.read(`/readFacMgrSet`, {
-                    success: function (oData) {
-                       
-                        const oModel = new JSONModel(oData.results);
-                        that.getView().setModel(oModel, "FacilitiesMgrModel")
-                        sap.ui.getCore().setModel(oModel, "FacilitiesMgrModel");
-                    },
-                    error: function (oData) {
-                       
-                        MessageToast.show("Something went wrong with Service")
-                    }
-                });
-        },
 
         readRegion: function(){
             const that = this;

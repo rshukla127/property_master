@@ -72,7 +72,7 @@
                                     <Label text="Plant:" required="true" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" />
                                     <Input id="plantInput" textFormatMode="KeyValue" placeholder="Enter plant" showSuggestion="true" 
                                     value="{plantsModel>/plant}" enabled="{oVisModel>/enabledForPlant}"  showValueHelp="true" 
-                                    submit="onSubmitPlant" maxSuggestionWidth="65rem" valueHelpRequest="_onValueHelpPlant" suggestionRows="{path: 'plantsModel>/', length:5000}" suggestionItemSelected="onSuggestionPlantSelected">
+                                    submit="onSubmitPlant" suggest="onPlantSuggest" maxSuggestionWidth="65rem" valueHelpRequest="_onValueHelpPlant" suggestionRows="{path: 'plantsModel>/', length:5000}" suggestionItemSelected="onSuggestionPlantSelected">
                                         <!-- <suggestionItems>
                                             <core:ListItem key="{plantsModel>Werks}" text="{plantsModel>Werks}" />
                                         </suggestionItems> -->
@@ -121,7 +121,7 @@
                                     <Label text="Property:" required="true" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" />
                                     <Input id="propertyInput" textFormatMode="KeyValue" placeholder="Enter property" showSuggestion="true" enabled="{oVisModel>/enabledForProperty}" 
                                         showValueHelp="true" value="{plantsModel>/property}" valueHelpRequest="_onValueHelpRequestProperty"
-                                        suggestionRows="{path: 'plantsModel>/', length:5000}" maxSuggestionWidth="65rem" suggestionItemSelected="onSuggestionPropertySelected">
+                                        suggestionRows="{path: 'plantsModel>/', length:5000}" suggest="onPropertySuggest" maxSuggestionWidth="65rem" suggestionItemSelected="onSuggestionPropertySelected">
                                         <!-- <suggestionItems>
                                        <core:ListItem key="{plantsModel>Name2}" text="{plantsModel>Name2}" />
                                     </suggestionItems> -->
@@ -403,7 +403,7 @@
                                     </VBox>
                                 </HBox> -->
                                 <VBox alignContent="End" alignItems="End">
-                                    <Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSave"></Button>
+                                    <Button text="Save and Continue" id="savandcontmain" enabled="true" type="Emphasized" press="onPressSave"></Button>
                                 </VBox>
                             </f:GridListItem>
                         </f:GridList>
