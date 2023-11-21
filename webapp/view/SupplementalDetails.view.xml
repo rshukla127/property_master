@@ -168,7 +168,7 @@ controllerName="com.public.storage.pao.controller.SupplementalDetails"
                                     <m:Input change="onDetectChange" id="lotSize" maxLength="9" value="{plantBasicDetailsModel>/LotSize}" />
                 
                                     <m:Label text="{i18n>buildingClassification}" />
-                                    <m:Input change="onDetectChange" id="buildClass" showValueHelp="true" value="{plantBasicDetailsModel>/BuildingClassification}" />
+                                    <m:Input change="onDetectChange" id="buildClass" showValueHelp="true" valueHelpOnly="true" value="{plantBasicDetailsModel>/BuildingClassification}" />
                 
                                     <m:Label text="{i18n>grossSquareFootage}" />
                                     <m:Input change="onDetectChange" id="grossSQFoot" maxLength="7" value="{plantBasicDetailsModel>/GrossSquareFootage}" />

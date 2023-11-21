@@ -2,8 +2,8 @@
 	<SelectDialog class="sapUiSizeCompact"
 		id="hiercode"
 		title="Hierarchy Code"
-		items="{orgStructureModel>/}"
-		search="onValueHelpDialogSearchOrgStruct"
+		items="{hierModel>/}"
+		search="onValueHelpDialogSearchHierStruct"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClosePlant">
 		<StandardListItem

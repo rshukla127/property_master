@@ -1,7 +1,7 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc"
-controllerName="com.public.storage.pao.controller.PropertyStructure"
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.public.storage.pao.controller.PropertyStructure"
 	xmlns="sap.uxap"
 	xmlns:m="sap.m"
+	 xmlns:ui="sap.ui.table"
 	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form" height="100%">
@@ -62,19 +62,55 @@ controllerName="com.public.storage.pao.controller.PropertyStructure"
 
 			<ObjectPageSection titleUppercase="false" id="personalSection" title="Property Structure Details">
 				<subSections>
-					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
+					<ObjectPageSubSection id="personalSectionSS1" titleUppercase="false">
 						<blocks>
-              <f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
-                <f:content>
-                    <core:Title text=""/>
-                    <m:Label  text="Org Structures" />
-                        <m:Input id="orgStructure" valueHelpRequest="_onValueHelpOrgStruc" valueHelpOnly="true" showValueHelp="true" value="" />
-                    </f:content>
-                    <core:Title text=""/>
-                    <m:Label  text="Hierarchy" />
-                    <m:Input id="hier"  valueHelpRequest="_onValueHelpHier" valueHelpOnly="true" showValueHelp="true" value="" />
-                   
-            </f:SimpleForm>
+						<m:VBox>
+							<m:VBox>
+							<f:SimpleForm id="basicDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+								<f:content>
+									<core:Title text=""/>
+									<m:Label text="Org Structures" />
+									<m:Input id="orgStructure" valueHelpRequest="_onValueHelpOrgStruc" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/OrgStruct}"/>
+								</f:content>
+								<core:Title text=""/>
+								<m:Label text="Hierarchy" />
+								<m:Input enabled="false" id="hier" valueHelpRequest="_onValueHelpHier" valueHelpOnly="true" showValueHelp="true" value="{plantBasicDetailsModel>/HierCode}" />
+
+							</f:SimpleForm>
+							</m:VBox>
+							<m:VBox>
+							<ui:TreeTable id="treeTable" selectionMode="None" enableColumnReordering="false"
+							
+							rows="{path: 'treeModel>/'}">
+							<ui:extension>
+								<m:OverflowToolbar style="Clear">
+									<m:ToolbarSpacer/>
+									<m:Label text="Expand:"/>
+									<m:Switch change="onCollapseAll" state="true" customTextOn="Yes" customTextOff="No"/>
+									<!-- <m:Button text="Expand All" press="onExpandAll"/> -->
+								</m:OverflowToolbar>
+							</ui:extension>
+
+								<ui:columns>
+
+									<ui:Column>
+										<m:Label text="Hierarchy Level"/>
+										<ui:template>
+											<m:Text text="{treeModel>Level}" wrapping="false" />
+										</ui:template>
+									</ui:Column>
+
+									<ui:Column>
+										<m:Label text="Description"/>
+										<ui:template>
+											<m:Text text="{treeModel>LevelDesc}" wrapping="false" />
+										</ui:template>
+									</ui:Column>
+								</ui:columns>
+
+							</ui:TreeTable>
+							</m:VBox>
+							</m:VBox>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>

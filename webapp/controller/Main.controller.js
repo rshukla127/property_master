@@ -1183,10 +1183,10 @@ sap.ui.define([
                       });
 
 
-                      if (groupedData.R === undefined && bValidation === true){
-                        this.BusyDialog.close();
-                        return MessageToast.show("Missing Storage Profit Center");
-                      } else {
+                    if (groupedData.R === undefined && bValidation === true){
+                    this.BusyDialog.close();
+                    return MessageToast.show("Missing Storage Profit Center");
+                    } else {
                         this.createNewProperty();
                       }
                     }
@@ -1209,7 +1209,7 @@ sap.ui.define([
                 const sName2 = sFIlterModel[0].Name2;
                 const sState = sFIlterModel[0].Regio;
                 const sPin = sFIlterModel[0].Pstlz;
-                const sCounty = sFIlterModel[0].Counc;
+                const sCounty = sFIlterModel[0].City2;
                 const sStreet = sFIlterModel[0].Stras;
 
                 let sRadioButtonSelectedOwn = this.byId("rb1").getSelected();

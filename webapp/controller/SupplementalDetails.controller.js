@@ -4,14 +4,21 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/ui/model/json/JSONModel",
     "com/public/storage/pao/utils/formatter",
-    "sap/ui/core/Fragment"
+    "sap/ui/core/Fragment",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/FilterType"
 ], function(
 	BaseController,
     BusyDialog,
     MessageToast,
     JSONModel,
     formatter,
-    Fragment
+    Fragment,
+    Filter,
+    FilterOperator,
+    FilterType
+
 ) {
 	"use strict";
     var _oController;
@@ -85,7 +92,7 @@ sap.ui.define([
         onValueHelpDialogClose: function (oEvent) {
 			let	oSelectedItem = oEvent.getParameter("selectedItem");
             let sTitle = oEvent.getSource().getTitle();
-            oEvent.getSource().getBinding("items").filter([]);
+            // oEvent.getSource().getBinding("items").filter([]);
             if (!oSelectedItem) {
 				return;
 			}
@@ -140,6 +147,20 @@ sap.ui.define([
                 // Open ValueHelpDialog filtered by the input's value
                 oDialog.open();
             });
+        },
+
+        onValueHelpDialogYBuild: function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("year", FilterOperator.Contains, sValue);
+			oEvent.getSource().getBinding("items").filter([oFilter]);
+
+        },
+
+        onValueHelpDialogSearchCC: function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+			oEvent.getSource().getBinding("items").filter([oFilter]);
+
         },
 
         onPressSaveSuppDetails: function(){

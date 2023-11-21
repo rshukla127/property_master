@@ -87,6 +87,7 @@ sap.ui.define([
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             // let sTime = "T00:00:00";
+            let sDayLight = this.byId("daylight").getSelectedKey();
             let sunOpenN = this.byId("sunOpen").getValue();
             let monOpenN = this.byId("monOpen").getValue();
             let tueOpenN = this.byId("tueOpen").getValue();
@@ -229,7 +230,8 @@ sap.ui.define([
                 OfficeFridayOpenHr: finalFriOpen,
                 OfficeFridayCloseHr: finalFriClosed,
                 OfficeSaturdayOpenHr: finalSatOpen,
-                OfficeSaturdayCloseHr: finalSatClosed
+                OfficeSaturdayCloseHr: finalSatClosed,
+                DayLightSavingsApplicable: sDayLight
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
            

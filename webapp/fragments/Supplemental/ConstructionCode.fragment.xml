@@ -3,7 +3,7 @@
 		id="ccode"
 		title="Construction Code"
 		items="{ccodeModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchCC"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClosePlant">
 		<StandardListItem

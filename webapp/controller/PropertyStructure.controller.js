@@ -3,13 +3,21 @@ sap.ui.define([
     "sap/m/BusyDialog",
     "sap/m/MessageToast",
     "sap/ui/core/Fragment",
-    "com/public/storage/pao/utils/formatter"
+    "com/public/storage/pao/utils/formatter",
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/FilterType"
 ], function(
 	BaseController,
     BusyDialog,
     MessageToast,
     Fragment,
-    formatter
+    formatter,
+    JSONModel,
+    Filter,
+    FilterOperator,
+    FilterType
 ) {
 	"use strict";
     var _oController;
@@ -35,10 +43,57 @@ sap.ui.define([
               }
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
+            
             this.readPropertyData(Plant, LegacyPropertyNumber)
             this.readOrgStructure();
             this.readHierarachy();
-            this.readFacMgr();
+            if (this.getView().getModel("treeModel")){
+                this.getView().getModel("treeModel").setData([]);
+            }
+        },
+
+
+        buildTree: function(data){
+            var nestedData = {};
+
+            data.forEach(function(item) {
+              // Exclude __metadata property
+              if (item.__metadata) {
+                delete item.__metadata;
+              }
+          
+              if (!nestedData[item.LevelId]) {
+                nestedData[item.LevelId] = item;
+                nestedData[item.LevelId].children = [];
+              } else {
+                nestedData[item.LevelId] = Object.assign(nestedData[item.LevelId], item);
+              }
+          
+              var parentLevelId = parseInt(item.LevelId) - 1;
+              if (parentLevelId >= 0) {
+                if (!nestedData[parentLevelId].children) {
+                  nestedData[parentLevelId].children = [];
+                }
+                nestedData[parentLevelId].children.push(nestedData[item.LevelId]);
+              }
+            });
+          
+            // Find the root nodes
+            var rootNodes = Object.values(nestedData).filter(function(item) {
+              return parseInt(item.LevelId) === 0;
+            });
+          
+            return rootNodes;
+        },
+
+        onCollapseAll: function(oEvent){
+            const oTree = this.byId("treeTable");
+            const sState = oEvent.getSource().getState();
+            if (sState){
+                oTree.expandToLevel(10);
+            } else {
+                oTree.collapseAll();
+            }
 
         },
 
@@ -92,401 +147,84 @@ sap.ui.define([
 
         },
 
-        _onValueHelpSupMobile: function(oEvent){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
+        onValueHelpDialogClose: function (oEvent) {
+			var	oSelectedItem = oEvent.getParameter("selectedItem");
+            let sTitle = oEvent.getSource().getTitle();
+            oEvent.getSource().getBinding("items").filter([]);
+            if (!oSelectedItem) {
+				return;
+			}
 
-            if (!this._pValueHelpSupMobile) {
-                this._pValueHelpSupMobile = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.FiledSupOffice",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
+            if (sTitle === "Org Structure"){
+                let sDescriptionOrg = oSelectedItem.getDescription();
+                this._sCodeOrg =  oSelectedItem.getTitle();
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/OrgStruct", `(${this._sCodeOrg}) ${sDescriptionOrg}`);
+                this.byId("hier").setEnabled(true);
+                
+            } 
+            if(sTitle === "Hierarchy Code"){
+                let sDescriptionHier = oSelectedItem.getDescription();
+                let sCodeHier =  oSelectedItem.getTitle();
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/HierCode", `(${sCodeHier}) ${sDescriptionHier}`);
+                this.byId("hier").setEnabled(false);
+                this.callTreeService(sCodeHier, this._sCodeOrg);
             }
-            this._oBusyDialog.open()
-            this._pValueHelpSupMobile.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
+            
+		},
+
+        onValueHelpDialogSearchHierStruct:function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+			oEvent.getSource().getBinding("items").filter([oFilter]);
 
         },
 
-        _onValueHelpFieldSubFax: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
-
-            if (!this._pValueHelpFieldSub) {
-                this._pValueHelpFieldSub = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.FieldSupFax",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpFieldSub.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
-        },
-
-        _onValueHelpFieldSubEmail: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
-
-            if (!this._pValueHelpSubEmail) {
-                this._pValueHelpSubEmail = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.FieldSubEmail",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpSubEmail.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
+        onValueHelpDialogSearchOrgStruct:function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+			oEvent.getSource().getBinding("items").filter([oFilter]);
 
         },
 
-        _onValueHelpRegion: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
+        callTreeService: function(CodeHier, CodeOrg){
+                const that = this;
+                let property = new sap.ui.model.Filter('LegacyPropertyNumber', 'EQ', this.getOwnerComponent().LegacyPropertyNumber);
+                let sOrgStruct = new sap.ui.model.Filter('OrgStruct', 'EQ', CodeOrg);
+                let sHierCode = new sap.ui.model.Filter('HierCode', 'EQ', CodeHier);
+                this._oBusyDialog.open();
+                this._oModel.read(`/PropertyHierarchySet`, {
+                    filters: [property, sOrgStruct, sHierCode],
+                    success: function (oData) {
+                        that._oBusyDialog.close();
+                        that.byId("treeTable").setVisible(true);
+                        const aTree = that.buildTree(oData.results);
+                        const sModel = new JSONModel(aTree[0]);
+                        that.getView().setModel(sModel,"treeModel")
+                        that.getView().getModel("treeModel").refresh();
+                        that.byId("treeTable").expandToLevel(10);
+                      
+                    },
+                    error: function (oError) {
+                        that._oBusyDialog.close();
+                        that.byId("treeTable").setVisible(false);
+                       // const sModelBlank = new JSONModel([]);
+                        if (oError.responseText){
+                        const sError = JSON.parse(oError.responseText).error.message.value
+                        // that._oBusyDialog.close();
+                        if (sError.includes("Cost Center Group")){
+                            that.getView().getModel("treeModel").setData([]);
+                            MessageToast.show(sError);
+                        } else {
+                            MessageToast.show("Something went wrong with the service");
+                            that.getView().getModel().setData([]);
+                        }
+                        } else {
+                            MessageToast.show("Something went wrong with the service");
+                            that.getView().getModel().setData([]);
+                        }
+                        }
+                })
 
-            if (!this._pValueHelpRegion) {
-                this._pValueHelpRegion = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.Region",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpRegion.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
-
-        },
-
-        _onValueHelpSeniorReg: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
-
-            if (!this._pValueHelpSeniorReg) {
-                this._pValueHelpSeniorReg = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.SeniorDist",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpSeniorReg.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
-
-        },
-
-        _onValueHelpDist: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
-
-            if (!this._pValueHelpDist) {
-                this._pValueHelpDist = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.District",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpDist.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
-
-        },
-
-        _onValueHelpDeTeSpecialist: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
-
-            if (!this._pValueHelpDeTeSpecialist) {
-                this._pValueHelpDeTeSpecialist = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.DellQuennTennSpe",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpDeTeSpecialist.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
-
-        },
-
-        _onValueHelpPmwageZone: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
-
-            if (!this._pValueHelpPmwageZone) {
-                this._pValueHelpPmwageZone = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.PmWage",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpPmwageZone.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
-
-        },
-
-        _onValueHelpFieldOffOverhead: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
-
-            if (!this._pValueHelpOffOverhead) {
-                this._pValueHelpOffOverhead = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.FieldOffOverhead",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpOffOverhead.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
-
-        },
-
-        _onValueHelpVpFacilities: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
-
-            if (!this._pValueHelpVpFacilities) {
-                this._pValueHelpVpFacilities = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.VPFacilities",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpVpFacilities.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
-
-        },
-
-        _onValueHelpSenRegionFac: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
-
-            if (!this._pValueHelpSenRegionFac) {
-                this._pValueHelpSenRegionFac = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.SeniorRegFacDir",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpSenRegionFac.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
-
-        },
-
-        _onValueHelpRegFac: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
-
-            if (!this._pValueHelpRegFac) {
-                this._pValueHelpRegFac = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.RegionFacilityDir",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpRegFac.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
-
-        },
-
-        _onValueHelpSeniorFac: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
-
-            if (!this._pValueHelpSeniorFac) {
-                this._pValueHelpSeniorFac = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.SeniorFacilityMgr",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpSeniorFac.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
-
-        },
-
-        _onValueHelpFacilityMgr: function(){
-            const that =this;
-            //var sInputValue = oEvent.getSource().getValue(),
-              const oView = this.getView();
-
-            if (!this._pValueHelpFacilityMgr) {
-                this._pValueHelpFacilityMgr = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.PropertyStructure.FacilityMgr",
-                    controller: this
-                }).then(function (oDialog) {
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._oBusyDialog.open()
-            this._pValueHelpFacilityMgr.then(function (oDialog) {
-                //that.readPropertyMasterData();
-                that._oBusyDialog.close();
-                // Create a filter for the binding
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
-                oDialog.open();
-            });
-
-        },
-
-        onPressSaveMarketingDetails: function(){
-            const sPlant = this.getOwnerComponent().plant
-            const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
-            const payload = {
-                MarketKey: this.getView().byId("markKey").getValue(),
-                MetroStatisicalArea: this.getView().byId("metroStats").getValue(),
-                Neighborwood: this.getView().byId("neighbourwood").getValue(),
-                PsConsolidatedPropertygroup: this.getView().byId("psCons").getValue()
-            }
-           const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
-            this._oModel.update(uri, payload, {
-                success: function (oData) {
-                   MessageToast.show("Saved Successfully");
-                },
-                error: function (oData) {
-                    MessageToast.show("Something went wrong with Service")
-                }
-            })
         }
 
 	});

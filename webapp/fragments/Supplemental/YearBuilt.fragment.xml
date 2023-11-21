@@ -3,7 +3,7 @@
 		id="ybuilt"
 		title="Year Built"
 		items="{path: 'yearModel>/YearBuilt'}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogYBuild"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClosePlant">
 		<StandardListItem

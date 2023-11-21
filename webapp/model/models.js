@@ -26,7 +26,7 @@ sap.ui.define([
             createYearModel: function(){
                 var oModel = new JSONModel();
                     oModel.loadData("model/yearbuilt.json");
-                    return oModel;
+                    return oModel.getData();
     
             },
     };
