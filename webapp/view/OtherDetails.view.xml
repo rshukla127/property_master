@@ -115,7 +115,7 @@
 									<m:TextArea rows="2" id="majorAquisition" value="{plantBasicDetailsModel>/MajorAcqisitions}" maxLength="50" />
 
 									<m:Label text="{i18n>lifecycleStage}" />
-									<m:Select id="lifecycleStage" change="onDetectChange" selectedKey="{parts: ['plantBasicDetailsModel>/LifecycleStage'], formatter: '.formatter.formatFCstage'}">
+									<!-- <m:Select id="lifecycleStage" change="onDetectChange" selectedKey="{parts: ['plantBasicDetailsModel>/LifecycleStage'], formatter: '.formatter.formatFCstage'}">
 										<m:items>
 											
 											<core:Item text="Future Open" key="100"/>
@@ -124,7 +124,8 @@
 											<core:Item text="Perm Closed" key="103" />
 
 										</m:items>
-									</m:Select>
+									</m:Select> -->
+									<m:Input id="lifecycleStage" showValueHelp="true" valueHelpRequest="_onValueHelpLfSTatus" valueHelpOnly="true" value="{plantBasicDetailsModel>/LifecycleStage}" />
 
 								</f:content>
 							</f:SimpleForm>

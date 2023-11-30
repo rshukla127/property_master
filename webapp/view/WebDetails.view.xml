@@ -167,11 +167,11 @@ controllerName="com.public.storage.pao.controller.WebDetails"
                                     </m:Select>
                 
                                     <m:Label required="true" text="{i18n>propInsCancel}" />
-                                    <m:Input id="propIns" change="onDetectChange" type="Number" maxLength="3" valueStateText="Value cannot be blank" valueState="{/PropertyInsuranceCancelDay}" 
-                                    value="{parts: ['plantBasicDetailsModel>/PropertyInsuranceCancelDay'], formatter: '.formatter.removeLeadingZeros'}}"/>
+                                    <m:Input id="propIns" change="onDetectChange"  maxLength="3" valueStateText="Value cannot be blank" valueState="{/PropertyInsuranceCancelDay}" 
+                                    value="{plantBasicDetailsModel>/PropertyInsuranceCancelDay}"/>
                 
                                     <m:Label required="true" text="{i18n>preResDay}" />
-                                    <m:Input id="propResDay" change="onDetectChange" type="Number" maxLength="3" valueStateText="Value cannot be blank" valueState="{/PreReservationDays}"
+                                    <m:Input id="propResDay" change="onDetectChange"  maxLength="3" valueStateText="Value cannot be blank" valueState="{/PreReservationDays}"
                                      value="{parts: ['plantBasicDetailsModel>/PreReservationDays'], formatter: '.formatter.removeLeadingZeros'}" />
                                 </f:content>
                             </f:SimpleForm>

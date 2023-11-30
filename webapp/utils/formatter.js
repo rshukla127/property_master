@@ -68,10 +68,14 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
 
     formatFCstage: function (sValue) {
 
-      if (sValue) {
-        return sValue;
+      if (sValue === "Temp Closed(102)") {
+        return "102";
+      } else if (sValue === "Future Open(102)"){
+        return "100";
+      }else if (sValue === "Current Open(101)"){
+        return "101";
       } else {
-        return "N";
+        return "103"
       }
     },
 

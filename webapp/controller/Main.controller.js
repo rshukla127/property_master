@@ -1205,7 +1205,7 @@ sap.ui.define([
                 const sFIlterModel = oModel.filter((item)=> item.Werks === sProperty)
                 const sOrt01 = sFIlterModel[0].Ort01
                 const sCountry = sFIlterModel[0].Land1
-                const sName1 = sFIlterModel[0].Name1;
+                const Y = sFIlterModel[0].Name1;
                 const sName2 = sFIlterModel[0].Name2;
                 const sState = sFIlterModel[0].Regio;
                 const sPin = sFIlterModel[0].Pstlz;
@@ -1381,7 +1381,7 @@ sap.ui.define([
                           Street: sStreet,
                           Description: sName1,
                           MailingName: sName1,
-                          MailingName2: sName2,
+                          MailingName2: sName1,
                           Country: sCountry,
                           County: sCounty,
                           PostalCode: sPin,

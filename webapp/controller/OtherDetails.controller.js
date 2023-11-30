@@ -114,6 +114,32 @@ sap.ui.define([
             });
 
         },
+
+        _onValueHelpLfSTatus: function(){
+            this.getOwnerComponent.hasChanges = true;
+            const that =this;
+            //var sInputValue = oEvent.getSource().getValue(),
+              const oView = this.getView();
+
+            if (!this._pValueLFSTage) {
+                this._pValueLFSTage = Fragment.load({
+                    id: oView.getId(),
+                    name: "com.public.storage.pao.fragments.OtherDetails.Lifecyclestatus",
+                    controller: this
+                }).then(function (oDialog) {
+                    oView.addDependent(oDialog);
+                    return oDialog;
+                });
+            }
+            this._oBusyDialog.open()
+            this._pValueLFSTage.then(function (oDialog) {
+                //that.readPropertyMasterData();
+                that._oBusyDialog.close();
+                
+                oDialog.open();
+            });
+
+        },
         onDetectChange: function(oEvent){
             this.detectChanges();
         },
@@ -136,6 +162,9 @@ sap.ui.define([
                 // this.byId("keyTrain").setValue(sDescription);
                 // this._trainingProff = sCode
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/KeyTraniningProfessional", `(${sCode}) ${sDescription}`); 
+            } else if (sTitle === "Life Cycle Stage"){
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/LifecycleStage", `(${sCode}) ${sDescription}`);
+                //this.getView().getModel("plantBasicDetailsModel").setProperty("/YearBuilt", `${sCode}`);
             }
 		},
 
@@ -151,7 +180,8 @@ sap.ui.define([
             let sriskRating = this.byId("riskRating").getSelectedItem().getText();
             let sCas = this.byId("cas").getSelectedKey() === "Y" ? true : false;
             let sMajorAquisition = this.byId("majorAquisition").getValue();
-            let sLifecycleStage = this.byId("lifecycleStage").getSelectedKey();
+            let sLifecycleStage = this.byId("lifecycleStage").getValue();
+            //let sLifecycleText = this.byId("lifecycleStage").getSelectedItem().getText();
 
             let bValidation = true;
 

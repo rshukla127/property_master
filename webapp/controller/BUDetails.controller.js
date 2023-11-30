@@ -119,7 +119,7 @@ sap.ui.define([
 
         onValueHelpDialogSearchCombinedSno:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
+			let oFilter = new Filter("Name2", FilterOperator.Contains, sValue);
 			oEvent.getSource().getBinding("items").filter([oFilter]);
 
         },

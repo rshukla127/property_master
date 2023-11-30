@@ -29,5 +29,11 @@ sap.ui.define([
                     return oModel.getData();
     
             },
+            createLFModel: function(){
+                var oModel = new JSONModel();
+                    oModel.loadData("model/lfstatus.json");
+                    return oModel.getData();
+    
+            },
     };
 });

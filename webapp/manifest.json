@@ -87,6 +87,11 @@
 				"uri": "model/yearbuilt.json",
 				"preload": true
 			},
+      "LFModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/lfstatus.json",
+				"preload": true
+			},
       "plantModel":{
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/mockdata.json",
