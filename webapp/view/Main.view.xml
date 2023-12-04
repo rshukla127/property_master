@@ -104,7 +104,7 @@
                                         <suggestionRows>
                                             <ColumnListItem>
                                                 <Label text="{plantsModel>Werks}" />
-                                                <Label text="{plantsModel>Name1}" wrapping="true" wrappingType="Normal"/>
+                                                <Label text="{plantsModel>Name1T001w}" wrapping="true" wrappingType="Normal"/>
                                                 <Label text="{plantsModel>Name2}" />
                                                 <Label text="{plantsModel>Stras}" wrapping="true" wrappingType="Normal"/>
                                                 <Label text="{plantsModel>Pstlz}" />
@@ -152,7 +152,7 @@
                                     <suggestionRows>
                                         <ColumnListItem>
                                             <Label text="{plantsModel>Werks}" />
-                                            <Label text="{plantsModel>Name1}" wrapping="true" wrappingType="Normal"/>
+                                            <Label text="{plantsModel>Name1T001w}" wrapping="true" wrappingType="Normal"/>
                                             <Label text="{plantsModel>Name2}" />
                                             <Label text="{plantsModel>Stras}" wrapping="true" wrappingType="Normal"/>
                                             <Label text="{plantsModel>Pstlz}" />

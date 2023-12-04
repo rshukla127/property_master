@@ -199,8 +199,11 @@ sap.ui.define([
                         that.byId("treeTable").setVisible(true);
                         const aTree = that.buildTree(oData.results);
                         const sModel = new JSONModel(aTree[0]);
-                        that.getView().setModel(sModel,"treeModel")
+                        that.getView().setModel(sModel,"treeModel");
                         that.getView().getModel("treeModel").refresh();
+                        if (!aTree.length){
+                          return MessageToast.show("No Data Found");  
+                        }
                         that.byId("treeTable").expandToLevel(10);
                       
                     },
@@ -215,7 +218,7 @@ sap.ui.define([
                             that.getView().getModel("treeModel").setData([]);
                             MessageToast.show(sError);
                         } else {
-                            MessageToast.show("Something went wrong with the service");
+                            MessageToast.show("No Date Found");
                             that.getView().getModel().setData([]);
                         }
                         } else {

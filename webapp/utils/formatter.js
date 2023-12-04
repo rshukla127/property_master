@@ -276,7 +276,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
     },
 
     formatAmount1: function (sValue) {
-      if (sValue === "") {
+      if (sValue === "" || sValue === "0.00") {
         return 500;
       } else if (sValue === "0000"){
         return 500;
@@ -286,7 +286,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
     },
 
     formatAmount2: function (sValue) {
-      if (sValue === "") {
+      if (sValue === "" || sValue === "0.00") {
         return 250;
       } else if (sValue === "0000"){
         return 250;
@@ -296,7 +296,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
     },
 
     formatAmount3: function (sValue) {
-      if (sValue === "") {
+      if (sValue === "" || sValue === "0.00") {
         return 75;
       } else if (sValue === "0000"){
         return 75;
@@ -306,7 +306,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
     },
 
     formatAmount4: function (sValue) {
-      if (sValue === "") {
+      if (sValue === "" || sValue === "0.00") {
         return 75;
       } else if (sValue === "0000"){
         return 75;
@@ -316,7 +316,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
     },
 
     formatAmount5: function (sValue) {
-      if (sValue === "") {
+      if (sValue === "" || sValue === "0.00") {
         return 75;
       } else if (sValue === "0000"){
         return 75;
@@ -326,7 +326,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
     },
 
     formatAmount6: function (sValue) {
-      if (sValue === "") {
+      if (sValue === "" || sValue === "0.00") {
         return sValue;
       } else if (sValue === "0000"){
         return sValue = "";
@@ -336,7 +336,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
     },
 
     formatAmount7: function (sValue) {
-      if (sValue === "") {
+      if (sValue === "" || sValue === "0.00") {
         return sValue;
       } else if (sValue === "0000"){
         return sValue = "";
@@ -346,7 +346,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
     },
 
     formatAmount8: function (sValue) {
-      if (sValue === "") {
+      if (sValue === "" || sValue === "0.00") {
         return sValue;
       } else if (sValue === "0000"){
         return sValue = "";
@@ -356,7 +356,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
     },
 
     formatAmount9: function (sValue) {
-      if (sValue === "") {
+      if (sValue === "" || sValue === "0.00") {
         return sValue;
       } else if (sValue === "0000"){
         return sValue = "";
@@ -366,7 +366,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
     },
 
     formatAmount10: function (sValue) {
-      if (sValue === "") {
+      if (sValue === "" || sValue === "0.00") {
         return sValue;
       } else if (sValue === "0000"){
         return sValue = "";

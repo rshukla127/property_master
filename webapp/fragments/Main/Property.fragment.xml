@@ -10,7 +10,7 @@
 		<ColumnListItem vAlign="Middle">
 			<cells>
 				<Text text="{plantsModel>Werks}"/>
-				<Text text="{plantsModel>Name1}" />
+				<Text text="{plantsModel>Name1T001w}" />
 				<Text text="{plantsModel>Name2}" />
 				<Text text="{plantsModel>Stras}" />
 				<Text text="{plantsModel>Pstlz}" />

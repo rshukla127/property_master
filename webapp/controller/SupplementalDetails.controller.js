@@ -169,7 +169,10 @@ sap.ui.define([
             const that = this;
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
             var bValidation = true;
-
+            let sTime = "T00:00:00";
+            let floodzoneEffdate = this.byId("floodeffdate").getValue().split(".").reverse().join("-");
+            let finalfloodzoneEffdate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(floodzoneEffdate)) + sTime;
+            floodzoneEffdate = finalfloodzoneEffdate === "T00:00:00" ? null : finalfloodzoneEffdate;
                
             let PropertyFeatures =  this.getView().byId("propFeature").getValue();
             let DrivingDirections = this.getView().byId("driDirection").getValue();
@@ -243,7 +246,8 @@ sap.ui.define([
                 SurvellianceCamera:this.getView().byId("camera").getSelectedKey(),
                 SurvellianceCameraRemarks:this.getView().byId("surCamRemarks").getValue(),
                 OfficeCount: officeCount,
-                RestroomCount: restRoomCount
+                RestroomCount: restRoomCount,
+                FloodInsEffDate: floodzoneEffdate
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
             this._oModel.update(uri, payload, {
