@@ -341,7 +341,7 @@ sap.ui.define([
 
         readTaxOwner: function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'TA');
+            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'TAXOWNER');
             this._oBusyDialog.open()
             that._oModel.read(`/CompanyDetailSet`, {
                 filters: [keyFilter],
@@ -363,7 +363,7 @@ sap.ui.define([
 
         readLegalOwner: function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'LE');
+            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'LEGALOWNER');
             this._oBusyDialog.open();
             that._oModel.read(`/CompanyDetailSet`, {
                 filters: [keyFilter],
