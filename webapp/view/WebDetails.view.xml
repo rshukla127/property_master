@@ -69,15 +69,15 @@ controllerName="com.public.storage.pao.controller.WebDetails"
                                   
                                     <core:Title text="" visible="false"/>
                                     <m:Label required="true" text="{i18n>propLat}" />
-                                    <m:Input change="onDetectChange" id="propLat" maxLength="9" valueStateText="Value cannot be blank" valueState="{/PropertyLatitude}" value="{plantBasicDetailsModel>/PropertyLatitude}" />
+                                    <m:Input change="onDetectChange" id="propLat" maxLength="15" valueStateText="Value cannot be blank" valueState="{/PropertyLatitude}" value="{plantBasicDetailsModel>/PropertyLatitude}" />
                                     <m:Label required="true" text="{i18n>propLong}" />
-                                    <m:Input change="onDetectChange" id="propLong" maxLength="9" valueStateText="Value cannot be blank" valueState="{/PropertyLongitude}" value="{plantBasicDetailsModel>/PropertyLongitude}" />
+                                    <m:Input change="onDetectChange" id="propLong" maxLength="15" valueStateText="Value cannot be blank" valueState="{/PropertyLongitude}" value="{plantBasicDetailsModel>/PropertyLongitude}" />
                 
                                     <m:Label required="true" text="{i18n>propAdminFee}" />
                                     <m:Input change="onDetectChange" id="propAdmin" maxLength="16" valueStateText="Value cannot be blank" valueState="{/PropertyAdminFee}" type="Number" 
                                     value="{parts: ['plantBasicDetailsModel>/PropertyAdminFee'], formatter: '.formatter.removeLeadingZeros'}"/>
                 
-                                    <m:Label required="true" text="{i18n>adminFeeEff}" />
+                                    <m:Label  text="{i18n>adminFeeEff}" />
                                     <m:DatePicker change="onDetectChange" id="effDate" valueStateText="Value cannot be blank" valueState="{/AdminFeeEffectiveDate}" placeholder="Choose Date..." value="{ 
                                         path: 'plantBasicDetailsModel>/AdminFeeEffectiveDate',
                                         type: 'sap.ui.model.type.Date'  
@@ -108,7 +108,7 @@ controllerName="com.public.storage.pao.controller.WebDetails"
                                         </m:items>
                                     </m:Select>
                 
-                                    <m:Label required="true" text="{i18n>webEnabledDate}" />
+                                    <m:Label text="{i18n>webEnabledDate}" />
                                     <m:DatePicker change="onDetectChange" id="webenabled" valueStateText="Value cannot be blank" valueState="{/WebsiteEnabledDate}" placeholder="Choose Date..."
                                     value="{ 
                                         path: 'plantBasicDetailsModel>/WebsiteEnabledDate',
@@ -126,7 +126,7 @@ controllerName="com.public.storage.pao.controller.WebDetails"
                                         </m:items>
                                     </m:Select>
                                     <core:Title text="" />
-                                    <m:Label required="true" text="{i18n>callCenterEnabled}" />
+                                    <m:Label text="{i18n>callCenterEnabled}" />
                                     <m:DatePicker change="onDetectChange" id="callCenter" valueStateText="Value cannot be blank" valueState="{/CallCenterEnabledDate}" placeholder="Choose Date..." 
                                     value="{ 
                                         path: 'plantBasicDetailsModel>/CallCenterEnabledDate',

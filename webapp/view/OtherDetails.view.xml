@@ -81,6 +81,7 @@
 									<m:Label text="{i18n>riskScore}" />
 									<m:Select id="riskScore" change="onDetectChange" selectedKey="{parts: ['plantBasicDetailsModel>/RiskScore'], formatter: '.formatter.formatRiskScore'}">
 										<m:items>
+											<core:Item text="" key="B"/>
 											<core:Item text="1" key="On"/>
 											<core:Item text="2" key="Tw" />
 											<core:Item text="3" key="Th"/>
@@ -94,7 +95,7 @@
 									<m:Label text="{i18n>riskRating}" />
 									<m:Select id="riskRating" change="onDetectChange" selectedKey="{parts: ['plantBasicDetailsModel>/RiskRating'], formatter: '.formatter.formatRiskRating'}">
 										<m:items>
-											
+											<core:Item text="" key="B"/>
 											<core:Item text="Low" key="L"/>
 											<core:Item text="Medium" key="M" />
 											<core:Item text="High" key="H"/>

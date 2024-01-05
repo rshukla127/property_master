@@ -250,6 +250,27 @@ sap.ui.define([
 
         },
 
+        readActive:function(){
+            const that = this;
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'PECODES');
+            this._oBusyDialog.open()
+            that._oModel.read(`/HelpDataSet`, {
+                filters: [keyFilter],
+                    success: function (oData) {
+                        that._oBusyDialog.close();
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "activeModel")
+                        sap.ui.getCore().setModel(oModel, "activeModel");
+                    },
+                    error: function (oData) {
+                        that._oBusyDialog.close();
+                        MessageToast.show("Something went wrong with Service")
+                    }
+                });
+
+        },
+
+
         readOrgStructure:function(){
             const that = this;
             var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'ORGSTRUCT');
@@ -602,9 +623,9 @@ sap.ui.define([
                 });
         },
 
-        readPSConsolidatedPropGroup: function(){
+        readSameStore: function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'PSCONSOLIDATED');
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'SAMESTORE');
             that._oModel.read(`/HelpDataSet`, {
                 filters: [keyFilter],
                     success: function (oData) {
@@ -658,7 +679,7 @@ sap.ui.define([
         // Tax detail tab started
         readTaxOwner: function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'TA');
+            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'TAXOWNER');
             this._oBusyDialog.open();
             that._oModel.read(`/CompanyDetailSet`, {
                 filters: [keyFilter],
@@ -694,7 +715,7 @@ sap.ui.define([
 
         readLegalOwner: function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'LE');
+            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'LEGALOWNER');
             this._oBusyDialog.open();
             that._oModel.read(`/CompanyDetailSet`, {
                 filters: [keyFilter],

@@ -69,25 +69,26 @@ controllerName="com.public.storage.pao.controller.TaxDetails"
                                 <f:content>
                                     
                                     
-                                    <m:Label required="true" text="{i18n>taxOwner}" />
+                                    <m:Label text="{i18n>taxOwner}" />
                                     <m:Input id="taxOwner" app:fieldName="taxOwner" valueStateText="Value cannot be blank" valueState="{/TaxOwner}" valueHelpRequest="_onValueHelpTaxOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/TaxOwner}" />
                 
                                     <m:Label text="{i18n>taxOwnerFein}" />
-                                    <m:Input id="taxOwnerFein" enabled="false" value="{plantBasicDetailsModel>/TaxOwnerFein}" />
+                                    <m:Input id="taxOwnerFein" enabled="true" maxLength="10" value="{plantBasicDetailsModel>/TaxOwnerFein}" />
                 
-                                    <m:Label required="true" text="{i18n>legalOwner}" />
+                                    <m:Label text="{i18n>legalOwner}" />
                                     <m:Input id="legalOwner" app:fieldName="legalOwner" valueStateText="Value cannot be blank" valueState="{/LegalOwner}" valueHelpRequest="_onValueHelpLegalOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/LegalOwner}" />
                                     <m:Label text="{i18n>legalOwnerDein}" />
-                                    <m:Input id="legalOwnerFein"  enabled="false"  value="{plantBasicDetailsModel>/LegalOwnerFein}" />
+                                    <m:Input id="legalOwnerFein"  enabled="true" maxLength="10" value="{plantBasicDetailsModel>/LegalOwnerFein}" />
                 
-                                    <m:Label required="true" text="{i18n>ownerOfRec}" />
+                                    <m:Label  text="{i18n>ownerOfRec}" />
                                     <m:Input change="onDetectChange" id="ownerRecord" valueStateText="Value cannot be blank" valueState="{/OwnerOfRecord}" maxLength="50" value="{plantBasicDetailsModel>/OwnerOfRecord}" />
                 
                                     <!-- <m:Label required="true" text="{i18n>taxFillingEntity}" />
                                     <m:Input id="taxFiling" valueStateText="Value cannot be blank" valueState="{/TaxFilingEntity}" valueHelpRequest="_onValueHelpTaxFillingEntity" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/TaxFilingEntity}" /> -->
                                    
-                                    <m:Label required="true" text="Solar Entity" />
+                                    <m:Label text="Solar Entity" />
                                     <m:Input  id="solarenitity" app:fieldName="sentity" valueStateText="Value cannot be blank" valueState="{/solarEntity}" valueHelpRequest="_onValueHelpTaxOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/SolarEntity}" />
+									<!-- <m:Input  id="solarenitity" valueStateText="Value cannot be blank" valueState="{/solarEntity}" change="onDetectChange"  maxLength="60" value="{plantBasicDetailsModel>/SolarEntity}" /> -->
                                     <!-- <TextArea id="solarenitity" valueStateText="Value cannot be blank" valueState="{/solarEntity}"  value="{plantBasicDetailsModel>/SolarEntity}" /> -->
                 
                                 </f:content>

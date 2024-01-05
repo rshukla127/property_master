@@ -3,7 +3,7 @@
 		id="climateC"
 		title="Climate Control"
 		items="{climateControlModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchClimateControl"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClosePlant">
 		<StandardListItem

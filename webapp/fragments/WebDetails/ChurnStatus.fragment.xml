@@ -3,7 +3,7 @@
 		id="churnProp"
 		title="Property Churn Status"
 		items="{churnStatusModel>/}"
-		search="onValueHelpDialogSearchPlant"
+		search="onValueHelpDialogSearchChurnStatus"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClosePlant">
 		<StandardListItem

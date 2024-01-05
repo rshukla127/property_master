@@ -57,8 +57,13 @@ sap.ui.define([
 
         onValueHelpDialogSearchMarketClass:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 
@@ -178,7 +183,7 @@ sap.ui.define([
             let sMarketClass = this.byId("mClass").getValue();
             let sriskScore = this.byId("riskScore").getSelectedItem().getText();
             let sriskRating = this.byId("riskRating").getSelectedItem().getText();
-            let sCas = this.byId("cas").getSelectedKey() === "Y" ? true : false;
+            let sCas = this.byId("cas").getSelectedKey();
             let sMajorAquisition = this.byId("majorAquisition").getValue();
             let sLifecycleStage = this.byId("lifecycleStage").getValue();
             //let sLifecycleText = this.byId("lifecycleStage").getSelectedItem().getText();

@@ -98,7 +98,7 @@ controllerName="com.public.storage.pao.controller.BasicDetails"
 					type: 'sap.ui.model.type.Date'  
 				  }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 									<m:Label text="{i18n>offSqFoootage}" />
-									<m:Input change="onDetectChange" id="offSq" value="{plantBasicDetailsModel>/RetailStorageSize}" />
+									<m:Input change="onDetectChange" id="offSq" value="{plantBasicDetailsModel>/OfficeSquareFootage}" />
 									<m:Label text="{i18n>retailSqSize}" />
 									<m:Input change="onDetectChange" id="retailST" value="{plantBasicDetailsModel>/RetailStorageSize}" />
 									<m:Label text="{i18n>histOwner}" />

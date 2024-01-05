@@ -69,12 +69,12 @@ controllerName="com.public.storage.pao.controller.SupplementalDetails"
                                 <f:content>
                                     <core:Title text="" visible="false"/>
                                     <m:Label required="true" text="{i18n>propDeatures}" />
-                                    <m:Input change="onDetectChange" valueStateText="Value cannot be blank" maxLength="500" valueState="{/PropertyFeatures}" id="propFeature" value="{plantBasicDetailsModel>/PropertyFeatures}" />
+                                    <m:TextArea rows="2" change="onDetectChange" valueStateText="Value cannot be blank" maxLength="500" valueState="{/PropertyFeatures}" id="propFeature" value="{plantBasicDetailsModel>/PropertyFeatures}" />
                                     <m:Label required="true" text="{i18n>drivingDirection}" />
-                                    <m:Input change="onDetectChange" valueStateText="Value cannot be blank" maxLength="500" valueState="{/DrivingDirections}" id="driDirection" value="{plantBasicDetailsModel>/DrivingDirections}" />
+                                    <m:TextArea rows="2" change="onDetectChange" valueStateText="Value cannot be blank" maxLength="500" valueState="{/DrivingDirections}" id="driDirection" value="{plantBasicDetailsModel>/DrivingDirections}" />
                 
                                     <m:Label required="true" text="{i18n>specialNotes}" />
-                                    <m:Input change="onDetectChange" valueStateText="Value cannot be blank" maxLength="500" valueState="{/SpecialNotes}" id="spNotes" value="{plantBasicDetailsModel>/SpecialNotes}" />
+                                    <m:TextArea rows="2" change="onDetectChange" valueStateText="Value cannot be blank" maxLength="500" valueState="{/SpecialNotes}" id="spNotes" value="{plantBasicDetailsModel>/SpecialNotes}" />
                 
                                     <m:Label text="{i18n>lockers}" />
                                     <m:Select change="onDetectChange" id="lock" selectedKey="{parts: ['plantBasicDetailsModel>/Lockers'], formatter: '.formatter.getSelectedKeyBlank'}">

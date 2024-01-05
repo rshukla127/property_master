@@ -96,16 +96,16 @@ controllerName="com.public.storage.pao.controller.GateDetails"
                                              <m:TimePicker change="onDetectChange" id="gateNewYearOpen" value="{parts: ['plantBasicDetailsModel>/GateNewyearOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                     
                                              <m:Label  text="{i18n>gateAccessZone0}" />
-                                             <m:Input id="gateac0" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone00'], formatter: '.formatter.formatGetAccess0'}" />
+                                             <m:Input id="gateac0" change="onDetectChange" maxLength="10" value="{parts: ['plantBasicDetailsModel>/GateAccessZone00'], formatter: '.formatter.formatGetAccess0'}" />
                     
                                              <m:Label  text="{i18n>gateAccessZone1}" />
-                                             <m:Input id="gateac1" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone01'], formatter: '.formatter.formatGetAccess1'}" />
+                                             <m:Input id="gateac1" change="onDetectChange" maxLength="10" value="{parts: ['plantBasicDetailsModel>/GateAccessZone01'], formatter: '.formatter.formatGetAccess1'}" />
                                              <m:Label  text="{i18n>gateAccessZone2}" />
-                                             <m:Input id="gateac2" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone02'], formatter: '.formatter.formatGetAccess2'}" />
+                                             <m:Input id="gateac2" change="onDetectChange" maxLength="10" value="{parts: ['plantBasicDetailsModel>/GateAccessZone02'], formatter: '.formatter.formatGetAccess2'}" />
                                              <m:Label  text="{i18n>gateAccessZone3}" />
-                                             <m:Input id="gateac3" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone03'], formatter: '.formatter.formatGetAccess3'}" />
+                                             <m:Input id="gateac3" change="onDetectChange" maxLength="10" value="{parts: ['plantBasicDetailsModel>/GateAccessZone03'], formatter: '.formatter.formatGetAccess3'}" />
                                              <m:Label  text="{i18n>gateAccessZone4}" />
-                                             <m:Input id="gateac4" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone04'], formatter: '.formatter.formatGetAccess4'}" />
+                                             <m:Input id="gateac4" change="onDetectChange" maxLength="10" value="{parts: ['plantBasicDetailsModel>/GateAccessZone04'], formatter: '.formatter.formatGetAccess4'}" />
                     
                                              <core:Title text="" />
                     
@@ -135,22 +135,22 @@ controllerName="com.public.storage.pao.controller.GateDetails"
                                              <m:TimePicker id="gateNewYearClose" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateNewyearCloseHr'], formatter: '.formatter.formatGateTimeClose'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                     
                                              <m:Label  text="{i18n>gateAccessZone5}" />
-                                             <m:Input id="gateac5" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone05'], formatter: '.formatter.formatGetAccess5'}" />
+                                             <m:Input id="gateac5" change="onDetectChange" maxLength="10" value="{parts: ['plantBasicDetailsModel>/GateAccessZone05'], formatter: '.formatter.formatGetAccess5'}" />
                     
                                              <m:Label  text="{i18n>gateAccessZone6}" />
-                                             <m:Input id="gateac6" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone06'], formatter: '.formatter.formatGetAccess6'}" />
+                                             <m:Input id="gateac6" change="onDetectChange" maxLength="10" value="{parts: ['plantBasicDetailsModel>/GateAccessZone06'], formatter: '.formatter.formatGetAccess6'}" />
                     
                                              <m:Label  text="{i18n>gateAccessZone7}" />
-                                             <m:Input id="gateac7" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone07'], formatter: '.formatter.formatGetAccess7'}" />
+                                             <m:Input id="gateac7" change="onDetectChange" maxLength="10" value="{parts: ['plantBasicDetailsModel>/GateAccessZone07'], formatter: '.formatter.formatGetAccess7'}" />
                     
                                              <m:Label text="{i18n>gateAccessZone8}" />
-                                             <m:Input id="gateac8" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone07'], formatter: '.formatter.formatGetAccess8'}" />
+                                             <m:Input id="gateac8" change="onDetectChange" maxLength="10" value="{parts: ['plantBasicDetailsModel>/GateAccessZone08'], formatter: '.formatter.formatGetAccess8'}" />
                     
                                              <m:Label  text="{i18n>gateAccessZone9}" />
-                                             <m:Input id="gateac9" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone09'], formatter: '.formatter.formatGetAccess9'}" />
+                                             <m:Input id="gateac9" change="onDetectChange" maxLength="10" value="{parts: ['plantBasicDetailsModel>/GateAccessZone09'], formatter: '.formatter.formatGetAccess9'}" />
                     
                                              <m:Label  text="{i18n>gateAccessZone10}" />
-                                             <m:Input id="gateac10" change="onDetectChange" value="{parts: ['plantBasicDetailsModel>/GateAccessZone10'], formatter: '.formatter.formatGetAcces10'}" />
+                                             <m:Input id="gateac10" change="onDetectChange" maxLength="10" value="{parts: ['plantBasicDetailsModel>/GateAccessZone10'], formatter: '.formatter.formatGetAcces10'}" />
                     
                                         </f:content>
                                    </f:SimpleForm>

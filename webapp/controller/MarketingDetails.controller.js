@@ -55,35 +55,55 @@ sap.ui.define([
             this.readMarketKey();
             this.readMetroStatArea();
             this.readNeighborhood();
-            this.readPSConsolidatedPropGroup();
+            this.readSameStore();
 
         },
 
-        onValueHelpDialogSearchConsGp:function(oEvent){
+        onValueHelpDialogSearchSameStore:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 
         onValueHelpDialogSearchMarketKey:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 
         onValueHelpDialogSearchMetroStats:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 
         onValueHelpDialogSearchNeighbour:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 
@@ -178,7 +198,7 @@ sap.ui.define([
             if (!this._pValueHelpConslidated) {
                 this._pValueHelpConslidated = Fragment.load({
                     id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.MarketingDetails.ConsolidatedGroup",
+                    name: "com.public.storage.pao.fragments.MarketingDetails.SameStore",
                     controller: this
                 }).then(function (oDialog) {
                     oView.addDependent(oDialog);
@@ -223,8 +243,8 @@ sap.ui.define([
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/Neighborwood", `(${sCode}) ${sDescription}`);
                 // this.byId("neighbourwood").setValue(sDescription);
                 // this._neighbour = sCode
-            } else if(sTitle === "Consolidated Property Group"){
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/PsConsolidatedPropertygroup", `(${sCode}) ${sDescription}`);
+            } else if(sTitle === "Same Store"){
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/SameStore", `(${sCode}) ${sDescription}`);
                 // this.byId("psCons").setValue(sDescription);
                 // this._consolidatedPGroup = sCode
             }
@@ -265,13 +285,13 @@ sap.ui.define([
                 this.model.setProperty("/Neighborwood", "None");
             }
 
-            if (sConslidatedGroup === "" || sConslidatedGroup === undefined ) {
-                this.model.setProperty("/PsConsolidatedPropertygroup", "Error");
-            } else {
-                this.model.setProperty("/PsConsolidatedPropertygroup", "None");
-            }
+            // if (sConslidatedGroup === "" || sConslidatedGroup === undefined ) {
+            //     this.model.setProperty("/PsConsolidatedPropertygroup", "Error");
+            // } else {
+            //     this.model.setProperty("/PsConsolidatedPropertygroup", "None");
+            // }
 
-            if (sMarketKey === "" || sMetroStatus === "" || sNeighbourhood === "" || sConslidatedGroup === "" ||
+            if (sMarketKey === "" || sMetroStatus === "" || sNeighbourhood === "" ||
             sMarketKey === undefined || sMetroStatus === undefined || sNeighbourhood === undefined || sConslidatedGroup === undefined){
                 bValidation = true ;
             } else {
@@ -283,7 +303,7 @@ sap.ui.define([
                 MarketKey: sMarketKey,
                 MetroStatisicalArea: sMetroStatus,
                 Neighborwood: sNeighbourhood,
-                PsConsolidatedPropertygroup: sConslidatedGroup,
+                SameStore: sConslidatedGroup,
                 Rank: rankProp,
                 CommunityType:sCommType
             }

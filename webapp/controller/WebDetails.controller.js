@@ -4,14 +4,20 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/ui/model/json/JSONModel",
     "com/public/storage/pao/utils/formatter",
-    "sap/ui/core/Fragment"
+    "sap/ui/core/Fragment",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/FilterType"
 ], function(
 	BaseController,
     BusyDialog,
     MessageToast,
     JSONModel,
     formatter,
-    Fragment
+    Fragment,
+    Filter,
+    FilterOperator,
+    FilterType
 ) {
 	"use strict";
     var _oController;
@@ -60,6 +66,30 @@ sap.ui.define([
             this.readPropertyChurnStatus();
             this.readClimateControl();
             this.readPropertyData(Plant, LegacyPropertyNumber);
+
+        },
+
+        onValueHelpDialogSearchChurnStatus: function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
+
+        },
+
+        onValueHelpDialogSearchClimateControl: function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 
@@ -250,17 +280,17 @@ sap.ui.define([
             }
 
             
-            if (adminFeeEffectiveDate === null) {
-                this.model.setProperty("/AdminFeeEffectiveDate", "Error");
-            } else {
-                this.model.setProperty("/AdminFeeEffectiveDate", "None"); 
-            }
+            // if (adminFeeEffectiveDate === null) {
+            //     this.model.setProperty("/AdminFeeEffectiveDate", "Error");
+            // } else {
+            //     this.model.setProperty("/AdminFeeEffectiveDate", "None"); 
+            // }
 
-            if (websiteEnabledDate === null) {
-                this.model.setProperty("/WebsiteEnabledDate", "Error");
-            } else {
-                this.model.setProperty("/WebsiteEnabledDate", "None"); 
-            }
+            // if (websiteEnabledDate === null) {
+            //     this.model.setProperty("/WebsiteEnabledDate", "Error");
+            // } else {
+            //     this.model.setProperty("/WebsiteEnabledDate", "None"); 
+            // }
 
             // if (nfsfeeeffectiveDate === null) {
             //     this.model.setProperty("/NsfFeeEffectiveDate", "Error");
@@ -268,15 +298,14 @@ sap.ui.define([
             //     this.model.setProperty("/NsfFeeEffectiveDate", "None"); 
             // }
 
-            if (callCentDate === null) {
-                this.model.setProperty("/CallCenterEnabledDate", "Error");
-            } else {
-                this.model.setProperty("/CallCenterEnabledDate", "None"); 
-            }
+            // if (callCentDate === null) {
+            //     this.model.setProperty("/CallCenterEnabledDate", "Error");
+            // } else {
+            //     this.model.setProperty("/CallCenterEnabledDate", "None"); 
+            // }
 
             if (PropertyLatitude === "" || PropertyLongitude === "" || PropertyAdminFee === "" || PropertyWebsiteReservations === "" || PropertyWebsiteReservations === "B" || PropertyCallCenterReservati === "" || PropertyCallCenterReservati === "B"
-            || PropertyNfsFee === "" || MaxReservationDays === "" || PropertyNfsAchFee === "" || PropertyInsuranceFrozen === "" || PropertyInsuranceCancelDay === "" || PreReservationDays === ""
-            || websiteEnabledDate === null || websiteEnabledDate === "" || callCentDate === null || callCentDate === "" || adminFeeEffectiveDate === null || adminFeeEffectiveDate === ""){
+            || PropertyNfsFee === "" || MaxReservationDays === "" || PropertyNfsAchFee === "" || PropertyInsuranceFrozen === "" || PropertyInsuranceCancelDay === "" || PreReservationDays === ""){
                 bValidation = true ;
             } else {
                 bValidation = false ;

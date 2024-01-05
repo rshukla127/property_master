@@ -149,31 +149,28 @@ sap.ui.define([
 
             readPropertyMasterData: function () {
                 const that = this;
-                //this.BusyDialog.open()
-                return new Promise(function(resolve, reject){
-                    if (dataFetched) {
-                        resolve(cachedData); // Resolve with cached data
-                    } else {
+                return new Promise(function(resolve, reject) {
                     that._oModel.read(`/PlantMasterSet`, {
-                        success: function (oData) {
+                        success: function(oData) {
                             that.BusyDialog.close();
                             const oModel = new JSONModel(oData.results);
                             oModel.setSizeLimit(oData.results.length);
-                            that.getOwnerComponent().setModel(oModel, "plantsModel")
+                            that.getOwnerComponent().setModel(oModel, "plantsModel");
                             sap.ui.getCore().setModel(oModel, "plantsModel");
-                            
-                            cachedData = oData.results;
-                            dataFetched = true;
-                            resolve(cachedData);
+                
+                            // Resolve with the data if successful
+                            resolve(oData.results);
                         },
-                        error: function (error) {
-                            MessageToast.show("Something went wrong with Service")
+                        error: function(error) {
+                            // Show or log a more meaningful error message
+                            MessageToast.show("Error fetching data from the service. Please try again.");
+                
+                            // Reject with the error object for further handling if needed
                             reject(error);
                         }
                     });
-                }
                 });
-               
+                
 
             },
 

@@ -4,6 +4,7 @@ controllerName="com.public.storage.pao.controller.Phone"
 	xmlns:m="sap.m"
 	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:f="sap.ui.layout.form" height="100%">
 
 	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
@@ -73,65 +74,65 @@ controllerName="com.public.storage.pao.controller.Phone"
                                     <m:Input id="direPhoneNo" enabled="false"  value="{plantsModel>/Telnumber}" />
                 
                                     <m:Label text="{i18n>faxNumber}"/>
-                                    <m:Input id="faxNumber" enabled="false" maxLength="30" value="{plantsModel>/Faxnumber}" />
+                                    <m:Input id="faxNumber" enabled="false" maxLength="26" value="{plantsModel>/Faxnumber}" />
                 
                                     <m:Label required="true" text="{i18n>publishedPhNo}"/>
-                                    <m:Input  id="publishedPhNo1" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/publishedPhNo}" maxLength="30" value="{plantBasicDetailsModel>/PublishedPhoneNo}" />
+                                    <m:Input  id="publishedPhNo1" app:fieldName="publishedPhNo1" change="onFormatPhoneNumber" valueStateText="Value cannot be blank" valueState="{/publishedPhNo}" maxLength="26" value="{plantBasicDetailsModel>/PublishedPhoneNo}" />
                 
                                     <m:Label required="true" text="{i18n>tollfreeNo}" />
-                                    <m:Input  id="tollfreeNo" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/tollfreeNo}" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber}" />
+                                    <m:Input  id="tollfreeNo" app:fieldName="tollfreeNo" change="onFormatPhoneNumber" valueStateText="Value cannot be blank" valueState="{/tollfreeNo}" maxLength="26" value="{plantBasicDetailsModel>/TollFreeNumber}" />
                                     <m:Label required="true" text="{i18n>localPhoneNo}" />
-                                    <m:Input  id="localPhoneNo" change="onDetectChange" valueStateText="Value cannot be blank" valueState="{/localPhoneNo}" maxLength="30" value="{plantBasicDetailsModel>/LocalPhoneNumber}" />
+                                    <m:Input  id="localPhoneNo" app:fieldName="localPhoneNo" change="onFormatPhoneNumber" valueStateText="Value cannot be blank" valueState="{/localPhoneNo}" maxLength="26" value="{plantBasicDetailsModel>/LocalPhoneNumber}" />
                                     
                                     <m:Label text="{i18n>tollfreeNumber2}" />
-                                    <m:Input  id="tollfreeNumber2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber2}" />
+                                    <m:Input  id="tollfreeNumber2" app:fieldName="tollfreeNumber2" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/TollFreeNumber2}" />
                 
                                     <m:Label text="{i18n>tollfreeNumber3}" />
-                                    <m:Input  id="tollfreeNumber3" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber3}" />
+                                    <m:Input  id="tollfreeNumber3" app:fieldName="tollfreeNumber3" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/TollFreeNumber3}" />
                 
                                     <m:Label text="{i18n>tollfreeNumber4}" />
-                                    <m:Input id="tollfreeNumber4" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/TollFreeNumber4}" />
+                                    <m:Input id="tollfreeNumber4" app:fieldName="tollfreeNumber4" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/TollFreeNumber4}" />
                 
                                     <m:Label text="{i18n>alarmPhoneNo1}" />
-                                    <m:Input  id="alarmPhoneNo1" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber1}" />
+                                    <m:Input  id="alarmPhoneNo1" app:fieldName="alarmPhoneNo1" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/AlarmPhoneNumber1}" />
                 
                                     <m:Label text="{i18n>alarmPhoneNo2}" />
-                                    <m:Input  id="alarmPhoneNo2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber2}" />
+                                    <m:Input  id="alarmPhoneNo2" app:fieldName="alarmPhoneNo2" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/AlarmPhoneNumber2}" />
                 
                                     <m:Label text="{i18n>alarmPhoneNumber}" />
-                                    <m:Input  id="alarmPhoneNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/AlarmPhoneNumber}" />
+                                    <m:Input  id="alarmPhoneNumber" app:fieldName="alarmPhoneNumber" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/AlarmPhoneNumber}" />
                                       
                                     <core:Title text="" visible="false"/>
                 
                                     <m:Label text="{i18n>burglarPhoneNo}" />
-                                    <m:Input  id="burglarPhoneNo" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/BurgAlarmPhoneNumber}" />
+                                    <m:Input  id="burglarPhoneNo" app:fieldName="burglarPhoneNo" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/BurgAlarmPhoneNumber}" />
                 
                                     <m:Label text="{i18n>cellphoneNumber}" />
-                                    <m:Input  id="cellphoneNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/CellPhoneNumber}" />
+                                    <m:Input  id="cellphoneNumber" app:fieldName="cellphoneNumber" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/CellPhoneNumber}" />
                 
                                     <m:Label text="{i18n>directphoneNumber2}" />
-                                    <m:Input  id="directphoneNumber2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/DirectPhoneNo2}" />
+                                    <m:Input  id="directphoneNumber2" app:fieldName="directphoneNumber2" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/DirectPhoneNo2}" />
                 
                                     <m:Label text="{i18n>directphoneNumber3}" />
-                                    <m:Input  id="directphoneNumber3" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/DirectPhoneNo3}" />
+                                    <m:Input  id="directphoneNumber3" app:fieldName="directphoneNumber3" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/DirectPhoneNo3}" />
                 
                                     <m:Label text="{i18n>elevatprNo1}" />
-                                    <m:Input  id="elevatprNo1" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo1}" />
+                                    <m:Input  id="elevatprNo1" app:fieldName="elevatprNo1" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/ElevatorPhoneNo1}" />
                 
                                     <m:Label text="{i18n>elevatprNo2}" />
-                                    <m:Input  id="elevatprNo2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo2}" />
+                                    <m:Input  id="elevatprNo2" app:fieldName="elevatprNo2" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/ElevatorPhoneNo2}" />
                 
                                     <m:Label text="{i18n>elevatprNo3}" />
-                                    <m:Input  id="elevatprNo3" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ElevatorPhoneNo3}" />
+                                    <m:Input  id="elevatprNo3" app:fieldName="elevatprNo3" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/ElevatorPhoneNo3}" />
                 
                                     <m:Label text="{i18n>extensionNumber}" />
-                                    <m:Input  id="extensionNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/ExtensionNumber}" />
+                                    <m:Input  id="extensionNumber" app:fieldName="extensionNumber" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/ExtensionNumber}" />
                 
                                     <m:Label text="{i18n>officePhoneNumber}" />
-                                    <m:Input  id="officePhoneNumber" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/OfficePhoneNumber}" />
+                                    <m:Input  id="officePhoneNumber" app:fieldName="officePhoneNumber" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/OfficePhoneNumber}" />
                 
                                     <m:Label text="{i18n>publishedPhoneNo}" />
-                                    <m:Input  id="publishedPhoneNo2" change="onDetectChange" maxLength="30" value="{plantBasicDetailsModel>/PublishedPhoneNo2}" />
+                                    <m:Input  id="publishedPhoneNo2" app:fieldName="publishedPhoneNo2" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/PublishedPhoneNo2}" />
                 
                                 </f:content>
                             </f:SimpleForm>

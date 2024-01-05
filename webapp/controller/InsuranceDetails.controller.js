@@ -125,13 +125,13 @@ sap.ui.define([
                 this.model.setProperty("/ErentalMaxDays", "None");
             }
 
-            if (cddStartDate === "" || cddStartDate === null) {
-                this.model.setProperty("/CddStartDate", "Error");
-            } else {
-                this.model.setProperty("/CddStartDate", "None");
-            }
+            // if (cddStartDate === "" || cddStartDate === null) {
+            //     this.model.setProperty("/CddStartDate", "Error");
+            // } else {
+            //     this.model.setProperty("/CddStartDate", "None");
+            // }
 
-            if (cddStartDate === "" || ErentalMaxDays === "" || cddStartDate === null){
+            if (ErentalMaxDays === ""){
                 bValidation = true ;
             } else {
                 bValidation = false ;
@@ -140,7 +140,7 @@ sap.ui.define([
             if(bValidation === false){
             const payload = {
                 FinrepNum1: this.getView().byId("finrep1").getValue(),
-                FinerepNum2: this.getView().byId("finrep2").getValue(),
+                FinrepNum2: this.getView().byId("finrep2").getValue(),
                 InsPrem2000: InsPrem2000,
                 InsPrem3000: InsPrem3000,
                 InsPrem4000: InsPrem4000,
@@ -149,7 +149,7 @@ sap.ui.define([
                 FinrepNum8: this.getView().byId("finrep8").getValue(),
                 FinrepNum9: this.getView().byId("finrep9").getValue(),
                 ErentalMaxDays: ErentalMaxDays,
-                CddStartDate: cddStartDate,
+                FinrepDate2: cddStartDate,
                 FinrepDate3: finrepD3,
                 FinrepDate4: finrepD4,
                 FinrepDate5: finrepD5,

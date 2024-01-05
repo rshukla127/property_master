@@ -65,22 +65,37 @@ sap.ui.define([
 
         onValueHelpDialogSearchTaxOwner:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Company", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 
         onValueHelpDialogSearchLegalOwner:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Company", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 
         onValueHelpDialogSearchSolarENtity:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Company", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
         },
 
         _onValueHelpTaxOwner: function(oEvent){
@@ -255,10 +270,10 @@ sap.ui.define([
 
             if (sTitle === "Tax Owner" && this.selectedField === "taxOwner"){
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/TaxOwner", `(${sCode}) ${sDescription}`);
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/TaxOwnerFein", `${info}`);
+                //this.getView().getModel("plantBasicDetailsModel").setProperty("/TaxOwnerFein", `${info}`);
             } if(sTitle === "Legal Owner"){
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/LegalOwner", `(${sCode}) ${sDescription}`);
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/LegalOwnerFein", `${info}`);
+                //this.getView().getModel("plantBasicDetailsModel").setProperty("/LegalOwnerFein", `${info}`);
             } if(this.selectedField === "sentity" && sTitle === "Tax Owner"){
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/SolarEntity", `(${sCode}) ${sDescription}`);
                 //this.getView().getModel("plantBasicDetailsModel").setProperty("/LegalOwnerFein", `${info}`);
@@ -277,13 +292,13 @@ sap.ui.define([
             const ownerofRecord = this.byId("ownerRecord").getValue();
             const solarEntity = this.byId("solarenitity").getValue();
 
-            let bValidation = true;
+            //let bValidation = true;
 
-            if (taxOwner === "" || taxOwner === undefined ) {
-                this.model.setProperty("/TaxOwner", "Error");
-            } else {
-                this.model.setProperty("/TaxOwner", "None");
-            }
+            // if (taxOwner === "" || taxOwner === undefined ) {
+            //     this.model.setProperty("/TaxOwner", "Error");
+            // } else {
+            //     this.model.setProperty("/TaxOwner", "None");
+            // }
 
             // if (this.taxOwnerFein === "" || this.taxOwnerFein === undefined ) {
             //     this.model.setProperty("/TaxOwnerFein", "Error");
@@ -291,11 +306,11 @@ sap.ui.define([
             //     this.model.setProperty("/TaxOwnerFein", "None");
             // }
 
-            if (LegalOwner === "" || LegalOwner === undefined ) {
-                this.model.setProperty("/LegalOwner", "Error");
-            } else {
-                this.model.setProperty("/LegalOwner", "None");
-            }
+            // if (LegalOwner === "" || LegalOwner === undefined ) {
+            //     this.model.setProperty("/LegalOwner", "Error");
+            // } else {
+            //     this.model.setProperty("/LegalOwner", "None");
+            // }
 
             // if (this.legalOwnerFein === "" || this.legalOwnerFein === undefined ) {
             //     this.model.setProperty("/LegalOwnerFein", "Error");
@@ -303,26 +318,26 @@ sap.ui.define([
             //     this.model.setProperty("/LegalOwnerFein", "None");
             // }
 
-            if (ownerofRecord === "" || ownerofRecord === undefined ) {
-                this.model.setProperty("/OwnerOfRecord", "Error");
-            } else {
-                this.model.setProperty("/OwnerOfRecord", "None");
-            }
+            // if (ownerofRecord === "" || ownerofRecord === undefined ) {
+            //     this.model.setProperty("/OwnerOfRecord", "Error");
+            // } else {
+            //     this.model.setProperty("/OwnerOfRecord", "None");
+            // }
 
-            if (solarEntity === "" || solarEntity === undefined) {
-                this.model.setProperty("/solarEntity", "Error");
-            } else {
-                this.model.setProperty("/solarEntity", "None");
-            }
+            // if (solarEntity === "" || solarEntity === undefined) {
+            //     this.model.setProperty("/solarEntity", "Error");
+            // } else {
+            //     this.model.setProperty("/solarEntity", "None");
+            // }
 
-            if (taxOwner === "" ||  LegalOwner === "" ||  ownerofRecord === "" || ownerofRecord === undefined ||
-            taxOwner === undefined  || LegalOwner === undefined || solarEntity === "" || solarEntity === undefined){
-                bValidation = true ;
-            } else {
-                bValidation = false ;
-            }
+            // if (taxOwner === "" ||  LegalOwner === "" ||  ownerofRecord === "" || ownerofRecord === undefined ||
+            // taxOwner === undefined  || LegalOwner === undefined || solarEntity === undefined){
+            //     bValidation = true ;
+            // } else {
+            //     bValidation = false ;
+            // }
 
-            if (bValidation === false){
+            // if (bValidation === false){
             const payload = {
                 TaxOwner: taxOwner,
                 TaxOwnerFein: taxOwnerFein,
@@ -344,10 +359,10 @@ sap.ui.define([
                     MessageToast.show("Something went wrong with Service")
                 }
             })
-        } else {
-            this._oBusyDialog.close();
-            MessageToast.show("Please Fill all mandatory fields");
-        }
+        // } else {
+        //     this._oBusyDialog.close();
+        //     MessageToast.show("Please Fill all mandatory fields");
+        // }
         }
 	});
 });

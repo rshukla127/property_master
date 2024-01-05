@@ -158,8 +158,13 @@ sap.ui.define([
 
         onValueHelpDialogSearchCC: function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 

@@ -32,8 +32,8 @@ server:
         backend:
           - path: /sap
             url: http://s4hanaserve.demo.com:8000
-            client: '100'
-            destination: DS4-BAS
+            client: '110'
+            destination: DS4-BASTestClient
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:

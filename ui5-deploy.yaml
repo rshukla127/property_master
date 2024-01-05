@@ -20,6 +20,6 @@ builder:
           name: ZPAO
           description: Property Attributes Overview
           package: ZFIORI
-          transport: DS4K901411
+          transport: DS4K901746
         exclude:
           - /test/

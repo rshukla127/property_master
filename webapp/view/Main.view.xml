@@ -182,7 +182,7 @@
                                 <HBox alignContent="Inherit" alignItems="Center" class="sapUiSmallMargin" justifyContent="Start">
 
                                     <Label text="Property Type:" required="true" class="sapUiMediumMarginEnd sapUiSmallMarginBegin" />
-                                    <RadioButtonGroup id="rbg1" columns="3" width="100%" class="">
+                                    <RadioButtonGroup id="rbg1" columns="3" enabled="false" width="100%" class="">
                                         <RadioButton id="rb1" text="Own" select="onSelectOwner" class="sapUiMediumMarginEnd" />
                                         <RadioButton id="rb2" text="Third Party" select="onSelectTP" />
                                     </RadioButtonGroup>

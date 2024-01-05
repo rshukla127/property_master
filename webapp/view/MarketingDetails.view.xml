@@ -75,8 +75,8 @@ controllerName="com.public.storage.pao.controller.MarketingDetails"
 									<m:Label required="true" text="{i18n>neighbourhood}" />
 									<m:Input id="neighbourwood" valueStateText="Value cannot be blank" valueState="{/Neighborwood}" showValueHelp="true" valueHelpRequest="_onValueHelpNeigbour" valueHelpOnly="true" value="{plantBasicDetailsModel>/Neighborwood}" />
 				
-									<m:Label required="true" text="Same Store ( PS Con P GRP)" />
-									<m:Input id="psCons" valueStateText="Value cannot be blank" valueState="{/PsConsolidatedPropertygroup}" showValueHelp="true" valueHelpRequest="_onValueHelpConslidated" valueHelpOnly="true" value="{plantBasicDetailsModel>/PsConsolidatedPropertygroup}" />
+									<m:Label text="Same Store" />
+									<m:Input id="psCons" valueStateText="Value cannot be blank" valueState="{/PsConsolidatedPropertygroup}" showValueHelp="true" valueHelpRequest="_onValueHelpConslidated" valueHelpOnly="true" value="{plantBasicDetailsModel>/SameStore}" />
 				
 									<m:Label text="{i18n>rankProp}" />
 										<m:Select change="onDetectChange" id="rankProp" selectedKey="{parts: ['plantBasicDetailsModel>/Rank'], formatter: '.formatter.getSelectedRankProp'}">
@@ -90,7 +90,8 @@ controllerName="com.public.storage.pao.controller.MarketingDetails"
 										<m:Label text="{i18n>commType}" />
 										<m:Select change="onDetectChange" id="commType" selectedKey="{parts: ['plantBasicDetailsModel>/CommunityType'], formatter: '.formatter.getCommType'}">
 											
-											<m:items>																								
+											<m:items>
+												<core:Item text="" key="B" />																								
 												<core:Item text="Not Assigned" key="NA" />
 												<core:Item text="Urban Centers" key="UC"/>
 												<core:Item text="Urban Suburbs" key="US" />

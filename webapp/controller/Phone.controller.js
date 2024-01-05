@@ -76,9 +76,80 @@ sap.ui.define([
             })
         },
 
-        onDetectChange: function(oEvent){
+        onFormatPhoneNumber: function (oEvent) {
+            const customData = oEvent.getSource().getCustomData()[0].getValue();
+            const sValue = oEvent.getSource().getValue();
+            // Remove non-numeric characters from the phone number
+            let numericPhoneNumber = sValue.replace(/\D/g, '');
+            // Format the phone number
+            let formattedPhoneNumber = `(${numericPhoneNumber.substring(0, 3)})-${numericPhoneNumber.substring(3, 6)}-${numericPhoneNumber.substring(6)}`;
+            // Set the formatted phone number based on custom data
+            const model = this.getView().getModel("plantBasicDetailsModel");
+        
+            switch (customData) {
+                case 'publishedPhNo1':
+                    model.setProperty("/PublishedPhoneNo", formattedPhoneNumber);
+                    break;
+                case 'tollfreeNo':
+                    model.setProperty("/TollFreeNumber", formattedPhoneNumber);
+                    break;
+                case 'localPhoneNo':
+                    model.setProperty("/LocalPhoneNumber", formattedPhoneNumber);
+                    break;
+                case 'tollfreeNumber2':
+                    model.setProperty("/TollFreeNumber2", formattedPhoneNumber);
+                    break;
+                case 'tollfreeNumber3':
+                    model.setProperty("/TollFreeNumber3", formattedPhoneNumber);
+                    break;
+                case 'tollfreeNumber4':
+                    model.setProperty("/TollFreeNumber4", formattedPhoneNumber);
+                    break;
+                case 'alarmPhoneNo1':
+                    model.setProperty("/AlarmPhoneNumber1", formattedPhoneNumber);
+                    break;
+                case 'alarmPhoneNo2':
+                    model.setProperty("/AlarmPhoneNumber2", formattedPhoneNumber);
+                    break;
+                case 'alarmPhoneNumber':
+                    model.setProperty("/AlarmPhoneNumber", formattedPhoneNumber);
+                    break;
+                case 'burglarPhoneNo':
+                    model.setProperty("/BurgAlarmPhoneNumber", formattedPhoneNumber);
+                    break;
+                case 'cellphoneNumber':
+                    model.setProperty("/CellPhoneNumber", formattedPhoneNumber);
+                    break;
+                case 'directphoneNumber2':
+                    model.setProperty("/DirectPhoneNo2", formattedPhoneNumber);
+                    break;
+                case 'directphoneNumber3':
+                    model.setProperty("/DirectPhoneNo3", formattedPhoneNumber);
+                    break;
+                case 'extensionNumber':
+                    model.setProperty("/ExtensionNumber", formattedPhoneNumber);
+                    break;
+                case 'officePhoneNumber':
+                    model.setProperty("/OfficePhoneNumber", formattedPhoneNumber);
+                    break;
+                case 'publishedPhoneNo2':
+                    model.setProperty("/PublishedPhoneNo2", formattedPhoneNumber);
+                    break;
+                case 'elevatprNo1':
+                    model.setProperty("/ElevatorPhoneNo1", formattedPhoneNumber);
+                    break;
+                case 'elevatprNo2':
+                    model.setProperty("/ElevatorPhoneNo2", formattedPhoneNumber);
+                    break;
+                case 'elevatprNo3':
+                    model.setProperty("/ElevatorPhoneNo3", formattedPhoneNumber);
+                    break;
+                default:
+                    break;
+            }
             this.detectChanges();
         },
+        
 
         onPressSavePhoneDetails: function(){
             this._oBusyDialog.open();

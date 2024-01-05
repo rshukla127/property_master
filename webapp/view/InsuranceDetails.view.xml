@@ -68,38 +68,38 @@ controllerName="com.public.storage.pao.controller.InsuranceDetails"
                 <f:content>
                     <core:Title text="" visible="false"/>
                     <m:Label text="{i18n>finrepnum1}" />
-                    <m:Input change="onDetectChange" id="finrep1" value="{plantBasicDetailsModel>/FinrepNum1}" />
+                    <m:Input change="onDetectChange" id="finrep1"  maxLength="10"   value="{plantBasicDetailsModel>/FinrepNum1}" />
                     <m:Label text="{i18n>finrepnum2}" />
-                    <m:Input change="onDetectChange" id="finrep2" value="{plantBasicDetailsModel>/FinerepNum2}" />
+                    <m:Input change="onDetectChange" id="finrep2" maxLength="10" value="{plantBasicDetailsModel>/FinrepNum2}" />
 
                     <m:Label text="{i18n>insPrem2}" />
-                    <m:Input change="onDetectChange" id="insprem2" valueStateText="Value cannot be blank" valueState="{/InsPrem2000}" value="{plantBasicDetailsModel>/InsPrem2000}" />
+                    <m:Input change="onDetectChange" maxLength="10" id="insprem2" valueStateText="Value cannot be blank" valueState="{/InsPrem2000}" value="{plantBasicDetailsModel>/InsPrem2000}" />
 
                     <m:Label text="{i18n>insPrem3}" />
-                    <m:Input change="onDetectChange" id="insprem3" valueStateText="Value cannot be blank" valueState="{/InsPrem3000}" value="{plantBasicDetailsModel>/InsPrem3000}" />
+                    <m:Input change="onDetectChange" maxLength="10"  id="insprem3" valueStateText="Value cannot be blank" valueState="{/InsPrem3000}" value="{plantBasicDetailsModel>/InsPrem3000}" />
 
                     <m:Label text="{i18n>insPrem4}" />
-                    <m:Input change="onDetectChange" id="insprem4" valueStateText="Value cannot be blank" valueState="{/InsPrem4000}" value="{plantBasicDetailsModel>/InsPrem4000}" />
+                    <m:Input change="onDetectChange" maxLength="10"  id="insprem4" valueStateText="Value cannot be blank" valueState="{/InsPrem4000}" value="{plantBasicDetailsModel>/InsPrem4000}" />
 
                     <m:Label text="{i18n>insPrem5}" />
-                    <m:Input change="onDetectChange" id="insprem5" valueStateText="Value cannot be blank" valueState="{/InsPrem5000}" value="{plantBasicDetailsModel>/InsPrem5000}" />
+                    <m:Input change="onDetectChange" maxLength="10"  id="insprem5" valueStateText="Value cannot be blank" valueState="{/InsPrem5000}" value="{plantBasicDetailsModel>/InsPrem5000}" />
 
                     <m:Label text="{i18n>finrepnum7}" />
-                    <m:Input change="onDetectChange" id="finrep7" value="{plantBasicDetailsModel>/FinrepNum7}" />
+                    <m:Input change="onDetectChange" id="finrep7" maxLength="10"  value="{plantBasicDetailsModel>/FinrepNum7}" />
 
                     <m:Label text="{i18n>finrepnum8}" />
-                    <m:Input change="onDetectChange" id="finrep8" value="{plantBasicDetailsModel>/FinrepNum8}" />
+                    <m:Input change="onDetectChange" id="finrep8" maxLength="10"  value="{plantBasicDetailsModel>/FinrepNum8}" />
 
                     <m:Label text="{i18n>finrepnum9}" />
-                    <m:Input change="onDetectChange" id="finrep9" value="{plantBasicDetailsModel>/FinrepNum9}" />
+                    <m:Input change="onDetectChange" id="finrep9" maxLength="10"  value="{plantBasicDetailsModel>/FinrepNum9}" />
                     <m:Label required="true" text="{i18n>eRentalMax}" />
                     <m:Input change="onDetectChange" id="eRental" valueStateText="Value cannot be blank" valueState="{/ErentalMaxDays}" value="{plantBasicDetailsModel>/ErentalMaxDays}" />
 
                     <core:Title text="" />
 
-                    <m:Label required="true"  text="{i18n>cddStartDate}" />
+                    <m:Label text="{i18n>cddStartDateN}" />
                     <m:DatePicker change="onDetectChange" id="startdate" placeholder="Choose Date.." valueStateText="Value cannot be blank" valueState="{/CddStartDate}" value="{ 
-                        path: 'plantBasicDetailsModel>/CddStartDate',
+                        path: 'plantBasicDetailsModel>/FinrepDate2',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
 

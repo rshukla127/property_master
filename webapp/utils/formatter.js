@@ -29,7 +29,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       if (sValue) {
         return sValue;
       } else {
-        return "N";
+        return "Y";
       }
     },
 
@@ -43,8 +43,10 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
         return "Th";
       } else if (sValue === "4"){
         return "Fo";
-      }else {
+      }else if (sValue === "5"){
         return "Fi";
+      } else {
+        return "B"
       }
     },
 
@@ -53,13 +55,15 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
         return 'L';
       } else if (sValue === "Medium") {
         return 'M';
-      } else {
+      } else if (sValue === "High") {
         return 'H';
+      } else {
+        return 'B'
       }
     },
 
     formatCas: function (sValue) {
-      if (sValue === true) {
+      if (sValue === 'Y') {
         return 'Y';
       } else {
         return 'N';
@@ -89,8 +93,10 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
         return "US";
       } else if (sValue === "Middle Suburbs"){
         return "MS";
-      }else {
+      }else if(sValue === "Exurbs") {
         return "EX";
+      } else {
+        return "B";
       }
     },
 
@@ -114,7 +120,15 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       if (sValue) {
         return sValue;
       } else {
-        return "Not Assigned";
+        return "N";
+      }
+    },
+
+    formatTrafficMonitoring: function (sValue) {
+      if (sValue) {
+        return sValue;
+      } else {
+        return "N";
       }
     },
 
@@ -219,7 +233,7 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       if (sValue) {
         return sValue;
       } else {
-        return "B";
+        return "N";
       }
     },
 

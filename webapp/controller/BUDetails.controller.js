@@ -62,6 +62,7 @@ sap.ui.define([
             that.readEntityType();
             that.readATypeProp();
             that.readAquiredDeveloperTP();
+            this.readActive();
             //that.readAvailable3rdpDistribution();
 
         },
@@ -95,25 +96,37 @@ sap.ui.define([
 
         onValueHelpDialogSearchBuType: function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 
         onValueHelpDialogSearchCCcode:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 
         onValueHelpDialogSearchEntityType:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 
@@ -126,16 +139,36 @@ sap.ui.define([
 
         onValueHelpDialogSearchAtypeProp:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-			oEvent.getSource().getBinding("items").filter([oFilter]);
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
+
+        },
+        onValueHelpDialogSearchActive:function(oEvent){
+            let sValue = oEvent.getParameter("value");
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
 
         },
 
         onValueHelpDialogSearchAquiredTp:function(oEvent){
             let sValue = oEvent.getParameter("value");
-			let oFilter = new Filter("Description", FilterOperator.Contains, sValue);
-			oEvent.getSource().getBinding("items").filter([oFilter]);
-
+			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterDesc, oCodeFilter],
+                and: false // Set to false for OR condition
+            });
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
         },
 
         _onValueHelpBUnit: function(oEvent){
@@ -161,6 +194,30 @@ sap.ui.define([
                 // Create a filter for the binding
                 //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
                 // Open ValueHelpDialog filtered by the input's value
+                oDialog.open();
+            });
+
+        },
+
+        _onValueHelpActive: function(oEvent){
+            this.getOwnerComponent.hasChanges = true;
+            const that =this;
+            //var sInputValue = oEvent.getSource().getValue(),
+              const oView = this.getView();
+
+            if (!this._pValueHelpActive) {
+                this._pValueHelpActive = Fragment.load({
+                    id: oView.getId(),
+                    name: "com.public.storage.pao.fragments.BUDetails.Active",
+                    controller: this
+                }).then(function (oDialog) {
+                    oView.addDependent(oDialog);
+                    return oDialog;
+                });
+            }
+            //this._oBusyDialog.open()
+            this._pValueHelpActive.then(function (oDialog) {
+               
                 oDialog.open();
             });
 
@@ -317,7 +374,8 @@ sap.ui.define([
             } else if(sTitle === "Active"){
                 // this.byId("active").setValue(sDescription);
                 // this._custCode = sCode
-                this.getView().getModel("plantBasicDetailsModel").setProperty("/TennentInsPc", sCode);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/Active", `(${sCode}) ${sDescription}`);
+                this.getView().getModel("plantBasicDetailsModel").setProperty("/ActiveDesc", `${sDescription}`);
             } else if(sTitle === "Entity Type"){
                 // this.byId("entityType").setValue(sDescription);
                 // this._entityType = sCode
@@ -353,7 +411,7 @@ sap.ui.define([
             let bValidation = true;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
-            let sActive = this.getView().byId("active").getSelectedKey();
+            let sActive = this.byId("active").getValue();
             var regExp = "/\(([^)]+)\)/";
             let sUnitType = this.byId("bType").getValue();
             let custCode = this.byId("cCode").getValue();
@@ -362,10 +420,10 @@ sap.ui.define([
             let aTypeProp = this.byId("atypeProp").getValue();
             let bType = this.byId("bType").getValue();
             let aquiredFromTP = this.byId("aquiredFromTP").getValue();
-            let trafficMoni = this.getView().byId("trafficMonitoring").getSelectedKey() === "Y" ? true : false;
+            let trafficMoni = this.getView().byId("trafficMonitoring").getSelectedKey();
 
             
-            if (sActive === "") {
+            if (sActive === "" || sActive === undefined) {
                 this.model.setProperty("/Active", "Error");
                
             } else {
@@ -390,18 +448,18 @@ sap.ui.define([
                 this.model.setProperty("/EntityType", "None");
             }
 
-            if (combinedServ === "" || combinedServ === undefined) {
-                this.model.setProperty("/CombinedSurvivingNumber", "Error");
-            } else {
-                this.model.setProperty("/CombinedSurvivingNumber", "None");
-            }
+            // if (combinedServ === "" || combinedServ === undefined) {
+            //     this.model.setProperty("/CombinedSurvivingNumber", "Error");
+            // } else {
+            //     this.model.setProperty("/CombinedSurvivingNumber", "None");
+            // }
 
             if (aTypeProp === "" || aTypeProp=== undefined) {
                 this.model.setProperty("/ATypeProperty", "Error");
             } else {
                 this.model.setProperty("/ATypeProperty", "None");
             }
-            if (sUnitType === "" || sActive === "" || custCode === "" || sEntityType === "" || combinedServ === "" || aTypeProp === ""){
+            if (sUnitType === "" || sActive === "" || custCode === "" || sEntityType === "" || aTypeProp === ""){
                 bValidation = true;
             } else {
                 bValidation = false;
@@ -425,7 +483,7 @@ sap.ui.define([
                 AcquiredFrom: this.getView().byId("aquiredFrom").getValue(),
                 AcquiredDevelopedThirdP: aquiredFromTP, 
                 Psd:this.getView().byId("psd").getValue(),
-                TrafticMonitoring: trafficMoni
+                TrafficMonitoring: trafficMoni
             }
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
            

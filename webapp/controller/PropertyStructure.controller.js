@@ -160,13 +160,14 @@ sap.ui.define([
                 this._sCodeOrg =  oSelectedItem.getTitle();
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/OrgStruct", `(${this._sCodeOrg}) ${sDescriptionOrg}`);
                 this.byId("hier").setEnabled(true);
+                this.byId("hier").setValue("");
                 
             } 
             if(sTitle === "Hierarchy Code"){
                 let sDescriptionHier = oSelectedItem.getDescription();
                 let sCodeHier =  oSelectedItem.getTitle();
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/HierCode", `(${sCodeHier}) ${sDescriptionHier}`);
-                this.byId("hier").setEnabled(false);
+                //this.byId("hier").setEnabled(false);
                 this.callTreeService(sCodeHier, this._sCodeOrg);
             }
             
@@ -215,8 +216,8 @@ sap.ui.define([
                         const sError = JSON.parse(oError.responseText).error.message.value
                         // that._oBusyDialog.close();
                         if (sError.includes("Cost Center Group")){
-                            that.getView().getModel("treeModel").setData([]);
                             MessageToast.show(sError);
+                            that.getView().getModel("treeModel").setData([]);
                         } else {
                             MessageToast.show("No Date Found");
                             that.getView().getModel().setData([]);

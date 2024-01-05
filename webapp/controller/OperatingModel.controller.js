@@ -49,11 +49,11 @@ sap.ui.define([
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
             let sTime = "T00:00:00";
-            let skioskmodel = this.byId("kioskmodel").getSelectedKey()  === "Y" ? true : false;
+            let skioskmodel = this.byId("kioskmodel").getSelectedKey();
            
-            let scddModel = this.byId("cddModel").getSelectedKey() === "Y" ? true : false;
-            let sSatelliteModel = this.byId("satelliteModel").getSelectedKey() === "Y" ? true : false;
-            let sconnectCareModel = this.byId("connectCareModel").getSelectedKey() === "Y" ? true : false;
+            let scddModel = this.byId("cddModel").getSelectedKey();
+            let sSatelliteModel = this.byId("satelliteModel").getSelectedKey();
+            let sconnectCareModel = this.byId("connectCareModel").getSelectedKey();
             let skioskGp = this.byId("kioskGp").getValue();
             let sconnectCareBuddy = this.byId("connectCareBuddy").getValue();
             let skioskBuddy = this.byId("kioskBuddy").getValue();
