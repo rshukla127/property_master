@@ -150,7 +150,7 @@ sap.ui.define([
         onValueHelpDialogClose: function (oEvent) {
 			var	oSelectedItem = oEvent.getParameter("selectedItem");
             let sTitle = oEvent.getSource().getTitle();
-            oEvent.getSource().getBinding("items").filter([]);
+            //oEvent.getSource().getBinding("items").filter([]);
             if (!oSelectedItem) {
 				return;
 			}

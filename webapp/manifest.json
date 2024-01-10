@@ -151,6 +151,11 @@
           "target": ["propStructure"]
         },
         {
+          "name": "propNotes",
+          "pattern": "propNotes",
+          "target": ["propNotes"]
+        },
+        {
           "name": "propSuppDeatils",
           "pattern": "propSuppDeatils",
           "target": ["propSuppDeatils"]
@@ -261,6 +266,11 @@
           "viewType": "XML",
           "viewId": "propSuppDeatils",
           "viewName": "SupplementalDetails"
+        },
+        "propNotes": {
+          "viewType": "XML",
+          "viewId": "propNotes",
+          "viewName": "PropertyNotes"
         },
         "insDetails": {
           "viewType": "XML",

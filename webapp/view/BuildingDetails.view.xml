@@ -82,7 +82,7 @@ controllerName="com.public.storage.pao.controller.BuildingDetails"
                                         <m:Label design="Bold" text="Building Name" wrapping="true" />
                                     </m:Column>
                                     <m:Column minScreenWidth="Desktop" width="13em" importance="High" demandPopin="true" popinDisplay="Inline">
-                                        <m:Label design="Bold" text="No. of Storeys" />
+                                        <m:Label design="Bold" text="No. of Stories" />
                                     </m:Column>
                                     <m:Column minScreenWidth="Desktop" width="18em" importance="High" demandPopin="true" popinDisplay="Inline">
                                         <m:Label design="Bold" text="Description 1" wrapping="true" />

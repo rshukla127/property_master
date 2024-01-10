@@ -68,13 +68,7 @@ controllerName="com.public.storage.pao.controller.SupplementalDetails"
                             <f:SimpleForm id="suppDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
                                 <f:content>
                                     <core:Title text="" visible="false"/>
-                                    <m:Label required="true" text="{i18n>propDeatures}" />
-                                    <m:TextArea rows="2" change="onDetectChange" valueStateText="Value cannot be blank" maxLength="500" valueState="{/PropertyFeatures}" id="propFeature" value="{plantBasicDetailsModel>/PropertyFeatures}" />
-                                    <m:Label required="true" text="{i18n>drivingDirection}" />
-                                    <m:TextArea rows="2" change="onDetectChange" valueStateText="Value cannot be blank" maxLength="500" valueState="{/DrivingDirections}" id="driDirection" value="{plantBasicDetailsModel>/DrivingDirections}" />
-                
-                                    <m:Label required="true" text="{i18n>specialNotes}" />
-                                    <m:TextArea rows="2" change="onDetectChange" valueStateText="Value cannot be blank" maxLength="500" valueState="{/SpecialNotes}" id="spNotes" value="{plantBasicDetailsModel>/SpecialNotes}" />
+                                    
                 
                                     <m:Label text="{i18n>lockers}" />
                                     <m:Select change="onDetectChange" id="lock" selectedKey="{parts: ['plantBasicDetailsModel>/Lockers'], formatter: '.formatter.getSelectedKeyBlank'}">
@@ -162,6 +156,20 @@ controllerName="com.public.storage.pao.controller.SupplementalDetails"
                                     
                                     <m:Label text="{i18n>officeCount}" />
                                     <m:Input change="onDetectChange" id="officeCount" type="Number" maxLength="2" value="{plantBasicDetailsModel>/OfficeCount}" />
+
+                                    <m:Label text="{i18n>survillenceCamera}" />
+                                    <m:Select change="onDetectChange" id="camera" selectedKey="{plantBasicDetailsModel>/SurvellianceCamera}">
+                                        <m:items>
+                                            <core:Item text="Yes" key="Y"/>
+                                            <core:Item text="No" key="N"/>
+                
+                                        </m:items>
+                                    </m:Select>
+                                    <m:Label text="{i18n>survillanceCamRemarks}" />
+                                    <m:Input change="onDetectChange" id="surCamRemarks" maxLength="30" value="{plantBasicDetailsModel>/SurvellianceCameraRemarks}" />
+                                    
+                                    <m:Label text="{i18n>restRoomCount}" />
+                                    <m:Input change="onDetectChange" id="restRoomCount" type="Number" maxLength="2" value="{plantBasicDetailsModel>/RestroomCount}" />
                                     
                                     <core:Title text="" visible="false"/>
                                     <m:Label text="{i18n>lotSize}" />
@@ -245,19 +253,7 @@ controllerName="com.public.storage.pao.controller.SupplementalDetails"
                 
                                         </m:items>
                                     </m:Select>
-                                    <m:Label text="{i18n>survillenceCamera}" />
-                                    <m:Select change="onDetectChange" id="camera" selectedKey="{plantBasicDetailsModel>/SurvellianceCamera}">
-                                        <m:items>
-                                            <core:Item text="Yes" key="Y"/>
-                                            <core:Item text="No" key="N"/>
-                
-                                        </m:items>
-                                    </m:Select>
-                                    <m:Label text="{i18n>survillanceCamRemarks}" />
-                                    <m:Input change="onDetectChange" id="surCamRemarks" maxLength="30" value="{plantBasicDetailsModel>/SurvellianceCameraRemarks}" />
                                     
-                                    <m:Label text="{i18n>restRoomCount}" />
-                                    <m:Input change="onDetectChange" id="restRoomCount" type="Number" maxLength="2" value="{plantBasicDetailsModel>/RestroomCount}" />
                                 </f:content>
                             </f:SimpleForm>
 						</blocks>

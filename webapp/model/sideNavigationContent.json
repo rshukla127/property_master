@@ -38,10 +38,14 @@
 					"key": "marketingDetails",
 					"visible": false
 				},
-				
 				{
 					"title": "{i18n>sideNavSubItemPropSuppDetails}",
 					"key": "propSuppDeatils",
+					"visible": false
+				},
+				{
+					"title": "{i18n>sideNavSubItemPropNotes}",
+					"key": "propNotes",
 					"visible": false
 				},
 				{

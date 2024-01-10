@@ -10,8 +10,7 @@
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			info="{taxOwnerModel>Fein}"
-			title="{taxOwnerModel>Company}"
+			title="{taxOwnerModel>Code}"
 			description="{taxOwnerModel>Description}"/>
 	</SelectDialog>
 </core:FragmentDefinition>

@@ -338,53 +338,6 @@ sap.ui.define([
 
         },
 
-
-        readTaxOwner: function(){
-            const that = this;
-            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'TAXOWNER');
-            this._oBusyDialog.open()
-            that._oModel.read(`/CompanyDetailSet`, {
-                filters: [keyFilter],
-                    success: function (oData) {
-                        if (oData.results){
-                        that._oBusyDialog.close();
-                        const oModel = new JSONModel(oData.results);
-                        that.getView().setModel(oModel, "feeTypeModel")
-                        sap.ui.getCore().setModel(oModel, "feeTypeModel");
-                        }
-                    },
-                    error: function (oData) {
-                        that._oBusyDialog.close();
-                        MessageToast.show("Something went wrong with Service")
-                    }
-                });
-
-        },
-
-        readLegalOwner: function(){
-            const that = this;
-            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'LEGALOWNER');
-            this._oBusyDialog.open();
-            that._oModel.read(`/CompanyDetailSet`, {
-                filters: [keyFilter],
-                    success: function (oData) {
-                        if (oData.results){
-                        that._oBusyDialog.close();
-                        const oModel = new JSONModel(oData.results);
-                        that.getView().setModel(oModel, "feeTypeModel")
-                        sap.ui.getCore().setModel(oModel, "feeTypeModel");
-                        }
-                    },
-                    error: function (oData) {
-                        that._oBusyDialog.close();
-                        MessageToast.show("Something went wrong with Service")
-                    }
-                });
-
-        },
-
-
-
         readAquiredDeveloperTP:function(){
             const that = this;
             var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'ACQUIREDDEVELOPEDTHIRDPARTY');
@@ -679,9 +632,9 @@ sap.ui.define([
         // Tax detail tab started
         readTaxOwner: function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'TAXOWNER');
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'TAXOWNER');
             this._oBusyDialog.open();
-            that._oModel.read(`/CompanyDetailSet`, {
+            that._oModel.read(`/HelpDataSet`, {
                 filters: [keyFilter],
                     success: function (oData) {
                         that._oBusyDialog.close();
@@ -696,28 +649,11 @@ sap.ui.define([
                 });
         },
 
-        // readTaxOwnerFein: function(){
-        //     const that = this;
-            
-        //     that._oModel.read(`/SrDistrictSet`, {
-        //             success: function (oData) {
-                       
-        //                 const oModel = new JSONModel(oData.results);
-        //                 that.getView().setModel(oModel, "SrDistrictSetModel")
-        //                 sap.ui.getCore().setModel(oModel, "SrDistrictSetModel");
-        //             },
-        //             error: function (oData) {
-                       
-        //                 MessageToast.show("Something went wrong with Service")
-        //             }
-        //         });
-        // },
-
         readLegalOwner: function(){
             const that = this;
-            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'LEGALOWNER');
+            var keyFilter = new sap.ui.model.Filter('Keyfield', 'EQ', 'LEGALOWNER');
             this._oBusyDialog.open();
-            that._oModel.read(`/CompanyDetailSet`, {
+            that._oModel.read(`/HelpDataSet`, {
                 filters: [keyFilter],
                     success: function (oData) {
                         that._oBusyDialog.close();
@@ -769,16 +705,16 @@ sap.ui.define([
         readTaxFillingEntity: function(){
             const that = this;
             
-            that._oModel.read(`/TaxFilingEntitySet`, {
+            that._oModel.read(`/SolarEntitySet`, {
                     success: function (oData) {
                        
                         const oModel = new JSONModel(oData.results);
                         that.getView().setModel(oModel, "taxFilingModel")
                         sap.ui.getCore().setModel(oModel, "taxFilingModel");
                     },
-                    error: function (oData) {
-                       
-                        MessageToast.show("Something went wrong with Service")
+                    error: function (oError) {
+                        const sError = JSON.parse(oError.responseText).error.message.value;
+                        MessageToast.show(sError);
                     }
                 });
         },

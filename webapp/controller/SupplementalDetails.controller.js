@@ -34,10 +34,10 @@ sap.ui.define([
 			this.getView().addDependent(this._oBusyDialog);
             this.model = new JSONModel();
             this.model.setData({
-				JSONModel: "None",
-				DrivingDirections: "None",
-                SpecialNotes: "None",
-                Apartments: "None"
+				JSONModel: "None"
+				// DrivingDirections: "None",
+                // SpecialNotes: "None",
+                // Apartments: "None"
 			});
             this.getView().setModel(this.model);
 
@@ -179,31 +179,31 @@ sap.ui.define([
             let finalfloodzoneEffdate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(floodzoneEffdate)) + sTime;
             floodzoneEffdate = finalfloodzoneEffdate === "T00:00:00" ? null : finalfloodzoneEffdate;
                
-            let PropertyFeatures =  this.getView().byId("propFeature").getValue();
-            let DrivingDirections = this.getView().byId("driDirection").getValue();
-            let SpecialNotes = this.getView().byId("spNotes").getValue();
+            // let PropertyFeatures =  this.getView().byId("propFeature").getValue();
+            // let DrivingDirections = this.getView().byId("driDirection").getValue();
+            // let SpecialNotes = this.getView().byId("spNotes").getValue();
             let Apartments =  this.getView().byId("apart").getSelectedKey();
             let yearbuild = this.byId("year").getValue();
             let officeCount = this.byId("officeCount").getValue();
             let restRoomCount = this.byId("restRoomCount").getValue();
 
-            if (PropertyFeatures === "") {
-                this.model.setProperty("/PropertyFeatures", "Error");
-            } else {
-                this.model.setProperty("/PropertyFeatures", "None");
-            }
+            // if (PropertyFeatures === "") {
+            //     this.model.setProperty("/PropertyFeatures", "Error");
+            // } else {
+            //     this.model.setProperty("/PropertyFeatures", "None");
+            // }
 
-            if (DrivingDirections === "") {
-                this.model.setProperty("/DrivingDirections", "Error");
-            } else {
-                this.model.setProperty("/DrivingDirections", "None");
-            }
+            // if (DrivingDirections === "") {
+            //     this.model.setProperty("/DrivingDirections", "Error");
+            // } else {
+            //     this.model.setProperty("/DrivingDirections", "None");
+            // }
 
-            if (SpecialNotes === "") {
-                this.model.setProperty("/SpecialNotes", "Error");
-            } else {
-                this.model.setProperty("/SpecialNotes", "None");
-            }
+            // if (SpecialNotes === "") {
+            //     this.model.setProperty("/SpecialNotes", "Error");
+            // } else {
+            //     this.model.setProperty("/SpecialNotes", "None");
+            // }
 
             if (Apartments === "") {
                 this.model.setProperty("/Apartments", "Error");
@@ -211,7 +211,7 @@ sap.ui.define([
                 this.model.setProperty("/Apartments", "None");
             }
 
-            if (PropertyFeatures === "" || DrivingDirections === "" || SpecialNotes === "" || Apartments === ""){
+            if (Apartments === ""){
                 bValidation = true ;
             } else {
                 bValidation = false ;
@@ -219,9 +219,9 @@ sap.ui.define([
 
             if (bValidation === false){
             const payload = {
-                PropertyFeatures: PropertyFeatures,
-                DrivingDirections: DrivingDirections,
-                SpecialNotes: SpecialNotes,
+                // PropertyFeatures: PropertyFeatures,
+                // DrivingDirections: DrivingDirections,
+                // SpecialNotes: SpecialNotes,
                 Lockers: this.getView().byId("lock").getSelectedKey(),
                 LargeTruckAccess: this.getView().byId("truck").getSelectedKey(),
                 FurnitureDollies: this.getView().byId("furniture").getSelectedKey(),

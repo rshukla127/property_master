@@ -55,8 +55,9 @@ sap.ui.define([
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber);
             this.readTaxOwner();
+            //this.readTaxFillingEntity();
             //this.readTaxOwnerFein();
-            this.readLegalOwner();
+            //this.readLegalOwner();
             //this.readLegalOwnerFein();
             //this.readOwnerOfRecord();
             //this.readTaxFillingEntity();
@@ -66,7 +67,7 @@ sap.ui.define([
         onValueHelpDialogSearchTaxOwner:function(oEvent){
             let sValue = oEvent.getParameter("value");
 			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
-            let oCodeFilter = new Filter("Company", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
             let oCombinedFilter = new Filter({
                 filters: [oFilterDesc, oCodeFilter],
                 and: false // Set to false for OR condition
@@ -78,7 +79,7 @@ sap.ui.define([
         onValueHelpDialogSearchLegalOwner:function(oEvent){
             let sValue = oEvent.getParameter("value");
 			let oFilterDesc = new Filter("Description", FilterOperator.Contains, sValue);
-            let oCodeFilter = new Filter("Company", FilterOperator.Contains, sValue);
+            let oCodeFilter = new Filter("Code", FilterOperator.Contains, sValue);
             let oCombinedFilter = new Filter({
                 filters: [oFilterDesc, oCodeFilter],
                 and: false // Set to false for OR condition
