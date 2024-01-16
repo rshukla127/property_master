@@ -10,24 +10,24 @@ controllerName="com.public.storage.pao.controller.PropDates"
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<expandedHeading>
-					<m:Title text="Property Dates Details" wrapping="true" />
+					<m:Title text="Property Date Details" wrapping="true" />
 				</expandedHeading>
 
 				<snappedHeading>
 					<m:HBox>
 						<m:VBox>
-							<m:Title text="Property Dates Details" wrapping="true"/>
-							<m:Label text="Fill your property dates details"/>
+							<m:Title text="Property Date Details" wrapping="true"/>
+							<m:Label text="Fill your property date details"/>
 						</m:VBox>
 					</m:HBox>
 				</snappedHeading>
 
 				<expandedContent>
-					<m:Label text="Fill your property dates details"/>
+					<m:Label text="Fill your property date details"/>
 				</expandedContent>
 
 				<snappedTitleOnMobile>
-					<m:Title text="Property Dates Details"/>
+					<m:Title text="Property Date Details"/>
 				</snappedTitleOnMobile>
 
 				<actions>
@@ -60,7 +60,7 @@ controllerName="com.public.storage.pao.controller.PropDates"
 
 		<sections>
 
-			<ObjectPageSection titleUppercase="false" id="personalSection" title="Property Dates Details">
+			<ObjectPageSection titleUppercase="false" id="personalSection" title="Property Date Details">
 				<subSections>
 					<ObjectPageSubSection id="personalSectionSS1"  titleUppercase="false">
 						<blocks>
