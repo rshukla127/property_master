@@ -33,10 +33,10 @@
                 <l:BlockLayoutRow id="row1" class="content">
                     <l:BlockLayoutCell class="sapUiNoContentPadding content">
                         <HBox>
-                            <VBox height="250px">
+                            <VBox height="250px" class="slideInDown">
                                 <IllustratedMessage illustrationSize="Scene" illustrationType="tnt-Company" />
                             </VBox>
-                            <VBox class="sapUiSmallMarginBegin sapUiLargeMarginTop slideInLeft" wrap="Wrap">
+                            <VBox class="sapUiSmallMarginBegin sapUiLargeMarginTop slideInDown" wrap="Wrap">
                                 <HBox>
                                     <Title text="Hello {userModel>/user}" id="UserName" level="H2" titleStyle="H2" wrapping="true" />
                                     <Title id="userWelcome" level="H2" titleStyle="H2" wrapping="true" class="sapUiTinyMarginBegin boldTitle" />
@@ -403,7 +403,7 @@
                                     </VBox>
                                 </HBox> -->
                                 <VBox alignContent="End" alignItems="End">
-                                    <Button text="Save and Continue" id="savandcontmain" enabled="true" type="Emphasized" press="onPressSave"></Button>
+                                    <Button text="Save and Continue" icon="sap-icon://save" id="savandcontmain" enabled="true" type="Emphasized" press="onPressSave"></Button>
                                 </VBox>
                             </f:GridListItem>
                         </f:GridList>

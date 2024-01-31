@@ -62,24 +62,6 @@ sap.ui.define([
 
         },
 
-        // setDefaultValues:function(){
-        //     this.byId("sunOpen").setValue("09:30:00");
-        //     this.byId("monOpen").setValue("09:30:00");
-        //     this.byId("tueOpen").setValue("09:30:00");
-        //     this.byId("wedOpen").setValue("09:30:00");
-        //     this.byId("thuOpen").setValue("09:30:00");
-        //     this.byId("friOpen").setValue("09:30:00");
-        //     this.byId("satOpen").setValue("09:30:00");
-        //     this.byId("sunClose").setValue("17:00:00");
-        //     this.byId("monClose").setValue("18:00:00");
-        //     this.byId("tueClose").setValue("18:00:00");
-        //     this.byId("wedClose").setValue("18:00:00");
-        //     this.byId("thuClose").setValue("18:00:00");
-        //     this.byId("friClose").setValue("18:00:00");
-        //     this.byId("satClose").setValue("17:00:00");
-        //     //this.byId("daylight").setSelectedKey("N");
-        // },
-
         onPressSaveWorkingHours: function(){
             this._oBusyDialog.open();
             const that = this;
@@ -103,79 +85,32 @@ sap.ui.define([
             let friCloseN = this.byId("friClose").getValue();
             let satCloseN = this.byId("satClose").getValue();
 
-            if (sunOpenN === "" || sunOpenN == null) {
-                this.model.setProperty("/sunOpenHR", "Error");
-            } else {
-                this.model.setProperty("/sunOpenHR", "None");
-            }
-            if (monOpenN === "" || monOpenN === "") {
-                this.model.setProperty("/monOpenHR", "Error");
-            } else {
-                this.model.setProperty("/monOpenHR", "None");
-            }
-
-            if (tueOpenN === "" || tueOpenN == null) {
-                this.model.setProperty("/tueOpenHR", "Error");
-            } else {
-                this.model.setProperty("/tueOpenHR", "None");
-            }
-            if (wedOpenN === "" || wedOpenN === "") {
-                this.model.setProperty("/wedOpenHR", "Error");
-            } else {
-                this.model.setProperty("/wedOpenHR", "None");
-            }
-
-            if (thuOpenN === "" || thuOpenN == null) {
-                this.model.setProperty("/thuOpenHR", "Error");
-            } else {
-                this.model.setProperty("/wedOpenHR", "None");
-            }
-            if (friOpenN === "" || friOpenN === "") {
-                this.model.setProperty("/friOpenHR", "Error");
-            } else {
-                this.model.setProperty("/friOpenHR", "None");
-            }
-            if (satOpenN === "" || satOpenN === "") {
-                this.model.setProperty("/satOpenHR", "Error");
-            } else {
-                this.model.setProperty("/satOpenHR", "None");
-            }
-            if (sunCloseN === "" || sunCloseN === "") {
-                this.model.setProperty("/sunCloseHR", "Error");
-            } else {
-                this.model.setProperty("/sunCloseHR", "None");
-            }
-
-            if (monCloseN === "" || monCloseN === "") {
-                this.model.setProperty("/monCloseHR", "Error");
-            } else {
-                this.model.setProperty("/monCloseHR", "None");
-            }
-            if (tueCloseN === "" || tueCloseN === "") {
-                this.model.setProperty("/tueCloseHR", "Error");
-            } else {
-                this.model.setProperty("/tueCloseHR", "None");
-            }
-            if (wedCloseN === "" || wedCloseN === "") {
-                this.model.setProperty("/wedCloseHR", "Error");
-            } else {
-                this.model.setProperty("/wedCloseHR", "None");
-            }
-            if (thuCloseN === "" || thuCloseN === "") {
-                this.model.setProperty("/thuCloseHR", "Error");
-            } else {
-                this.model.setProperty("/thuCloseHR", "None");
-            }
-            if (friCloseN === "" || friCloseN === "") {
-                this.model.setProperty("/friCloseHR", "Error");
-            } else {
-                this.model.setProperty("/friCloseHR", "None");
-            }
-            if (satCloseN === "" || satCloseN === "") {
-                this.model.setProperty("/satCloseHR", "Error");
-            } else {
-                this.model.setProperty("/satCloseHR", "None");
-            }
+            const validateAndSetProperty = (value, path) => {
+                if (value === "" || value == null) {
+                    this.model.setProperty(path, "Error");
+                } else {
+                    this.model.setProperty(path, "None");
+                }
+            };
+        
+            const setValidationProperties = () => {
+                validateAndSetProperty(sunOpenN, "/sunOpenHR");
+                validateAndSetProperty(monOpenN, "/monOpenHR");
+                validateAndSetProperty(tueOpenN, "/tueOpenHR");
+                validateAndSetProperty(wedOpenN, "/wedOpenHR");
+                validateAndSetProperty(thuOpenN, "/thuOpenHR");
+                validateAndSetProperty(friOpenN, "/friOpenHR");
+                validateAndSetProperty(satOpenN, "/satOpenHR");
+                validateAndSetProperty(sunCloseN, "/sunCloseHR");
+                validateAndSetProperty(monCloseN, "/monCloseHR");
+                validateAndSetProperty(tueCloseN, "/tueCloseHR");
+                validateAndSetProperty(wedCloseN, "/wedCloseHR");
+                validateAndSetProperty(thuCloseN, "/thuCloseHR");
+                validateAndSetProperty(friCloseN, "/friCloseHR");
+                validateAndSetProperty(satCloseN, "/satCloseHR");
+            };
+            setValidationProperties();
+            
             if (sunOpenN === "" || monOpenN === "" || tueOpenN === "" || wedOpenN === "" || thuOpenN === ""
             ||  friOpenN === "" || satOpenN === "" ||  sunCloseN ==="" || monCloseN === "" || tueCloseN === "" || wedCloseN === "" || thuCloseN === "" || friCloseN === ""
             || satCloseN === ""){

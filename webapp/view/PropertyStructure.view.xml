@@ -38,7 +38,7 @@
 
 		<headerContent>
 			<m:FlexBox wrap="Wrap" fitContainer="true">
-				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
+				<m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" src="sap-icon://bo-strategy-management" displayShape="Circle" initials="PS" displaySize="L"/>
 
 				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">

@@ -30,14 +30,15 @@
                     </snappedTitleOnMobile>
 
                     <actions>
-                         <m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveWorkingHours"></m:Button>
+                         <m:Button text="Save and Continue" enabled="true" type="Emphasized" icon="sap-icon://save" press="onPressSaveWorkingHours"></m:Button>
                     </actions>
                </ObjectPageDynamicHeaderTitle>
           </headerTitle>
 
           <headerContent>
                <m:FlexBox wrap="Wrap" fitContainer="true">
-                    <!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
+                    <m:Avatar src="sap-icon://time-overtime" class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Circle" initials="WH" displaySize="L"/>
+                 
 
                     <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
                          <m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">

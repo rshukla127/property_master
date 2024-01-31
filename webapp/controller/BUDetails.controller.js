@@ -491,11 +491,11 @@ sap.ui.define([
                 success: function (oData) {
                     that._oBusyDialog.close();
                     that.getOwnerComponent.hasChanges = false;
-                   MessageToast.show("Saved Successfully");
+                   MessageToast.show(that.getView().getModel("i18n").getResourceBundle().getText("successMsg"));
                 },
                 error: function (error) {
                     that._oBusyDialog.close();
-                    MessageToast.show("Something went wrong with Service")
+                    MessageToast.show(that.getView().getModel("i18n").getResourceBundle().getText("errorMsg"));
                 }
             })
         } else {

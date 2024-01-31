@@ -69,9 +69,6 @@ sap.ui.define([
                     that.getOwnerComponent().getModel("plantsModel").setProperty("/Email", FilterData[0].Email);
                     that.getOwnerComponent().getModel("plantsModel").setProperty("/Faxnumber", FilterData[0].Faxnumber);
                     that.getOwnerComponent().getModel("plantsModel").setProperty("/Telnumber", FilterData[0].Telnumber);
-                    // that.getView().setModel(oModel, "plantModelNew")
-                    // sap.ui.getCore().setModel(oModel, "plantModelNew");
-                    // that.getView().getModel("plantModelNew").refresh();
                 },
                 error: function (oData) {
                     that._oBusyDialog.close();
@@ -99,8 +96,7 @@ sap.ui.define([
             this._pValueHelpDialogProp.then(function (oDialog) {
                 that.readPropertyMasterBuddyData();
                 that._oBusyDialog.close();
-                //oDialog.getBinding("items").filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
-                // Open ValueHelpDialog filtered by the input's value
+                
                 oDialog.open(sInputValue);
             });
         },
@@ -120,9 +116,6 @@ sap.ui.define([
 
         },
 
-        // onValueHelpDialogCloseProperty: function(){
-        //     this._pValueHelpDialogProp.close();
-        // },
 
         readPropertyMasterBuddyData: function () {
             const that = this;
@@ -144,26 +137,14 @@ sap.ui.define([
 
         },
 
-        // onDateChange: function(oEvent){
-        //     let sTime = "T00:00:00";
-        //     const sValue = oEvent.getSource().getValue();
-        //     this.fromattedDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sValue)) + sTime;
-
-        // },
-
         onPressSaveBasicDetails: function(){
             this._oBusyDialog.open();
             const that = this;
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             var bValidation = true;
-            let sTime = "T00:00:00"
-            //let sTollFreeNumber = this.getView().byId("tollFree").getValue();
-            //let sNetwork1IpAddress = this.getView().byId("network1").getValue();
+            let sTime = "T00:00:00";
             let sKioskProperty = this.getView().byId("kiskProp").getSelectedKey();
-            //let sPublishedPhoneNo = this.getView().byId("pubPhone").getValue();
-            //let sLocalPhoneNumber = this.getView().byId("localPh").getValue();
-            //let sNetwork2IpAddress =  this.getView().byId("network2").getValue();
             let kisokACtivDate = this.getView().byId("kisok").getValue().split(".").reverse().join("-");
             let sGeoCode = this.getView().byId("geo").getValue();
             if (kisokACtivDate !== ""){
@@ -180,37 +161,6 @@ sap.ui.define([
 
             }
             
-            // if (kisokACtivDate === "" || kisokACtivDate == null) {
-            //     this.model.setProperty("/KioskActiveDate", "Error");
-               
-            // } else {
-            //     this.model.setProperty("/KioskActiveDate", "None");
-               
-            // }
-
-            // if (sTollFreeNumber === "") {
-            //     this.model.setProperty("/tollFreeNumber", "Error");
-               
-            // } else {
-            //     this.model.setProperty("/tollFreeNumber", "None");
-             
-            // }
-
-            // if (sNetwork1IpAddress === "") {
-            //     this.model.setProperty("/network1IpAddress", "Error");
-               
-            // } else {
-            //     this.model.setProperty("/network1IpAddress", "None");
-             
-            // }
-
-            // if (sNetwork2IpAddress === "") {
-            //     this.model.setProperty("/network2IpAddress", "Error");
-               
-            // } else {
-            //     this.model.setProperty("/network2IpAddress", "None");
-              
-            // }
 
             if (sKioskProperty === "") {
                 this.model.setProperty("/KioskProperty", "Error");
@@ -219,20 +169,6 @@ sap.ui.define([
                 this.model.setProperty("/KioskProperty", "None");
                
             }
-
-            // if (sPublishedPhoneNo === "") {
-            //     this.model.setProperty("/publishedPhoneNo", "Error");
-            // } else {
-            //     this.model.setProperty("/publishedPhoneNo", "None");
-            // }
-
-            // if (sLocalPhoneNumber === "") {
-            //     this.model.setProperty("/localPhoneNumber", "Error");
-              
-            // } else {
-            //     this.model.setProperty("/localPhoneNumber", "None");
-               
-            // }
 
             if (sGeoCode === "") {
                 this.model.setProperty("/GeoCode", "Error");
@@ -248,10 +184,7 @@ sap.ui.define([
             }
             if (bValidation === false){
             const payload = {
-                //DirectPhoneNo: this.getView().byId("dirPhoneNo").getValue(),
-                //FaxNumber: this.getView().byId("faxNo").getValue(),
-                //TollFreeNumber: sTollFreeNumber,
-                //Network1IpAddress: sNetwork1IpAddress,
+              
                 KioskActiveDate: kisokACtivDate,
                 KioskProperty: sKioskProperty,
                 BuddyPropertyNumber: this.getView().byId("budProp").getValue(),
@@ -275,16 +208,13 @@ sap.ui.define([
            const uri= `/PropertyMasterSet(Plant='${sPlant}',LegacyPropertyNumber='${LegacyPropertyNumber}')`
            
             this._oModel.update(uri, payload, {
-                // urlParameters: {
-                //     "$filter": this._Plant
-                // },
                 success: function (oData) {
-                   MessageToast.show("Saved Successfully");
+                   MessageToast.show(that.getView().getModel("i18n").getResourceBundle().getText("successMsg"));
                    that.getOwnerComponent.hasChanges = false;
                    that._oBusyDialog.close();
                 },
                 error: function (error) {
-                    MessageToast.show("Something went wrong with Service")
+                    MessageToast.show(that.getView().getModel("i18n").getResourceBundle().getText("errorMsg"))
                     that._oBusyDialog.close();
                 }
             })

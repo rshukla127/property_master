@@ -33,8 +33,7 @@ sap.ui.define([
               }
             const LegacyPropertyNumber= this.getOwnerComponent().LegacyPropertyNumber
             this._oModel = sap.ui.getCore().getModel("mainModel");
-            this.readPropertyData(Plant, LegacyPropertyNumber)
-
+            this.readPropertyData(Plant, LegacyPropertyNumber);
         },
 
         onDetectChange: function(oEvent){
@@ -46,22 +45,6 @@ sap.ui.define([
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber
             const payload = {
-                // BuildingNumber: this.getView().byId("num1").getValue(),
-                // BuildingName1: this.getView().byId("name1").getValue(),
-                // NumberOfStories1: this.getView().byId("stories1").getValue(),
-                // BuildingNumber1: this.getView().byId("num2").getValue(),
-                // BuildingName2: this.getView().byId("name2").getValue(),
-                // NumberOfStories2: this.getView().byId("stories2").getValue(),
-                // BuildingNumber2: this.getView().byId("num3").getValue(),
-                // BuildingName3: this.getView().byId("name3").getValue(),
-                // NumberOfStories3: this.getView().byId("stories3").getValue(),
-                // BuildingNumber3: this.getView().byId("num4").getValue(),
-                // BuildingName4: this.getView().byId("name4").getValue(),
-                // NumberOfStories4: this.getView().byId("stories4").getValue(),
-                // BuildingNumber4: this.getView().byId("num5").getValue(),
-                // BuildingName5: this.getView().byId("name5").getValue(),
-
-                // NumberOfStories5: this.getView().byId("stories5").getValue(),
                 AppartmentNumber1: this.getView().byId("apart1").getValue(),
                 AppartmentName1: this.getView().byId("apartName1").getValue(),
                 NumberOfStories_1: this.getView().byId("apartstories1").getValue(),
@@ -79,11 +62,11 @@ sap.ui.define([
                 success: function (oData) {
                     that._oBusyDialog.close()
                     that.getOwnerComponent.hasChanges = false;
-                   MessageToast.show("Saved Successfully");
+                   MessageToast.show(that.getView().getModel("i18n").getResourceBundle().getText("successMsg"));
                 },
-                error: function (oData) {
+                error: function (oError) {
                     that._oBusyDialog.close();
-                    MessageToast.show("Something went wrong with Service")
+                    MessageToast.show(that.getView().getModel("i18n").getResourceBundle().getText("errorMsg"));
                 }
             })
 

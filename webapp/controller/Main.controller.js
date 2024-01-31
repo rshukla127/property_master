@@ -1391,6 +1391,7 @@ sap.ui.define([
                   this._oModel.update(uri, payload, {
                       success: function (oData) {
                           that.BusyDialog.close();
+                          that.getView().byId("savandcontmain").setEnabled(false);
                           
                          MessageToast.show("Saved Successfully");
                       },

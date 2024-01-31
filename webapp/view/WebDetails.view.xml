@@ -31,14 +31,15 @@ controllerName="com.public.storage.pao.controller.WebDetails"
 				</snappedTitleOnMobile>
 
 				<actions>
-					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveWebDetails"></m:Button>
+					<m:Button text="Save and Continue" enabled="true" type="Emphasized" icon="sap-icon://save" press="onPressSaveWebDetails"></m:Button>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
 		<headerContent>
 			<m:FlexBox wrap="Wrap" fitContainer="true">
-				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
+				<m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Circle" badgeIcon="sap-icon://internet-browser" displaySize="L"/>
+               
 
 				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">

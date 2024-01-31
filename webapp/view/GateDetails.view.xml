@@ -31,14 +31,14 @@ controllerName="com.public.storage.pao.controller.GateDetails"
 				</snappedTitleOnMobile>
 
 				<actions>
-					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveGateDetails"></m:Button>
+					<m:Button text="Save and Continue" enabled="true" type="Emphasized"  icon="sap-icon://save" press="onPressSaveGateDetails"></m:Button>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
 		<headerContent>
 			<m:FlexBox wrap="Wrap" fitContainer="true">
-				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
+				<m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" src="sap-icon://group-2" displayShape="Circle" initials="GD" displaySize="L"/>
 
 				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">

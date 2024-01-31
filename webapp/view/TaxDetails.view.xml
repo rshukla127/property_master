@@ -32,14 +32,14 @@ controllerName="com.public.storage.pao.controller.TaxDetails"
 				</snappedTitleOnMobile>
 
 				<actions>
-					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveTaxDetails"></m:Button>
+					<m:Button text="Save and Continue" enabled="true" icon="sap-icon://save" type="Emphasized" press="onPressSaveTaxDetails"></m:Button>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
 		<headerContent>
 			<m:FlexBox wrap="Wrap" fitContainer="true">
-				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
+				<m:Avatar src="sap-icon://sum" class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Circle" initials="TD" displaySize="L"/>
 
 				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">

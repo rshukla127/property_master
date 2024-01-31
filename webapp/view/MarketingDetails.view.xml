@@ -31,14 +31,14 @@ controllerName="com.public.storage.pao.controller.MarketingDetails"
 				</snappedTitleOnMobile>
 
 				<actions>
-					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveMarketingDetails"></m:Button>
+					<m:Button text="Save and Continue" enabled="true" icon="sap-icon://save" type="Emphasized" press="onPressSaveMarketingDetails"></m:Button>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
 		<headerContent>
 			<m:FlexBox wrap="Wrap" fitContainer="true">
-				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
+				<m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" src="sap-icon://opportunity" displayShape="Circle" initials="MD" displaySize="L"/>
 
 				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">

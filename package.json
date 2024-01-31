@@ -9,15 +9,24 @@
         "sapui5"
     ],
     "main": "webapp/index.html",
-    "dependencies": {},
     "devDependencies": {
-        "@ui5/cli": "^3.0.0",
-        "@sap/ux-ui5-tooling": "1",
         "@sap-ux/ui5-middleware-fe-mockserver": "2",
+        "@sap/ux-ui5-tooling": "^1.12.2",
+        "@ui5/cli": "^3.0.0",
+        "karma": "^6.4.2",
+        "karma-chai": "^0.1.0",
+        "karma-chrome-launcher": "^3.2.0",
+        "karma-coverage": "^2.2.1",
+        "karma-qunit": "^4.1.2",
+        "karma-sinon": "^1.0.5",
+        "karma-ui5": "^3.0.4",
+        "puppeteer": "^21.9.0",
         "rimraf": "^3.0.2",
-        "ui5-task-flatten-library": "0.2.5"
+        "ui5-task-flatten-library": "0.2.5",
+        "qunit": "^2.20.0"
     },
     "scripts": {
+        "karma": "karma start --single-run --browsers karma-ci.conf.js",
         "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#compublicstoragepao-display\"",
         "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#compublicstoragepao-display\"",
         "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
@@ -36,5 +45,8 @@
         "dependencies": [
             "ui5-task-flatten-library"
         ]
+    },
+    "dependencies": {
+        
     }
 }

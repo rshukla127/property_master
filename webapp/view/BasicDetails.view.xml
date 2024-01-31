@@ -9,17 +9,21 @@ controllerName="com.public.storage.pao.controller.BasicDetails"
 	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
+				
 				<expandedHeading>
 					<m:Title text="Basic Details" wrapping="true" />
+		
 				</expandedHeading>
 
 				<snappedHeading>
-					<m:HBox>
+					
 						<m:VBox>
 							<m:Title text="Basic Details" wrapping="true"/>
 							<m:Label text="Fill your basic details"/>
 						</m:VBox>
-					</m:HBox>
+
+						
+					
 				</snappedHeading>
 
 				<expandedContent>
@@ -31,14 +35,14 @@ controllerName="com.public.storage.pao.controller.BasicDetails"
 				</snappedTitleOnMobile>
 
 				<actions>
-					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSaveBasicDetails"></m:Button>
+					<m:Button text="Save and Continue" enabled="true" type="Emphasized" icon="sap-icon://save" press="onPressSaveBasicDetails"></m:Button>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
 		<headerContent>
 			<m:FlexBox wrap="Wrap" fitContainer="true">
-				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
+				<m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Circle" src="sap-icon://business-card"  initials="BD" displaySize="L"/>
 
 				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">

@@ -121,13 +121,13 @@ sap.ui.define([
                             that._oBusyDialog.close();
                             if(oResponse.statusCode === 202){
                            
-                               MessageToast.show("Saved Successfully");
+                               MessageToast.show(that.getView().getModel("i18n").getResourceBundle().getText("successMsg"));
                             }
                              },
                              function(oError)
                              {
                                 that._oBusyDialog.close();
-                                MessageToast.show("Something went wrong with the service");
+                                MessageToast.show(that.getView().getModel("i18n").getResourceBundle().getText("errorMsg"));
                              });
 
             } else {

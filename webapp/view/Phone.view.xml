@@ -32,14 +32,14 @@ controllerName="com.public.storage.pao.controller.Phone"
 				</snappedTitleOnMobile>
 
 				<actions>
-					<m:Button text="Save and Continue" enabled="true" type="Emphasized" press="onPressSavePhoneDetails"></m:Button>
+					<m:Button text="Save and Continue" enabled="true" icon="sap-icon://save" type="Emphasized" press="onPressSavePhoneDetails"></m:Button>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
 		<headerContent>
 			<m:FlexBox wrap="Wrap" fitContainer="true">
-				<!-- <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="HF" displaySize="L"/> -->
+				<m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" src="sap-icon://phone" displayShape="Circle" initials="PD" displaySize="L"/>
 
 				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 					<m:Title level="H4" titleStyle="H4" text="Plant" class="sapUiTinyMarginBottom">
@@ -126,7 +126,7 @@ controllerName="com.public.storage.pao.controller.Phone"
                                     <m:Input  id="elevatprNo3" app:fieldName="elevatprNo3" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/ElevatorPhoneNo3}" />
                 
                                     <m:Label text="{i18n>extensionNumber}" />
-                                    <m:Input  id="extensionNumber" app:fieldName="extensionNumber" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/ExtensionNumber}" />
+                                    <m:Input  id="extensionNumber" app:fieldName="extensionNumber"  maxLength="26" value="{plantBasicDetailsModel>/ExtensionNumber}" />
                 
                                     <m:Label text="{i18n>officePhoneNumber}" />
                                     <m:Input  id="officePhoneNumber" app:fieldName="officePhoneNumber" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/OfficePhoneNumber}" />

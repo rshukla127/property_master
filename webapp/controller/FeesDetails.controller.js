@@ -167,11 +167,11 @@ sap.ui.define([
             this._oModel.update(uri, payload, {
                 success: function (oData) {
                     that._oBusyDialog.close();
-                   MessageToast.show("Saved Successfully");
+                   MessageToast.show(that.getView().getModel("i18n").getResourceBundle().getText("successMsg"));
                 },
                 error: function (oData) {
                     that._oBusyDialog.close();
-                    MessageToast.show("Something went wrong with Service")
+                    MessageToast.show(that.getView().getModel("i18n").getResourceBundle().getText("errorMsg"));
                 }
             })
 

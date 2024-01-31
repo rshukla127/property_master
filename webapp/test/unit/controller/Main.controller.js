@@ -1,7 +1,7 @@
 /*global QUnit*/
 
 sap.ui.define([
-	"compublicstorage/pao/controller/Main.controller"
+	"comp/public/storage/pao/controller/Main.controller"
 ], function (Controller) {
 	"use strict";
 
