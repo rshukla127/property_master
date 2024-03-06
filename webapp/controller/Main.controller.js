@@ -181,9 +181,6 @@ sap.ui.define([
                 });
                 this.getView().setModel(oModel, "userModel")
 
-                if(sap.ushell.Container.getService("UserInfo").getId() === "DEFAULT_USER"){
-                    this.byId("savandcontmain").setVisible(false);
-                }
             
             },
 

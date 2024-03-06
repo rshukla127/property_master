@@ -68,7 +68,7 @@ controllerName="com.public.storage.pao.controller.GateDetails"
                                         <f:content>
                                              <core:Title text="" visible="false"/>
                                              <m:Label required="true" text="{i18n>gateSundayOpenHr}" />
-                                             <m:TimePicker change="onDetectChange" id="gateSunOpen" value="{parts: ['plantBasicDetailsModel>/GateSundayOpenHr'], ttformaer: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
+                                             <m:TimePicker change="onDetectChange" id="gateSunOpen" value="{parts: ['plantBasicDetailsModel>/GateSundayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                                              <m:Label required="true" text="{i18n>gateMondayOpenHr}" />
                                              <m:TimePicker change="onDetectChange" id="gateMonOpen" value="{parts: ['plantBasicDetailsModel>/GateMondayOpenHr'], formatter: '.formatter.formatGateTimeOpen'}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" support2400="true" maskMode="On" placeholder="Choose Time.." />
                                              <m:Label required="true" text="{i18n>gateTuesdayOpenHr}" />

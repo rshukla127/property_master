@@ -180,29 +180,25 @@ sap.ui.define([
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
             var bValidation = true;
-            const getDateValue = (controlId) => {
-                const inputValue = this.byId(controlId).getValue();
-                const reversedDate = inputValue.split(".").reverse().join("-");
-                const formattedDate = reversedDate !== "--" ? sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyy-MM-dd" }).format(new Date(reversedDate)) + "T00:00:00" : null;
-                return formattedDate;
-            };
-            // let adminFeeEffectiveDate = this.byId("effDate").getValue().split(".").reverse().join("-");
-            // let websiteEnabledDate = this.byId("webenabled").getValue().split(".").reverse().join("-");
-            // let callCentDate = this.byId("callCenter").getValue().split(".").reverse().join("-");
-            // let nfsfeeeffectiveDate = this.byId("nsfFeeEff").getValue().split(".").reverse().join("-");
-            // let nfsAshfeeffectiveDate = this.byId("nfsAshfeeeff").getValue().split(".").reverse().join("-");
+            let sTime = "T00:00:00"
+            
+            let adminFeeEffectiveDate = this.byId("effDate").getValue().split(".").reverse().join("-");
+            let websiteEnabledDate = this.byId("webenabled").getValue().split(".").reverse().join("-");
+            let callCentDate = this.byId("callCenter").getValue().split(".").reverse().join("-");
+            let nfsfeeeffectiveDate = this.byId("nsfFeeEff").getValue().split(".").reverse().join("-");
+            let nfsAshfeeffectiveDate = this.byId("nfsAshfeeeff").getValue().split(".").reverse().join("-");
                 
-            // let finaladminFeeEffectiveDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(adminFeeEffectiveDate)) + sTime;
-            // let finalwebsiteEnabledDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(websiteEnabledDate)) + sTime;
-            // let finalcallCentDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(callCentDate)) + sTime;
-            // let finalnnfsfeeeffectiveDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(nfsfeeeffectiveDate)) + sTime;
-            // let finalnnfsAshfeeffectiveDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(nfsAshfeeffectiveDate)) + sTime;
+            let finaladminFeeEffectiveDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(adminFeeEffectiveDate)) + sTime;
+            let finalwebsiteEnabledDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(websiteEnabledDate)) + sTime;
+            let finalcallCentDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(callCentDate)) + sTime;
+            let finalnnfsfeeeffectiveDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(nfsfeeeffectiveDate)) + sTime;
+            let finalnnfsAshfeeffectiveDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(nfsAshfeeffectiveDate)) + sTime;
            
-            // adminFeeEffectiveDate = finaladminFeeEffectiveDate === "T00:00:00" ? null : finaladminFeeEffectiveDate ;
-            // websiteEnabledDate = finalwebsiteEnabledDate === "T00:00:00" ? null : finalwebsiteEnabledDate ;
-            // callCentDate = finalcallCentDate === "T00:00:00" ? null : finalcallCentDate ;
-            // nfsfeeeffectiveDate = finalnnfsfeeeffectiveDate === "T00:00:00" ? null : finalnnfsfeeeffectiveDate ;
-            // nfsAshfeeffectiveDate = finalnnfsAshfeeffectiveDate === "T00:00:00" ? null : finalnnfsAshfeeffectiveDate ;
+            adminFeeEffectiveDate = finaladminFeeEffectiveDate === "T00:00:00" ? null : finaladminFeeEffectiveDate ;
+            websiteEnabledDate = finalwebsiteEnabledDate === "T00:00:00" ? null : finalwebsiteEnabledDate ;
+            callCentDate = finalcallCentDate === "T00:00:00" ? null : finalcallCentDate ;
+            nfsfeeeffectiveDate = finalnnfsfeeeffectiveDate === "T00:00:00" ? null : finalnnfsfeeeffectiveDate ;
+            nfsAshfeeffectiveDate = finalnnfsAshfeeffectiveDate === "T00:00:00" ? null : finalnnfsAshfeeffectiveDate ;
 
             let PropertyLatitude = this.getView().byId("propLat").getValue();
             let PropertyLongitude = this.getView().byId("propLong").getValue();
@@ -298,18 +294,18 @@ sap.ui.define([
                     PropertyLatitude: this.getView().byId("propLat").getValue(),
                     PropertyLongitude: this.getView().byId("propLong").getValue(),
                     PropertyAdminFee: this.getView().byId("propAdmin").getValue(),
-                    AdminFeeEffectiveDate: getDateValue("effDate"),
+                    AdminFeeEffectiveDate: adminFeeEffectiveDate,
                     PropertyChurnStatus: this.getView().byId("propChurn").getValue(),
                     ClimateControl: this.getView().byId("climControl").getValue(),
                     PropertyWebsiteReservations: this.getView().byId("propWeb").getSelectedKey(),
-                    WebsiteEnabledDate: getDateValue("webenabled"),
+                    WebsiteEnabledDate: websiteEnabledDate,
                     PropertyCallCenterReservati: this.getView().byId("propCall").getSelectedKey(),
-                    CallCenterEnabledDate: getDateValue("callCenter"),
+                    CallCenterEnabledDate: callCentDate,
                     PropertyNfsFee: this.getView().byId("propNFS").getValue(),
                     MaxReservationDays: this.getView().byId("maxRes").getValue(),
-                    NsfFeeEffectiveDate: getDateValue("nsfFeeEff"),
+                    NsfFeeEffectiveDate: nfsfeeeffectiveDate,
                     PropertyNfsAchFee: this.getView().byId("propNFSACH").getValue(),
-                    NfsAchFeeEffectiveDate: getDateValue("nfsAshfeeeff"),
+                    NfsAchFeeEffectiveDate: nfsAshfeeffectiveDate,
                     PropertyInsuranceFrozen: this.getView().byId("propFrozen").getSelectedKey(),
                     PropertyInsuranceCancelDay: this.getView().byId("propIns").getValue(),
                     PreReservationDays: this.getView().byId("propResDay").getValue()
