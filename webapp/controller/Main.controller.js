@@ -180,6 +180,11 @@ sap.ui.define([
                     user: oUser
                 });
                 this.getView().setModel(oModel, "userModel")
+
+                if(sap.ushell.Container.getService("UserInfo").getId() === "DEFAULT_USER"){
+                    this.byId("savandcontmain").setVisible(false);
+                }
+            
             },
 
             _onValueHelpPlant: function (oEvent) {
@@ -964,7 +969,7 @@ sap.ui.define([
                                                                 that.getView().getModel("oVisModel").setProperty("/enabledForPlant", false);
                                                                 that.getView().getModel("oVisModel").setProperty("/enabledForProperty", false);
                                                                 that.getView().byId("idReset").setEnabled(true);
-                                                                that.getView().byId("savandcontmain").setEnabled(false);
+                                                                //that.getView().byId("savandcontmain").setEnabled(false);
                                                                 if (that.getOwnerComponent().plant.includes("A") || that.getOwnerComponent().plant.includes("a")){
                                                                     that.byId("rb1").setSelected(true);
                                                                     //that.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", true);
@@ -996,7 +1001,7 @@ sap.ui.define([
                                                                     that.getView().getModel("oVisModel").setProperty("/enabledForPlant", false);
                                                                     that.getView().getModel("oVisModel").setProperty("/enabledForProperty", false);
                                                                     that.getView().byId("idReset").setEnabled(true);
-                                                                    that.getView().byId("savandcontmain").setEnabled(true);
+                                                                    //that.getView().byId("savandcontmain").setEnabled(true);
                                                                     if (that.getOwnerComponent().plant.includes("A") || that.getOwnerComponent().plant.includes("a")){
                                                                         that.byId("rb1").setSelected(true);
                                                                         //that.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", true);
@@ -1111,6 +1116,11 @@ sap.ui.define([
                     Plant: sPlant,
                     LegacyPropertyNumber: LegacyPropertyNumber
                 }
+
+                const sPlantModel = this.getView().getModel("plantsModel").getData().filter((items) => items.Werks === payload.Plant);
+                if (sPlantModel?.length){
+                    this.SavePCTableData();
+                } else {
                 this._oModel.create(`/PropertyMasterSet`, payload,{
                     success: function(){
                        //MessageToast.show("Saved Successfully");
@@ -1121,6 +1131,7 @@ sap.ui.define([
                     }
 
                 })
+                }
             },
             onPressSave: function(){
                 this.BusyDialog.open();
@@ -1391,7 +1402,7 @@ sap.ui.define([
                   this._oModel.update(uri, payload, {
                       success: function (oData) {
                           that.BusyDialog.close();
-                          that.getView().byId("savandcontmain").setEnabled(false);
+                          //that.getView().byId("savandcontmain").setEnabled(false);
                           
                          MessageToast.show("Saved Successfully");
                       },

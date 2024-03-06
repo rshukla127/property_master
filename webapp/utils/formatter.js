@@ -299,6 +299,61 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
       }
     },
 
+    formatFeeType1: function(sValue){
+      if (sValue === "") {
+        return '(995) Abandoned Goods (Large)';
+      } else if (sValue){
+        return sValue;
+      }else {
+        return '(995) Abandoned Goods (Large)';
+      }
+
+    },
+
+    formatFeeType2: function(sValue){
+      if (sValue === "") {
+        return '(996) Abandoned Goods (Medium)';
+      } else if (sValue){
+        return sValue;
+      }else {
+        return '(996) Abandoned Goods (Medium)';
+      }
+
+    },
+
+    formatFeeType3: function(sValue){
+      if (sValue === "") {
+        return '(997) Abandoned Goods (Small)';
+      } else if (sValue){
+        return sValue;
+      }else {
+        return '(997) Abandoned Goods (Small)';
+      }
+
+    },
+
+    formatFeeType4: function(sValue){
+      if (sValue === "") {
+        return '(998) Cleaning Fees';
+      } else if (sValue){
+        return sValue;
+      }else {
+        return '(998) Cleaning Fees';
+      }
+
+    },
+
+    formatFeeType5: function(sValue){
+      if (sValue === "") {
+        return '(999) Damage Charge';
+      } else if (sValue){
+        return sValue;
+      }else {
+        return '(999) Damage Charge';
+      }
+
+    },
+
     formatAmount1: function (sValue) {
       if (sValue === "" || sValue === "0.00") {
         return 500;

@@ -323,11 +323,11 @@ sap.ui.define([
                         const oModel = new JSONModel(oData.results);
                         that.getView().setModel(oModel, "feeTypeModel")
                         sap.ui.getCore().setModel(oModel, "feeTypeModel");
-                        that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType1", `(${oData.results[0].Code}) ${oData.results[0].Description}`);
-                        that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType2", `(${oData.results[1].Code}) ${oData.results[1].Description}`);
-                        that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType3", `(${oData.results[2].Code}) ${oData.results[2].Description}`);
-                        that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType4", `(${oData.results[3].Code}) ${oData.results[3].Description}`);
-                        that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType5", `(${oData.results[4].Code}) ${oData.results[4].Description}`);
+                        // that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType1", `(${oData.results[0].Code}) ${oData.results[0].Description}`);
+                        // that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType2", `(${oData.results[1].Code}) ${oData.results[1].Description}`);
+                        // that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType3", `(${oData.results[2].Code}) ${oData.results[2].Description}`);
+                        // that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType4", `(${oData.results[3].Code}) ${oData.results[3].Description}`);
+                        // that.getView().getModel("plantBasicDetailsModel").setProperty("/FeesType5", `(${oData.results[4].Code}) ${oData.results[4].Description}`);
                         }
                     },
                     error: function (oData) {

@@ -69,7 +69,7 @@ controllerName="com.public.storage.pao.controller.FeesDetails"
                                 <f:content>
                                     <core:Title text="" visible="false"/>
                                     <m:Label text="{i18n>feeType1}" />
-                                    <m:Input id="ftype1" app:fieldName="ftype1" showValueHelp="true"  valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true"  value="{plantBasicDetailsModel>/FeesType1}" />
+                                    <m:Input id="ftype1" app:fieldName="ftype1" showValueHelp="true"  valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true"  value="{parts: ['plantBasicDetailsModel>/FeesType1'], formatter: '.formatter.formatFeeType1'}" />
                                     <!-- <m:Label text="{i18n>feeDes1}" />
                                     <m:Input id="fDes1" value="{plantBasicDetailsModel>/FeesDescription1}" /> -->
                 
@@ -77,7 +77,7 @@ controllerName="com.public.storage.pao.controller.FeesDetails"
                                     <m:Input id="am1" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount1'], formatter: '.formatter.formatAmount1'}"/>
                 
                                     <m:Label text="{i18n>feeType2}" />
-                                    <m:Input id="type2" app:fieldName="ftype2" showValueHelp="true"  valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true"  value="{plantBasicDetailsModel>/FeesType2}" />
+                                    <m:Input id="type2" app:fieldName="ftype2" showValueHelp="true"  valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true"  value="{parts: ['plantBasicDetailsModel>/FeesType2'], formatter: '.formatter.formatFeeType2'}" />
                                     <!-- <m:Label text="{i18n>feeDes2}" />
                                     <m:Input id="fDes2" value="{plantBasicDetailsModel>/FeesDescription2}" /> -->
                 
@@ -85,7 +85,7 @@ controllerName="com.public.storage.pao.controller.FeesDetails"
                                     <m:Input id="am2" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount2'], formatter: '.formatter.formatAmount2'}" />
                 
                                     <m:Label text="{i18n>feeType3}" />
-                                    <m:Input id="ftype3" app:fieldName="ftype3" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true" value="{plantBasicDetailsModel>/FeesType3}" />
+                                    <m:Input id="ftype3" app:fieldName="ftype3" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true" value="{parts: ['plantBasicDetailsModel>/FeesType3'], formatter: '.formatter.formatFeeType3'}" />
                                     <!-- <m:Label text="{i18n>feeDes3}" />
                                     <m:Input id="fDes3" value="{plantBasicDetailsModel>/FeesDescription3}" /> -->
                 
@@ -94,7 +94,7 @@ controllerName="com.public.storage.pao.controller.FeesDetails"
                 
                 
                                     <m:Label text="{i18n>feeType4}" />
-                                    <m:Input id="ftype4" app:fieldName="ftype4" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true" value="{plantBasicDetailsModel>/FeesType4}" />
+                                    <m:Input id="ftype4" app:fieldName="ftype4" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true" value="{parts: ['plantBasicDetailsModel>/FeesType4'], formatter: '.formatter.formatFeeType4'}" />
                                     <!-- <m:Label text="{i18n>feeDes4}" />
                                     <m:Input id="fDes4" value="{plantBasicDetailsModel>/FeesDescription3}" /> -->
                 
@@ -102,7 +102,7 @@ controllerName="com.public.storage.pao.controller.FeesDetails"
                                     <m:Input id="am4" type="Number" value="{parts: ['plantBasicDetailsModel>/Amount4'], formatter: '.formatter.formatAmount4'}" />
                 
                                     <m:Label text="{i18n>feeType5}" />
-                                    <m:Input id="ftype5" app:fieldName="ftype5" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true" value="{plantBasicDetailsModel>/FeesType5}" />
+                                    <m:Input id="ftype5" app:fieldName="ftype5" showValueHelp="true" valueHelpRequest="_onValueHelFeeType" valueHelpOnly="true" value="{parts: ['plantBasicDetailsModel>/FeesType5'], formatter: '.formatter.formatFeeType5'}" />
                                     <!-- <m:Label text="{i18n>feeDes5}" />
                                     <m:Input id="fDes5" value="{plantBasicDetailsModel>/FeesDescription5}" /> -->
                 
