@@ -104,9 +104,9 @@
                                         <suggestionRows>
                                             <ColumnListItem>
                                                 <Label text="{plantsModel>Werks}" />
-                                                <Label text="{plantsModel>Name1T001w}" wrapping="true" wrappingType="Normal"/>
+                                                <Label text="{plantsModel>Name2Adrc}" wrapping="true" wrappingType="Normal"/>
                                                 <Label text="{plantsModel>Name2}" />
-                                                <Label text="{plantsModel>Stras}" wrapping="true" wrappingType="Normal"/>
+                                                <Label text="{plantsModel>Street}" wrapping="true" wrappingType="Normal"/>
                                                 <Label text="{plantsModel>Pstlz}" />
                                                 <Label text="{plantsModel>Ort01}" />
                                                 <Label text="{plantsModel>Land1}" />
@@ -152,9 +152,9 @@
                                     <suggestionRows>
                                         <ColumnListItem>
                                             <Label text="{plantsModel>Werks}" />
-                                            <Label text="{plantsModel>Name1T001w}" wrapping="true" wrappingType="Normal"/>
+                                            <Label text="{plantsModel>Name2Adrc}" wrapping="true" wrappingType="Normal"/>
                                             <Label text="{plantsModel>Name2}" />
-                                            <Label text="{plantsModel>Stras}" wrapping="true" wrappingType="Normal"/>
+                                            <Label text="{plantsModel>Street}" wrapping="true" wrappingType="Normal"/>
                                             <Label text="{plantsModel>Pstlz}" />
                                             <Label text="{plantsModel>Ort01}" />
                                             <Label text="{plantsModel>Land1}" />

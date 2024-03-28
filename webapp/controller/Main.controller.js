@@ -473,11 +473,11 @@ sap.ui.define([
                 //var oText = oItem ? oItem.getKey() : "";
                 //this.getView().byId("propertyInput").setValue(oText);
                
-                const sSelectedPlantStreet = oItem.getBindingContext("plantsModel").getObject().Stras
+                const sSelectedPlantStreet = oItem.getBindingContext("plantsModel").getObject().Street
                 const sOrt01 = oItem.getBindingContext("plantsModel").getObject().Ort01
                // const sPlant = oItem.getBindingContext("plantsModel").getObject().Werks;
                 const sLand = oItem.getBindingContext("plantsModel").getObject().Land1
-                const sName1T001 = oItem.getBindingContext("plantsModel").getObject().Name1T001w;
+                const sName1T001 = oItem.getBindingContext("plantsModel").getObject().Name2Adrc;
                 const sName2 = oItem.getBindingContext("plantsModel").getObject().Name2;
                 const sRegion = oItem.getBindingContext("plantsModel").getObject().Regio;
                 this.getView().byId("propertyInput").setValue(sName2);
@@ -519,11 +519,11 @@ sap.ui.define([
                 //var oText = oItem ? oItem.getKey() : "";
                 
                
-                const sSelectedPlantStreet = oItem.getBindingContext("plantsModel").getObject().Stras;
+                const sSelectedPlantStreet = oItem.getBindingContext("plantsModel").getObject().Street;
                 const sPlant = oItem.getBindingContext("plantsModel").getObject().Werks;
                 const sOrt01 = oItem.getBindingContext("plantsModel").getObject().Ort01
                 const sLand = oItem.getBindingContext("plantsModel").getObject().Land1
-                const sName1T001 = oItem.getBindingContext("plantsModel").getObject().Name1T001w;
+                const sName1T001 = oItem.getBindingContext("plantsModel").getObject().Name2Adrc;
                 const sRegion = oItem.getBindingContext("plantsModel").getObject().Regio
                 const sPin = oItem.getBindingContext("plantsModel").getObject().Pstlz;
                 this.getView().byId("plantInput").setValue(sPlant);
@@ -948,6 +948,8 @@ sap.ui.define([
                            that.BusyDialog.close();
                            //const filterData = oModel.getData().filter(item => (item.LegacyPropertyNumber === that.getOwnerComponent().LegacyPropertyNumber))
                            if(oData.results.length){
+                            const oModel = new JSONModel(oData.results);
+                            that.getView().setModel(oModel, "pResultModel");
                             
                             MessageBox.confirm(
                                                     `Property Details for the property ${that.getOwnerComponent().LegacyPropertyNumber} is available. Do you want to change?`,
@@ -983,6 +985,8 @@ sap.ui.define([
                                                     }
                                                 );
                                             } else {
+                                                const oModel = new JSONModel(oData.results);
+                                                that.getView().setModel(oModel, "pResultModel");
                                                     MessageBox.confirm(
                                                         `Property Details for the property ${that.getOwnerComponent().LegacyPropertyNumber} is not available. Do you want to create new?`,
                                                         {
@@ -1114,7 +1118,8 @@ sap.ui.define([
                     LegacyPropertyNumber: LegacyPropertyNumber
                 }
 
-                const sPlantModel = this.getView().getModel("plantsModel").getData().filter((items) => items.Werks === payload.Plant);
+                //const sPlantModel = this.getView().getModel("plantsModel").getData().filter((items) => items.Werks === payload.Plant);
+                const sPlantModel = this.getView().getModel("pResultModel").getData();
                 if (sPlantModel?.length){
                     this.SavePCTableData();
                 } else {
@@ -1209,12 +1214,12 @@ sap.ui.define([
                 const sFIlterModel = oModel.filter((item)=> item.Werks === sProperty)
                 const sOrt01 = sFIlterModel[0].Ort01
                 const sCountry = sFIlterModel[0].Land1
-                const sName1T001w = sFIlterModel[0].Name1T001w;
+                const sName1T001w = sFIlterModel[0].Name2Adrc;
                 const sName1 = sFIlterModel[0].Name1;
                 const sState = sFIlterModel[0].Regio;
                 const sPin = sFIlterModel[0].Pstlz;
                 const sCounty = sFIlterModel[0].City2;
-                const sStreet = sFIlterModel[0].Stras;
+                const sStreet = sFIlterModel[0].Street;
 
                 let sRadioButtonSelectedOwn = this.byId("rb1").getSelected();
                 //let sRadioButtonSelectedTP = this.byId("rb2").getSelected();
@@ -1427,10 +1432,10 @@ sap.ui.define([
                 this.getView().byId("plantInput").setValue(sTitle);
                 this.getView().byId("address").setText("");
                 
-                const sSelectedPlantStreet = oItem.getBindingContext("plantsModel").getObject().Stras
+                const sSelectedPlantStreet = oItem.getBindingContext("plantsModel").getObject().Street
                 const sOrt01 = oItem.getBindingContext("plantsModel").getObject().Ort01
                 const sLand = oItem.getBindingContext("plantsModel").getObject().Land1
-                const sName1T001 = oItem.getBindingContext("plantsModel").getObject().Name1T001w;
+                const sName1T001 = oItem.getBindingContext("plantsModel").getObject().Name2Adrc;
                 const sName2 = oItem.getBindingContext("plantsModel").getObject().Name2;
                 const sRegion = oItem.getBindingContext("plantsModel").getObject().Regio
                 const sPin = oItem.getBindingContext("plantsModel").getObject().Pstlz
@@ -1493,10 +1498,10 @@ sap.ui.define([
                 this.getView().byId("propertyInput").setValue(sTitle);
                 this.getView().byId("address").setText("");
                 
-                const sSelectedPlantStreet = oItem.getBindingContext("plantsModel").getObject().Stras
+                const sSelectedPlantStreet = oItem.getBindingContext("plantsModel").getObject().Street
                 const sOrt01 = oItem.getBindingContext("plantsModel").getObject().Ort01
                 const sLand = oItem.getBindingContext("plantsModel").getObject().Land1
-                const sName1T001 = oItem.getBindingContext("plantsModel").getObject().Name1T001w;
+                const sName1T001 = oItem.getBindingContext("plantsModel").getObject().Name2Adrc;
                 const sName2 = oItem.getBindingContext("plantsModel").getObject().Name2;
                 const sRegion = oItem.getBindingContext("plantsModel").getObject().Regio
                 const sPin = oItem.getBindingContext("plantsModel").getObject().Pstlz

@@ -99,51 +99,51 @@ controllerName="com.public.storage.pao.controller.InsuranceDetails"
 
                     <m:Label text="{i18n>cddStartDateN}" />
                     <m:DatePicker change="onDetectChange" id="startdate" placeholder="Choose Date.." valueStateText="Value cannot be blank" valueState="{/CddStartDate}" value="{ 
-                        path: 'plantBasicDetailsModel>/FinrepDate2',
+                        parts: ['plantBasicDetailsModel>/FinrepDate2'], formatter: '.formatter.formatDateTime', 
                         type: 'sap.ui.model.type.Date'  
-                      }" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" />
+                      }" valueFormat="yyyy-MM-dd"/>
 
                     <m:Label text="{i18n>finrepD3}" />
                     <m:DatePicker change="onDetectChange" id="finrepD3" placeholder="Choose Date.." value="{ 
-                        path: 'plantBasicDetailsModel>/FinrepDate3',
+                        parts: ['plantBasicDetailsModel>/FinrepDate3'], formatter: '.formatter.formatDateTime',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"/>
 
                     <m:Label text="{i18n>finrepD4}" />
                     <m:DatePicker change="onDetectChange" id="finrepD4" placeholder="Choose Date.." value="{ 
-                        path: 'plantBasicDetailsModel>/FinrepDate4',
+                        parts: ['plantBasicDetailsModel>/FinrepDate4'], formatter: '.formatter.formatDateTime',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" />
                     <m:Label text="{i18n>finrepD5}" />
                     <m:DatePicker change="onDetectChange" id="finrepD5" placeholder="Choose Date.." value="{ 
-                        path: 'plantBasicDetailsModel>/FinrepDate5',
+                        parts: ['plantBasicDetailsModel>/FinrepDate5'], formatter: '.formatter.formatDateTime',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"/>
 
                     <m:Label text="{i18n>finrepD6}" />
                     <m:DatePicker change="onDetectChange" id="finrepD6" placeholder="Choose Date.." value="{ 
-                        path: 'plantBasicDetailsModel>/FinrepDate6',
+                        parts: ['plantBasicDetailsModel>/FinrepDate6'], formatter: '.formatter.formatDateTime',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" />
 
                     <m:Label text="{i18n>finrepD7}" />
                     <m:DatePicker change="onDetectChange" id="finrepD7" placeholder="Choose Date.." value="{ 
-                        path: 'plantBasicDetailsModel>/FinrepDate7',
+                        parts: ['plantBasicDetailsModel>/FinrepDate7'], formatter: '.formatter.formatDateTime',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" />
                     <m:Label text="{i18n>finrepD8}" />
                     <m:DatePicker change="onDetectChange" id="finrepD8" value="{ 
-                        path: 'plantBasicDetailsModel>/FinrepDate8',
+                        parts: ['plantBasicDetailsModel>/FinrepDate8'], formatter: '.formatter.formatDateTime',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
                     <m:Label text="{i18n>finrepD9}" />
                     <m:DatePicker change="onDetectChange" id="finrepD9" value="{ 
-                        path: 'plantBasicDetailsModel>/FinrepDate9',
+                        parts: ['plantBasicDetailsModel>/FinrepDate9'], formatter: '.formatter.formatDateTime',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.." />
                     <m:Label text="{i18n>finrepD10}" />
                     <m:DatePicker change="onDetectChange" id="finrepD10" value="{ 
-                        path: 'plantBasicDetailsModel>/FinrepDate10',
+                        parts: ['plantBasicDetailsModel>/FinrepDate10'], formatter: '.formatter.formatDateTime',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 

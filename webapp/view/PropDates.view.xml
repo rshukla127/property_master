@@ -68,33 +68,32 @@ controllerName="com.public.storage.pao.controller.PropDates"
                 <f:content>
                  
                     <m:Label  text="{i18n>restrtdate}" />
-                    <m:DatePicker change="onDetectChange" id="restrtdate" value="{ 
-                        path: 'plantBasicDetailsModel>/ReStartDate',
-                        type: 'sap.ui.model.type.Date'
+                    <m:DatePicker change="onDetectChange" id="restrtdate" value="{parts: ['plantBasicDetailsModel>/ReStartDate'],
+                        type: 'sap.ui.model.type.Date', formatter: '.formatter.formatDateTime'
                       }" valueFormat="yyyy-MM-dd"  placeholder="Choose Date.."/>
 
                     <m:Label  text="{i18n>newOwnerdate}" />
                     <m:DatePicker change="onDetectChange" id="newOwnerdate" value="{ 
-                        path: 'plantBasicDetailsModel>/NewOwnershipDate',
-                        type: 'sap.ui.model.type.Date'  
+                        parts: ['plantBasicDetailsModel>/NewOwnershipDate'],
+                        type: 'sap.ui.model.type.Date', formatter: '.formatter.formatDateTime'
                       }" valueFormat="yyyy-MM-dd"  placeholder="Choose Date.." />
 
                     <m:Label text="{i18n>orstartdate}" />
                     <m:DatePicker change="onDetectChange" id="orstartdate" value="{ 
-                        path: 'plantBasicDetailsModel>/OriginalStartDate',
+                        parts: ['plantBasicDetailsModel>/OriginalStartDate'], formatter: '.formatter.formatDateTime',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd" valueStateText="Value cannot be blank" valueState="{/OriginalStartDate}" placeholder="Choose Date.." />
 
                     <m:Label  text="{i18n>terminationdate}" />
                     <m:DatePicker change="onDetectChange" id="terminationdate" value="{ 
-                        path: 'plantBasicDetailsModel>/TerminationDate',
+                        parts: ['plantBasicDetailsModel>/TerminationDate'], formatter: '.formatter.formatDateTime',
                         type: 'sap.ui.model.type.Date'  
                       }" valueFormat="yyyy-MM-dd"  placeholder="Choose Date.." />
 
                     <m:Label text="{i18n>buCreate}" />
                     <m:DatePicker change="onDetectChange" id="bucreatedate" value="{ 
-                        path: 'plantBasicDetailsModel>/BuCreateDate',
-                        type: 'sap.ui.model.type.Date'  
+                        parts: ['plantBasicDetailsModel>/BuCreateDate'],
+                        type: 'sap.ui.model.type.Date', formatter: '.formatter.formatDateTime' 
                       }" valueFormat="yyyy-MM-dd"  placeholder="Choose Date.." />
                 </f:content>
             </f:SimpleForm>

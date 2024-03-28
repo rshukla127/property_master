@@ -76,7 +76,7 @@
 
                                     <m:Label text="{i18n>kioskDate}" />
                                     <m:DatePicker change="onDetectChange" id="kioskDate" value="{ 
-                                        path: 'plantBasicDetailsModel>/KioskDate',
+                                        parts: ['plantBasicDetailsModel>/KioskDate'], formatter: '.formatter.formatDateTime',
                                         type: 'sap.ui.model.type.Date'  
                                     }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 
@@ -90,7 +90,7 @@
 
                                     <m:Label text="{i18n>cddDate}" />
                                     <m:DatePicker change="onDetectChange" id="cddDate" value="{ 
-                                    path: 'plantBasicDetailsModel>/CddDate',
+                                    parts: ['plantBasicDetailsModel>/CddDate'], formatter: '.formatter.formatDateTime',
                                     type: 'sap.ui.model.type.Date'  
                                 }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 
@@ -105,7 +105,7 @@
 
                                     <m:Label text="{i18n>satelliteDate}" />
                                         <m:DatePicker change="onDetectChange" id="satelliteDate" value="{ 
-                                            path: 'plantBasicDetailsModel>/SatelliteDate',
+                                            parts: ['plantBasicDetailsModel>/SatelliteDate'], formatter: '.formatter.formatDateTime',
                                             type: 'sap.ui.model.type.Date'  
                                         }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
                                     <m:Label text="{i18n>satelliteHub}" />
@@ -139,7 +139,7 @@
 
                                     <m:Label text="{i18n>connectCareDate}" />
                                     <m:DatePicker change="onDetectChange" id="connectCareDate" value="{ 
-                                    path: 'plantBasicDetailsModel>/ConnectcareDate',
+                                    parts: ['plantBasicDetailsModel>/ConnectcareDate'], formatter: '.formatter.formatDateTime',
                                     type: 'sap.ui.model.type.Date'  
                                     }" valueFormat="yyyy-MM-dd" placeholder="Choose Date.."/>
 

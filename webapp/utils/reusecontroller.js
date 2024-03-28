@@ -688,6 +688,7 @@ sap.ui.define([
         readOwnerOfRecord: function(){
             const that = this;
             
+            
             that._oModel.read(`/SrDistrictSet`, {
                     success: function (oData) {
                        
@@ -721,6 +722,25 @@ sap.ui.define([
 
         detectChanges: function(){
             this.getOwnerComponent.hasChanges = true;
+        },
+
+        readSolarEntity: function(){
+            const that = this;
+            var keyFilter = new sap.ui.model.Filter('Action', 'EQ', 'TA');
+            this._oBusyDialog.open();
+            that._oModel.read(`/CompanyDetailSet`, {
+                    filters: [keyFilter],
+                    success: function (oData) {
+                       
+                        const oModel = new JSONModel(oData.results);
+                        that.getView().setModel(oModel, "solarModel");
+                        sap.ui.getCore().setModel(oModel, "solarModel");
+                    },
+                    error: function (oError) {
+                        const sError = JSON.parse(oError.responseText).error.message.value;
+                        MessageToast.show(sError);
+                    }
+                });
         }
 
         // Tax detail tab finished

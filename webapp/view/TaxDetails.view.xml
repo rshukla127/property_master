@@ -87,7 +87,7 @@ controllerName="com.public.storage.pao.controller.TaxDetails"
                                     <m:Input id="taxFiling" valueStateText="Value cannot be blank" valueState="{/TaxFilingEntity}" valueHelpRequest="_onValueHelpTaxFillingEntity" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/TaxFilingEntity}" /> -->
                                    
                                     <m:Label text="Solar Entity" />
-                                    <m:Input  id="solarenitity" app:fieldName="sentity" valueStateText="Value cannot be blank" valueState="{/solarEntity}" valueHelpRequest="_onValueHelpTaxOwner" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/SolarEntity}" />
+                                    <m:Input  id="solarenitity" app:fieldName="solaren" valueStateText="Value cannot be blank" valueState="{/solarEntity}" valueHelpRequest="_onValueHelpSolarEntity" valueHelpOnly="true"  showValueHelp="true" value="{plantBasicDetailsModel>/SolarEntity}" />
 									<!-- <m:Input  id="solarenitity" valueStateText="Value cannot be blank" valueState="{/solarEntity}" change="onDetectChange"  maxLength="60" value="{plantBasicDetailsModel>/SolarEntity}" /> -->
                                     <!-- <TextArea id="solarenitity" valueStateText="Value cannot be blank" valueState="{/solarEntity}"  value="{plantBasicDetailsModel>/SolarEntity}" /> -->
                 

@@ -55,6 +55,7 @@ sap.ui.define([
             this._oModel = sap.ui.getCore().getModel("mainModel");
             this.readPropertyData(Plant, LegacyPropertyNumber);
             this.readTaxOwner();
+            this.readSolarEntity();
             //this.readTaxFillingEntity();
             //this.readTaxOwnerFein();
             //this.readLegalOwner();
@@ -231,15 +232,16 @@ sap.ui.define([
 
         },
 
-        _onValueHelpTaxFillingEntity: function(oEvent){
+        _onValueHelpSolarEntity: function(oEvent){
             const that =this;
             //var sInputValue = oEvent.getSource().getValue(),
+            this.selectedField = oEvent.getSource().getCustomData()[0].getValue();
               const oView = this.getView();
 
             if (!this._pValueHelpTaxFillingEntity) {
                 this._pValueHelpTaxFillingEntity = Fragment.load({
                     id: oView.getId(),
-                    name: "com.public.storage.pao.fragments.TaxDetails.TaxFillingEntity",
+                    name: "com.public.storage.pao.fragments.TaxDetails.SolarEntity",
                     controller: this
                 }).then(function (oDialog) {
                     oView.addDependent(oDialog);
@@ -275,10 +277,10 @@ sap.ui.define([
             } if(sTitle === "Legal Owner"){
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/LegalOwner", `(${sCode}) ${sDescription}`);
                 //this.getView().getModel("plantBasicDetailsModel").setProperty("/LegalOwnerFein", `${info}`);
-            } if(this.selectedField === "sentity" && sTitle === "Tax Owner"){
+            } if(this.selectedField === "solaren" && sTitle === "Solar Entity"){
                 this.getView().getModel("plantBasicDetailsModel").setProperty("/SolarEntity", `(${sCode}) ${sDescription}`);
                 //this.getView().getModel("plantBasicDetailsModel").setProperty("/LegalOwnerFein", `${info}`);
-            } 
+            }
 		},
 
         onPressSaveTaxDetails: function(){

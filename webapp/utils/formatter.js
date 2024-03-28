@@ -1,4 +1,5 @@
-sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
+sap.ui.define(["sap/m/MessageToast",
+"com/public/storage/pao/utils/formatter"], function (MessageToast,formatter) {
   "use strict";
   return {
     getSelectedKeyYes: function (sValue) {
@@ -298,6 +299,31 @@ sap.ui.define(["sap/m/MessageToast"], function (MessageToast) {
         }).format(new Date(sDate));
       }
     },
+
+    formatDateTime: function(dateTime){
+
+      if (dateTime !== undefined && dateTime !== null && dateTime !== "") {
+        var originalDate = new Date(dateTime);
+        // Convert to UTC
+        var utcDate = new Date(Date.UTC(
+            originalDate.getUTCFullYear(),
+            originalDate.getUTCMonth(),
+            originalDate.getUTCDate(),
+            originalDate.getUTCHours(),
+            originalDate.getUTCMinutes(),
+            originalDate.getUTCSeconds()
+        ));
+    
+        var dateFormat = sap.ui.core.format.DateFormat.getInstance({
+            UTC: true,
+            pattern: "MM/dd/yyyy"
+        });
+        var formattedDate = dateFormat.format(utcDate);
+        return formattedDate;
+    }
+    return null;
+
+		},
 
     formatFeeType1: function(sValue){
       if (sValue === "") {

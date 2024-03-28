@@ -1,8 +1,8 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="com.public.storage.pao.controller.TaxDetails" >
 	<SelectDialog class="sapUiSizeCompact"
 		id="txFillingEntity"
-		title="Tax Filling Entity"
-		items="{taxFilingModel>/}"
+		title="Solar Entity"
+		items="{solarModel>/}"
 		search="onValueHelpDialogSearchSolarENtity"
 		confirm="onValueHelpDialogClose"
 		cancel="onValueHelpDialogClose">
@@ -10,7 +10,7 @@
 			class="sapUiSizeCompact"
 			iconDensityAware="false"
 			iconInset="false"
-			title="{taxFilingModel>Code}"
-			description="{taxFilingModel>Description}"/>
+			title="{solarModel>Company}"
+			description="{solarModel>Description}"/>
 	</SelectDialog>
 </core:FragmentDefinition>
