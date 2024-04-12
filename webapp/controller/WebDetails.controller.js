@@ -188,11 +188,11 @@ sap.ui.define([
             let nfsfeeeffectiveDate = this.byId("nsfFeeEff").getValue().split(".").reverse().join("-");
             let nfsAshfeeffectiveDate = this.byId("nfsAshfeeeff").getValue().split(".").reverse().join("-");
                 
-            let finaladminFeeEffectiveDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(adminFeeEffectiveDate)) + sTime;
-            let finalwebsiteEnabledDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(websiteEnabledDate)) + sTime;
-            let finalcallCentDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(callCentDate)) + sTime;
-            let finalnnfsfeeeffectiveDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(nfsfeeeffectiveDate)) + sTime;
-            let finalnnfsAshfeeffectiveDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(nfsAshfeeffectiveDate)) + sTime;
+            let finaladminFeeEffectiveDate = adminFeeEffectiveDate === "" ? sTime : new Date(adminFeeEffectiveDate).toISOString().split("T")[0] + sTime;
+            let finalwebsiteEnabledDate = websiteEnabledDate === "" ? sTime : new Date(websiteEnabledDate).toISOString().split("T")[0] + sTime;
+            let finalcallCentDate = callCentDate === "" ? sTime : new Date(callCentDate).toISOString().split("T")[0] + sTime;
+            let finalnnfsfeeeffectiveDate = nfsfeeeffectiveDate === "" ? sTime : new Date(nfsfeeeffectiveDate).toISOString().split("T")[0] + sTime;
+            let finalnnfsAshfeeffectiveDate = nfsAshfeeffectiveDate === "" ? sTime : new Date(nfsAshfeeffectiveDate).toISOString().split("T")[0] + sTime;
            
             adminFeeEffectiveDate = finaladminFeeEffectiveDate === "T00:00:00" ? null : finaladminFeeEffectiveDate ;
             websiteEnabledDate = finalwebsiteEnabledDate === "T00:00:00" ? null : finalwebsiteEnabledDate ;

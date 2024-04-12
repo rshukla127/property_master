@@ -66,10 +66,10 @@ sap.ui.define([
             let ssatelliteDate = this.byId("satelliteDate").getValue().split(".").reverse().join("-");
             let sconnectCareDate = this.byId("connectCareDate").getValue().split(".").reverse().join("-");
 
-            let finalskioskDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(skioskDate)) + sTime;
-            let finalcddDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(scddDate)) + sTime;
-            let finalsatelliteDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(ssatelliteDate)) + sTime;
-            let finalconnectCareDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(sconnectCareDate)) + sTime;
+            let finalskioskDate = skioskDate === "" ? sTime : new Date(skioskDate).toISOString().split("T")[0] + sTime;
+            let finalcddDate = scddDate === "" ? sTime : new Date(scddDate).toISOString().split("T")[0] + sTime;
+            let finalsatelliteDate = ssatelliteDate === "" ? sTime : new Date(ssatelliteDate).toISOString().split("T")[0] + sTime;
+            let finalconnectCareDate = sconnectCareDate === "" ? sTime : new Date(sconnectCareDate).toISOString().split("T")[0] + sTime;
             skioskDate =  finalskioskDate === "T00:00:00" ? null : finalskioskDate ;
             scddDate =  finalcddDate === "T00:00:00" ? null : finalcddDate ;
             ssatelliteDate =  finalsatelliteDate === "T00:00:00" ? null : finalsatelliteDate ;

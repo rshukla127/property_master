@@ -176,7 +176,7 @@ sap.ui.define([
             var bValidation = true;
             let sTime = "T00:00:00";
             let floodzoneEffdate = this.byId("floodeffdate").getValue().split(".").reverse().join("-");
-            let finalfloodzoneEffdate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(floodzoneEffdate)) + sTime;
+            let finalfloodzoneEffdate = floodzoneEffdate === "" ? sTime : new Date(floodzoneEffdate).toISOString().split("T")[0] + sTime;
             floodzoneEffdate = finalfloodzoneEffdate === "T00:00:00" ? null : finalfloodzoneEffdate;
                
             // let PropertyFeatures =  this.getView().byId("propFeature").getValue();

@@ -87,6 +87,12 @@ sap.ui.define([
             const model = this.getView().getModel("plantBasicDetailsModel");
         
             switch (customData) {
+                case 'direPhoneNo':
+                    model.setProperty("/DirectPhoneNo", formattedPhoneNumber);
+                    break;
+                case 'faxNumber':
+                    model.setProperty("/FaxNumber", formattedPhoneNumber);
+                    break;
                 case 'publishedPhNo1':
                     model.setProperty("/PublishedPhoneNo", formattedPhoneNumber);
                     break;

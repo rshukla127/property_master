@@ -16,10 +16,11 @@ builder:
         target:
           destination: DS4-BAS
           url: http://s4hanaserve.demo.com:8000
+        log: 4
         app:
           name: ZPAO
           description: Property Attributes Overview
           package: ZFIORI
-          transport: DS4K903219
+          transport: DS4K903556
         exclude:
           - /test/

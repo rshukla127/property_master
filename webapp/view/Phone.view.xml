@@ -71,10 +71,10 @@ controllerName="com.public.storage.pao.controller.Phone"
                 
                 
                                     <m:Label  text="{i18n>direPhoneNo}" />
-                                    <m:Input id="direPhoneNo" enabled="false"  value="{plantsModel>/Telnumber}" />
+                                    <m:Input id="direPhoneNo" enabled="true" app:fieldName="direPhoneNo" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/DirectPhoneNo}" />
                 
                                     <m:Label text="{i18n>faxNumber}"/>
-                                    <m:Input id="faxNumber" enabled="false" maxLength="26" value="{plantsModel>/Faxnumber}" />
+                                    <m:Input id="faxNumber" enabled="true" app:fieldName="faxNumber" change="onFormatPhoneNumber" maxLength="26" value="{plantBasicDetailsModel>/FaxNumber}" />
                 
                                     <m:Label required="true" text="{i18n>publishedPhNo}"/>
                                     <m:Input  id="publishedPhNo1" app:fieldName="publishedPhNo1" change="onFormatPhoneNumber" valueStateText="Value cannot be blank" valueState="{/publishedPhNo}" maxLength="26" value="{plantBasicDetailsModel>/PublishedPhoneNo}" />

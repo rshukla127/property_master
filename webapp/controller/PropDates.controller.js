@@ -63,11 +63,11 @@ sap.ui.define([
             let valorstartdate = this.byId("orstartdate").getValue().split(".").reverse().join("-");
             let valterminationdate = this.byId("terminationdate").getValue().split(".").reverse().join("-");
             let valbucreatedate = this.byId("bucreatedate").getValue().split(".").reverse().join("-");
-            let finalStartDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(valResstartdate)) + sTime;
-            let finalOwnerDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(valnewOwnerdate)) + sTime;
-            let finalvalorstartdate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(valorstartdate)) + sTime;
-            let finalvalterminationdate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(valterminationdate)) + sTime;
-            let finalbucreatedate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(valbucreatedate)) + sTime;
+            let finalStartDate = valResstartdate === "" ? sTime : new Date(valResstartdate).toISOString().split("T")[0] + sTime;
+            let finalOwnerDate = valnewOwnerdate === "" ? sTime : new Date(valnewOwnerdate).toISOString().split("T")[0] + sTime;
+            let finalvalorstartdate = valorstartdate === "" ? sTime : new Date(valorstartdate).toISOString().split("T")[0] + sTime;
+            let finalvalterminationdate = valterminationdate === "" ? sTime : new Date(valterminationdate).toISOString().split("T")[0] + sTime;
+            let finalbucreatedate = valbucreatedate === "" ? sTime : new Date(valbucreatedate).toISOString().split("T")[0] + sTime;
             valResstartdate = finalStartDate === "T00:00:00" ? null : finalStartDate ;
             valnewOwnerdate = finalOwnerDate === "T00:00:00" ? null : finalOwnerDate ;
             valorstartdate = finalvalorstartdate === "T00:00:00" ? null : finalvalorstartdate ;

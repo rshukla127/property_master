@@ -148,7 +148,7 @@ sap.ui.define([
             let kisokACtivDate = this.getView().byId("kisok").getValue().split(".").reverse().join("-");
             let sGeoCode = this.getView().byId("geo").getValue();
             if (kisokACtivDate !== ""){
-                let fromattedDate = sap.ui.core.format.DateFormat.getDateInstance({pattern : "yyyy-MM-dd" }).format(new Date(kisokACtivDate)) + sTime;
+                let fromattedDate = new Date(kisokACtivDate).toISOString().split("T")[0] + sTime;
                 kisokACtivDate = fromattedDate === "T00:00:00" ? null : fromattedDate ;
             } else {
                 kisokACtivDate = null
