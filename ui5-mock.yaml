@@ -18,8 +18,8 @@ server:
         backend:
           - path: /sap
             url: http://s4hanaserve.demo.com:8000
-            client: '110'
-            destination: DS4-BASTestClient
+            client: '100'
+            destination: DS4-BAS
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

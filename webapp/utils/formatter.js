@@ -243,7 +243,7 @@ sap.ui.define(["sap/m/MessageToast",
         let ms = sTime.ms;
         return new Date(ms).toISOString().slice(11, 19);
       } else if (sTime.ms === 0){
-        return "00:00:00";
+        return "09:30:00";
       } else {
         return "09:30:00";
       }
@@ -254,7 +254,7 @@ sap.ui.define(["sap/m/MessageToast",
         let ms = sTime.ms;
         return new Date(ms).toISOString().slice(11, 19);
       } else if (sTime.ms === 0){
-        return "00:00:00";
+        return "17:00:00";
       }else {
         return "17:00:00";
       }
@@ -265,7 +265,7 @@ sap.ui.define(["sap/m/MessageToast",
         let ms = sTime.ms;
         return new Date(ms).toISOString().slice(11, 19);
       } else if (sTime.ms === 0){
-        return "00:00:00";
+        return "18:00:00";
       } else {
         return "18:00:00";
       }
@@ -276,7 +276,7 @@ sap.ui.define(["sap/m/MessageToast",
         let ms = sTime.ms;
         return new Date(ms).toISOString().slice(11, 19);
       } else if (sTime.ms === 0){
-        return "00:00:00";
+        return "06:00:00";
       } else {
         return "06:00:00";
       }
@@ -287,7 +287,7 @@ sap.ui.define(["sap/m/MessageToast",
         let ms = sTime.ms;
         return new Date(ms).toISOString().slice(11, 19);
       } else if (sTime.ms === 0){
-        return "00:00:00";
+        return "21:00:00";
       } else {
         return "21:00:00";
       }

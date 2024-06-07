@@ -104,9 +104,15 @@ sap.ui.define([
         onValueHelpDialogSearchProperty: function(oEvent){
             var sValue = oEvent.getParameter("value");
 			var oFilterPlant = new Filter("Werks", FilterOperator.Contains, sValue);
-            // var oFilterProp = new Filter("Name1", FilterOperator.Contains, sValue);
+            var oFilterProp = new Filter("Name1", FilterOperator.Contains, sValue);
+            var oFilterStreet = new Filter("Stras", FilterOperator.Contains, sValue);
+            var oFilterPostalCode = new Filter("Pstlz", FilterOperator.Contains, sValue);
+            let oCombinedFilter = new Filter({
+                filters: [oFilterPlant, oFilterProp, oFilterStreet, oFilterPostalCode],
+                and: false // Set to false for OR condition
+            });
 
-			oEvent.getSource().getBinding("items").filter([oFilterPlant]);
+			oEvent.getSource().getBinding("items").filter([oCombinedFilter]);
         },
 
         onValueHelpDialogConfirmProperty: function (oEvent) {
@@ -135,6 +141,10 @@ sap.ui.define([
                 });
             });
 
+        },
+
+        onClear: function(){
+            this.getView().byId("budProp").setValue("");
         },
 
         onPressSaveBasicDetails: function(){

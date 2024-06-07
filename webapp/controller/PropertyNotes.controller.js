@@ -59,8 +59,11 @@ sap.ui.define([
             const sPlant = this.getOwnerComponent().plant
             const LegacyPropertyNumber = this.getOwnerComponent().LegacyPropertyNumber;
             let PropertyFeatures =  this.getView().byId("propFeature").getValue();
+                PropertyFeatures = PropertyFeatures?.replace(/[\n\r]/g, '');
             let DrivingDirections = this.getView().byId("driDirection").getValue();
+                DrivingDirections = DrivingDirections?.replace(/[\n\r]/g, '');
             let SpecialNotes = this.getView().byId("spNotes").getValue();
+                SpecialNotes = SpecialNotes?.replace(/[\n\r]/g, '');
         //     let bValidation = true;
 
         //    if (PropertyFeatures === "") {

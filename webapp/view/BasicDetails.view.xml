@@ -82,6 +82,7 @@ controllerName="com.public.storage.pao.controller.BasicDetails"
 
 									<m:Label text="{i18n>budPropNumber}" />
 									<m:Input maxLength="7" id="budProp" value="{plantBasicDetailsModel>/BuddyPropertyNumber}" showValueHelp="true" valueHelpRequest="_onValueHelpRequestProperty" valueHelpOnly="true"/>
+									<m:Button icon="sap-icon://clear-all" text="Clear" press="onClear" type="Neutral"></m:Button>
 									<m:Label text="{i18n>retailSqFootage}" />
 									<m:Input change="onDetectChange" maxLength="5" id="retailStoreSq" value="{plantBasicDetailsModel>/RetailStoreSquareFootage}" />
 

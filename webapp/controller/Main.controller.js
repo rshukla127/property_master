@@ -969,12 +969,14 @@ sap.ui.define([
                                                                 that.getView().getModel("oVisModel").setProperty("/enabledForProperty", false);
                                                                 that.getView().byId("idReset").setEnabled(true);
                                                                 //that.getView().byId("savandcontmain").setEnabled(false);
-                                                                if (that.getOwnerComponent().plant.includes("A") || that.getOwnerComponent().plant.includes("a")){
-                                                                    that.byId("rb1").setSelected(true);
-                                                                    //that.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", true);
-                                                                } else {
-                                                                    that.byId("rb2").setSelected(true);
-                                                                    //that.getView().getModel("oVisModel").setProperty("/visibliltyForThirdParty", true);
+                                                                const pType = that.getView().getModel("pResultModel").getData()[0].PropertyType;
+                                                                //check if O is coming from backend, set Own True
+                                                                if(pType === 'O'){
+                                                                    that.byId("rb1").setSelected(true)
+                                                                } 
+                                                                //check if T is coming from backend, set Third Party True
+                                                                if(pType === 'T'){
+                                                                    that.byId("rb2").setSelected(true)
                                                                 }
                                                                 that.readProfitCenters();
                                                                 
@@ -1002,15 +1004,12 @@ sap.ui.define([
                                                                     that.getView().getModel("oVisModel").setProperty("/enabledForPlant", false);
                                                                     that.getView().getModel("oVisModel").setProperty("/enabledForProperty", false);
                                                                     that.getView().byId("idReset").setEnabled(true);
-                                                                    //that.getView().byId("savandcontmain").setEnabled(true);
-                                                                    if (that.getOwnerComponent().plant.includes("A") || that.getOwnerComponent().plant.includes("a")){
+                                                                    const plant = that.getOwnerComponent().plant.toUpperCase();
+                                                                    const firstChar = plant.charAt(0);
+                                                                    if (firstChar >= 'A' && firstChar <= 'V') {
                                                                         that.byId("rb1").setSelected(true);
-                                                                        //that.getView().getModel("oVisModel").setProperty("/visibliltyForOwner", true);
-                                                                        
                                                                     } else {
                                                                         that.byId("rb2").setSelected(true)
-                                                                        
-                                                                        //that.getView().getModel("oVisModel").setProperty("/visibliltyForThirdParty", true);
                                                                     }
                                                                     that.readProfitCenters();
                                                                 } else {
@@ -1576,6 +1575,14 @@ sap.ui.define([
                              sap.ui.getCore().setModel(oModel, "profitCenterModel");
                              that.getView().getModel("profitCenterModel").refresh();
                          }
+                         // on refresh update the property type based on plant
+                         const plant = that.getOwnerComponent().plant.toUpperCase();
+                         const firstChar = plant.charAt(0);
+                         if (firstChar >= 'A' && firstChar <= 'V') {
+                            that.byId("rb1").setSelected(true);
+                        } else {
+                            that.byId("rb2").setSelected(true)
+                        }
                         },
                         error: function (oData) {
                              that.BusyDialog.close();
